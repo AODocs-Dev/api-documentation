@@ -1,0 +1,3 @@
+# [DRAFT] ApiDocumentType
+
+Placeholder

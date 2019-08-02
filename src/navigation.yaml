@@ -1,0 +1,131 @@
+---
+# Copyright 2018 Google Inc. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+# The ordering list specifies the order in which the pages and folders will
+# appear in your portal's navigation. If a page or folder name is not included,
+# then it will not appear in your portal.
+#
+# 'Introduction', 'API Reference', and 'Resources' are special sections,
+# and will always appear in your portal.
+#
+# If you add a folder to 'ordering', be sure to add a corresponding entry
+# in the 'folders' map below.
+ordering:
+- Introduction
+- Guides
+- Resources
+- API Reference
+
+folders:
+  Guides:
+    ordering:
+    - 00-Getting Started
+    - 10-Key concepts
+    - 20-Authentication
+    - 30-Manage AODocs documents
+#    - 40-Configure AODocs libraries
+#    - 50-Manage workflows
+    - 60-Best practices
+    - 70-Resources of note
+#    - 80-APIs of note
+
+    folders:
+      10-Key concepts:
+        ordering:
+        - 00-Overview
+        - 10-Basics of AODocs
+        - 20-Basics of AODocs APIs
+
+      20-Authentication:
+        ordering:
+        - 00-Overview
+        - 10-Security code
+        - 20-Bearer tokens
+#        - 30-Sample use cases
+        - 50-Auth appendix
+
+      30-Manage AODocs documents:
+        ordering:
+        - 00-Overview
+        - 10-Get library and class info
+        - 20-Create, modify, delete documents
+#        - 30-List and search documents
+#        - 40-Document workflow transitions
+        folders:
+          10-Get library and class info:
+            ordering:
+#            - 00-Overview
+            - 10-Libraries
+            - 20-Classes
+
+          20-Create, modify, delete documents:
+            ordering:
+#            - 00-Overview
+            - 10-Create new documents with attachments
+            - 20-Modify field values of document properties
+            - 30-Modify document attachments
+            - 35-List, search, and count documents
+            - 40-Delete document
+            folders:
+              10-Create new documents with attachments:
+                ordering:
+                - 00-Overview
+                - 10-Create test Drive files and folders
+                - 20-Create new document and attach Drive file
+
+#      40-Configure AODocs libraries:
+#        ordering:
+#        - 00-Overview
+#        - 10-Configure document classes
+#        - 20-Manage categories
+#        - 30-Configure workflows
+
+#      50-Manage workflows:
+#        ordering:
+#        - 00-Overview
+
+      60-Best practices:
+        ordering:
+        - 00-Overview
+        - 10-HTTP status codes and errors
+        - 20-Performance considerations
+
+#      70-Resources of note:
+#        ordering:
+#        - 00-Introduction to resources
+#        - 10-ApiDocument
+#        - 15-ApiLibrary
+#        - 20-ApiDocumentType
+
+#      80-APIs of note:
+#        ordering:
+#        - 00-Overview
+#        - 05-document
+#        - 10-search
+#        - 15-documentType
+#        - 20-library
+#        - 25-category
+#        - 30-referenceCatalog
+#        - 35-relation
+#        - 40-workflow
+#        - 45-view
+#        - 50-folder
+#        - 55-user
+#        - 60-job
+#        - 65-domain
+#        - 30-documentType
+
+
