@@ -23,9 +23,10 @@
 # If you add a folder to 'ordering', be sure to add a corresponding entry
 # in the 'folders' map below.
 ordering:
-- Introduction
-- Custom Section
-- Resources
+  - Introduction
+  - Guides
+  - API Reference
+  - Resources
 
 folders:
   Guides:
