@@ -24,8 +24,7 @@
 # in the 'folders' map below.
 ordering:
 - Introduction
-- Guides
-- API Reference
+- Custom Section
 - Resources
 
 folders:
@@ -36,3 +35,6 @@ folders:
     # The add_example_page script will add a page named 'Example Page' here.
     ordering:
     - Getting Started
+  Custom Section:
+    ordering:
+      - Custom Page
