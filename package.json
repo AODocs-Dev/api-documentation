@@ -1,0 +1,10 @@
+{
+  "name": "api-documentation",
+  "version": "1.0.0",
+  "dependencies": {
+    "ncp": "^2.0.0"
+  },
+  "scripts": {
+    "copy": "node copy.js"
+  }
+}

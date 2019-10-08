@@ -36,7 +36,7 @@ folders:
     # In this example, there is only a 'Getting Started' page and no sub-folders.
     # The add_example_page script will add a page named 'Example Page' here.
     ordering:
-    - Getting Started
+      - Getting Started
   Custom Section:
     ordering:
       - Custom Page
