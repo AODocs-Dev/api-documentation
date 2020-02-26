@@ -43,29 +43,28 @@ folders:
       Subsection1:
         ordering:
         - Overview
-        - Subsection1
+        - Subsection2
         folders:
-          Subsection1:
+          Subsection2:
             ordering:
             - Overview
-            - Subsection1
+            - Subsection3
             folders:
-              Subsection1:
+              Subsection3:
                 ordering:
                 - Overview
-                - Subsection1
+                - Subsection4
                 folders:
-                  Subsection1:
+                  Subsection4:
                     ordering:
                     - Overview
-                    - Subsection1
+                    - Subsection5
                     folders:
-                      Subsection1:
+                      Subsection5:
                         ordering:
                         - Overview
-                        - Subsection1
+                        - Subsection6
                         folders:
-                          Subsection1:
+                          Subsection6:
                             ordering:
                             - Overview
-                            
