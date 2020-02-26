@@ -41,4 +41,6 @@ folders:
     - Custom Page
     folders:
       Subsection1:
-
+        ordering:
+        - Overview
+        
