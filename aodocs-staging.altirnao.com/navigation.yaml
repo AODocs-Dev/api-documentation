@@ -37,5 +37,6 @@ folders:
   Custom Section:
     ordering:
     - Example Page
+    - Subsection1
     - Custom Page
 
