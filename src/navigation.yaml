@@ -34,5 +34,8 @@ folders:
   Guides:
     ordering:
     - Getting Started
+  Custom Section:
+    ordering:
     - Example Page
+    - Custom Page
 
