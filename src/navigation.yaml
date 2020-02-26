@@ -43,4 +43,18 @@ folders:
       Subsection1:
         ordering:
         - Overview
-        
+
+# # WORKS
+# folders:
+#   Guides:
+#     ordering:
+#     - Getting Started
+#   Custom Section:
+#     ordering:
+#     - Example Page
+#     - Subsection1
+#     - Custom Page
+#     folders:
+#       Subsection1:
+#         ordering:
+#         - Overview
