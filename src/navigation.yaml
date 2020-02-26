@@ -44,5 +44,5 @@ folders:
     - Example Page
     folders:
       Subsection1:
-        ordering:
-        - Intro page
+        # ordering:
+        # - Intro page
