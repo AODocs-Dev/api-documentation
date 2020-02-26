@@ -44,8 +44,8 @@ folders:
     - Subsection1
     folders:
       Subsection1:
-        # ordering:
-        # - Overview.md
+        ordering:
+        - Overview.md
         # - Subsection2
         # folders:
         #   Subsection2:
