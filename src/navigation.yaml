@@ -39,4 +39,6 @@ folders:
     - Example Page
     - Subsection1
     - Custom Page
+    folders:
+      Subsection1:
 
