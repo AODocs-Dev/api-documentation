@@ -39,10 +39,10 @@ folders:
       - Getting Started
   Custom Section:
     ordering:
-      - Custom Page
-      - Subsection1
-      - Example Page
+    - Custom Page
+    - Subsection1
+    - Example Page
     folders:
-      Subsection1
+      Subsection1:
         ordering:
         - Intro page
