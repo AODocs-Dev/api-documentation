@@ -58,7 +58,6 @@ folders:
                 folders:
                   Subsection4:
                     ordering:
-                    -Subsection5
+                    - Subsection5
                     folders:
                       Subsection5:
-                      
