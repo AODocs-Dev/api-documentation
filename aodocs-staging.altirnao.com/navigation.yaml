@@ -40,10 +40,21 @@ folders:
   Custom Section:
     ordering:
     - Custom Page
-    - Subsection1
     - Example Page
+    - Subsection1
     folders:
       Subsection1:
-        ordering:
-        - Overview
-        
+        #ordering:
+        folders:
+          Subsection2:
+            #ordering:
+            folders:
+              Subsection3:
+                #ordering:
+                folders:
+                  Subsection4:
+                    #ordering:
+                    folders:
+                      Subsection5:
+
+
