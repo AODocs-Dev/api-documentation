@@ -1,4 +1,4 @@
 # This is a custom documentation page
 ---
 
-Content will be fully customizable
+Content will be fully customizable.

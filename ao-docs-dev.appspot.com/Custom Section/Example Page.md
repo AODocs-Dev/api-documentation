@@ -125,7 +125,7 @@ console.log(myString);
 ```
 | Column 1 | Column 2 | Column 3 |
 | -------- | -------- | -------- |
-| Foo      | Bar      | Baz      |
+| Foo      | Bar      | Bazz      |
 ```
 
 | Column 1 | Column 2 | Column 3 |
