@@ -39,7 +39,36 @@ folders:
     - Example Page
     - Custom Page
     - Subsection1
+    - SubsectionA
     folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
       Subsection1:
         ordering:
         - Overview
