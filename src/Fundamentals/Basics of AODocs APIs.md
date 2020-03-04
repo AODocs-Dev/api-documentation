@@ -228,12 +228,8 @@ Read more about [AODocs resources](https://docs.google.com/document/d/1k5JAfE2Tb
 
 ## Beta vs. v1 version
 
+Any version marked ```beta``` is still being developed and can change without notice.
 
-
-*   TBD: QUICK SUMMARY: BETA CAN CHANGE
-
-
-##
 
 
 ## When to use Drive and AODocs APIs
