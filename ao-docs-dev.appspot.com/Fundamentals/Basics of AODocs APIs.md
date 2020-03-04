@@ -60,8 +60,6 @@ You send a request containing the following information to the resource server:
 
 AODocs APIs are designed around [principles of REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), allowing you to request, receive, and alter server resources (nouns) with a small number of standard, programming-language agnostic HTTP operation commands (verbs):
 
-
-
 *   GET (retrieves)
 *   PUT (inserts)
 *   POST (creates)
