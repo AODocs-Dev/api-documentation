@@ -72,24 +72,9 @@ These commands are variants of elemental HTTP operations of **c**reate, **r**etr
 
 In AODocs, things are no different: you specify CRUD commands (verbs) along with pertinent _parameters_ as a request to the server to operate on your behalf on AODocs resources (nouns) to achieve the results you want.
 
-
-#### ____Service endpoint
-
-x
-
-
 #### Parameters
 
 The parameters you send in the request define and focus the scope of what is to be operated on and how.  You provide parameters either because it is something the _server_ requires (for example, authentication, or unique identifiers of the resource you want to work on); or because it is something _you_ want (for example, to filter the bulk of the results down to a smaller, more readable subset).
-
-
-```
-| Server requires | Server requires AND you want | You want |
-| --- |:---:| --- |
-| Authenticate      | Specify what to work on      | Filter results      |
-```
-
-
 
 ##### Types of parameters
 
@@ -107,13 +92,11 @@ The way the resource server is implemented determines which part of the request 
 
 For example, the server knows **auth tokens** are normally sent inside the **header** instead of as query parameters because the latter tend to get recorded and become visible in web server logs, presenting a security risk. For internal servers (test, staging, etc.), the server also knows to look for security codes in the query parameters (see following).
 
-Specific API names (like AODocs ```/search/v1/``` or ```/library/v1/``` APIs) are considered **path parameters**.  These parameters get outlined in the part of the URL before the` `````?````.  The server expects to find target API names in the path.
+Specific API names (like AODocs ```/search/v1/``` or ```/library/v1/``` APIs) are considered **path parameters**.  These parameters get outlined in the part of the URL before the ```?```.  The server expects to find target API names in the path.
 
-Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the` `````?````, and the server has built-in mechanisms to parse this information.
+Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```, and the server has built-in mechanisms to parse this information.
 
 The following query parameters exist globally across the API:
-
-
 
 *   domain
 *   security code (auth mechanism)
@@ -254,11 +237,6 @@ Read more about [AODocs resources](https://docs.google.com/document/d/1k5JAfE2Tb
 
 
 ## When to use Drive and AODocs APIs
-
-
-
-*   __Drive vs. AODocs permissions
-*   __AODocs roles using Google Groups
 
 
 ### Summary
