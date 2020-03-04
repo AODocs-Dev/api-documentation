@@ -27,14 +27,7 @@ ordering:
 - Introduction
 - Guides
 - Custom Section
-- INTRODUCTION
-- Authentication
-- Managing AODocs data
-- Response codes and errors
-- Resources of note
-- APIs of note
-- API Reference
-- Resources
+- Basic concepts
 
 folders:
   Guides:
@@ -47,8 +40,7 @@ folders:
       Subsection1:
         ordering:
         - Overview
-
-  INTRODUCTION:
+  Basic concepts:
     ordering:
     - Overview
     - Basics of AODocs
