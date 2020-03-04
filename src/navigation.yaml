@@ -28,6 +28,8 @@ ordering:
 - Guides
 - Custom Section
 - Basic concepts
+- API Reference
+- Resources
 
 folders:
   Guides:
@@ -40,6 +42,7 @@ folders:
       Subsection1:
         ordering:
         - Overview
+
   Basic concepts:
     ordering:
     - Overview
