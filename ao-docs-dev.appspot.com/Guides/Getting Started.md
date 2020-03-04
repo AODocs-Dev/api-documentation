@@ -8,7 +8,7 @@ You should have access to an AODocs instance and understand some  [AODocs](/docs
 
 ## Using the API
 
-To ease into the world of API calls and responses, you can spend some time playing around with the [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get).  To make it even easier, you can try it using the individual methods in the [Managing AODocs data](/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/) section.  They are arranged on purpose in a sequence that gets you comfortable with the concepts of manipulating AODocs resources.
+To ease into the world of API calls and responses, you can spend some time playing around with the [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get).  To make it even easier, you can try it using the individual methods in the [Managing AODocs data](/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Overview) section.  They are arranged on purpose in a sequence that gets you comfortable with the concepts of manipulating AODocs resources.
 
 Or you can dive right into the methods and schemas in the [Reference](/docs/aodocs-staging.altirnao.com/1/overview).  To flesh out the succinct approach of the reference documentation, you can read up more on AODocs resources and APIs of note in their respective sections.
 
