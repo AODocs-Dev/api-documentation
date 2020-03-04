@@ -27,7 +27,7 @@ ordering:
 - Introduction
 - Guides
 - Custom Section
-- Basic concepts
+- Fundamentals
 - Authentication
 - Managing AODocs data
 - Response codes and errors
@@ -48,7 +48,7 @@ folders:
         ordering:
         - Overview
 
-  Basic concepts:
+  Fundamentals:
     ordering:
     - Overview
     - Basics of AODocs
