@@ -28,11 +28,11 @@ ordering:
 - Guides
 - Custom Section
 - INTRODUCTION
-- AUTHENTICATION
-- MANAGING AODOCS DATA
-- RESPONSE CODES AND ERRORS
-- RESOURCES OF NOTE
-- APIS OF NOTE
+- Authentication
+- Managing AODocs data
+- Response codes and errors
+- Resources of note
+- APIs of note
 - API Reference
 - Resources
 
@@ -114,3 +114,323 @@ folders:
                             ordering:
                             - Overview
 
+
+  AUTHENTICATION:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
+
+  MANAGING AODOCS DATA:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
+
+  RESPONSE CODES AND ERRORS:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
+
+  RESOURCES OF NOTE:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
+
+  APIS OF NOTE:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
