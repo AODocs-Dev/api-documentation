@@ -28,8 +28,9 @@ ordering:
 - Guides
 - Custom Section
 - Basic concepts
-- Managing AODocs data
 - Authentication
+- Managing AODocs data
+- Response codes and errors
 - API Reference
 - Resources
 
@@ -176,6 +177,70 @@ folders:
                             - Overview
 
   Managing AODocs data:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
+
+  Response codes and errors:
     ordering:
     - Example Page
     - Custom Page
