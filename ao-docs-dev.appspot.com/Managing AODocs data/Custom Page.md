@@ -3,9 +3,7 @@
 We put the most useful API methods together into a sequence you can follow in the [API portal](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) to acquire the know-how needed to accomplish the most common data-handling goals, as well as to gain the confidence to tackle more advanced API tasks, including configuration and administration.
 
 
-```
-⭑   Note: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI.  Use the one that suits your needs, or you can do them both to understand how they map to each other.
-```
+> ⭑   **Note**: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI.  Use the one that suits your needs, or you can do them both to understand how they map to each other.
 
 
 
@@ -19,9 +17,7 @@ If you haven't yet, make sure you familiarize yourself with the [basic terminolo
 In this tutorial you'll port some Drive files to become attached to AODocs **documents** inside some AODocs **libraries**.  Once attached, you'll create/add/patch/update/delete **documents**, **attachments**, **properties**, and **metadata**.  Whenever appropriate, for each task, you'll get a link to the specific part of the API portal needed to accomplish the task.
 
 
-```
-⭑   Note: We recommend following all the steps in sequence, as they mostly depend on the previous steps.
-```
+> ⭑   **Note**: We recommend following all the steps in sequence, as they mostly depend on the previous steps.
 
 
 The list of steps is as follows:
@@ -81,22 +77,15 @@ List target libraries on your domain, select a target library for your AODocs do
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-
 ```
 PUT /library/v1
 ```
 
-
-
 #### Usage/notes/guidelines
-
 
 ##### Request
 
-
-```
-⚠  Warning/Alert: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
-```
+> ⚠  Warning/Alert: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
 
 This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ```include``` query parameter to ```NONE```.  Alternatively use the [List plain libraries](#heading=h.l3tpn8bxn8c) method to get just the key-value pairs.
 
@@ -183,10 +172,7 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 PUT /library/v1/plain
 ```
 
-
-
 #### Usage/notes/guidelines
-
 
 ##### Request
 
@@ -338,15 +324,11 @@ You can list available target classes for your documents as follows:
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-
 ```
 PUT /documentType/v1/libraries/{libraryId}
 ```
 
-
-
 #### Guidelines
-
 
 ##### Request
 
@@ -356,14 +338,11 @@ To return just the bare minimum of class ID and displayName in the response, you
 
 ````fields=items(displayName%2Cid%2Ckind)%2Ckind````
 
-
 ##### Response
 
 The response returns an [ApiDocumentTypeList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
 Response fields of note:
-
-
 
 *   ```id``` (of the class)
 *   ```displayName``` (of the class)
@@ -371,9 +350,7 @@ Response fields of note:
 *   ```defaultClass``` (whether or not this is the library's default class)
 *   any other fields of interest
 
-
 ##### Sample full response (abridged)
-
 
 ```
 {
@@ -399,7 +376,6 @@ Response fields of note:
 
 ##### Sample filtered response (complete)
 
-
 ```
 {
 "kind": "aodocs#classList",
@@ -417,6 +393,7 @@ Response fields of note:
 ]
 }
 ```
+
 _____________________________
 
 ### List classes in the UI
@@ -431,7 +408,6 @@ _____________________________
 
 You can retrieve (the configuration of) a specific class/documentType to confirm it exists or to parse something from its metadata if you have its `classId`/`documentTypeId`.
 
-
 #### Method and API
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
@@ -441,15 +417,11 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}
 ```
 
-
-
 #### Guidelines
-
 
 ##### Request
 
-Pass the mandatory ````classId````/````documentId````, as well as the ````libId```` of the library the class resides in as **_path_ parameters** (not in the query string).
-
+Pass the mandatory ```classId```/```documentId```, as well as the ```libraryId``` of the library the class resides in as **_path_ parameters** (not in the query string).
 
 ##### Response
 
@@ -457,16 +429,12 @@ The response returns an [ApiDocumentType](https://api.aodocs-staging.com/docs/ao
 
 Response fields of note:
 
-
-
 *   ````id```` (of the class)
 *   ```displayName``` (of the class)
 *   ```libraryId``` (of the library you searched)
 *   ```defaultClass``` (whether or not this is the library's default class)
 
-
 ##### Sample response
-
 
 ```
 {
@@ -479,27 +447,17 @@ Response fields of note:
 }
 ```
 
-
-
-##
-
-
 ## Create new documents with attachments
 
 In AODocs, you can create new documents with either just a single attachment (TF/SF/DMS), or any number of attachments including zero (DMS-only).
 
 To create AODocs documents with and without attachments, follow these steps:
 
-
-
 * [Get a few Drive test files and folders ready (to become AODocs document attachments)](#heading=h.x1k4y4foz0cu)
 * [Create a new document and attach a Drive file](#heading=h.vllmj75wrdzj)
 *   [Get the specific document you've created](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.g9k67owiq7yi)
 
 You can also [Create AODocs documents in the UI](https://support.aodocs.com/hc/en-us/articles/115005892403-Create-AODocs-documents).
-
-
-###
 
 
 _____________________________
@@ -554,16 +512,12 @@ Now the URL lists the Drive **file** ID (as opposed to **folder** ID):
 
 
 
-```
-⭑   Note: Certain Drive files such as Google Forms require an additional step of clicking on ```Edit``` (pencil icon usually in the bottom right of the page) and open the file in yet another view.  Only then does the URL display the proper file ID.
-```
+> ⭑   **Note**: Certain Drive files such as Google Forms require an additional step of clicking on ```Edit``` (pencil icon usually in the bottom right of the page) and open the file in yet another view.  Only then does the URL display the proper file ID.
 
 Make note of the **Drive file ID** for [later](#heading=h.vllmj75wrdzj).  It and the **AODocs document ID** are the two most critical and commonly used pieces of identifying information in the **AODocs API**.
 
 
-```
-⭑   Note: If you're familiar with the Drive API, the file ID is the ID of the File resource.
-```
+> ⭑   **Note**: If you're familiar with the Drive API, the file ID is the ID of the File resource.
 
 
 
@@ -611,9 +565,7 @@ Before you create a new empty document with one attachment, you **must know** th
 You also need the ````fileId```` of any Drive file that you want to attach to your document.  Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
 
 
-```
-⭑   Note: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
-```
+> ⭑   **Note**: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
 
 
 Optionally, it's **good to know** your target class (what type of document this will be), but if you don't specify it, the document will automatically become of the same type as your target library's current default class.  Lastly, you should give a title to your new document.  If you don't, it'll get called "Untitled, which can get confusing.
@@ -627,15 +579,13 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 ```"folder":"1jaPv028i_mrOykI60KavWib2LTzSuYWr8"```
 
 
-```
-⭑   Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
+> ⭑   **Note**: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
 You have to have ownership of each such file.
 You or your domain has to be whitelisted in the target domain.
 You have to have access to the target library.
 If the file is not yet owned by an AODocs storage account, you have to use the ```googleapis.com/auth/drive scope``` during the procedure.
 
 In an out-of-domain case such as this, the file itself gets automatically duplicated and it is this new duplicate that becomes the attachment to your target document, not the original.
-```
 
 
 
@@ -654,9 +604,7 @@ Pass the **mandatory** parameters of ````fileId```` (for any Drive file to be at
 If you attach a Drive file using ```attachments```, and then edit that attachment's content, the edits happen in the original Drive file because the attachment is a direct link to that file.
 
 
-```
-⭑   Note: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
-```
+> ⭑   **Note**: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
 
 
 If you attach a Drive file using ```attachmentsToCopy```, and then edit that attachment's content, the edits happen in the copy of the original Drive file created during the attachment process.
@@ -684,9 +632,7 @@ PUT https://aodocs-api-url.com/api/document/v1
 
 
 
-```
-⭑   Note: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
-```
+> ⭑   **Note**: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
 
 
 
@@ -704,9 +650,7 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 ##### Sample response
 
 
-```
-⭑   Note: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
-```
+> ⭑   **Note**: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
 
 
 
@@ -810,9 +754,7 @@ _____________________________
 You can retrieve (the configuration of) a specific document to confirm it exists or to parse something from its metadata if you have its ````documentId````.
 
 
-```
-⭑   Note: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
-```
+> ⭑   **Note**: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
 
 
@@ -842,7 +784,6 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
-
 > ⭑ **Note**: If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
 
 
@@ -855,9 +796,7 @@ GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=librar
 
 
 
-```
-⭑   Note: To list/get an AODocs document by the Drive ```fileId``` of one of its attachments, use ```GET /document/v1/drive/{driveId}```.
-```
+> ⭑   **Note**: To list/get an AODocs document by the Drive ```fileId``` of one of its attachments, use ```GET /document/v1/drive/{driveId}```.
 
 
 
