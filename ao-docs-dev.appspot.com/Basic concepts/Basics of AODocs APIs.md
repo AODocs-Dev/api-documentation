@@ -300,46 +300,11 @@ To **manage folders** and **edit permissions**, use **either Drive or AODocs API
 
 
 ```
-⭑   Note: It is not a common use case, but some of the things you can do with the ```documentId``` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
+⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
 ```
 
 
-
-
-
-
-
-## What can you do with AODocs APIs?
-
-Some of the concrete tasks you can perform with the APIs as are follows:
-
-
-
-*   List libraries
-*   List classes
-*   Create a document of a specific class inside a specific library
-*   Patch a document
-*   Delete a document
-*   Hundreds of other tasks
-
-
-## What can you do with Google Drive APIs?
-
-AODocs can access and modify some Drive resources, but Google has its own [Google Drive API](https://developers.google.com/drive/api/v3/) that addresses its own specificities.
-
-
-
-
-##
-
-
 ## Next steps
-
-x
-
-x
-
-x
 
 Here are some resources to help you get started working with the AODocs APIs:
 
