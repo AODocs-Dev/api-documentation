@@ -1,3 +1,10 @@
+<style
+  type="text/css">
+h1 {color:red;}
+
+p {color:blue;}
+</style>
+
 # Getting Started With Markdown
 
 Each section contains some text in a code block followed by the same text rendered in markdown.
