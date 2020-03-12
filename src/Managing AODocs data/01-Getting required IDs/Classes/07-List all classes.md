@@ -1,18 +1,25 @@
-### List classes (to find target classes for your documents)
+
+# List classes (to find target classes for your documents)
 
 You can list available target classes for your documents as follows:
 
-#### Method and API
+## Method and API
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-##### [PUT /documentType/v1/libraries/{libraryId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+### [PUT /documentType/v1/libraries/{libraryId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 
-#### Guidelines
+## Guidelines
 
-##### Request
+### Request
 
 Only ````libraryId```` is mandatory.
+
+### Sample request
+
+```
+GET https://aodocs-apis.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmNN
+```
 
 To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ````fields```` query parameter with ````items(displayName,id,kind),kind```` as follows:
 
@@ -20,7 +27,7 @@ To return just the bare minimum of class ID and displayName in the response, you
 fields=items(displayName%2Cid%2Ckind)%2Ckind
 ```
 
-##### Response
+### Response
 
 The response returns an [ApiDocumentTypeList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
@@ -32,7 +39,7 @@ Response fields of note:
 *   ```defaultClass``` (whether or not this is the library's default class)
 *   any other fields of interest
 
-##### Sample full (abridged) response
+### Sample full (abridged) response
 
 ```
 {
@@ -56,7 +63,7 @@ Response fields of note:
 }
 ```
 
-##### Sample filtered response (complete)
+### Sample filtered response (complete)
 
 ```
 {
@@ -76,7 +83,7 @@ Response fields of note:
 }
 ```
 
-### List classes in the UI
+# List classes in the UI
 
 You can also list your library classes in the UI, on the Library Administration page.
 
