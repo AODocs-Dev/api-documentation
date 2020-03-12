@@ -91,6 +91,113 @@ PUT https://aodocs-api-url.com/api/document/v1
 }
 ```
 
+```http
+PUT https://aodocs-api-url.com/api/document/v1
+
+ {
+  "attachments": [
+    {
+      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
+    }
+  ],
+  "folders": [
+    {
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+    }
+  ],
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "classId": "RnTf1mx835gaTJLzoFp",
+  "title": "mfie-stag-dms-doc-002"
+}
+```
+
+```json
+PUT https://aodocs-api-url.com/api/document/v1
+
+ {
+  "attachments": [
+    {
+      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
+    }
+  ],
+  "folders": [
+    {
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+    }
+  ],
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "classId": "RnTf1mx835gaTJLzoFp",
+  "title": "mfie-stag-dms-doc-002"
+}
+```
+
+```nginx
+PUT https://aodocs-api-url.com/api/document/v1
+
+ {
+  "attachments": [
+    {
+      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
+    }
+  ],
+  "folders": [
+    {
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+    }
+  ],
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "classId": "RnTf1mx835gaTJLzoFp",
+  "title": "mfie-stag-dms-doc-002"
+}
+```
+
+```yaml
+PUT https://aodocs-api-url.com/api/document/v1
+
+ {
+  "attachments": [
+    {
+      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
+    }
+  ],
+  "folders": [
+    {
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+    }
+  ],
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "classId": "RnTf1mx835gaTJLzoFp",
+  "title": "mfie-stag-dms-doc-002"
+}
+```
+
+```python
+PUT https://aodocs-api-url.com/api/document/v1
+
+ {
+  "attachments": [
+    {
+      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
+    }
+  ],
+  "folders": [
+    {
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
+    }
+  ],
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "classId": "RnTf1mx835gaTJLzoFp",
+  "title": "mfie-stag-dms-doc-002"
+}
+```
+
+
+
 > ⭑   **Note**: Note: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
 
 ### Response

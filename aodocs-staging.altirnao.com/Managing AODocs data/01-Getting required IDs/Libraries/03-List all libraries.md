@@ -82,29 +82,24 @@ You can also locate the ```libraryId``` of your target library inside the AODocs
 
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
+NO LANGUAGE SPECIFIED:
+
 ```
 /LibraryId_libraryId
 ```
+
+HTTP FORMAT:
 
 ```http
 /LibraryId_libraryId
 ```
 
+YAML FORMAT:
+
 ```yaml
 /LibraryId_libraryId
 ```
 
-```xml
-/LibraryId_libraryId
-```
-
-```json
-/LibraryId_libraryId
-```
-
-```python
-/LibraryId_libraryId
-```
 
 
 ### Example
