@@ -8,12 +8,25 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 ### [PUT /library/v1](../../../../routes/library/v1/put)
 
+HTTP FORMAT:
+
+```http
+[PUT /library/v1](../../../../routes/library/v1/put)
+```
+
+NGINX FORMAT:
+
+```nginx
+[PUT /library/v1](../../../../routes/library/v1/put)
+```
+
+
 ## Usage/notes/guidelines
 
 ### Request
 
 
-> ⚠  Warning/Alert: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
+> ⚠  **Warning/Alert**: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
 
 This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ```include``` query parameter to ```NONE```.
 
@@ -52,8 +65,6 @@ Additional fields to note:
 
 ### Sample response
 
-JSON FORMAT:
-
 ```json
 {
   "kind": "aodocs#libraryList",
@@ -77,59 +88,6 @@ JSON FORMAT:
     }
 }
 ```
-
-YAML FORMAT:
-
-```yaml
-{
-  "kind": "aodocs#libraryList",
-  "libraries": [
-    {
-      "kind": "aodocs#library",
-      "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
-      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
-      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
-      "favorited": false,
-      ...
-    },
-    {
-      "kind": "aodocs#library",
-      "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
-      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
-      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
-      "favorited": true
-    }
-}
-```
-
-HTTP FORMAT:
-
-```http
-{
-  "kind": "aodocs#libraryList",
-  "libraries": [
-    {
-      "kind": "aodocs#library",
-      "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
-      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
-      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
-      "favorited": false,
-      ...
-    },
-    {
-      "kind": "aodocs#library",
-      "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
-      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
-      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
-      "favorited": true
-    }
-}
-```
-
 
 ## List libraries and find ```libraryId``` in UI
 
