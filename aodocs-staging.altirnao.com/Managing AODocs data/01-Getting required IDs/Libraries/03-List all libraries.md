@@ -45,8 +45,8 @@ Additional fields to note:
 
 ### Sample response
 
-```
-  {
+```json
+{
   "kind": "aodocs#libraryList",
   "libraries": [
     {
@@ -56,7 +56,7 @@ Additional fields to note:
       "defaultDocumentType": "RnTbOft44KfZYkfBpV",
       "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,
-	 ...
+      ...
     },
     {
       "kind": "aodocs#library",
