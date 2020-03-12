@@ -33,13 +33,22 @@ Optionally, it's **good to know** your target class (what type of document this 
 You might also want to provide the ID of a specific target AODocs folder for your new document to live in.  You can do this by specifying the AODocs folder ID (```folderAodocsId```).  If you don't know this ID, you can open up your target folder in the UI and retrieve the ID from the URL between the surrounding ```%2522``` strings:
 
 ```
-<code>%2522<strong>folder</strong>%2522:%2522<strong>1jaPv028i_mrOykI60KavWib2LTzSuYWr8</strong>%2522</code>
+%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
 ```
+
+```
+**%2522**folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+```
+
+```
+<b>%2522</b>folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+```
+
 
 The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 
-```
-"<strong>folder</strong>":"<strong>1jaPv028i_mrOykI60KavWib2LTzSuYWr8</strong>"
+```json
+"folder":"1jaPv028i_mrOykI60KavWib2LTzSuYWr8"
 ```
 
 > ⭑   **Note**: Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:

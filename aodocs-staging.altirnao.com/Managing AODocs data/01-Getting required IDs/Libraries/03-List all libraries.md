@@ -21,24 +21,9 @@ This method has no mandatory parameters, but without setting any filtering it tr
 
 ### Sample request
 
-HTTP FORMAT:
-
-```http
-PUT https://aodocs-apis.com/api/library/v1?include=NONE
-```
-
-NGINX FORMAT:
-
-```nginx
-PUT https://aodocs-apis.com/api/library/v1?include=NONE
-```
-
-YAML FORMAT:
-
 ```yaml
 PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
-
 
 Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
@@ -88,25 +73,9 @@ You can also locate the ```libraryId``` of your target library inside the AODocs
 
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
-NO LANGUAGE SPECIFIED:
-
 ```
 /LibraryId_libraryId
 ```
-
-HTTP FORMAT:
-
-```http
-/LibraryId_libraryId
-```
-
-YAML FORMAT:
-
-```yaml
-/LibraryId_libraryId
-```
-
-
 
 ### Example
 
