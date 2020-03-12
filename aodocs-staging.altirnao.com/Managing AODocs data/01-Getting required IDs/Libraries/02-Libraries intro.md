@@ -6,6 +6,6 @@ Once your libraries exist, you can list them to get an idea of where to place yo
 
 The most useful methods to list and get libraries are the following:
 
-* [List all available AODocs libraries (full)](../03-List%20all%20libraries)
+* [List all available AODocs libraries (full)](03-List%20all%20libraries)
 * [List all available AODocs libraries (plain)](#heading=h.l3tpn8bxn8c)
 * [Get a specific library](#heading=h.sgixsybfrj2a)
