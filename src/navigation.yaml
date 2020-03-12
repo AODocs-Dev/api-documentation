@@ -180,14 +180,14 @@ folders:
 
   Managing AODocs data:
     ordering:
-    - 01-Getting the required IDs
+    - 01-Getting required IDs
 #    - 02-Creating, patching, and deleting documents
     - Example Page
     - Custom Page
     - Subsection1
     - SubsectionA
     folders:
-      01-Getting the required IDs:
+      01-Getting required IDs:
         ordering:
         - Introduction
         - Classes
