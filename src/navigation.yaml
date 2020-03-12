@@ -55,7 +55,7 @@ folders:
     - Basics of AODocs APIs
     # - Subsection1
     # - SubsectionA
-    - Example Page
+#    - Example Page
     # folders:
     #   SubsectionA:
     #     ordering:
