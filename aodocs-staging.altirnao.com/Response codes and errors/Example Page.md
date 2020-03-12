@@ -1,7 +1,3 @@
-```json
-{"test": "value"}
-```
-
 # Getting Started With Markdown
 
 Each section contains some text in a code block followed by the same text rendered in markdown.
