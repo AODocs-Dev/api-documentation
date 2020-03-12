@@ -1,9 +1,6 @@
-<style
-  type="text/css">
-h1 {color:red;}
-
-p {color:blue;}
-</style>
+```json
+{"test": "value"}
+```
 
 # Getting Started With Markdown
 
