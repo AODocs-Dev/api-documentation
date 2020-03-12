@@ -26,7 +26,7 @@
 ordering:
 - Introduction
 - Guides
-- Custom Section
+#- Custom Section
 - Fundamentals
 - Authentication
 - Managing AODocs data
@@ -40,13 +40,13 @@ folders:
   Guides:
     ordering:
     - Getting Started
-  Custom Section:
-    ordering:
-    - Subsection1
-    folders:
-      Subsection1:
-        ordering:
-        - Overview
+  # Custom Section:
+  #   ordering:
+  #   - Subsection1
+  #   folders:
+  #     Subsection1:
+  #       ordering:
+  #       - Overview
 
   Fundamentals:
     ordering:
