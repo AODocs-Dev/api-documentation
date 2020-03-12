@@ -191,7 +191,7 @@ folders:
         ordering:
         - Introduction
         - Classes
-        - Libraries
+#        - Libraries
         folders:
           Classes:
             ordering:
