@@ -6,22 +6,7 @@ To list target libraries on your domain, select a target library for your AODocs
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-### [PUT /library/v1](routes/library/v1/put)
-
-### [PUT /library/v1](../routes/library/v1/put)
-
-### [PUT /library/v1](../../routes/library/v1/put)
-
-### [PUT /library/v1](../../../routes/library/v1/put)
-
 ### [PUT /library/v1](../../../../routes/library/v1/put)
-
-
-
-
-
-
-### [PUT /library/v1](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)
 
 ## Usage/notes/guidelines
 
@@ -37,12 +22,11 @@ This method has no mandatory parameters, but without setting any filtering it tr
 ### Sample request
 
 
-```
-  PUT https://aodocs-staging.altirnao.com/api/library/v1?include=none
+```json
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
 
-
-Alternatively use the **[List plain libraries](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.l3tpn8bxn8c)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
+Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
 ### Response
 

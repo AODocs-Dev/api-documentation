@@ -8,7 +8,7 @@ This is the same as asking for the full ```ApiLibraryList``` collection and usin
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-### [PUT /library/v1/plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put)
+### [PUT /library/v1/plain](../../../../routes/library/v1/plain/put)
 
 ## Usage/notes/guidelines
 
@@ -25,7 +25,7 @@ PUT https://aodocs-apis.com/api/library/v1/plain
 
 ### Response
 
-The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+The response returns an [ApiPlainLibraryList](../../../../types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
 *   library name
 *   library ID
