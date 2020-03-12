@@ -190,15 +190,9 @@ folders:
       01-Getting required IDs:
         ordering:
         - Introduction
-        - Libraries
+#        - Libraries
         - Classes
         folders:
-          Libraries:
-            ordering:
-            - 02-Libraries intro
-            - 03-List all libraries
-            - 04-List all libraries plain
-            - 05-Get library by ID
           Classes:
             ordering:
             - 06-Classes intro
