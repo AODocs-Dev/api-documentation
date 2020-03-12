@@ -6,6 +6,21 @@ To list target libraries on your domain, select a target library for your AODocs
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
+### [PUT /library/v1](routes/library/v1/put)
+
+### [PUT /library/v1](../routes/library/v1/put)
+
+### [PUT /library/v1](../../routes/library/v1/put)
+
+### [PUT /library/v1](../../../routes/library/v1/put)
+
+### [PUT /library/v1](../../../../routes/library/v1/put)
+
+
+
+
+
+
 ### [PUT /library/v1](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)
 
 ## Usage/notes/guidelines
