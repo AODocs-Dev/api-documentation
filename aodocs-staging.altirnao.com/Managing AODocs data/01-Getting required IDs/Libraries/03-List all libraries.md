@@ -33,6 +33,12 @@ NGINX FORMAT:
 PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
 
+YAML FORMAT:
+
+```yaml
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
 
 Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
