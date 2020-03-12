@@ -26,6 +26,39 @@ This method has no mandatory parameters, but without setting any filtering it tr
 PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
 
+```vim
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```xml
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```ruby
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```http
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```matlab
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```nginx
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```curl
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+```perl
+PUT https://aodocs-apis.com/api/library/v1?include=NONE
+```
+
+
 Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
 ### Response
@@ -43,6 +76,9 @@ Additional fields to note:
 *   any other fields of interest
 
 ### Sample response
+
+`Redcarpet.new("Hello World!")`{:.ruby}
+`Redcarpet.new("Hello World!")`{.ruby}
 
 ```json
 {
@@ -67,6 +103,343 @@ Additional fields to note:
     }
 }
 ```
+
+```javascript
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```yaml
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```python
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```ruby
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```http
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```html
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```go
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```scala
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```csharp
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```markdown
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```nginx
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```perl
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```vim
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
+```xml
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "name": "mfie-stag-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "mfie-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
+      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+
 
 ## List libraries and find ```libraryId``` in UI
 
