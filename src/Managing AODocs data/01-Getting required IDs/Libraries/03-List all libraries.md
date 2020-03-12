@@ -15,14 +15,14 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 > ⚠  Warning/Alert: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
 
-This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ````include```` query parameter to ````NONE````.
+This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ```include``` query parameter to ```NONE```.
 
 
 
 ### Sample request
 
 
-```http
+```html
 PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
 
@@ -30,16 +30,16 @@ Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain
 
 ### Response
 
-The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ````include=NONE```` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ```include=NONE``` the response is smaller and far more manageable.
 
-Take note of the ````libraryId```` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the `libraryId` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional fields to note:
 
-*   ````name```` (of the library)
-*   ````defaultDocumentType```` (the library's default class ID)
-*   ````rootFolderId```` (the ID of the topmost level of the library's hierarchy)
-*   ````favorited```` (whether or not the library is starred as a favorite)
+*   ```name``` (of the library)
+*   ```defaultDocumentType``` (the library's default class ID)
+*   ```rootFolderId``` (the ID of the topmost level of the library's hierarchy)
+*   ```favorited``` (whether or not the library is starred as a favorite)
 *   any other fields of interest
 
 ### Sample response
@@ -70,7 +70,7 @@ Additional fields to note:
 
 ## List libraries and find ```libraryId``` in UI
 
-You can also locate the ````libraryId```` of your target library inside the AODocs UI.  Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
+You can also locate the ```libraryId``` of your target library inside the AODocs UI.  Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
 
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
