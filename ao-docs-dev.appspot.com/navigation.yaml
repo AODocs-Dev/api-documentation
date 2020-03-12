@@ -181,7 +181,7 @@ folders:
   Managing AODocs data:
     ordering:
     - 01-Getting required IDs
-#    - 02-Creating, patching, and deleting documents
+    - 02-Creating, patching, and deleting documents
     - Example Page
     - Custom Page
     - Subsection1
@@ -204,6 +204,19 @@ folders:
             - 06-Classes intro
             - 07-List all classes
             - 08-Get class by ID
+      02-Creating, patching, and deleting documents:
+        ordering:
+        - Introduction
+        - Creating new documents with attachments
+        - 13-Modify documents with PATCH
+        - 14-Delete document
+        folders:
+          Creating new documents with attachments:
+            ordering:
+            - 09-Creating new documents
+            - 10-Create test Drive files and folders
+            - 11-Create new document and attach Drive file
+            - 12-Get document by ID
 
       SubsectionA:
         ordering:

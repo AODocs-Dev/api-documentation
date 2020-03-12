@@ -15,7 +15,19 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 > ⚠  Warning/Alert: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
 
-This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ````include```` query parameter to ````NONE````.  Alternatively use the **[List plain libraries](#heading=h.l3tpn8bxn8c)** method to get just the key-value pairs.
+This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ````include```` query parameter to ````NONE````.
+
+
+
+### Sample request
+
+
+```
+  PUT https://aodocs-staging.altirnao.com/api/library/v1?include=none
+```
+
+
+Alternatively use the **[List plain libraries](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.l3tpn8bxn8c)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
 ### Response
 

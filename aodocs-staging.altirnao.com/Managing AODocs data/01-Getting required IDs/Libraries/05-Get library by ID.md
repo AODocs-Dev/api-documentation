@@ -14,11 +14,22 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 To get your desired library back in the response you have to provide the library ID.  This is the only mandatory field.  If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
 
-### Response
+##### Sample request
+
+
+```
+GET https://aodocs-apis.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
+```
+
+
+
+##### Response
 
 The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
+
+
 
 *   ````libraryId````
 *   `name` / homeUrl
@@ -27,7 +38,9 @@ Response fields of note:
 *   `favorited` (whether or not the library is starred as a favorite)
 *   any other fields of interest
 
-### Sample response (with ```include=NONE```)
+
+##### Sample response (include=NONE)
+
 
 ```
 {
@@ -39,7 +52,6 @@ Response fields of note:
   "welcomeText": "<p>Welcome to your new Document Management library: mfie-stag-DMS-lib-001</p><br><p>To get started...</p>",
   "storageAdmin": "storage.account@test.aodocs.com",
   "pushToMyDrive": false,
-  "notifyUsersAboutPushToMyDrive": true,
   "onlyAdminsCanManageFolders": false,
   "onlyAdminsCanEditRootFolder": false,
   "defaultDocumentType": "RnTbOft44KfZYkfBpV",
@@ -49,5 +61,6 @@ Response fields of note:
   ...
 }
 ```
+
 
 ---
