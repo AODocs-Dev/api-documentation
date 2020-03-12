@@ -22,7 +22,7 @@ This method has no mandatory parameters, but without setting any filtering it tr
 ### Sample request
 
 
-```json
+```http
 PUT https://aodocs-apis.com/api/library/v1?include=NONE
 ```
 
@@ -30,7 +30,7 @@ Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain
 
 ### Response
 
-The response returns an [ApiLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ````include=NONE```` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ````include=NONE```` the response is smaller and far more manageable.
 
 Take note of the ````libraryId```` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
@@ -44,8 +44,8 @@ Additional fields to note:
 
 ### Sample response
 
-```
-  {
+```json
+{
   "kind": "aodocs#libraryList",
   "libraries": [
     {
@@ -55,7 +55,7 @@ Additional fields to note:
       "defaultDocumentType": "RnTbOft44KfZYkfBpV",
       "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,
-	 ...
+      ...
     },
     {
       "kind": "aodocs#library",
@@ -65,7 +65,6 @@ Additional fields to note:
       "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
       "favorited": true
     }
-  ]
 }
 ```
 
