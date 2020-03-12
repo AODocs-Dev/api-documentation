@@ -8,19 +8,6 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 ### [PUT /library/v1](../../../../routes/library/v1/put)
 
-HTTP FORMAT:
-
-```http
-[PUT /library/v1](../../../../routes/library/v1/put)
-```
-
-NGINX FORMAT:
-
-```nginx
-[PUT /library/v1](../../../../routes/library/v1/put)
-```
-
-
 ## Usage/notes/guidelines
 
 ### Request
@@ -96,13 +83,34 @@ You can also locate the ```libraryId``` of your target library inside the AODocs
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
 ```
-<code>/LibraryId_<strong>&lt;libraryId></strong>/</code>
+/LibraryId_libraryId
 ```
+
+```http
+/LibraryId_libraryId
+```
+
+```yaml
+/LibraryId_libraryId
+```
+
+```xml
+/LibraryId_libraryId
+```
+
+```json
+/LibraryId_libraryId
+```
+
+```python
+/LibraryId_libraryId
+```
+
 
 ### Example
 
 ```
-<code>/LibraryId_<strong>RnTG8PDu8ZqTuDVHcv</strong>/</code>
+/LibraryId_RnTG8PDu8ZqTuDVHcv
 ```
 
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
