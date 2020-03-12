@@ -33,34 +33,8 @@ Optionally, it's **good to know** your target class (what type of document this 
 You might also want to provide the ID of a specific target AODocs folder for your new document to live in.  You can do this by specifying the AODocs folder ID (```folderAodocsId```).  If you don't know this ID, you can open up your target folder in the UI and retrieve the ID from the URL between the surrounding ```%2522``` strings:
 
 ```
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+%2522[.small]#folder#%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
 ```
-
-```json
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-```yaml
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-```http
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-```ruby
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-```python
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-```xml
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-```
-
-
 
 The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 
@@ -96,57 +70,7 @@ All these fields correspond to fields in the [ApiDocument](https://api.aodocs-st
 
 ### Sample request
 
-
-HTTP:
-
-```http
-PUT https://aodocs-api-url.com/api/document/v1
-
- {
-  "attachments": [
-    {
-      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
-    }
-  ],
-  "folders": [
-    {
-      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
-      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
-    }
-  ],
-  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
-  "classId": "RnTf1mx835gaTJLzoFp",
-  "title": "mfie-stag-dms-doc-002"
-}
-```
-
-JSON FORMAT:
-
 ```json
-PUT https://aodocs-api-url.com/api/document/v1
-
- {
-  "attachments": [
-    {
-      "fileId": "1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh"
-    }
-  ],
-  "folders": [
-    {
-      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
-      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma"
-    }
-  ],
-  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
-  "classId": "RnTf1mx835gaTJLzoFp",
-  "title": "mfie-stag-dms-doc-002"
-}
-```
-
-
-YAML FORMAT:
-
-```yaml
 PUT https://aodocs-api-url.com/api/document/v1
 
  {
@@ -182,7 +106,7 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 
 > ⭑   **Note**: Note: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-dms-by-alt-on-test-001",
