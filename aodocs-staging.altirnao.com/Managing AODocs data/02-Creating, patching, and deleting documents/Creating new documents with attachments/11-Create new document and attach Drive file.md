@@ -42,6 +42,15 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 "folder":"AjaPv028i_mrOykI60KavWib2LTzSuYWr8"
 ```
 
+```curl
+%2522𝗳𝗼𝗹𝗱𝗲𝗿%2522:%2522𝗔𝗷𝗮𝗣𝘃𝟬𝟮𝟴𝗶_𝗺𝗿𝗢𝘆𝗸𝗜𝟲𝟬𝗞𝗮𝘃𝗪𝗶𝗯𝟮𝗟𝗧𝘇𝗦𝘂𝗬𝗪𝗿𝟴%2522
+```
+
+```curl
+"folder":"AjaPv028i_mrOykI60KavWib2LTzSuYWr8"
+```
+
+
 > ⭑   **Note**: Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
 * You have to have ownership of each such file.
 * You or your domain has to be whitelisted in the target domain.
