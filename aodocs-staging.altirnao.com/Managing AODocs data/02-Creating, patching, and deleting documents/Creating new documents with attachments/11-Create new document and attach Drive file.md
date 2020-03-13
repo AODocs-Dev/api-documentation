@@ -34,34 +34,17 @@ You might also want to provide the ID of a specific target AODocs folder for you
 
 BACKTICKS:
 
-```
-%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
-
-%𝟮𝟱𝟮𝟮folder%𝟮𝟱𝟮𝟮:%𝟮𝟱𝟮𝟮1jaPv028i_mrOykI60KavWib2LTzSuYWr8%𝟮𝟱𝟮𝟮
-
+```http
 %2522𝗳𝗼𝗹𝗱𝗲𝗿%2522:%2522𝟭𝗷𝗮𝗣𝘃𝟬𝟮𝟴𝗶_𝗺𝗿𝗢𝘆𝗸𝗜𝟲𝟬𝗞𝗮𝘃𝗪𝗶𝗯𝟮𝗟𝗧𝘇𝗦𝘂𝗬𝗪𝗿𝟴%2522
 ```
 
-PRE TAG:
-
-<pre>
-%2522&ensp;folder&#8192%2522:%2522&thinsp;1jaPv028i_mrOykI60KavWib2LTzSuYWr8&hairsp;%2522
-
-%𝟮𝟱𝟮𝟮folder%𝟮𝟱𝟮𝟮:%𝟮𝟱𝟮𝟮1jaPv028i_mrOykI60KavWib2LTzSuYWr8%𝟮𝟱𝟮𝟮
-
+```json
 %2522𝗳𝗼𝗹𝗱𝗲𝗿%2522:%2522𝟭𝗷𝗮𝗣𝘃𝟬𝟮𝟴𝗶_𝗺𝗿𝗢𝘆𝗸𝗜𝟲𝟬𝗞𝗮𝘃𝗪𝗶𝗯𝟮𝗟𝗧𝘇𝗦𝘂𝗬𝗪𝗿𝟴%2522
-</pre>
+```
 
-CODE TAG:
-
-<code>
-%2522&ensp;folder&#8192%2522:%2522&thinsp;1jaPv028i_mrOykI60KavWib2LTzSuYWr8&hairsp;%2522
-
-%𝟮𝟱𝟮𝟮folder%𝟮𝟱𝟮𝟮:%𝟮𝟱𝟮𝟮1jaPv028i_mrOykI60KavWib2LTzSuYWr8%𝟮𝟱𝟮𝟮
-
+```yaml
 %2522𝗳𝗼𝗹𝗱𝗲𝗿%2522:%2522𝟭𝗷𝗮𝗣𝘃𝟬𝟮𝟴𝗶_𝗺𝗿𝗢𝘆𝗸𝗜𝟲𝟬𝗞𝗮𝘃𝗪𝗶𝗯𝟮𝗟𝗧𝘇𝗦𝘂𝗬𝗪𝗿𝟴%2522
-</code>
-
+```
 
 
 The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
