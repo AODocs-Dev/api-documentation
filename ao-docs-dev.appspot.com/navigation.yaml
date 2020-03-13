@@ -33,6 +33,7 @@ ordering:
 - Response codes and errors
 - Resources of note
 - APIs of note
+- Future custom section
 - API Reference
 - Resources
 
@@ -40,79 +41,12 @@ folders:
   Guides:
     ordering:
     - Getting Started
-  # Custom Section:
-  #   ordering:
-  #   - Subsection1
-  #   folders:
-  #     Subsection1:
-  #       ordering:
-  #       - Overview
 
   Fundamentals:
     ordering:
     - Overview
     - Basics of AODocs
     - Basics of AODocs APIs
-    # - Subsection1
-    # - SubsectionA
-#    - Example Page
-    # folders:
-    #   SubsectionA:
-    #     ordering:
-    #     - Overview
-    #     - SubsectionB
-    #     folders:
-    #       SubsectionB:
-    #         ordering:
-    #         - Overview
-    #         - SubsectionC
-    #         folders:
-    #           SubsectionC:
-    #             ordering:
-    #             - Overview
-    #             - SubsectionD
-    #             folders:
-    #               SubsectionD:
-    #                 ordering:
-    #                 - Overview
-    #                 - SubsectionE
-    #                 folders:
-    #                   SubsectionE:
-    #                     ordering:
-    #                     - Overview
-    #                     - SubsectionF
-    #                     folders:
-    #                       SubsectionF:
-    #                         ordering:
-    #                         - Overview
-    #   Subsection1:
-    #     ordering:
-    #     - Overview
-    #     - Subsection2
-    #     folders:
-    #       Subsection2:
-    #         ordering:
-    #         - Overview
-    #         - Subsection3
-    #         folders:
-    #           Subsection3:
-    #             ordering:
-    #             - Overview
-    #             - Subsection4
-    #             folders:
-    #               Subsection4:
-    #                 ordering:
-    #                 - Overview
-    #                 - Subsection5
-    #                 folders:
-    #                   Subsection5:
-    #                     ordering:
-    #                     - Overview
-    #                     - Subsection6
-    #                     folders:
-    #                       Subsection6:
-    #                         ordering:
-    #                         - Overview
 
   Authentication:
     ordering:
@@ -217,63 +151,6 @@ folders:
             - 10-Create test Drive files and folders
             - 11-Create new document and attach Drive file
             - 12-Get document by ID
-
-      # SubsectionA:
-      #   ordering:
-      #   - Overview
-      #   - SubsectionB
-      #   folders:
-      #     SubsectionB:
-      #       ordering:
-      #       - Overview
-      #       - SubsectionC
-      #       folders:
-      #         SubsectionC:
-      #           ordering:
-      #           - Overview
-      #           - SubsectionD
-      #           folders:
-      #             SubsectionD:
-      #               ordering:
-      #               - Overview
-      #               - SubsectionE
-      #               folders:
-      #                 SubsectionE:
-      #                   ordering:
-      #                   - Overview
-      #                   - SubsectionF
-      #                   folders:
-      #                     SubsectionF:
-      #                       ordering:
-      #                       - Overview
-      # Subsection1:
-      #   ordering:
-      #   - Overview
-      #   - Subsection2
-      #   folders:
-      #     Subsection2:
-      #       ordering:
-      #       - Overview
-      #       - Subsection3
-      #       folders:
-      #         Subsection3:
-      #           ordering:
-      #           - Overview
-      #           - Subsection4
-      #           folders:
-      #             Subsection4:
-      #               ordering:
-      #               - Overview
-      #               - Subsection5
-      #               folders:
-      #                 Subsection5:
-      #                   ordering:
-      #                   - Overview
-      #                   - Subsection6
-      #                   folders:
-      #                     Subsection6:
-      #                       ordering:
-      #                       - Overview
 
   Response codes and errors:
     ordering:
@@ -467,3 +344,66 @@ folders:
                             ordering:
                             - Overview
 
+  Future custom section:
+    ordering:
+    - Example Page
+    - Custom Page
+    - Subsection1
+    - SubsectionA
+    folders:
+      SubsectionA:
+        ordering:
+        - Overview
+        - SubsectionB
+        folders:
+          SubsectionB:
+            ordering:
+            - Overview
+            - SubsectionC
+            folders:
+              SubsectionC:
+                ordering:
+                - Overview
+                - SubsectionD
+                folders:
+                  SubsectionD:
+                    ordering:
+                    - Overview
+                    - SubsectionE
+                    folders:
+                      SubsectionE:
+                        ordering:
+                        - Overview
+                        - SubsectionF
+                        folders:
+                          SubsectionF:
+                            ordering:
+                            - Overview
+      Subsection1:
+        ordering:
+        - Overview
+        - Subsection2
+        folders:
+          Subsection2:
+            ordering:
+            - Overview
+            - Subsection3
+            folders:
+              Subsection3:
+                ordering:
+                - Overview
+                - Subsection4
+                folders:
+                  Subsection4:
+                    ordering:
+                    - Overview
+                    - Subsection5
+                    folders:
+                      Subsection5:
+                        ordering:
+                        - Overview
+                        - Subsection6
+                        folders:
+                          Subsection6:
+                            ordering:
+                            - Overview
