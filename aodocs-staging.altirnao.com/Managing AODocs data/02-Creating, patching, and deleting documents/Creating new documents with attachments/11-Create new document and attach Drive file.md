@@ -33,8 +33,18 @@ Optionally, it's **good to know** your target class (what type of document this 
 You might also want to provide the ID of a specific target AODocs folder for your new document to live in.  You can do this by specifying the AODocs folder ID (```folderAodocsId```).  If you don't know this ID, you can open up your target folder in the UI and retrieve the ID from the URL between the surrounding ```%2522``` strings:
 
 ```
-%2522[.small]#folder#%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
 ```
+
+<pre>
+%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+</pre>
+
+<code>
+%2522folder%2522:%25221jaPv028i_mrOykI60KavWib2LTzSuYWr8%2522
+</code>
+
+
 
 The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 
