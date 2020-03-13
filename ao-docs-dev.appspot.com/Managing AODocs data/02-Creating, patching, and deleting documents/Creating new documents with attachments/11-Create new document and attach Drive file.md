@@ -47,7 +47,9 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 > * You have to have ownership of each such file.
 > * You or your domain has to be whitelisted in the target domain.
 > * You have to have access to the target library.\
+>\
 > If the file is not yet owned by an AODocs storage account, you have to use the ```googleapis.com/auth/drive``` scope during the procedure.\
+>\
 > In an out-of-domain case such as this, the file itself gets automatically duplicated and it is this new duplicate that becomes the attachment to your target document, not the original.
 
 ### Request
