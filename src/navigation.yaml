@@ -26,8 +26,9 @@
 ordering:
 - Introduction
 - Guides
-- API Reference
 - Resources
+- API Reference
+
 
 folders:
   Guides:
