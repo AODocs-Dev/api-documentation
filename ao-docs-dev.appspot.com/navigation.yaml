@@ -89,7 +89,7 @@ folders:
             - 11-Create new document and attach Drive file
             - 12-Get document by ID
 
-  Response codes and errors:
+#  Response codes and errors:
 
   Resources of note:
     ordering:
