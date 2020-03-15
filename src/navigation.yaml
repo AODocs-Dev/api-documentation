@@ -45,5 +45,6 @@ folders:
 
       Authentication:
         ordering:
-        - Example Page
+        - Overview
+        - Security code access
         - Custom Page
