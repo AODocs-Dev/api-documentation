@@ -34,6 +34,7 @@ folders:
     ordering:
     - Getting Started
     - Key concepts
+    - Authentication
 
     folders:
       Key concepts:
@@ -42,3 +43,7 @@ folders:
         - Basics of AODocs
         - Basics of AODocs APIs
 
+      Authentication:
+        ordering:
+        - Example Page
+        - Custom Page
