@@ -28,8 +28,3 @@ ordering:
 - Guides
 - API Reference
 - Resources
-
-folders:
-  Guides:
-    ordering:
-    - Getting started
