@@ -25,6 +25,6 @@
 # in the 'folders' map below.
 ordering:
 - Introduction
-- Guides
+# - Guides
 - API Reference
 - Resources
