@@ -34,7 +34,7 @@ folders:
   Guides:
     ordering:
     - Getting Started
-    - Key concepts
+    - 00-Key concepts
     - Authentication
     - Managing AODocs data
     - Response codes and errors
