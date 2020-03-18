@@ -36,7 +36,7 @@ folders:
     - 00-Getting Started
     - 10-Key concepts
     - 20-Authentication
-    - Managing AODocs data
+    - 30-Managing AODocs data
     - Response codes and errors
     - Resources of note
     - 80-APIs of note
@@ -54,45 +54,42 @@ folders:
         - 00-Overview
         - 10-Security code access
 
-      Managing AODocs data:
+      30-Managing AODocs data:
         ordering:
-        - 01-Getting required IDs
-        - 02-Creating, patching, and deleting documents
-        # - Example Page
-        # - Custom Page
-        # - Subsection1
-        # - SubsectionA
+        - 00-Overview
+        - 10-Getting required IDs
+        - 20-Creating, patching, and deleting documents
         folders:
-          01-Getting required IDs:
+          10-Getting required IDs:
             ordering:
-            - Introduction
-            - Libraries
-            - Classes
+            - 00-Overview
+            - 10-Libraries
+            - 20-Classes
             folders:
-              Libraries:
+              10-Libraries:
                 ordering:
-                - 02-Libraries intro
-                - 03-List all libraries
-                - 04-List all libraries plain
-                - 05-Get library by ID
-              Classes:
+                - 00-Overview
+                - 10-List all libraries
+                - 20-List all libraries plain
+                - 30-Get library by ID
+              10-Classes:
                 ordering:
-                - 06-Classes intro
-                - 07-List all classes
-                - 08-Get class by ID
-          02-Creating, patching, and deleting documents:
+                - 00-Overview
+                - 10-List all classes
+                - 20-Get class by ID
+          20-Creating, patching, and deleting documents:
             ordering:
-            - Introduction
-            - Creating new documents with attachments
-            - 13-Modify documents with PATCH
-            - 14-Delete document
+            - 00-Overview
+            - 10-Creating new documents with attachments
+            - 20-Modify documents with PATCH
+            - 30-Delete document
             folders:
-              Creating new documents with attachments:
+              10-Creating new documents with attachments:
                 ordering:
-                - 09-Creating new documents
+                - 00-Overview
                 - 10-Create test Drive files and folders
-                - 11-Create new document and attach Drive file
-                - 12-Get document by ID
+                - 20-Create new document and attach Drive file
+                - 30-Get document by ID
 
       Response codes and errors:
         ordering:
