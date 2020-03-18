@@ -72,7 +72,7 @@ folders:
                 - 10-List all libraries
                 - 20-List all libraries plain
                 - 30-Get library by ID
-              10-Classes:
+              20-Classes:
                 ordering:
                 - 00-Overview
                 - 10-List all classes
