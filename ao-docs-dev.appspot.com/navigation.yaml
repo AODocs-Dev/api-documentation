@@ -43,11 +43,11 @@ folders:
     - Future custom section
 
     folders:
-      Key concepts:
+      00-Key concepts:
         ordering:
-        - Overview
-        - Basics of AODocs
-        - Basics of AODocs APIs
+        - 00-Overview
+        - 10-Basics of AODocs
+        - 20-Basics of AODocs APIs
 
       Authentication:
         ordering:
