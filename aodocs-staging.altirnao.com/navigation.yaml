@@ -35,7 +35,7 @@ folders:
     ordering:
     - 00-Getting Started
     - 10-Key concepts
-    - Authentication
+    - 20-Authentication
     - Managing AODocs data
     - Response codes and errors
     - Resources of note
@@ -49,11 +49,10 @@ folders:
         - 10-Basics of AODocs
         - 20-Basics of AODocs APIs
 
-      Authentication:
+      20-Authentication:
         ordering:
-        - Overview
-        - Security code access
-        - Custom Page
+        - 00-Overview
+        - 10-Security code access
 
       Managing AODocs data:
         ordering:
