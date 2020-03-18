@@ -33,7 +33,7 @@ ordering:
 folders:
   Guides:
     ordering:
-    - Getting Started
+    - 00-Getting Started
     - 00-Key concepts
     - Authentication
     - Managing AODocs data
