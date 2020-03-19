@@ -1,0 +1,54 @@
+.
+* Guides
+	* 00-Getting\ Started.md
+	* 10-Key\ concepts
+		* 00-Overview.md
+		* 10-Basics\ of\ AODocs.md
+		* 20-Basics\ of\ AODocs\ APIs.md
+	* 20-Authentication
+		* 00-Overview.md
+		* 10-Security\ code\ access.md
+	* 30-Managing\ AODocs\ data
+		* 00-Overview.md
+		* 10-Getting\ required\ IDs
+			* 00-Overview.md
+			* 10-Libraries
+				* 00-Overview.md
+				* 10-List\ all\ libraries.md
+				* 20-List\ all\ libraries\ plain.md
+				* 30-Get\ library\ by\ ID.md
+			* 20-Classes
+				* 00-Overview.md
+				* 10-List\ all\ classes.md
+				* 20-Get\ class\ by\ ID.md
+		* 20-Creating,\ patching,\ and\ deleting\ documents
+			* 00-Overview.md
+			* 10-Creating\ new\ documents\ with\ attachments
+				* 00-Overview.md
+				* 10-Create\ test\ Drive\ files\ and\ folders.md
+				* 20-Create\ new\ document\ and\ attach\ Drive\ file.md
+				* 30-Get\ document\ by\ ID.md
+			* 20-Modify\ documents\ with\ PATCH.md
+			* 30-Delete\ document.md
+		* Data\ handling\ tutorial\ copy\ 15.md
+		* Data\ handling\ tutorial.md
+	* 80-APIs\ of\ note
+		* 00-Overview.md
+		* 10-documentId.md
+		* 20-search.md
+		* 30-documentType.md
+	* Resources\ of\ note
+		* 00-Overview.md
+		* 10-ApiDocument.md
+		* 15-ApiLibraryList.md
+		* 20-ApiDocumentType.md
+	* Response\ codes\ and\ errors
+		* 00-Overview.md
+		* Custom\ Page.md
+		* Example\ Page.md
+* img
+	* api.png
+* navigation.yaml
+* tree.txt
+
+26 directories, 53 files
