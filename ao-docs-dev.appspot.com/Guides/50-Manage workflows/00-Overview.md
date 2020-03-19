@@ -8,4 +8,4 @@ File download test:
 
 ![/img/api.png](/img/api.png)
 
-[the link to the image above used in the md file: /img/api.png](/img/api.png)
+[/img/api.png, same as the link in the markdown file that allows the image above to display just fine](/img/api.png)
