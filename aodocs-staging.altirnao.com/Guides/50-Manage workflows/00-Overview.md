@@ -19,11 +19,11 @@ File download test:
 
 ---
 
-[../../dls/api.png as a link](../../dls/api.png)
+[../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
 
-![../../dls/api.png as an image](../../dls/api.png)
+![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
 
-![/dls/api.png as an image](/dls/api.png)
+![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
 
 ![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
