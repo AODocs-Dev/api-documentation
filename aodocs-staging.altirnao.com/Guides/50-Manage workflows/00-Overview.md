@@ -10,9 +10,17 @@ File download test:
 [/dls/api.png as a link](/dls/api.png)
 
 
-![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584](https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584)
+![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
 
-[direct blob link as a link, minus the blob part: https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584](https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584)
+[direct blob link as a link, minus the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+
+
+![direct blob link as an image, with the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+
+[direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+
+
+
 
 
 [/dls/tree.txt](/dls/tree.txt)
