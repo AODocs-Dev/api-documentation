@@ -9,7 +9,12 @@ You can gain authenticated and authorized access to AODocs APIs in three ways, d
 
 
 
-* [Security code](#heading=h.4b4ihq8ip2iq) (least secure, quickest, for internal testing)
+* [Security code](Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
+* [Security code](./Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
+* [Security code](../Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
+* [Security code](../../Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
+* [Security code](../../../Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
+* [Security code](/Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)
 * [OAuth 2.0 access_token](#heading=h.yzf7peetlblk) (secure, needed to access Drive API)
 * [JSON Web Token (JWT) id_token](#heading=h.zcit90u9guab) (secure, no scope, for AODocs API only)
 
