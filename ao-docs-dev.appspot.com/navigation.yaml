@@ -42,7 +42,7 @@ folders:
     - Response codes and errors
     - Resources of note
     - 80-APIs of note
-    - Future custom section
+    # - Future custom section
 
     folders:
       10-Key concepts:
