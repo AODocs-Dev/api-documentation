@@ -31,6 +31,9 @@ ordering:
 
 
 folders:
+  dls:
+    ordering:
+    - 00-Overview
   Guides:
     ordering:
     - 00-Getting Started
