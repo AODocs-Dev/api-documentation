@@ -37,6 +37,8 @@ folders:
     - 10-Key concepts
     - 20-Authentication
     - 30-Managing AODocs data
+    - 40-Configure AODocs
+    - 50-Manage workflows
     - Response codes and errors
     - Resources of note
     - 80-APIs of note
@@ -91,11 +93,17 @@ folders:
                 - 20-Create new document and attach Drive file
                 - 30-Get document by ID
 
+      40-Configure AODocs:
+        ordering:
+        - 00-Overview
+
+      50-Manage workflows:
+        ordering:
+        - 00-Overview
+
       Response codes and errors:
         ordering:
         - 00-Overview
-        - Example Page
-        - Custom Page
 
       Resources of note:
         ordering:
@@ -111,67 +119,67 @@ folders:
         - 20-search
         - 30-documentType
 
-      Future custom section:
-        ordering:
-        - Example Page
-        - Custom Page
-        - Subsection1
-        - SubsectionA
-        folders:
-          SubsectionA:
-            ordering:
-            - Overview
-            - SubsectionB
-            folders:
-              SubsectionB:
-                ordering:
-                - Overview
-                - SubsectionC
-                folders:
-                  SubsectionC:
-                    ordering:
-                    - Overview
-                    - SubsectionD
-                    folders:
-                      SubsectionD:
-                        ordering:
-                        - Overview
-                        - SubsectionE
-                        folders:
-                          SubsectionE:
-                            ordering:
-                            - Overview
-                            - SubsectionF
-                            folders:
-                              SubsectionF:
-                                ordering:
-                                - Overview
-          Subsection1:
-            ordering:
-            - Overview
-            - Subsection2
-            folders:
-              Subsection2:
-                ordering:
-                - Overview
-                - Subsection3
-                folders:
-                  Subsection3:
-                    ordering:
-                    - Overview
-                    - Subsection4
-                    folders:
-                      Subsection4:
-                        ordering:
-                        - Overview
-                        - Subsection5
-                        folders:
-                          Subsection5:
-                            ordering:
-                            - Overview
-                            - Subsection6
-                            folders:
-                              Subsection6:
-                                ordering:
-                                - Overview
+      # Future custom section:
+      #   ordering:
+      #   - Example Page
+      #   - Custom Page
+      #   - Subsection1
+      #   - SubsectionA
+      #   folders:
+      #     SubsectionA:
+      #       ordering:
+      #       - Overview
+      #       - SubsectionB
+      #       folders:
+      #         SubsectionB:
+      #           ordering:
+      #           - Overview
+      #           - SubsectionC
+      #           folders:
+      #             SubsectionC:
+      #               ordering:
+      #               - Overview
+      #               - SubsectionD
+      #               folders:
+      #                 SubsectionD:
+      #                   ordering:
+      #                   - Overview
+      #                   - SubsectionE
+      #                   folders:
+      #                     SubsectionE:
+      #                       ordering:
+      #                       - Overview
+      #                       - SubsectionF
+      #                       folders:
+      #                         SubsectionF:
+      #                           ordering:
+      #                           - Overview
+      #     Subsection1:
+      #       ordering:
+      #       - Overview
+      #       - Subsection2
+      #       folders:
+      #         Subsection2:
+      #           ordering:
+      #           - Overview
+      #           - Subsection3
+      #           folders:
+      #             Subsection3:
+      #               ordering:
+      #               - Overview
+      #               - Subsection4
+      #               folders:
+      #                 Subsection4:
+      #                   ordering:
+      #                   - Overview
+      #                   - Subsection5
+      #                   folders:
+      #                     Subsection5:
+      #                       ordering:
+      #                       - Overview
+      #                       - Subsection6
+      #                       folders:
+      #                         Subsection6:
+      #                           ordering:
+      #                           - Overview
 
