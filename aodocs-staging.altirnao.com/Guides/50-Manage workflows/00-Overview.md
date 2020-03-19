@@ -5,9 +5,9 @@ Overview content
 
 File download test:
 
-![/img/api.png as an image](/img/api.png)
+![/dls/api.png as an image](/dls/api.png)
 
-[/img/api.png as a link](/img/api.png)
+[/dls/api.png as a link](/dls/api.png)
 
 
 ![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584](https://api.aodocs-staging.com/38197ed6-532e-45bf-9dd3-20e422524584)
@@ -17,5 +17,6 @@ File download test:
 
 [/dls/tree.txt](/dls/tree.txt)
 
+[/dls/test.json](/dls/test.json)
 
 [/dls/00-Overview.md](/dls/00-Overview.md)
