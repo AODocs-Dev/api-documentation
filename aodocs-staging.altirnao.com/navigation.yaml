@@ -35,6 +35,11 @@ folders:
   dls:
     ordering:
     - 00-Overview
+    - 00-Introduction
+    - browser-test
+    - navigation
+    - test
+    - tree
   Guides:
     ordering:
     - 00-Getting Started
