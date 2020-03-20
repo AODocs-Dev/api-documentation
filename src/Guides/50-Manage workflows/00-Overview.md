@@ -57,6 +57,8 @@ File download test:
 ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
 
+## Direct BLOB link {: #direct-blob-link }
+
 ![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
 
 [direct blob link as a link, minus the blob part: https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
