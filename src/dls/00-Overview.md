@@ -5,11 +5,24 @@ Overview content
 
 File download test:
 
+[/Guides/00-Getting started.md](/Guides/00-Getting%20Started)
+
 [../../Guides/00-Getting started.md](../../Guides/00-Getting%20Started)
+
+[../Guides/00-Getting started.md](../Guides/00-Getting%20Started)
+
+[./Guides/00-Getting started.md](./Guides/00-Getting%20Started)
+
+---
+
+[/dls/00-Overview.md](/dls/00-Overview)
 
 [../../dls/00-Overview.md](../../dls/00-Overview)
 
-[/dls/00-Overview.md](/dls/00-Overview)
+[../dls/00-Overview.md](../dls/00-Overview)
+
+[./dls/00-Overview.md](./dls/00-Overview)
+
 
 ---
 
