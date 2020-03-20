@@ -19,20 +19,20 @@ File download test:
 
 ---
 
-[../../dls/api.png as a link](../../dls/api.png)
+[../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
 
-![../../dls/api.png as an image](../../dls/api.png)
+![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
 
-![/dls/api.png as an image](/dls/api.png)
-
-
-![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
-
-[direct blob link as a link, minus the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
 
-![direct blob link as an image, with the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
 
-[direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4](blob:https://api.aodocs-staging.com/346b10a1-6276-4017-9582-6c3bd3c56af4)
+[direct blob link as a link, minus the blob part: https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
+
+
+![direct blob link as an image, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
+
+[direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
 
 
