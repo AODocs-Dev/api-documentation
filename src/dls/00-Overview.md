@@ -28,6 +28,24 @@ File download test:
 
 [../../dls/tree.txt](../../dls/tree.txt)
 
+[../dls/tree.txt](../dls/tree.txt)
+
+[./dls/tree.txt](./dls/tree.txt)
+
+[/dls/tree.txt](/dls/tree.txt)
+
+
+[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+
+[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+
+[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+
+[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+
+
+---
+
 [../../dls/test.json](../../dls/test.json)
 
 ---
