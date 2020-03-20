@@ -68,10 +68,10 @@ folders:
       30-Managing AODocs data:
         ordering:
         - 00-Overview
-        - 10-Getting required IDs
-        - 20-Creating, patching, and deleting documents
+        - 10-Get target library and class info
+        - 20-Create, modify, and delete documents
         folders:
-          10-Getting required IDs:
+          10-Get target library and class info:
             ordering:
             - 00-Overview
             - 10-Libraries
@@ -88,7 +88,7 @@ folders:
                 - 00-Overview
                 - 10-List all classes
                 - 20-Get class by ID
-          20-Creating, patching, and deleting documents:
+          20-Create, modify, and delete documents:
             ordering:
             - 00-Overview
             - 10-Creating new documents with attachments

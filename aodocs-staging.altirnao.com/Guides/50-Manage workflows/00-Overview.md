@@ -3,7 +3,7 @@
 Overview content
 
 
-File download test:
+<!-- File download test:
 
 [/Guides/00-Getting started.md](/Guides/00-Getting%20Started)
 
@@ -66,6 +66,6 @@ File download test:
 
 ![direct blob link as an image, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
 
-[direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
+[direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68) -->
 
 
