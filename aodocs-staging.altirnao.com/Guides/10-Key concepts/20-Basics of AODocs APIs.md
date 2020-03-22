@@ -78,6 +78,8 @@ The parameters you send in the request define and focus the scope of what is to 
 
 ![Server needs vs. client wants](/img/server-needs-client-wants-6.png)
 
+![Server needs vs. client wants](/img/server-needs-client-wants-6-copy.png)
+
 ![Server needs vs. client wants](/img/server-needs-client-wants.png)
 
 
