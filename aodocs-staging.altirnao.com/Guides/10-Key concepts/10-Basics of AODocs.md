@@ -30,9 +30,9 @@ An AODocs **domain** contains libraries of **three types**:
 
 
 
-* **Team Folders (TF): **each document must have one and only one attachment
-* **Secured Folders (SF): **same as TF — one and only one attachment
-* **Document Management libraries (DMS): **a document can have **any number of attachments**: zero, one or more
+* **Team Folders (TF)**: each document must have one and only one attachment
+* **Secured Folders (SF)**: same as TF — one and only one attachment
+* **Document Management libraries (DMS)**: a document can have **any number of attachments**: zero, one or more
 
 **Libraries** contain **documents** of unlimited types called **classes** (or documentType in the API).  An AODocs document is not the colloquial sense of the word "document".  Instead, it is a versioned collection of predefined, structured metadata divided into logical groupings like System and Custom properties, with a rich-text description, a list of related documents, and **attachments** (links to Drive files).
 

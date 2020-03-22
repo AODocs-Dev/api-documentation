@@ -68,19 +68,19 @@ AODocs APIs are designed around [principles of REST](https://www.ics.uci.edu/~fi
 
 These commands are variants of elemental HTTP operations of **c**reate, **r**etrieve, **u**pdate, or **d**elete — CRUD for short.   You send a request for the server to apply a CRUD operation to a resource (for example, `GET library` or `DELETE document`), and the server sends back the success/failure results.
 
-In AODocs, things are no different: you specify CRUD commands (verbs) along with pertinent _parameters_ as a request to the server to operate on your behalf on AODocs resources (nouns) to achieve the results you want.
+In AODocs, things are no different: you specify CRUD commands (**verbs**) along with pertinent _parameters_ as a request to the server to operate on your behalf on AODocs resources (**nouns**) to achieve the results you want.
 
 #### Parameters
 
 The parameters you send in the request define and focus the scope of what is to be operated on and how.  You provide parameters either because it is something the _server_ requires (for example, authentication, or unique identifiers of the resource you want to work on); or because it is something _you_ want (for example, to filter the bulk of the results down to a smaller, more readable subset).
+
+![Server needs vs. client wants](/img/server-needs-client-wants.png)
 
 ##### Types of parameters
 
 Different parts of the request naturally lend themselves to carrying certain kinds of parameters, or at least are used that way customarily.
 
 There are generally three ways you can send parameters inside a request:
-
-
 
 *   as a **path** parameter (```GET /library/v1/**abcd12345**?include=NONE```)
 *   as a **query** parameter (```GET /library/v1?**documentId=abcd12345**```)
@@ -121,12 +121,14 @@ HTTP-VERB base-endpoint/api/version/resource/{resourceId}/subresource/{subresour
 
 ### Request examples
 
-List a specific library by ID:
+Get a library by ID:
+
 ```
 GET https://www.base-aodocs-api-url.com/library/v1/{libraryId}?securityCode=12345likemyluggage
 ```
 
-Search documents in the specific view:
+Search documents with specific view:
+
 ```
 POST https://www.base-aodocs-api-url.com/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
 ```
