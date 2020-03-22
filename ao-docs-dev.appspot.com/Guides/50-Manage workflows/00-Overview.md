@@ -1,7 +1,5 @@
 # Overview page title
 
-Overview content
-
 
 <!-- File download test:
 
