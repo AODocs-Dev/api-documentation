@@ -76,6 +76,12 @@ The parameters you send in the request define and focus the scope of what is to 
 
 ![Server needs vs. client wants](/img/server-needs-client-wants.png)
 
+![Server needs vs. client wants](/img/server-needs-client-wants-2.png)
+
+![Server needs vs. client wants](/img/server-needs-client-wants-3.png)
+
+![Server needs vs. client wants](/img/server-needs-client-wants-4.png)
+
 ##### Types of parameters
 
 Different parts of the request naturally lend themselves to carrying certain kinds of parameters, or at least are used that way customarily.
