@@ -1,12 +1,16 @@
 # Authenticate and authorize your users
 
-Every request you send to the AODocs API must include some method of **authentication** to verify identity.  Based on this identity, , as well as of **authorization** to provide permissions based on identity.
+Every request you send to the AODocs API must include some method of **authentication** to verify identity.  Based on this identity,  , as well as of **authorization** to provide permissions based on identity.
+
+
+![api-auth-model](/img/api-auth-model.png)
+
+Figure: Auth model placeholder image
 
 
 ## About the mechanisms
 
-You can gain authenticated and authorized access to AODocs APIs in three ways, depending on your circumstances and needs:
-
+You can authenticate with AODocs APIs in three ways, depending on your circumstances and needs:
 
 
 * [Security code](../../Guides/20-Authentication/10-Security%20code%20access) (least secure, quickest, for internal testing)

@@ -233,7 +233,7 @@ Any version marked ```beta``` is still being developed and can change without no
 
 
 
-## When to use Drive and AODocs APIs
+## When to use Drive APIs vs. AODocs APIs
 
 
 ### Summary
@@ -263,8 +263,6 @@ Once attached, you can do most things you need with only AODocs APIs: you will s
 
 Some of the concrete tasks you can perform with the AODocs APIs:
 
-
-
 *   List libraries
 *   List classes
 *   Create a document of a specific class inside a specific library
@@ -274,16 +272,13 @@ Some of the concrete tasks you can perform with the AODocs APIs:
 To **manage folders** and **edit permissions**, use **either Drive or AODocs APIs** depending on which storage account has ownership of the file: Drive APIs for TF; AODocs APIs for DMS and SF.
 
 
-```
-⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
-```
+> ⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
+
 
 
 ## Next steps
 
 Here are some resources to help you get started working with the AODocs APIs:
-
-
 
 *   Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA)
 *   Use the interactive API Explorer to build requests and queries for the APIs and to see the responses
@@ -294,4 +289,4 @@ Here are some resources to help you get started working with the AODocs APIs:
 *   If you need help, visit the forum
 *   Read the performance tips
 *   Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs
-*
+
