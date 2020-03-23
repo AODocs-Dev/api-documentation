@@ -2,17 +2,7 @@
 
 Every request you send to the AODocs API must include some method of authentication to verify the identity of the **data owner** and to authorize any activity done on their behalf.  This is required regardless of who plays the role of API consumer: you directly, or an app on your behalf.
 
-
-![api-auth-model](/img/api-relationships.png)
-
 ![api-auth-model](/img/api-relationships-75.png)
-
-![api-auth-model](/img/api-relationships-25.png)
-
-![api-auth-model](/img/api-relationships-15.png)
-
-![api-auth-model](/img/api-relationships-8.png)
-
 
 Figure: Who is who
 
