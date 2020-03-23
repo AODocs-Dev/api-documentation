@@ -74,12 +74,6 @@ In AODocs, things are no different: you specify CRUD commands (**verbs**) along 
 
 The parameters you send in the request define and focus the scope of what is to be operated on and how.  You provide parameters either because it is something the _server_ requires (for example, authentication, or unique identifiers of the resource you want to work on); or because it is something _you_ want (for example, to filter the bulk of the results down to a smaller, more readable subset).
 
-![Server needs vs. client wants](/img/server-needs-client-wants-5.png)
-
-![Server needs vs. client wants](/img/server-needs-client-wants-6.png)
-
-![Server needs vs. client wants](/img/server-needs-client-wants-6-copy.png)
-
 ![Server needs vs. client wants](/img/server-needs-client-wants.png)
 
 
