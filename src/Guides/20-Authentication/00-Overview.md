@@ -1,14 +1,8 @@
 # Authenticate and authorize your users
 
-Every request you send to the AODocs API must include some method of authentication to verify the identity of the **data owner** and to authorize any activity done on their behalf.  This is required regardless of who plays the role of API consumer: you directly, or an app on your behalf.
+Every request sent to the **API provider** (AODocs) must include some method of authentication to verify the identity of the **data owner** and to authorize any activity done on their behalf.  This is required regardless of who plays the role of **API consumer**: you directly, or an app on your behalf.
 
-![api-auth-model](/img/api-relationships-75.png)
-
-![api-auth-model](/img/api-relationships-pdf.png)
-
-
-![api-auth-model](/img/api-rels1.png)
-
+![api-auth-model](/img/api-relationship.png)
 
 Figure: Who is who
 
@@ -34,7 +28,9 @@ Make sure you provide to your users a level of API access that is functional but
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 
-## Choose your auth mechanism
+## Available authentication mechanisms
+
+To authenticate with AODocs, you can choose from the following methods:
 
 ### Security code
 
