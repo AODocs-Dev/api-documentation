@@ -4,7 +4,7 @@ Every request you send to the AODocs API must include some method of authenticat
 
 ![api-auth-model](/img/api-relationships-75.png)
 
-![api-auth-model](/img/api-relationships-copy.png)
+![api-auth-model](/img/api-relationships-pdf.png)
 
 
 Figure: Who is who
