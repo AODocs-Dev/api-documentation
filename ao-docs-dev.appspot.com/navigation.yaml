@@ -113,6 +113,7 @@ folders:
       50-Manage workflows:
         ordering:
         - 00-Overview
+        - 99-File download test
 
       Response codes and errors:
         ordering:
