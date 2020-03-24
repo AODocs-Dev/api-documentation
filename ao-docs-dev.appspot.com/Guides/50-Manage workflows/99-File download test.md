@@ -92,3 +92,5 @@ $-b \pm \sqrt{b^2 - 4ac} \over 2a$
 ## icon test
 
 <walkthrough-inline-icon-name>cloud-shell-icon</walkthrough-inline-icon-name>
+
+<cloud-shell-icon></cloud-shell-icon>
