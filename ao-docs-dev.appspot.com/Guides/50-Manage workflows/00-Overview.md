@@ -24,13 +24,14 @@ File download test:
 
 ---
 
+[/dls/tree.txt](/dls/tree.txt)
+
 [../../dls/tree.txt](../../dls/tree.txt)
 
 [../dls/tree.txt](../dls/tree.txt)
 
 [./dls/tree.txt](./dls/tree.txt)
 
-[/dls/tree.txt](/dls/tree.txt)
 
 
 [api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
@@ -50,7 +51,12 @@ File download test:
 
 [../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
 
+`../../dls/api.png as an image`:
+
 ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
+
+
+`/dls/api.png as an image`:
 
 ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
