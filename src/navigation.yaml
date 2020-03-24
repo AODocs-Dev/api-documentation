@@ -113,7 +113,7 @@ folders:
       50-Manage workflows:
         ordering:
         - 00-Overview
-        # - 99-File download test
+        - 99-File download test
 
       Response codes and errors:
         ordering:
@@ -129,8 +129,19 @@ folders:
       80-APIs of note:
         ordering:
         - 00-Overview
-        - 10-documentId
-        - 20-search
+        - 05-ApiDocument
+        - 10-search
+        - 15-documentType
+        - 20-library
+        - 25-category
+        - 30-referenceCatalog
+        - 35-relation
+        - 40-workflow
+        - 45-view
+        - 50-folder
+        - 55-user
+        - 60-job
+        - 65-domain
         - 30-documentType
 
       # Future custom section:
