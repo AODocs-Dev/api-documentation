@@ -55,11 +55,16 @@ File download test:
 
 ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
 
+---
+
+[/dls/api.png as a link](/dls/api.png "/dls/api.png as a link")
+
 
 `/dls/api.png as an image`:
 
 ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
+---
 
 ## Direct BLOB link {: #direct-blob-link }
 
