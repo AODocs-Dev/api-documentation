@@ -241,9 +241,7 @@ Any version marked ```beta``` is still being developed and can change without no
 To manage **Drive file content** — before or after attaching to AODocs — you can only use **[Drive APIs](https://developers.google.com/drive/api/v3/)**.
 
 
-```
-⭑   Note: You can use any available version of Google Drive APIs.
-```
+> ⭑   Note: You can use any available version of Google Drive APIs.
 
 
 To **attach Drive files to AODocs documents**, you have to use **both Drive and AODocs APIs** together.
@@ -280,13 +278,13 @@ To **manage folders** and **edit permissions**, use **either Drive or AODocs API
 
 Here are some resources to help you get started working with the AODocs APIs:
 
-*   Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA)
-*   Use the interactive API Explorer to build requests and queries for the APIs and to see the responses
-*   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I)
-*   Review and select the appropriate mechanism for [gaining access to AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=1XEgIlXhQ05oCsOJuuTR0L7JHAohBUNedJGkvg2AFXd4)
-*   Check the reference for all the X available through the APIs
-*   Check the X page for a list of available X that can be used with X
-*   If you need help, visit the forum
-*   Read the performance tips
-*   Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs
+*   Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA).
+*   Use the interactive API Explorer to build requests and queries for the APIs and to see the responses.
+*   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I).
+*   Review and select the appropriate mechanism for [gaining access to AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=1XEgIlXhQ05oCsOJuuTR0L7JHAohBUNedJGkvg2AFXd4).
+*   Check the reference for all the X available through the APIs.
+*   Check the X page for a list of available X that can be used with X.
+*   If you need help, visit the forum.
+*   Read the performance tips.
+*   Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs.
 

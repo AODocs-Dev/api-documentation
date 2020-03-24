@@ -45,7 +45,7 @@ The quickest way to get started is with the security code method, but it can be 
 
 If you need Google Drive API access, you have to use OAuth 2.0.
 
-Finally, if you need a robust and secure access to AODocs API without being able to access Drive APIs, you have the option of JWT.
+Finally, if you need robust and secure access to AODocs API without being able to access Drive APIs, you have the option of JWT.
 
 See [additional authentication use cases](https://drive.google.com/a/altirnao.com/open?id=1VN1XZqFUCHNNG7Ya278gFxx4jaIp-6LKAs17JEoedhY).
 
