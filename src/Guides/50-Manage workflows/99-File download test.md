@@ -85,6 +85,10 @@ nothing below works either clicking or trying to download:
 
 [direct blob link as a link, with the blob part: blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](blob:https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
 
-### formula test
+## formula test
 
 $-b \pm \sqrt{b^2 - 4ac} \over 2a$
+
+## icon test
+
+<walkthrough-inline-icon-name>cloud-shell-icon</walkthrough-inline-icon-name>
