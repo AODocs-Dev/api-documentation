@@ -74,34 +74,11 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 
 `WORKS`: [../../Guides/00-Getting started.md](../../Guides/00-Getting%20Started)
 
-[../Guides/00-Getting started.md](../Guides/00-Getting%20Started)
-
-[./Guides/00-Getting started.md](./Guides/00-Getting%20Started)
-
-
----
-
-[../50-Manage%20workflows/00-Overview](../50-Manage%20workflows/00-Overview)
-
-[../../00-Overview](../../00-Overview)
-
-[../00-Overview](../00-Overview)
-
-[./00-Overview](./00-Overview)
-
-[/00-Overview](/00-Overview)
-
-[00-Overview](00-Overview)
-
 ---
 
 [/dls/00-Overview.md](/dls/00-Overview)
 
 `WORKS`: [../../dls/00-Overview.md](../../dls/00-Overview)
-
-[../dls/00-Overview.md](../dls/00-Overview)
-
-[./dls/00-Overview.md](./dls/00-Overview)
 
 
 ---
@@ -109,11 +86,6 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 [/dls/tree.txt](/dls/tree.txt)
 
 [../../dls/tree.txt](../../dls/tree.txt)
-
-[../dls/tree.txt](../dls/tree.txt)
-
-[./dls/tree.txt](./dls/tree.txt)
-
 
 
 [api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
@@ -130,11 +102,6 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 [/dls/test.json](../../dls/test.json)
 
 [../../dls/test.json](../../dls/test.json)
-
-[../dls/test.json](../../dls/test.json)
-
-[./dls/test.json](../../dls/test.json)
-
 
 ---
 
@@ -171,6 +138,12 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 $-b \pm \sqrt{b^2 - 4ac} \over 2a$
 
 ## icon test
+
+trying out some things from the following pages:
+* [https://cloud.google.com/shell/docs/walkthroughs](https://cloud.google.com/shell/docs/walkthroughs)
+* [https://cloud.google.com/shell/docs/walkthrough-markdown-reference](https://cloud.google.com/shell/docs/walkthrough-markdown-reference)
+* [https://cloud.google.com/monitoring/alerts/doc-variables](https://cloud.google.com/monitoring/alerts/doc-variables)
+
 
 <walkthrough-inline-icon-name>cloud-shell-icon</walkthrough-inline-icon-name>
 
