@@ -43,7 +43,6 @@
   * using relative link: ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
   * using root-relative link: ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
-
 #### Disallowed
 * hotlink/blob link/click on link to get to image directly
     * relative: [../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
