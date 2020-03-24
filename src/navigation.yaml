@@ -64,6 +64,10 @@ folders:
         ordering:
         - 00-Overview
         - 10-Security code access
+        - 20-OAuth 2.0
+        - 30-JSON Web Token (JWT)
+        - 40-Sample auth use cases
+        - 50-Auth appendix
 
       30-Managing AODocs data:
         ordering:
