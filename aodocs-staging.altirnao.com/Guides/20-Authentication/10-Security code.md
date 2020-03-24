@@ -14,14 +14,11 @@ You can generate a security code with an expiry date by following the [Manage se
 
 Security codes can be generated for two levels of AODocs authorization:
 
-
-
 *   User-level (strongly encouraged)
 *   Domain administrator
 
-    ```
-⭑   Note: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
-```
+> ⭑   Note: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
+
 
 
 
