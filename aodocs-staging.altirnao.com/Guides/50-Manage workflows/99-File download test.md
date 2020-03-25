@@ -7,7 +7,7 @@
 ### MD
 
 #### Allowed
-* linking directly to file using relative links (but NOT using root-relative links — unlike images which have support for both)
+* linking directly to file using relative links (but NOT using root-relative links — unlike images which have support for both kinds of linking)
   * [../../Guides/00-Getting started.md](../../Guides/00-Getting%20Started)
 
 
@@ -27,7 +27,7 @@
 
 #### Disallowed
 
-* everything: clicking, right-clicking — it all yields zero results
+* everything: clicking, right-clicking — it all yields zero results (see test dump section below)
 
 ---
 
@@ -39,6 +39,7 @@
 #### Disallowed
 * everything else (view in browser, open in new tab, etc.)
 
+See test dump section.
 ---
 
 ### PNG
@@ -52,6 +53,9 @@
   * using root-relative link: ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 
 #### Disallowed
+
+Basically everything else, including:
+
 * hotlink/blob link/click on link to get to image directly
     * relative: [../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
     * root-relative: [/dls/api.png as a link](/dls/api.png "/dls/api.png as a link")
