@@ -201,7 +201,7 @@ The client sends the (usually partial) resource to the server as a request body,
 
 > **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
-Read more about [AODocs resources](70-Resources%20of%20note/00-Overview).
+Read more about [AODocs resources](../70-Resources%20of%20note/00-Overview).
 
 
 
