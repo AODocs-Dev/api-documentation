@@ -14,16 +14,16 @@ You can generate a security code with an expiry date by following the [Manage se
 
 Security codes can be generated for two levels of AODocs authorization:
 
-*   User-level (strongly encouraged)
-*   Domain administrator
+* User-level (strongly encouraged)
+* Domain administrator
 
-> ⭑   Note: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
+> ⭑  **Note**: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
 
-
-
+---
 
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
+---
 
 #### Use case: Library isolation
 
@@ -50,10 +50,7 @@ When you're playing with the API Explorer, it sends the security code you provid
 
 ### Send the security code as a header parameter (recommended)
 
-
-```
-⭑   Note: Unlike query parameters, headers don't get recorded in web server logs, so we strongly recommend this method.
-```
+> ⭑   Note: Unlike query parameters, headers don't get recorded in web server logs, so we strongly recommend this method.
 
 
 Send the security code in the header as follows:
@@ -64,7 +61,7 @@ Send the security code in the header as follows:
 #### Example request with security code as header parameter
 
 
-```
+```json
 GET https://aodocsapis.com/api/document/v1/ \ HTTP/1.1
 
 Authorization: securityCode [YOUR_SECURITY_CODE] \
@@ -82,9 +79,7 @@ If you've started working with the API client factory which we provide with the 
 ### Send the security code as a query parameter (not recommended)
 
 
-```
 ⭑   Note: Unless you are protected by a sandbox (such as the API Explorer), we recommend that you do not send your security code as a query parameter.  Query parameters tend to get recorded and become exposed in web server logs, ultimately presenting a security risk.
-```
 
 
 Append the security code to the query as follows:
