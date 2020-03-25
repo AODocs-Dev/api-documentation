@@ -46,7 +46,7 @@ folders:
     - 00-Getting Started
     - 10-Key concepts
     - 20-Authentication
-    - 30-Manage AODocs data
+    - 30-Manage AODocs documents
     - 40-Configure AODocs
     - 50-Manage workflows
     - 60-Handle errors and improve performance
@@ -71,10 +71,10 @@ folders:
         - 30-Sample use cases
         # - 50-Auth appendix
 
-      30-Manage AODocs data:
+      30-Manage AODocs documents:
         ordering:
         - 00-Overview
-        - 10-Get target library and class info
+        - 10-Get library and class info
         - 20-Create, modify, and delete documents
         - 30-List and search documents
         folders:
