@@ -1,23 +1,21 @@
-# Modifying documents with PATCH
+# Modifying documents
 
 In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource.  Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
 
-## Patching simple fields
+## Modifying simple fields
 
-One simple example of patching is changing one of the document's properties, like its title.  Or even replacing all its attachments with new links to new Drive files.
+One simple example of modifying is changing one of the document's properties, like its title.  Or even replacing all its attachments with new links to new Drive files.
 
-An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ````richText```` in the API).  Take any document where this Description field contains nothing important, and replace what's currently there with some new text by patching (see
+An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ````richText```` in the API).  Take any document where this Description field contains nothing important, and replace what's currently there with some new text by using the `PATCH` operation (see [following](#heading=h.8gzunnbam38t)).
 
-[following](#heading=h.8gzunnbam38t)).
-
-To patch a specific document by its ID, you send a request resource to replace corresponding fields in a target resource.  More specifically, you send a (partial) ```ApiDocument``` resource where the specific target resource resides on the server, making sure that:
+To modify a specific document by its ID, you send a request resource to replace corresponding fields in a target resource.  More specifically, you send a (partial) ```ApiDocument``` resource where the specific target resource resides on the server, making sure that:
 
 *   the request **resource** contains _only_ the resource fields you want modified
 *   the resource **fields** included in the request are _not empty_ unless you actually want the target resource fields to become empty/deleted
 
-## Patching array fields
+## Modifying array fields
 
-In general, patching is perfectly benign.  However, things are riskier with any parts of the resource arranged in arrays.  One example is using the ```attachments``` array field in DMS documents.  However, this extends to any request containing array fields.
+In general, modifying is perfectly benign.  However, things are riskier with any parts of the resource arranged in arrays.  One example is using the ```attachments``` array field in DMS documents.  However, this extends to any request containing array fields.
 
 There are two cases to consider:
 
@@ -35,14 +33,26 @@ There are two cases to consider:
 
 > Additionally, if you want any of the current objects to remain in the array field (as you alter it), you have to specify them each time in the array field in your request, including their current position).  For example, if you use the ```attachments``` array field with DMS documents, then you have to deliberately send the complete list of what you want the array to contain from then on, in the order you want.
 
-> (Missteps such as accidental detaching or re-ordering of attachments are not possible with TF/SF documents because you only ever patch the one attachment.)
+> (Missteps such as accidental detaching or re-ordering of attachments are not possible with TF/SF documents because you only ever modify the one attachment.)
 
 
 ## Method and API
 
+---
+
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
 #### [PATCH /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
+
+---
+
+Play with the [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch) and note the code examples (such as cURL and Java):
+
+```http
+PATCH /document/v1/{documentId}
+```
+
+---
 
 ## Guidelines
 
@@ -56,7 +66,7 @@ Only ````documentId```` is mandatory (to identify which document's metadata to a
 
 For this method to do anything, you must specify the parts you want changed, and you must send them as **request-body parameters** (not as query parameters).
 
-#### Example: Patch document with new/modified metadata
+#### Example: Modify document with new/modified metadata
 
 For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
 
@@ -69,7 +79,7 @@ For example, in the request body, you can include some text in the ````richText`
 }
 ```
 
-#### Example: Patch document with attachments
+#### Example: Modify document with attachments
 
 Attachments are represented in the ```ApiDocument``` resource as an array field (see preceding
 
@@ -89,7 +99,7 @@ For example, if you have an existing DMS document with one attachment, but want 
 
 Therefore, if you do not need to change anything to do with attachments, do not send the ```attachments``` array field at all.  This ensures that the ```attachments``` array field in the resource on the server remains unmodified, keeping your attachments as they are.
 
-> 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous patch operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response).  This is the same result as sending a ```GET``` request to get a document.  This way you always have an up-to-date listing of what the target resource looks like on the server.  Read the array field(s) you need, and feed the fields into your next request.
+> 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response).  This is the same result as sending a ```GET``` request to get a document.  This way you always have an up-to-date listing of what the target resource looks like on the server.  Read the array field(s) you need, and feed the fields into your next request.
 
 
 > ⭑   **Note**: Note: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
@@ -144,7 +154,7 @@ PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly patched document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified).  If you altered the ```attachments``` array field, the response includes the new content.
+The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified).  If you altered the ```attachments``` array field, the response includes the new content.
 
 Response fields of note:
 
