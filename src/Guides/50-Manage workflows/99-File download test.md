@@ -7,7 +7,7 @@
 ### MD
 
 #### Allowed
-* linking directly to file using relative links (but NOT root-relative links — unlike images which have support for both)
+* linking directly to file using relative links (but NOT using root-relative links — unlike images which have support for both)
   * [../../Guides/00-Getting started.md](../../Guides/00-Getting%20Started)
 
 
