@@ -67,8 +67,8 @@ folders:
         - 10-Security code
         - 20-OAuth 2.0
         - 30-JSON Web Token (JWT)
-        - 40-Sample auth use cases
-        - 50-Auth appendix
+        - 40-Sample use cases
+        # - 50-Auth appendix
 
       30-Manage AODocs data:
         ordering:
