@@ -46,7 +46,7 @@ folders:
     - 00-Getting Started
     - 10-Key concepts
     - 20-Authentication
-    - 30-Managing AODocs data
+    - 30-Manage AODocs data
     - 40-Configure AODocs
     - 50-Manage workflows
     - 60-Handle errors and improve performance
@@ -70,7 +70,7 @@ folders:
         - 40-Sample auth use cases
         - 50-Auth appendix
 
-      30-Managing AODocs data:
+      30-Manage AODocs data:
         ordering:
         - 00-Overview
         - 10-Get target library and class info
