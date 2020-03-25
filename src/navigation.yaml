@@ -64,7 +64,7 @@ folders:
       20-Authentication:
         ordering:
         - 00-Overview
-        - 10-Security code access
+        - 10-Security code
         - 20-OAuth 2.0
         - 30-JSON Web Token (JWT)
         - 40-Sample auth use cases
