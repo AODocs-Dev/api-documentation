@@ -19,11 +19,8 @@ Security codes can be generated for two levels of AODocs authorization:
 
 > ⭑  **Note**: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
 
----
-
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
----
 
 #### Use case: Library isolation
 
