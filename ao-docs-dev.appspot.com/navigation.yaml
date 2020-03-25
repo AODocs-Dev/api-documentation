@@ -115,9 +115,13 @@ folders:
         - 00-Overview
         - 99-File download test
 
-      Response codes and errors:
+      60-Handle errors and improve performance:
         ordering:
         - 00-Overview
+        - 10-Error types
+        - 20-HTTP status codes
+        - 30-Common error scenarios and fixes
+        - 40-Troubleshooting
 
       Resources of note:
         ordering:
@@ -143,6 +147,7 @@ folders:
         - 60-job
         - 65-domain
         - 30-documentType
+
 
       # Future custom section:
       #   ordering:

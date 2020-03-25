@@ -2,6 +2,8 @@
 
 ## Summary of hypermedia linking support on API doc portal
 
+---
+
 ### MD
 
 #### Allowed
@@ -15,6 +17,8 @@
 
 * everything else
 
+---
+
 ### DOCX, TXT, and presumably all other types of files
 
 #### Allowed
@@ -25,6 +29,8 @@
 
 * everything: clicking, right-clicking — it all yields zero results
 
+---
+
 ### JSON
 
 #### Allowed
@@ -32,6 +38,8 @@
 
 #### Disallowed
 * everything else (view in browser, open in new tab, etc.)
+
+---
 
 ### PNG
 
