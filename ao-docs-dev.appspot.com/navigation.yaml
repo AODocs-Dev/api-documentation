@@ -26,15 +26,15 @@
 ordering:
 - Introduction
 - Guides
-# - dls
+- dls
 - Resources
 - API Reference
 
 
 folders:
-  # dls:
-  #   ordering:
-  #   - 00-Overview
+  dls:
+    ordering:
+    - 00-Overview
     # - 00-Introduction.docx
     # - browser-test.json
     # - navigation.yaml
