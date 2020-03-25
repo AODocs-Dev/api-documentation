@@ -48,8 +48,8 @@ folders:
     - 30-Managing AODocs data
     - 40-Configure AODocs
     - 50-Manage workflows
-    - Response codes and errors
-    - Resources of note
+    - 60-Handle errors and improve performance
+    - 70-Resources of note
     - 80-APIs of note
     # - Future custom section
 
@@ -123,7 +123,7 @@ folders:
         - 30-Common error scenarios and fixes
         - 40-Troubleshooting
 
-      Resources of note:
+      70-Resources of note:
         ordering:
         - 00-Overview
         - 10-ApiDocument
