@@ -78,7 +78,7 @@ folders:
         - 20-Create, modify, and delete documents
         - 30-List and search documents
         folders:
-          10-Get target library and class info:
+          10-Get library and class info:
             ordering:
             - 00-Overview
             - 10-Libraries
