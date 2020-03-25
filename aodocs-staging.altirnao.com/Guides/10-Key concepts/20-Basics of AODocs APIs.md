@@ -201,7 +201,7 @@ The client sends the (usually partial) resource to the server as a request body,
 
 > **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
-Read more about [AODocs resources](70-Resources of note/00-Overview).
+Read more about [AODocs resources](70-Resources%20of%20note/00-Overview).
 
 
 
@@ -231,16 +231,15 @@ The response provides a standard HTTP status code to indicate success, failure, 
 Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.  Familiarizing yourself with [Common error scenarios](https://drive.google.com/a/altirnao.com/open?id=1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc) can help, and if it's something else altogether, it might be time to dive into some [Troubleshooting](https://drive.google.com/a/altirnao.com/open?id=1UQ1fU7jGUJRi7BneQcA0OwQZ7nBEStfTGb9u0E1YRh8).
 
 
-
+---
 
 ## Beta vs. v1 version
 
 Any version marked ```beta``` is still being developed and can change without notice.
 
-
+---
 
 ## When to use Drive APIs vs. AODocs APIs
-
 
 ### Summary
 
@@ -278,7 +277,7 @@ To **manage folders** and **edit permissions**, use **either Drive or AODocs API
 
 > ⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
 
-
+---
 
 ## Next steps
 
