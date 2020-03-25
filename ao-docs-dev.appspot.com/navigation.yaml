@@ -75,6 +75,7 @@ folders:
         - 00-Overview
         - 10-Get target library and class info
         - 20-Create, modify, and delete documents
+        - 30-List and search documents
         folders:
           10-Get target library and class info:
             ordering:
@@ -112,8 +113,6 @@ folders:
             ordering:
             - 00-Overview
             - 10-Creating new documents with attachments
-            - 30-Get document by ID
-            - 40-List and search documents
             - 20-Modify documents
             - 30-Delete document
             folders:
@@ -122,6 +121,12 @@ folders:
                 - 00-Overview
                 - 10-Create test Drive files and folders
                 - 20-Create new document and attach Drive file
+          30-List and search documents:
+            ordering:
+            - 00-Overview
+            - 30-Get document by ID
+            - 40-List and search documents
+
 
 
       40-Configure AODocs:
