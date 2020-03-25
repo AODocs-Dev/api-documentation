@@ -122,6 +122,7 @@ folders:
         - 20-HTTP status codes
         - 30-Common error scenarios and fixes
         - 40-Troubleshooting
+        - 50-Improve performance
 
       70-Resources of note:
         ordering:

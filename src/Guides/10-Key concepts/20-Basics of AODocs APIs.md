@@ -191,39 +191,45 @@ If the resource server accepts your request, it then does the following:
 For example, the server might apply a ```GET``` request to an ```ApiLibraryList``` resource/collection and return the resource/collection to the requesting party.
 
 
-###
+#### Resources
+
+REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
+
+A resource type (such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented.  A representation of a resource is the (in our case JSON-formatted) instance of the schema above.  This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
+
+The client sends the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```.  Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
+
+> **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
+
+Read more about [AODocs resources](70-Resources of note/00-Overview).
+
 
 
 ### Step 3: Server sends a response
 
-If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on.  Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as ```[ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```.
+The server either succeeds in fulfilling the request, or something goes wrong.  The latter case is uncommon, but when it does occur, many things can be the culprit.
 
 
-```
-⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was deleted permanently or simply sent to Trash.  If you delete the document permanently, the ```documentId``` stops being recognized from that point on.
-```
+#### Server succeeds
 
-If there was something wrong with the request or with the server's ability to perform the operation, the response comes back as a status code and JSON-formatted error message.
-
-#### HTTP status codes
-
-The response provides a standard HTTP status code to indicate success, failure, or some other condition, and to guide the next steps.  Generally 200-299 (esp. 200) means everything went well, and anything greater than 299 means something went wrong.
-
-Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M)
+If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on.  Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument).
 
 
-## Resources
 
-REST-oriented APIs such as AODocs model each of their objects (such as document, class, or library) as a hierarchy of directly addressable _resources_.
-
-In general, a resource is the _concept_ of any addressable collection of information, such as an AODocs document or a library.
-
-A resource type is the schema that outlines how a resource can be represented.  For example, [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) is the type of resource; an AODocs *document resource* is an instantiation of this type; and the resource has a JSON-formatted *representation* that can be viewed and altered and sent back and forth between the client and the server.
-
-In short, each resource has an address it can be reached at, and a JSON-formatted representation that can be retrieved and manipulated.
+> ⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently.  If you delete the document permanently, the ```documentId``` stops being recognized from that point on.  If you send the document to Trash, the document ID persists.
 
 
-Read more about [AODocs resources](https://docs.google.com/document/d/1k5JAfE2TbdDUbxUweDJNVPdT5nf40pL8kCu1Ies8BQY/edit).
+#### Server does not succeed
+
+If there was something wrong with the request or with the server's ability to perform the operation, the response comes back as a status code and JSON-formatted error message to help guide your next steps.
+
+
+##### Error handling and troubleshooting
+
+The response provides a standard HTTP status code to indicate success, failure, or some other condition, and to guide the next steps.  Generally 200-299 (especially 200) means most everything went well, and anything greater than 299 means something went wrong.
+
+Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.  Familiarizing yourself with [Common error scenarios](https://drive.google.com/a/altirnao.com/open?id=1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc) can help, and if it's something else altogether, it might be time to dive into some [Troubleshooting](https://drive.google.com/a/altirnao.com/open?id=1UQ1fU7jGUJRi7BneQcA0OwQZ7nBEStfTGb9u0E1YRh8).
+
 
 
 
