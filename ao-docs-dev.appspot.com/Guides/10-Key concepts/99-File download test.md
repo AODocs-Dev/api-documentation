@@ -93,13 +93,13 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 [../../tree.txt](../../tree.txt)
 
 
-[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/tree.txt)
 
-[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/tree.txt)
 
-[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+[api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/tree.txt)
 
-[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
+[//api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/tree.txt)
 
 
 ---

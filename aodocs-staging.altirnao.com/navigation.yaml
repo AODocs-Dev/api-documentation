@@ -47,7 +47,7 @@ folders:
     - 10-Key concepts
     - 20-Authentication
     - 30-Manage AODocs documents
-    - 40-Configure AODocs
+    - 40-Configure AODocs libraries
     # - 50-Manage workflows
     - 60-Handle errors and improve performance
     - 70-Resources of note
@@ -131,11 +131,12 @@ folders:
             - 40-List documents
             - 50-Search documents
 
-
-
-      40-Configure AODocs:
+      40-Configure AODocs libraries:
         ordering:
         - 00-Overview
+        - 10-Configure document classes
+        - 20-Manage categories
+        - 30-Configure workflows
 
       # 50-Manage workflows:
       #   ordering:
