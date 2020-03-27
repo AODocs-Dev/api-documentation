@@ -127,7 +127,8 @@ folders:
             ordering:
             - 00-Overview
             - 30-Get document by ID
-            - 40-List and search documents
+            - 40-List documents
+            - 50-Search documents
 
 
 
