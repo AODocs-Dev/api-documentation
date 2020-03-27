@@ -34,7 +34,7 @@
 ### JSON
 
 #### Allowed
-* download a file (but its contents will just be the word "Loading...")
+* download a "JSON" file (but its contents will just be the word "Loading...")
 
 #### Disallowed
 * everything else (view in browser, open in new tab, etc.)
@@ -88,16 +88,9 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 
 ---
 
-[/dls/00-Overview.md](/dls/00-Overview)
+[/tree.txt](/tree.txt)
 
-`WORKS`: [../../dls/00-Overview.md](../../dls/00-Overview)
-
-
----
-
-[/dls/tree.txt](/dls/tree.txt)
-
-[../../dls/tree.txt](../../dls/tree.txt)
+[../../tree.txt](../../tree.txt)
 
 
 [api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt](api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/dls/tree.txt)
