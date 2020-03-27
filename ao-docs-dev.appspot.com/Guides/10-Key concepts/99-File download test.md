@@ -46,8 +46,8 @@ See test dump section.
 
 #### Allowed
 * display inline
-  * using relative link: ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
-  * using root-relative link: ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
+  * using relative link to `../../dls api.png` (where `dls` is a hidden folder NOT enabled in `navigation.yaml`): ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
+  * using root-relative link to same: ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
 * right-click on an already-displayed image (relative or root-relative) and "Save Image As" or "Open Image In A New Tab" (the latter giving a URL like [blob:https://api.aodocs-staging.com/b99ea21a-3339-47d2-8263-e0fc35778053](blob:https://api.aodocs-staging.com/b99ea21a-3339-47d2-8263-e0fc35778053) )
   * using relative link: ![../../dls/api.png as an image](../../dls/api.png "../../dls/api.png as an image")
   * using root-relative link: ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
@@ -56,7 +56,7 @@ See test dump section.
 
 Basically everything else, including:
 
-* hotlink/blob link/click on link to get to image directly
+* hotlink/blob link/click on link to get to image directly (regardless if the folder is published as "visible" aka enabled in `navigation.yaml`):
     * relative: [../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
     * root-relative: [/dls/api.png as a link](/dls/api.png "/dls/api.png as a link")
     * ![direct blob link as an image, minus the blob part: https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68](https://api.aodocs-staging.com/31697444-378d-49a9-84a2-393731a1cd68)
@@ -108,6 +108,10 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 
 [../../dls/test.json](../../dls/test.json)
 
+[/test.json](../../test.json)
+
+[../../test.json](../../test.json)
+
 ---
 
 [../../dls/api.png as a link](../../dls/api.png "../../dls/api.png as a link")
@@ -118,12 +122,31 @@ Tests of relative and root-relative links to [https://api.aodocs-staging.com/doc
 
 ---
 
+[../../api.png as a link](../../api.png "../../api.png as a link")
+
+`WORKS: ../../api.png as an image`:
+
+![../../api.png as an image](../../api.png "../../api.png as an image")
+
+
+---
+
 [/dls/api.png as a link](/dls/api.png "/dls/api.png as a link")
 
 
 `WORKS: /dls/api.png as an image`:
 
 ![/dls/api.png as an image](/dls/api.png "/dls/api.png as an image")
+
+---
+
+[/api.png as a link](/api.png "/api.png as a link")
+
+
+`WORKS: /api.png as an image`:
+
+![/api.png as an image](/api.png "/api.png as an image")
+
 
 ---
 
