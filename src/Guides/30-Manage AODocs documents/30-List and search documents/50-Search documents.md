@@ -1,1 +1,1 @@
-# List and search documents
+# Search documents
