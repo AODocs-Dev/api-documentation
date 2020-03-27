@@ -155,7 +155,7 @@ folders:
         ordering:
         - 00-Overview
         - 10-ApiDocument
-        - 15-ApiLibraryList
+        - 15-ApiLibrary
         - 20-ApiDocumentType
 
       80-APIs of note:
