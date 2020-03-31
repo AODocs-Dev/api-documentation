@@ -43,6 +43,3 @@ A Google Drive storage location that a specific user owns. Ownership of the cont
 **_OAuth 2.0_**
 
 The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
-
-
-<!-- Docs to Markdown version 1.0β20 -->

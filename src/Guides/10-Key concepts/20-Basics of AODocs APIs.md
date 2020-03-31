@@ -8,6 +8,45 @@ AODocs APIs are the under-the-hood mechanisms which let you issue direct request
 
 ---
 
+## Architecture
+
+The following diagram shows the interactions between the major components:
+
+![architecture-diagram.png](/img/architecture-diagram.png)
+
+**Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
+
+The following terms define key components shown in Figure 1:
+
+**_Google Drive_**
+
+Google's cloud file storage service that provides users with a personal storage space, called _My Drive_, and the option to access collaborative shared folders, called _shared drives_.
+
+**_Google Drive API_**
+
+The REST API that allows you to leverage Google Drive storage from within your app.
+
+**_AODocs API_**
+
+The REST API that allows you to leverage AODocs functionality from within your app.
+
+**_Third-party app_**
+
+An app that leverages AODocs APIs (and, indirectly, Google Drive APIs) as its document management and file storage solution.
+
+**_AODocs Web UI_**
+
+The AODocs user interface used by an end-user to manage AODocs documents and Google Drive files attached to them.
+
+**_Google Drive Customer Files_**
+
+A Google Drive storage location that a specific user owns. Ownership of the content of the files stored on Google Drive remains specific to an individual user, unless the file gets attached to an AODocs document, at which point the ownership is transferred to the corporate account.
+
+**_OAuth 2.0_**
+
+The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
+
+---
 
 ## When to use Drive APIs vs. AODocs APIs
 
@@ -19,11 +58,11 @@ To manage **Drive file content** — before or after attaching to AODocs — you
 > ⭑   Note: You can use any available version of Google Drive APIs.
 
 
-To **attach Drive files to AODocs documents**, you have to use **both Drive and AODocs APIs** together.
+To **attach Drive files to AODocs documents**, you have to use both **Drive and AODocs** APIs together.
 
-To manage **folders and permissions**, you have to use **either Drive or AODocs APIs**, depending on what account owns the resource.
+To manage **folders and permissions**, you have to use either **Drive or AODocs** APIs, depending on what account owns the resource.
 
-To manage and configure **AODocs documents**, you can only use **AODocs APIs**.
+To manage and configure **AODocs documents**, you can use only **AODocs APIs**.
 
 
 ### Elaboration
@@ -191,7 +230,7 @@ You can find the specifics of each of these in the API reference for each potent
 
 
 * the operation (```PUT```)
-* the base endpoint (```https://base-aodocs-endpoint.com/api```)
+* the base endpoint (```https://aodocs.altirnao.com/api```)
 * the API and its version (```document/v1```)
 * the target resource of type ```ApiDocument``` (implied)
 * the parameter the server requires (```libraryId```)
@@ -203,6 +242,7 @@ You can find the specifics of each of these in the API reference for each potent
 ```http
 PUT https://aodocs.altirnao.com/api/document/v1
 ```
+
 ```json
 {
     "libraryId": "RnTG8PD8u8ZqTuDVHcv",
@@ -210,8 +250,6 @@ PUT https://aodocs.altirnao.com/api/document/v1
     "title":"My Important AODocs Document"
 }
 ```
-
-
 
 ### Step 2: Server performs operation on the requested resource
 

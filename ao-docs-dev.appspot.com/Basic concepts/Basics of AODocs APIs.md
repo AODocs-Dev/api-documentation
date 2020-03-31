@@ -169,7 +169,7 @@ You can find the specifics of each of these in the API reference for each potent
 
 
 *   the operation (```PUT```)
-*   the base endpoint (```https://base-aodocs-endpoint.com/api```)
+*   the base endpoint (```https://aodocs.altirnao.com/api```)
 *   the API and its version (```document/v1```)
 *   the target resource of type ```ApiDocument``` (implied)
 *   the parameter the server requires (```libraryId```)
