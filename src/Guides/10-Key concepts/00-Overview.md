@@ -4,7 +4,7 @@ Just like _manually_ with the AODocs UI, AODocs APIs let you _programmatically_ 
 
 The APIs also let you interact indirectly with some AODocs-related [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk) functionality, including some mediated access to files and folders in Drive.
 
-Here in the *Key concepts* section you can read more about [basic AODocs concepts](/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Basic%20of%20AODocs) and about how you can leverage [the fundamentals of AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Basic%20of%20AODocs%20APIs) to accomplish your goals.
+Here in the *Key concepts* section you can read more about [basic AODocs concepts](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs) and about how you can leverage [the fundamentals of AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) to accomplish your goals.
 
 ---
 
@@ -16,7 +16,7 @@ Just like _manually_ with the AODocs UI, AODocs APIs let you _programmatically_ 
 
 The APIs also let you interact indirectly with some AODocs-related [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk) functionality, including some mediated access to files and folders in Drive.
 
-In the _Key concepts_ section you can read more about [AODocs basics](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Basic%20of%20AODocs) as well as about how you can leverage [concepts and components of AODocs APIs](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Basic%20of%20AODocs%20APIs) to accomplish your goals.
+In the _Key concepts_ section you can read more about [AODocs basics](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs) as well as about how you can leverage [concepts and components of AODocs APIs](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) to accomplish your goals.
 
 The following diagram shows the interactions between the major components:
 
