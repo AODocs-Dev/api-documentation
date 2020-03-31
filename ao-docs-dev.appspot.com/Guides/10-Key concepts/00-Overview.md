@@ -6,7 +6,7 @@ Just like _manually_ with the AODocs UI, AODocs APIs let you _programmatically_ 
 
 The APIs also let you interact indirectly with some AODocs-related [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk) functionality, including some mediated access to files and folders in Drive.
 
-In the _Key concepts_ section you can read more about [AODocs basics](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs) as well as about how you can leverage [concepts and components of AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) to accomplish your goals.
+## Architecture
 
 The following diagram shows the interactions between the major components:
 
@@ -43,3 +43,7 @@ A Google Drive storage location that a specific user owns. Ownership of the cont
 **_OAuth 2.0_**
 
 The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
+
+## Next steps
+
+In the _Key concepts_ section you can read more about [AODocs basics](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs) as well as about how you can leverage [concepts and components of AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) to accomplish your goals.
