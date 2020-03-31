@@ -6,6 +6,50 @@ AODocs APIs are the under-the-hood mechanisms which let you issue direct request
 * create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
 * configure AODocs folders, roles, versions, and permissions
 
+---
+
+
+## When to use Drive APIs vs. AODocs APIs
+
+### Summary
+
+To manage **Drive file content** — before or after attaching to AODocs — you can only use **[Drive APIs](https://developers.google.com/drive/api/v3/)**.
+
+
+> ⭑   Note: You can use any available version of Google Drive APIs.
+
+
+To **attach Drive files to AODocs documents**, you have to use **both Drive and AODocs APIs** together.
+
+To manage **folders and permissions**, you have to use **either Drive or AODocs APIs**, depending on what account owns the resource.
+
+To manage and configure **AODocs documents**, you can only use **AODocs APIs**.
+
+
+### Elaboration
+
+The purpose of **Drive** APIs is to upload, read, alter, copy, and download **Drive** files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents.
+
+To attach **Drive** files to **AODocs** documents, you have to use **both Drive and AODocs APIs** together because they need to work in tandem to connect the two worlds.
+
+Once attached, you can do most things you need with only AODocs APIs: you will still use Drive APIs to perform any tasks related to the content of the attachments like reading, copying, and downloading Drive files; but you will use **AODocs APIs exclusively** for all tasks related to the **AODocs documents** wrapped around the Drive files, such as managing and configuring AODocs metadata, roles, and workflows.
+
+Some of the concrete tasks you can perform with the AODocs APIs:
+
+* List libraries
+* List classes
+* Create a document of a specific class inside a specific library
+* Patch a document
+* Delete a document
+
+To **manage folders** and **edit permissions**, use **either Drive or AODocs APIs** depending on which storage account has ownership of the file: Drive APIs for TF; AODocs APIs for DMS and SF.
+
+> ⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
+
+Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.  Familiarizing yourself with [Common error scenarios]([click](https://drive.google.com/a/altirnao.com/open?id=1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc)) can help, and if it's something else altogether, it might be time to dive into some [Troubleshooting]([click](https://drive.google.com/a/altirnao.com/open?id=1UQ1fU7jGUJRi7BneQcA0OwQZ7nBEStfTGb9u0E1YRh8)).
+
+
+---
 
 ## Interacting with APIs
 
@@ -233,43 +277,9 @@ Any version marked ```beta``` is still being developed and can change without no
 
 ---
 
-## When to use Drive APIs vs. AODocs APIs
+## Pagination
 
-### Summary
-
-To manage **Drive file content** — before or after attaching to AODocs — you can only use **[Drive APIs](https://developers.google.com/drive/api/v3/)**.
-
-
-> ⭑   Note: You can use any available version of Google Drive APIs.
-
-
-To **attach Drive files to AODocs documents**, you have to use **both Drive and AODocs APIs** together.
-
-To manage **folders and permissions**, you have to use **either Drive or AODocs APIs**, depending on what account owns the resource.
-
-To manage and configure **AODocs documents**, you can only use **AODocs APIs**.
-
-
-### Elaboration
-
-The purpose of **Drive** APIs is to upload, read, alter, copy, and download **Drive** files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents.
-
-To attach **Drive** files to **AODocs** documents, you have to use **both Drive and AODocs APIs** together because they need to work in tandem to connect the two worlds.
-
-Once attached, you can do most things you need with only AODocs APIs: you will still use Drive APIs to perform any tasks related to the content of the attachments like reading, copying, and downloading Drive files; but you will use **AODocs APIs exclusively** for all tasks related to the **AODocs documents** wrapped around the Drive files, such as managing and configuring AODocs metadata, roles, and workflows.
-
-Some of the concrete tasks you can perform with the AODocs APIs:
-
-* List libraries
-* List classes
-* Create a document of a specific class inside a specific library
-* Patch a document
-* Delete a document
-
-To **manage folders** and **edit permissions**, use **either Drive or AODocs APIs** depending on which storage account has ownership of the file: Drive APIs for TF; AODocs APIs for DMS and SF.
-
-
-> ⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
+TBD
 
 ---
 
@@ -286,4 +296,6 @@ Here are some resources to help you get started working with the AODocs APIs:
 * If you need help, visit the forum.
 * Read the performance tips.
 * Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs.
+
+
 
