@@ -200,9 +200,10 @@ You can find the specifics of each of these in the API reference for each potent
 
 #### Example request
 
-```json
+```http
 PUT https://aodocs.altirnao.com/api/document/v1
-
+```
+```json
 {
     "libraryId": "RnTG8PD8u8ZqTuDVHcv",
     "classId": "RnTf1mx835gaTJLzoFp",
