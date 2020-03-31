@@ -30,7 +30,7 @@ The REST API that allows you to leverage Google Drive storage from within your a
 
 The REST API that allows you to leverage AODocs functionality from within your app.
 
-**_Third-party app_**
+**_Client app_**
 
 An app that leverages AODocs APIs (and, indirectly, Google Drive APIs) as its document management and file storage solution.
 
