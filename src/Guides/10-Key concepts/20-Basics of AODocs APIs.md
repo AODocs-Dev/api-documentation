@@ -200,8 +200,7 @@ You can find the specifics of each of these in the API reference for each potent
 
 #### Example request
 
-
-```
+```json
 PUT https://aodocs.altirnao.com/api/document/v1
 
 {
