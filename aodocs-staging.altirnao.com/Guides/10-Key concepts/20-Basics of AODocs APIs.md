@@ -1,12 +1,10 @@
 # Basics of AODocs APIs
 
-AODocs APIs are the under-the-hood mechanisms which let you issue direct requests to the resource server to perform many of the manual tasks you can perform in the AODocs UI:
+AODocs APIs are the under-the-hood mechanisms which let you issue direct requests to the resource server to perform many of the manual tasks done in the AODocs UI:
 
-
-
-*   list and search for resources such as libraries, classes, or documents
-*   create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
-*   configure AODocs folders, roles, versions, and permissions
+* list and search for resources such as libraries, classes, or documents
+* create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
+* configure AODocs folders, roles, versions, and permissions
 
 
 ## Interacting with APIs
@@ -17,17 +15,17 @@ You send these HTTP commands/requests to the resource server, and parse the resp
 
 
 
-*   in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com)
-*   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
-*   programmatically, using code (cURL, Java, etc.) to automate request/response interactions
+* in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com)
+* using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
+* programmatically, using code (cURL, Java, etc.) to automate request/response interactions
 
 On a high level, the interaction consists of three stages:
 
 
 
-*   request to perform an operation on a resource sent to the server
-*   operation performed server-side
-*   response sent from the resource server
+* request to perform an operation on a resource sent to the server
+* operation performed server-side
+* response sent from the resource server
 
 
 ### Step 1: Client sends request to the server
@@ -39,32 +37,32 @@ You send a request containing the following information to the resource server:
 
 
 
-*   **operation** to be performed (mandatory 100% of the time)
-*   URI of the API **endpoint** (mandatory 100% of the time)
-*   parameters (not all mandatory, and not all the time)
-    *   header
-        *   auth info
-        *   MIME types
-        *   other
-    *   path (before the ```?``` in the URL)
-        *   target API
-        *   name/ID of **resources** and subresources to operate on
-    *   query (after the ```?``` in the URL)
-        *   **securityCode**
-        *   search filters
-        *   other
-*   JSON request body containing specific **target resource fields** you want populated (sometimes mandatory depending on operation and resource)
+* **operation** to be performed (mandatory 100% of the time)
+* URI of the API **endpoint** (mandatory 100% of the time)
+* parameters (not all mandatory, and not all the time)
+    * header
+        * auth info
+        * MIME types
+        * other
+    * path (before the ```?``` in the URL)
+        * target API
+        * name/ID of **resources** and subresources to operate on
+    * query (after the ```?``` in the URL)
+        * **securityCode**
+        * search filters
+        * other
+* JSON request body containing specific **target resource fields** you want populated (sometimes mandatory depending on operation and resource)
 
 
 #### Operating on a resource (or "verbing a noun")
 
 AODocs APIs are designed around [principles of REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), allowing you to request, receive, and alter server resources (nouns) with a small number of standard, programming-language agnostic HTTP operation commands (verbs):
 
-*   GET (retrieves)
-*   PUT (inserts)
-*   POST (creates)
-*   DELETE (deletes)
-*   PATCH (updates)
+* GET (retrieves)
+* PUT (inserts)
+* POST (creates)
+* DELETE (deletes)
+* PATCH (updates)
 
 These commands are variants of elemental HTTP operations of **c**reate, **r**etrieve, **u**pdate, or **d**elete — CRUD for short.   You send a request for the server to apply a CRUD operation to a resource (for example, `GET library` or `DELETE document`), and the server sends back the success/failure results.
 
@@ -83,9 +81,9 @@ Different parts of the request naturally lend themselves to carrying certain kin
 
 There are generally three ways you can send parameters inside a request:
 
-*   as a **path** parameter (```GET /library/v1/**abcd12345**?include=NONE```)
-*   as a **query** parameter (```GET /library/v1?**documentId=abcd12345**```)
-*   as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
+* as a **path** parameter (```GET /library/v1/**abcd12345**?include=NONE```)
+* as a **query** parameter (```GET /library/v1?**documentId=abcd12345**```)
+* as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
 
 The way the resource server is implemented determines which part of the request should carry which piece of required information, but the design often conforms to certain common patterns of usage.
 
@@ -97,9 +95,9 @@ Search filters, security codes, and other **query parameters** are commonly stru
 
 The following query parameters exist globally across the API:
 
-*   domain
-*   security code (auth mechanism)
-*   fields query parameter (to filter results and improve performance)
+* domain
+* security code (auth mechanism)
+* fields query parameter (to filter results and improve performance)
 
 On the other hand, specific **resource fields** to be created or updated (sometimes mandatory) get sent as part of the request resource, in the **request body**., especially if the resource contains too many fields to write as query parameters.  The server knows how to take the request body and match and reconcile its fields with those of the target resource, performing the requested operations field-to-field.
 
@@ -108,11 +106,11 @@ On the other hand, specific **resource fields** to be created or updated (someti
 
 Take the base endpoint URI, and add to it any required specifics.  This includes, but is not limited to the following:
 
-*   the resource
-*   the resource ID
-*   subresource
-*   subresource ID
-*   parameters
+* the resource
+* the resource ID
+* subresource
+* subresource ID
+* parameters
 
 Then issue an HTTP verb (CRUD command) to the newly-assembled URI:
 
@@ -141,23 +139,23 @@ On a high level, your request is a bundle of pieces of text containing the follo
 
 
 
-*   the operation you want the server to perform (such as ```GET``` or ```PUT```)
-*   service endpoint
-*   the name of the API to connect to on the server and its version
-*   target resource (such as library, document, or class)
-*   all the parameters the server needs to do the work
-*   all the parameters that you want in order to get the results you want
+* the operation you want the server to perform (such as ```GET``` or ```PUT```)
+* service endpoint
+* the name of the API to connect to on the server and its version
+* target resource (such as library, document, or class)
+* all the parameters the server needs to do the work
+* all the parameters that you want in order to get the results you want
 
 You can find the specifics of each of these in the API reference for each potential task you wish to perform.  For example, a request to [create a new document of a given class in a given library](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put) is composed of the following:
 
 
 
-*   the operation (```PUT```)
-*   the base endpoint (```https://base-aodocs-endpoint.com/api```)
-*   the API and its version (```document/v1```)
-*   the target resource of type ```ApiDocument``` (implied)
-*   the parameter the server requires (```libraryId```)
-*   client-desired parameters such as ```classId``` and ```title```
+* the operation (```PUT```)
+* the base endpoint (```https://base-aodocs-endpoint.com/api```)
+* the API and its version (```document/v1```)
+* the target resource of type ```ApiDocument``` (implied)
+* the parameter the server requires (```libraryId```)
+* client-desired parameters such as ```classId``` and ```title```
 
 
 #### Example request
@@ -183,10 +181,10 @@ If the resource server accepts your request, it then does the following:
 
 
 
-*   performs requested operation on target resource (library, etc.) or subresource (glossary, etc.)
-*   sends back response containing:
-    *   HTTP status code outlining what kind of outcome occurred (success/fail/other)
-    *   the targeted resource (usually; one exception is after DELETE)
+* performs requested operation on target resource (library, etc.) or subresource (glossary, etc.)
+* sends back response containing:
+    * HTTP status code outlining what kind of outcome occurred (success/fail/other)
+    * the targeted resource (usually; one exception is after DELETE)
 
 For example, the server might apply a ```GET``` request to an ```ApiLibraryList``` resource/collection and return the resource/collection to the requesting party.
 
@@ -266,11 +264,11 @@ Once attached, you can do most things you need with only AODocs APIs: you will s
 
 Some of the concrete tasks you can perform with the AODocs APIs:
 
-*   List libraries
-*   List classes
-*   Create a document of a specific class inside a specific library
-*   Patch a document
-*   Delete a document
+* List libraries
+* List classes
+* Create a document of a specific class inside a specific library
+* Patch a document
+* Delete a document
 
 To **manage folders** and **edit permissions**, use **either Drive or AODocs APIs** depending on which storage account has ownership of the file: Drive APIs for TF; AODocs APIs for DMS and SF.
 
@@ -283,13 +281,13 @@ To **manage folders** and **edit permissions**, use **either Drive or AODocs API
 
 Here are some resources to help you get started working with the AODocs APIs:
 
-*   Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA).
-*   Use the interactive API Explorer to build requests and queries for the APIs and to see the responses.
-*   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I).
-*   Review and select the appropriate mechanism for [gaining access to AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=1XEgIlXhQ05oCsOJuuTR0L7JHAohBUNedJGkvg2AFXd4).
-*   Check the reference for all the X available through the APIs.
-*   Check the X page for a list of available X that can be used with X.
-*   If you need help, visit the forum.
-*   Read the performance tips.
-*   Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs.
+* Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA).
+* Use the interactive API Explorer to build requests and queries for the APIs and to see the responses.
+* Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I).
+* Review and select the appropriate mechanism for [gaining access to AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=1XEgIlXhQ05oCsOJuuTR0L7JHAohBUNedJGkvg2AFXd4).
+* Check the reference for all the X available through the APIs.
+* Check the X page for a list of available X that can be used with X.
+* If you need help, visit the forum.
+* Read the performance tips.
+* Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs.
 
