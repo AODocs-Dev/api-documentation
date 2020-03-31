@@ -142,12 +142,12 @@ HTTP-VERB base-endpoint/api/version/resource/{resourceId}/subresource/{subresour
 
 List a specific library by ID:
 ```
-GET https://www.base-aodocs-api-url.com/library/v1/{libraryId}?securityCode=12345likemyluggage
+GET https://aodocs.altirnao.com/api/library/v1/{libraryId}?securityCode=12345likemyluggage
 ```
 
 Search documents in the specific view:
 ```
-POST https://www.base-aodocs-api-url.com/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
+POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
 ```
 
 
@@ -180,7 +180,7 @@ You can find the specifics of each of these in the API reference for each potent
 
 
 ```
-PUT https://base-aodocs-endpoint.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 
 {
     "libraryId": "RnTG8PD8u8ZqTuDVHcv",

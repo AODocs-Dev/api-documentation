@@ -19,7 +19,7 @@ There are no mandatory or recommended parameters to send.
 ### Sample request
 
 ```
-PUT https://aodocs-apis.com/api/library/v1/plain
+PUT https://aodocs.altirnao.com/api/library/v1/plain
 ```
 
 

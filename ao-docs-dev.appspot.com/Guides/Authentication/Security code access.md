@@ -68,7 +68,7 @@ Send the security code in the header as follows:
 
 
 ```
-GET https://aodocsapis.com/api/document/v1/ \ HTTP/1.1
+GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
 
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
@@ -99,7 +99,7 @@ Append the security code to the query as follows:
 
 
 ```
-  GET https://some-aodocs-api-url.com/api/document/v1/RnTzVT2x5Sb48h3vSQ?securityCode=12345likemyluggage
+  GET https://aodocs.altirnao.com/api/document/v1/RnTzVT2x5Sb48h3vSQ?securityCode=12345likemyluggage
 ```
 
 

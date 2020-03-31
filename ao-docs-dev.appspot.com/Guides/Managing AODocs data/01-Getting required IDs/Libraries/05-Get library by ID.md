@@ -18,7 +18,7 @@ To get your desired library back in the response you have to provide the library
 
 
 ```
-GET https://aodocs-apis.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
+GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 
 

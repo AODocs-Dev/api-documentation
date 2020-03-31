@@ -19,7 +19,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 ### Sample request (asking for a full resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
 If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
@@ -27,7 +27,7 @@ If you need only some of the fields of the extensive ApiDocument resource to com
 ### Sample request (partial resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
 ```
 
 > ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.

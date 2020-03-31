@@ -524,7 +524,7 @@ All these fields correspond to fields in the [ApiDocument](https://api.aodocs-st
 ##### Sample request
 
 ```
-PUT https://aodocs-api-url.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 
  {
   "attachments": [
@@ -592,7 +592,7 @@ When you put together your request to create an AODocs document with an attachme
 #### Sample request
 
 ```
-PUT https://aodocs-api-url.com/api/document/v1 \
+PUT https://aodocs.altirnao.com/api/document/v1 \
 
 {
   "attachmentsToCopy": [
@@ -660,7 +660,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 ##### Sample request (asking for a full resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
 > ⭑ **Note**: If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
@@ -668,7 +668,7 @@ GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ##### Sample request (partial resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
 ```
 
 > ⭑   **Note**: To list/get an AODocs document by the Drive ```fileId``` of one of its attachments, use ```GET /document/v1/drive/{driveId}```.
@@ -699,7 +699,7 @@ Response fields of note:
 ####    Request
 
 ```
-    GET https://ao-docs.appspot.com/_ah/api/document/v1/RsBDfKJ0y14Ze4hzPl
+    GET https://aodocs.altirnao.com/api/_ah/api/document/v1/RsBDfKJ0y14Ze4hzPl
 ```
 
 ####    Response

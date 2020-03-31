@@ -23,7 +23,7 @@ Pass the mandatory ````classId````/````documentId````, as well as the ````libId`
 
 ### Sample request
 ```
-GET https://ao-docs.appspot.com/_ah/api/documentType/v1/libraries/Rs4xtue6axGNklquDP/documentTypes/Rs4xuIg6e45fvAsn9L
+GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue6axGNklquDP/documentTypes/Rs4xuIg6e45fvAsn9L
 ```
 
 ### Response

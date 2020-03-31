@@ -72,7 +72,7 @@ All these fields correspond to fields in the [ApiDocument](https://api.aodocs-st
 ### Sample request
 
 ```json
-PUT https://aodocs-api-url.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 
  {
   "attachments": [

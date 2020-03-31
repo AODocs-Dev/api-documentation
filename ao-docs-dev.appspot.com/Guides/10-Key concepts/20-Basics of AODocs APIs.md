@@ -13,15 +13,11 @@ You interact with the API by asking the server to use simple HTTP operations (``
 
 You send these HTTP commands/requests to the resource server, and parse the responses that come back.  You can do this using the following methods:
 
-
-
 * in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com)
 * using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
 * programmatically, using code (cURL, Java, etc.) to automate request/response interactions
 
 On a high level, the interaction consists of three stages:
-
-
 
 * request to perform an operation on a resource sent to the server
 * operation performed server-side
@@ -123,13 +119,13 @@ HTTP-VERB base-endpoint/api/version/resource/{resourceId}/subresource/{subresour
 Get a library by ID:
 
 ```
-GET https://www.base-aodocs-api-url.com/library/v1/{libraryId}?securityCode=12345likemyluggage
+GET https://aodocs.altirnao.com/api/library/v1/{libraryId}?securityCode=12345likemyluggage
 ```
 
 Search documents with specific view:
 
 ```
-POST https://www.base-aodocs-api-url.com/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
+POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
 ```
 
 
@@ -162,7 +158,7 @@ You can find the specifics of each of these in the API reference for each potent
 
 
 ```
-PUT https://base-aodocs-endpoint.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 
 {
     "libraryId": "RnTG8PD8u8ZqTuDVHcv",

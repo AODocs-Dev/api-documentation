@@ -18,7 +18,7 @@ Only ````libraryId```` is mandatory.
 ### Sample request
 
 ```
-GET https://aodocs-apis.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmNN
+GET https://aodocs.altirnao.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmNN
 ```
 
 To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ````fields```` query parameter with ````items(displayName,id,kind),kind```` as follows:

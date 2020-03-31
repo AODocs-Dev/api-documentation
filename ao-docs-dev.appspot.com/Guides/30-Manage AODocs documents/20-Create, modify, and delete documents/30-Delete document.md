@@ -19,7 +19,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 ### Sample request
 
 ```
-DELETE https://aodocs-apis.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
+DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 
 ### Response

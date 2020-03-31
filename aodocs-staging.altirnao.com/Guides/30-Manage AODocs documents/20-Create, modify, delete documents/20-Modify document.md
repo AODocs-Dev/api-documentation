@@ -113,7 +113,7 @@ When you send the  ```attachments``` array field filled out with file ID(s), you
  To keep any current attachments in your DMS document, you must explicitly state them here.  Also, if you want to keep their existing ordering, then you also must specify them in that order.
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   "attachments": // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
@@ -135,7 +135,7 @@ PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
 In DMS, this is how you detach ("delete") attachments all at once.  The (ex-)attachments are still owned by the storage account.  With no parent document, however, no reference to them exists in either AODocs libraries or in Drive (except in logs).  To regain access to them you need the intervention of a domain administrator.
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   "attachments": []  // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets (empty square brackets means all attachments get detached!)
@@ -145,7 +145,7 @@ PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
 #### Sample request body (with ```attachments``` array field not included)
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   // not including the attachments array field keeps attachments as they are, unmodified

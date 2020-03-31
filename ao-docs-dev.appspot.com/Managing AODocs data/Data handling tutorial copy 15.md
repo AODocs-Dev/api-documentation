@@ -502,7 +502,7 @@ All these fields correspond to fields in the [ApiDocument](https://api.aodocs-st
 ##### Sample request
 
 ```
-PUT https://aodocs-api-url.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 
  {
   "attachments": [
@@ -603,7 +603,7 @@ When you put together your request to create an AODocs document with an attachme
 #### Sample request
 
 ```
-PUT https://aodocs-api-url.com/api/document/v1 \
+PUT https://aodocs.altirnao.com/api/document/v1 \
 
 {
   "attachmentsToCopy": [
@@ -667,7 +667,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 ##### Sample request (asking for a full resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
 If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
@@ -675,7 +675,7 @@ If you need only some of the fields of the extensive ApiDocument resource to com
 ##### Sample request (partial resource)
 
 ```
-GET https://aodocs-api-url.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
+GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
 ```
 
 > ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
@@ -810,7 +810,7 @@ When you send the  ```attachments``` array field filled out with file ID(s), you
  To keep any current attachments in your DMS document, you must explicitly state them here.  Also, if you want to keep their existing ordering, then you also must specify them in that order.
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   "attachments": // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
@@ -832,7 +832,7 @@ PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
 In DMS, this is how you detach ("delete") attachments all at once.  The (ex-)attachments are still owned by the storage account.  With no parent document, however, no reference to them exists in either AODocs libraries or in Drive (except in logs).  To regain access to them you need the intervention of a domain administrator.
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   "attachments": []  // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets (empty square brackets means all attachments get detached!)
@@ -842,7 +842,7 @@ PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
 ###### Sample request body (with ```attachments``` array field not included)
 
 ```
-PATCH https://aodocs-api-url.com/api/document/v1/RsjbYc788vqY6WDeUnM
+PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 {
   // not including the attachments array field keeps attachments as they are, unmodified
@@ -904,7 +904,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 ##### Sample request
 
 ```
-DELETE https://aodocs-apis.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
+DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 
 ##### Response
