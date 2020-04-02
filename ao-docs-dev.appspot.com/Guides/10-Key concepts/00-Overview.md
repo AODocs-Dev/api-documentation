@@ -2,7 +2,7 @@
 
 Just like _manually_ with the AODocs UI, AODocs APIs let you _programmatically_ access, manage, and configure AODocs objects and their associated metadata, including libraries, classes, documents, attachments, and properties.
 
-> ⭑   **Note**: A NOTE ABOUT SERVICE ACCOUNTS?   .
+<!-- > ⭑   **Note**: A NOTE ABOUT SERVICE ACCOUNTS?   . -->
 
 The APIs also let you interact indirectly with some AODocs-related [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk) functionality, including some mediated access to files and folders in Drive.
 
