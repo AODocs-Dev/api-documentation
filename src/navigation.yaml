@@ -116,11 +116,11 @@ folders:
           20-Create, modify, delete documents:
             ordering:
             - 00-Overview
-            - 10-Creating new documents with attachments
+            - 10-Create new documents with attachments
             - 20-Modify documents
             - 30-Delete document
             folders:
-              10-Creating new documents with attachments:
+              10-Create new documents with attachments:
                 ordering:
                 - 00-Overview
                 - 10-Create test Drive files and folders
