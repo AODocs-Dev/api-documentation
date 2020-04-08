@@ -49,7 +49,7 @@ folders:
     - 30-Manage AODocs documents
     - 40-Configure AODocs libraries
     # - 50-Manage workflows
-    - 60-Handle errors and improve performance
+    - 60-Best practices
     - 70-Resources of note
     - 80-APIs of note
     # - Future custom section
