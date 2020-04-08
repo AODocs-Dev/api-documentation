@@ -113,7 +113,7 @@ folders:
           #       - 30-Get document by ID
           #       - 40-List and search documents
 
-          20-Create, modify, and delete documents:
+          20-Create, modify, delete documents:
             ordering:
             - 00-Overview
             - 10-Creating new documents with attachments
