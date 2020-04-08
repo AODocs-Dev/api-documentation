@@ -85,19 +85,20 @@ folders:
             - 00-Overview
             - 10-Libraries
             - 20-Classes
-            folders:
-              10-Libraries:
-                ordering:
-                - 00-Overview
-                - 10-List all libraries
-                - 20-List all libraries plain
-                - 30-Get library by ID
-              20-Classes:
-                ordering:
-                - 00-Overview
-                - 10-List all classes
-                - 20-Get class by ID
-          # 20-Create, modify, and delete documents:
+            # folders:
+            #   10-Libraries:
+            #     ordering:
+            #     - 00-Overview
+            #     - 10-List all libraries
+            #     - 20-List all libraries plain
+            #     - 30-Get library by ID
+            #   20-Classes:
+            #     ordering:
+            #     - 00-Overview
+            #     - 10-List all classes
+            #     - 20-Get class by ID
+
+                # 20-Create, modify, and delete documents:
           #   ordering:
           #   - 00-Overview
           #   - 10-Creating new documents with attachments
