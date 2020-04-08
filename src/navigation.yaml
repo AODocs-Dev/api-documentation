@@ -146,8 +146,7 @@ folders:
       60-Handle errors and improve performance:
         ordering:
         - 00-Overview
-        - 10-Error types
-        - 20-HTTP status codes
+        - 10-Status codes and error types
         - 30-Common error scenarios and fixes
         - 40-Troubleshooting
         - 50-Improve performance
