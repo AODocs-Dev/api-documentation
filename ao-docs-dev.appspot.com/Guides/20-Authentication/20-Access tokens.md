@@ -44,7 +44,7 @@ The AODocs authentication flow:
 __[ `SIMPLE CHART` ]
 
 
-> ⭑   Note: Normally you need access to the Google Drive API only in order to put content into AODocs.  There is little need to access the Drive API after this point, so you only need email scope.
+> ⭑  **Note**: Normally you need access to the Google Drive API only in order to put content into AODocs.  There is little need to access the Drive API after this point, so you only need email scope.
 
 ## Get an access and ID token
 
@@ -75,7 +75,7 @@ When you receive tokens from Google, they should look something along the lines 
 }
 ```
 
-> ⭑   Note: Access tokens usually start with the string ```ya29.```, and because they're opaque (not actual data but pointers to data elsewhere), they're usually shorter than ID tokens.  The latter are longer because they contain actual data, encoded into three pieces: header, claims, and signature.
+> ⭑   **Note**: Access tokens usually start with the string ```ya29.```, and because they're opaque (not actual data but pointers to data elsewhere), they're usually shorter than ID tokens.  The latter are longer because they contain actual data, encoded into three pieces: header, claims, and signature.
 
 Once you have obtained a token, you select which token is more appropriate for your use case:
 
