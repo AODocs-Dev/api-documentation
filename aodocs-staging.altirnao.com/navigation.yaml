@@ -117,7 +117,7 @@ folders:
             ordering:
             - 00-Overview
             - 10-Create new documents with attachments
-            - 20-Modify documents
+            - 20-Modify document
             - 30-Delete document
             folders:
               10-Create new documents with attachments:
