@@ -71,7 +71,7 @@ Additional fields to note:
 
 You can also locate the ```libraryId``` of your target library inside the AODocs UI.  Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
 
-![librariid-in-ui.png](/img/librariid-in-ui.png)
+![libraryid-in-ui.png](/img/libraryid-in-ui.png)
 
 
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
