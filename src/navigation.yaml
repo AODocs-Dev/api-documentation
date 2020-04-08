@@ -49,7 +49,7 @@ folders:
     - 30-Manage AODocs documents
     - 40-Configure AODocs libraries
     # - 50-Manage workflows
-    # - 60-Best practices
+    - 60-Best practices
     - 70-Resources of note
     - 80-APIs of note
     # - Future custom section
@@ -143,14 +143,15 @@ folders:
       #   ordering:
       #   - 00-Overview
 
-      # 60-Handle errors and improve performance:
-      #   ordering:
-      #   - 00-Overview
-      #   - 10-Error types
-      #   - 20-HTTP status codes
-      #   - 30-Common error scenarios and fixes
-      #   - 40-Troubleshooting
-      #   - 50-Improve performance
+      60-Best practices:
+        ordering:
+        - 00-Overview
+        - 10-Status codes and error types
+        # - 20-HTTP status codes
+        - 20-Common error scenarios and fixes
+        - 30-Pagination principles
+        # - 40-Troubleshooting
+        - 40-Improve performance
 
       70-Resources of note:
         ordering:
