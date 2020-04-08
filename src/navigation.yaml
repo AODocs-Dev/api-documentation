@@ -147,8 +147,8 @@ folders:
         ordering:
         - 00-Overview
         - 10-Status codes and error types
-        - 30-Common error scenarios and fixes
-        - 40-Troubleshooting
+        - 20-Common error scenarios and fixes
+        # - 40-Troubleshooting
         - 50-Improve performance
 
       70-Resources of note:
