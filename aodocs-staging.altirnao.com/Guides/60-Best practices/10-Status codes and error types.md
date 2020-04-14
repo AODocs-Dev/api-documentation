@@ -212,6 +212,15 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
 
 x
 
+## Resolve errors
+
+AODocs APIs return two kinds of error information:
+
+* HTTP error codes and messages in the header.
+* A JSON object in the response body with additional details that can help you determine how to handle the error.
+
+Drive apps should catch and handle all errors that might be encountered when using the REST API. This guide provides instructions on how to resolve specific API errors.
+
 
 ## Retry basics
 

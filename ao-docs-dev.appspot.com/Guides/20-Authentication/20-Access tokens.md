@@ -155,7 +155,7 @@ ____other
 
 Is this page correct?  Is something missing?
 
-Help us improve this page by using any of the following feedback methods:
+Help us improve our documentation by using any of the following feedback methods:
 
 * Leave a comment (or three) on the [Google Docs version of this page](https://docs.google.com/document/d/1nAqwNZ8sTk5orWxLMkDOIZbhkXd4mOs6o_lt6S5yb5U/edit).
 * Create a pull request on [this page's Github repo](https://github.com/AODocs-Dev/api-documentation/blob/test/src/Guides/20-Authentication/20-Access%20tokens.md).
