@@ -16,25 +16,21 @@ The following diagram shows the interactions between the major components:
 
 **Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
 
-End users can use AODocs via:
+<!-- End users use AODocs via:
+* The Google Drive Web User Interface, when the AODocs Chrome extension (2) is installed
 * The AODocs Web User Interface (1)
-* The Google Drive Web User Interface, when the AODocs Chrome extension (2) is
-installed
-* Other applications (3) using the AODocs API (for example, the Google Docs and Spreadsheet Add-ons developed on top of the AODocs API)
+* Internal or external client applications (3) that access **AODocs APIs** on the user's behalf (for example, the Google Docs and Sheets Add-ons developed on top of the AODocs API)
 
+The AODocs Web User Interface issues Remote Procedure Calls (RPC) via HTTPS to the server at [https://aodocs.altirnao.com](https://aodocs.altirnao.com) (4).
 
-The AODocs Web User Interface communicates with the AODocs server at
-https://aodocs.altirnao.com (4) on HTTPS to perform RPC calls to the server.
-The AODocs Chrome extension and other applications communicate with the AODocs API
-endpoint at https://ao-docs.appspot.com (5), using the HTTPS protocol and a JSON API.
-Both endpoints use an OAuth2 authentication flow to identify the user. The Web User Interface
-endpoints also sets a session cookie once the user is authenticated.
-When necessary (i.e. when the sign-in cookie is not found or when the application needs to
-generate a new access token), the user is redirected to the https://accounts.google.com (6)
-endpoint to go through the OAuth2 authentication flow. The OAuth2 authentication flow is
-explained in more details on this documentation page.
-Once the user is properly authenticated, the AODocs server (7), which is hosted on Google App
-Engine, executes the request:
+The AODocs Chrome extension and other applications communicate with the AODocs API endpoint at [https://ao-docs.appspot.com](https://ao-docs.appspot.com) (5), using the HTTPS protocol and a JSON-based API.
+
+Both endpoints use the generic Google OAuth 2.0 authentication flow to identify the user. The Web User Interface endpoints also sets a session cookie once the user is authenticated.
+
+When necessary (such as when the sign-in cookie is not found or when the application needs to generate a new access token), the user is redirected to the [https://accounts.google.com](https://accounts.google.com) (6) endpoint to go through the [Google OAuth 2.0 authentication flow](https://developers.google.com/identity/protocols/oauth2/web-server).
+
+Once the user is properly authenticated, the AODocs server (7) — hosted on Google App
+Engine — executes the request:
 * The AODocs server can access customer files stored in Google Drive (8) by using the
 Google Drive API. The interaction with Google Drive is explained in more details in
 section 3 below
@@ -54,7 +50,7 @@ Google Cloud Datastore and our application logs are stored both in StackDriver a
 Therefore, AODocs does not manage any sort of network per se.
 App Engine provides the automated provisioning of instances (autoscale) of the services to
 manage the fluctuating usage.
-
+ -->
 
 
 ## Glossary
