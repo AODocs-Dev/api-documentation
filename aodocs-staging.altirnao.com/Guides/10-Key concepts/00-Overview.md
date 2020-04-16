@@ -14,6 +14,9 @@ The following diagram shows the interactions between the major components:
 
 **Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
 
+
+## Glossary
+
 The following terms define key components shown in Figure 1:
 
 **_Google Drive_**
