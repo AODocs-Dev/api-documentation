@@ -4,15 +4,17 @@ Every request sent to the **API provider** (AODocs) must include some method of 
 
 ![api-auth-model](/img/api-relationship2.png)
 
-Figure: Who is who
+Figure 1: Who is who
 
 ## Available authentication mechanisms
 
-You can gain pass authentication credentials to AODocs APIs in three ways, depending on your circumstances and needs:
+You can pass authentication credentials to AODocs APIs in three ways, depending on your circumstances and needs:
 
 *   Security code (quickest for internal testing, but least secure)
 *   OAuth 2.0 `access_token` (secure, needed to access Drive APIs)
 *   JSON Web Token (JWT) `id_token` (secure, no scope, for AODocs APIs only)
+
+
 
 ### Security code
 
