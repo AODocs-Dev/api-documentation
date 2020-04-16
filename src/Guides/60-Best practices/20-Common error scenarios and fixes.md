@@ -24,19 +24,19 @@ This error means the input is incorrect — something in the query is missing or
 Here is an example of such an error:
 
 ```json
-    {
+{
     "error": {
-     "errors": [
-      {
-       "domain": "global",
-       "reason": "badRequest",
-       "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
-      }
-     ],
-     "code": 400,
-     "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
+        "errors": [
+        {
+            "domain": "global",
+            "reason": "badRequest",
+            "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
+        }
+        ],
+        "code": 400,
+        "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
     }
-    }
+}
 ```
 
 To fix this error, follow the hint provided in the ```message``` field.
@@ -74,8 +74,8 @@ To fix this error, contact your domain administrator.
 
 This error can occur because of any of the following:
 
-*   Missing resource ID ("Library with id 'null' does not exist")
-*   Incorrect resource ID ("There is no library with id: 'OtbBk6GAm0ATEy8P8'")
+*   Missing resource ID: *"Library with id 'null' does not exist"*
+*   Incorrect resource ID: *"There is no library with id: 'OtbBk6GAm0ATEy8P8'"*
 *   Resource has moved or doesn't exist: *"No entity was found matching the key: !altirnao.com:Document(\"RwMUllPyrBZFx9BWlN\")"*
 
 ### Missing mandatory parameter
@@ -106,19 +106,19 @@ To fix this error, check the ```message``` field for the "missing" object in que
 If your mandatory parameter is correct, but the resource has moved or doesn't exist, you might get the following error:
 
 ```json
-    {
+{
     "error": {
      "errors": [
       {
-       "domain": "global",
-       "reason": "notFound",
-       "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllPyrBZFx9BWlN\")"
+        "domain": "global",
+        "reason": "notFound",
+        "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllPyrBZFx9BWlN\")"
       }
      ],
      "code": 404,
      "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllPyrBZFx9BWlN\")"
     }
-    }
+}
 ```
 
 
