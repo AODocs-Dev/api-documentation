@@ -188,11 +188,7 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
     *   API throws an exception, **code:**
     *   No data for the resource to return, **code: 204?**
     *   Parameters are outside of acceptable bounds of definition, **code:**
-    *   Required parameter missing, **code: ?404? (Library with id 'null' does not exist)**
     *   Error during file import, **code:**
-    *   "This method cannot be used in a DMS library", **code:**
-        *   **?403:Not authorized? **
-        *   **?400:badRequest?**
     *   Cannot reattach detached file: "not owned by you or lib stor admin", **code:**
     *   "There is no AODocs parent", **code:**
     *

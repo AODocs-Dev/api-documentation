@@ -7,8 +7,17 @@ AODocs APIs return two kinds of error information:
 
 It is the client app's responsibility to catch and handle all standard errors encountered when using the REST API. The following list guides you toward that end.
 
-_______________________________________
+---
 
+## Resolve a 204 error: No content
+
+This error means that everything was executed according to plan, but no response could be produced or sent back to confirm the effects of the action.
+
+To make sure the action was performed correctly, send another request testing the effects of the previous request.  This usually means issuing a GET request to retrieve the resource from the server for analysis.
+
+> **Note**: If the original request was a DELETE, the response is always a 204, effectively stating: "There is no resource the server can send back because it got deleted as requested".
+
+---
 
 ## Resolve a 400 error: Bad Request
 
@@ -39,7 +48,31 @@ Here is an example of a 400 error, this one resulting from providing more than o
 }
 ```
 
-To fix this error, provide only one of the indicated mutually exclusive parameters.  In general, when encountering a 400 error, follow the hint provided in the ```message``` field.
+To fix this specific error, provide only one of the indicated mutually exclusive parameters.  In general, when encountering a 400 error, follow the hint provided in the ```message``` field.
+
+---
+
+## Resolve a 401 error: Unauthorized
+
+This error means credentials were incorrect or not provided.
+
+```json
+{
+  "error": {
+    "errors": [
+    {
+        "domain": "global",
+        "reason": "required",
+        "message": "You must use oauth 2 to authenticate"
+    }
+    ],
+    "code": 401,
+    "message": "You must use oauth 2 to authenticate"
+  }
+}
+```
+
+
 
 ---
 
@@ -48,25 +81,25 @@ To fix this error, provide only one of the indicated mutually exclusive paramete
 This error can occur for the following reasons:
 
 *   Invalid security code
-*   No authorized access to a resource
+*   Unauthorized access to a resource
 
 ```json
 {
-    "error": {
-        "errors": [
-        {
-            "domain": "global",
-            "reason": "forbidden",
-            "message": "You don't have rights to access the page"
-        }
-        ],
-        "code": 403,
-        "message": "You don't have rights to access the page"
+"error": {
+  "errors": [
+    {
+      "domain": "global",
+      "reason": "forbidden",
+      "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
     }
+    ],
+    "code": 403,
+    "message": "Access denied to library with id: 'OtbBk6GAm0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
+}
 }
 ```
 
-To fix this error, contact your domain administrator.
+To fix this error, make sure your security code is correct and/or contact the domain administrator.
 
 ---
 
@@ -121,8 +154,19 @@ If your mandatory parameter is correct, but the resource has moved or doesn't ex
 }
 ```
 
+---
 
+## Resolve a 409 error: Conflict (retry)
+
+This error can occur because the resource is being accessed by more than one caller at the same time.  The best strategy is to retry.
+
+> **Note**: Of all 400-series errors, this is the only one that should be retried.
 
 ---
 
-TBC
+## Resolve a 500 error: Internal server error (retry)
+
+This error occurs because of some unforeseen condition on the server.  The best strategy is to retry.
+
+
+---
