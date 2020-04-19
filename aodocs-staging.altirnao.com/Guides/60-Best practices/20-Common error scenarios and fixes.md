@@ -39,11 +39,13 @@ Here is an example of a 400 error, this one resulting from providing more than o
         {
             "domain": "global",
             "reason": "badRequest",
-            "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
+            "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+            mutually exclusive"
         }
         ],
         "code": 400,
-        "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
+        "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+        mutually exclusive"
     }
 }
 ```
@@ -227,7 +229,7 @@ For example, if the ```libraryId``` parameter is mandatory and you don't provide
 }
 ```
 
-To fix this error, check the ```message``` field for the "missing" object in question (in this case a library), and verify its ID is correct.
+To fix this error, check the ```message``` field for the "missing" object in question (in this case a library), and verify its ID is provided and correct.
 
 ### Resource not found
 
