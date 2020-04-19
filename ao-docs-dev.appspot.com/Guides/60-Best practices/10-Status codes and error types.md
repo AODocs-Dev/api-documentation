@@ -180,8 +180,6 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
 
 ## ____Additional HTTP status codes
 
-
-
 *   List of errors **unique** to API:
     *   Wrong/invalid path/query params, **code: _____**
     *   parse error, **code: 4xx**

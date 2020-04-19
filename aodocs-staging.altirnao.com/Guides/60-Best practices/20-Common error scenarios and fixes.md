@@ -14,14 +14,14 @@ _______________________________________
 
 This error means the input is incorrect — something in the query is missing or not valid.  Some examples include:
 
-*   Using mutually exclusive parameters at the same time: **"Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"*
+*   Using mutually exclusive parameters at the same time: *"Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"*
 *   Trying to violate the one-attachement restriction of TF/SF libraries: *"In the google libraries the documents should always have exactly one attachment."*
 *   Trying to attach a Drive file without specifying its ID: *"The file id is mandatory in attachments"*
 *   Using a method on the wrong library type: *"This method cannot be used in a Document Management library"*
 
-> ⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect queries.
+> ⭑   Note: This is not a complete list: errors with a status code of 400 are a broad category encompassing many kinds of incorrect queries.
 
-Here is an example of such an error:
+Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:
 
 ```json
 {
@@ -39,7 +39,7 @@ Here is an example of such an error:
 }
 ```
 
-To fix this error, follow the hint provided in the ```message``` field.
+To fix this error, provide only one of the indicated mutually exclusive parameters.  In general, when encountering a 400 error, follow the hint provided in the ```message``` field.
 
 ---
 
