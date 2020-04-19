@@ -138,11 +138,13 @@ Sample response message 2:
     {
       "domain": "global",
       "reason": "forbidden",
-      "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
+      "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission \
+      level: 'CONTRIBUTOR'"
     }
     ],
     "code": 403,
-    "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
+    "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission \
+    level: 'CONTRIBUTOR'"
   }
 }
 ```
@@ -156,11 +158,13 @@ Sample response message 3:
     {
       "domain": "global",
       "reason": "forbidden",
-      "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached to the document: not owned by you or the library storage admin"
+      "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached \
+      to the document: not owned by you or the library storage admin"
     }
     ],
     "code": 403,
-    "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached to the document: not owned by you or the library storage admin"
+    "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached \
+    to the document: not owned by you or the library storage admin"
   }
 }
 ```
