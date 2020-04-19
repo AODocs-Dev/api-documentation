@@ -170,8 +170,11 @@ To fix this error contact the domain administrator.
 
 #### No AODocs parent
 
-This is not a permission error as such; rather, it is a NO in answer to the question "Is this Drive file attached to an AODocs document?".
+This is not a permission error as such; rather, it is a NO that answers the question "Is this Drive file attached to an AODocs document?" asked using the [POST /document/v1/drive/{driveId}/check](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/drive/%7BdriveId%7D/check/post) method.
 
+If the response is positive, its JSON body contains the ID of the AODocs document.
+
+The negative response comes back with a status code `403` and looks like this:
 
 ```json
 {
