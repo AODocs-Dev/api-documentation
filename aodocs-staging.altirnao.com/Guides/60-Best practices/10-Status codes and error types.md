@@ -6,7 +6,9 @@ Generally the **200-series codes** indicate some degree of **success**., with **
 
 When a request **succeeds** it normally returns a JSON-formatted **representation of the requested resource**.  When it **fails**, the response is instead a JSON-formatted **error message** for troubleshooting purposes.  The appropriate HTTP status code is always part of the response.
 
-For example, if you try to **identify** yourself to AODocs with **incorrect credentials**, you will receive a reply that the request was disallowed, with a status code of **403: Forbidden**, with an elaboration in the form of a ```message``` field meant only for humans:
+For example, if you try to **identify** yourself to AODocs with **incorrect credentials**, you will receive a reply that the request was disallowed, with a status code of **403: Forbidden**, with an elaboration in the form of a ```message``` field meant only for humans.
+
+Here's what it looks like when you try to authenticate using an invalid security code:
 
 
 ```json
@@ -186,12 +188,10 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
     *   "required" error, **code: 4xx (same as parse but diff reason?)**
     *   Parameters are mismatched with data types, **code:**
     *   API throws an exception, **code:**
-    *   No data for the resource to return, **code: 204?**
     *   Parameters are outside of acceptable bounds of definition, **code:**
-    *   Error during file import, **code:**
     *   Cannot reattach detached file: "not owned by you or lib stor admin", **code:**
-    *   "There is no AODocs parent", **code:**
-    *
+    *   "There is no AODocs parent", **code:** 403
+    *   Error during file import, **code:**
 
 
 ## __Error types

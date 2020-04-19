@@ -82,6 +82,54 @@ This error can occur for the following reasons:
 
 *   Invalid security code
 *   Unauthorized access to a resource
+    *  Incorrect permissions
+    *  No AODocs parent
+
+### Invalid security code
+
+```json
+{
+  "error": {
+    "errors": [
+    {
+      "domain": "global",
+      "reason": "forbidden",
+      "message": "Invalid security code"
+    }
+    ],
+    "code": 403,
+    "message": "Invalid security code"
+  }
+}
+```
+
+To fix this error, make sure your security code is correct.
+
+### Unauthorized access to a resource
+
+#### Incorrect permissions
+
+This means the client app does not have the correct permission levels to access the resource.
+
+Sample response message 1:
+
+```json
+{
+  "error": {
+    "errors": [
+    {
+      "domain": "global",
+      "reason": "forbidden",
+      "message": "You don't have rights to access the page"
+    }
+    ],
+    "code": 403,
+    "message": "You don't have rights to access the page"
+  }
+}
+```
+
+Sample response message 2:
 
 ```json
 {
@@ -94,12 +142,52 @@ This error can occur for the following reasons:
     }
     ],
     "code": 403,
-    "message": "Access denied to library with id: 'OtbBk6GAm0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
-}
+    "message": "Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission level: 'CONTRIBUTOR'"
+  }
 }
 ```
 
-To fix this error, make sure your security code is correct and/or contact the domain administrator.
+Sample response message 3:
+
+```json
+{
+  "error": {
+    "errors": [
+    {
+      "domain": "global",
+      "reason": "forbidden",
+      "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached to the document: not owned by you or the library storage admin"
+    }
+    ],
+    "code": 403,
+    "message": "File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached to the document: not owned by you or the library storage admin"
+  }
+}
+```
+
+To fix this error contact the domain administrator.
+
+
+#### No AODocs parent
+
+This is not a permission error as such; rather, it is a NO in answer to the question "Is this Drive file attached to an AODocs document?".
+
+
+```json
+{
+  "error": {
+    "errors": [
+      {
+        "domain": "global",
+        "reason": "forbidden",
+        "message": "There is no aodocs parent."
+      }
+    ],
+    "code": 403,
+    "message": "There is no aodocs parent."
+  }
+}
+```
 
 ---
 
