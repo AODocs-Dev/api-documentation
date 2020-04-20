@@ -54,31 +54,6 @@ Send the security code in the header as follows:
 
 #### Example request with security code as header parameter
 
-json-format:
-```json
-GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
-
-Authorization: securityCode [YOUR_SECURITY_CODE] \
-Content-Type: application/json \
-
-{
-  "libraryId": "Rngc1ug8K6WmL3IjZ8"
-}
-```
-
-yaml-format:
-```yaml
-GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
-
-Authorization: securityCode [YOUR_SECURITY_CODE] \
-Content-Type: application/json \
-
-{
-  "libraryId": "Rngc1ug8K6WmL3IjZ8"
-}
-```
-
-
 ```yaml
 GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
 
@@ -91,8 +66,6 @@ Content-Type: application/json \
   "libraryId": "Rngc1ug8K6WmL3IjZ8"
 }
 ```
-
-
 
 If you've started working with the API client factory which we provide with the Java API client, [you can use this feature out of the box](https://github.com/AODocs-Dev/aodocs-api-java-clients/blob/master/aodocs-api-client-factory/src/main/java/com/altirnao/aodocs/api/client/AODocsApiClientFactory.java#L88).
 
