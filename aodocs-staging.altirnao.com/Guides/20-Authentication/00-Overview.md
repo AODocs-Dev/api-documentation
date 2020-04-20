@@ -1,6 +1,7 @@
 # Authenticate your users
 
-Every request sent to the **API provider** (AODocs) must include some method of authentication to verify the identity of the **data owner** and to authorize any activity done on their behalf. This is required regardless of who plays the role of **API consumer**: you directly, or an app on your behalf.
+Every request sent to the **API provider** (AODocs) must include some method of authentication to verify the identity of the **data owner** (or, in the case of AODocs, the end-user who has access), and to authorize any activity done on their behalf. This is required regardless of whether the **API consumer** is a person manually interacting with the API portal; or a client app interacting on their behalf.
+
 
 ![api-auth-model](/img/api-relationship2.png)
 
@@ -8,30 +9,26 @@ Figure 1: Who is who
 
 ## Available authentication mechanisms
 
-You can pass authentication credentials to AODocs APIs in three ways, depending on your circumstances and needs:
+You can gain credentials to be authenticated with AODocs APIs in three ways, depending on your circumstances and needs:
 
-*   Security code (quickest for internal testing, but least secure)
-*   OAuth 2.0 `access_token` (secure, needed to access Drive APIs)
-*   JSON Web Token (JWT) `id_token` (secure, no scope, for AODocs APIs only)
-
+*   AODocs security code (quickest for internal testing, but least secure)
+*   OAuth 2.0 ````access_token```` (secure, needed to access Drive APIs)
+*   OAuth 2.0 JSON Web Token (JWT) ````id_token```` (secure, no scope, for AODocs APIs only)
 
 
 ### Security code
 
 This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall.  If you don't need access to Google Drive APIs, this is the quickest way to get started.  Read more about how to [access APIs with AODocs security code](https://drive.google.com/a/altirnao.com/open?id=1IL9vuBYtJGCqQmX4Ry-PqRrzjTM6QcjUpD7byNFXfJA).
 
-### OAuth 2.0
 
-OAuth 2.0 is the robust, secure mechanism to authenticate and authorize access to both AODocs and Google Drive APIs.
+### Access and ID tokens
 
-> ⭑   Note: Unlike the plug-and-play functionality of the AODocs security code, OAuth 2.0 requires whitelisting GCP client IDs in AODocs.
+Access or ID tokens sent in the request header are the robust, secure mechanism to authenticate with AODocs APIs and consequently gain access to both AODocs and Google Drive APIs.   Obtaining access tokens takes more work with more server calls, but they have scope; ID tokens are self-contained and can be verified in place, but lack scope.
 
+> ⭑   Note: Unlike the plug-and-play functionality of the AODocs security code, access tokens require whitelisting GCP client IDs in AODocs.
 
-Read more about how to [access APIs with OAuth 2.0](https://drive.google.com/a/altirnao.com/open?id=1S_5P0cfM387X996bAGOnnjO1z48IWysp-PbDCqB3vhc).
+Read more about how to [access AODocs APIs with access and ID tokens](https://drive.google.com/a/altirnao.com/open?id=1PcdH7RiLibUYj5mEh9EdQ6fpATcENaCy6-Pggo30BaI).
 
-### JSON Web Tokens (JWT)
-
-JWT is a secure token like OAuth 2.0, but without scope so it can be used only on AODocs APIs.  Read more about how to [access APIs with JSON Web Token](https://drive.google.com/a/altirnao.com/open?id=1K0yXBQwTBMm5FEwJotwFkjzc-moD2h-BwzfxlN3YOkk).
 
 ## What to use when
 
@@ -39,9 +36,9 @@ There are several distinct use cases for authenticating and authorizing API acce
 
 The quickest way to get started is with the security code method, but it can be used only on AODocs APIs, not Google Drive APIs.
 
-If you need Google Drive API access, you have to use OAuth 2.0.
+If you need Google Drive API access, you have to use an access token.
 
-Finally, if you need robust and secure access to AODocs API without being able to access Drive APIs, you have the option of JWT.
+Finally, if you need robust and secure access to AODocs API without being able to access Drive APIs, you have the option of ID tokens.
 
 See [additional authentication use cases](https://drive.google.com/a/altirnao.com/open?id=1VN1XZqFUCHNNG7Ya278gFxx4jaIp-6LKAs17JEoedhY).
 
