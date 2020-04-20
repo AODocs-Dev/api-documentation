@@ -66,7 +66,16 @@ Content-Type: application/json \
 }
 ```
 
+http:
 ```http
+GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
+
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+yaml:
+```yaml
 GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
 
 Authorization: securityCode [YOUR_SECURITY_CODE] \
