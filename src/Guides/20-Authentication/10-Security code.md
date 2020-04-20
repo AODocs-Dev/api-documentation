@@ -66,15 +66,6 @@ Content-Type: application/json \
 }
 ```
 
-http:
-```http
-GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
-
-Authorization: securityCode [YOUR_SECURITY_CODE] \
-Content-Type: application/json \
-```
-
-yaml:
 ```yaml
 GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
 
@@ -106,18 +97,13 @@ Append the security code to the query as follows:
 
 #### Example request with security code as query parameter
 
-
 ```yaml
   GET https://aodocs.altirnao.com/api/document/v1/RnTzVT2x5Sb48h3vSQ?securityCode=12345likemyluggage
 ```
 
-
-
 ### Authentication errors with security codes
 
 Security code errors occur only when the security code is:
-
-
 
 *   missing
 *   incorrect
