@@ -72,8 +72,7 @@ If you've started working with the API client factory which we provide with the 
 
 ### Not recommended: Send the security code as a query parameter
 
-
-⭑   Note: Unless you are protected by a sandbox (such as the API Explorer), we recommend that you do not send your security code as a query parameter.  Query parameters tend to get recorded and become exposed in web server logs, ultimately presenting a security risk.
+> ⭑   Note: Unless you are protected by a sandbox (such as the API Explorer), we recommend that you do not send your security code as a query parameter.  Query parameters tend to get recorded and become exposed in web server logs, ultimately presenting a security risk.
 
 
 Append the security code to the query as follows:
