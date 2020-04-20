@@ -98,7 +98,7 @@ Append the security code to the query as follows:
 #### Example request with security code as query parameter
 
 
-```http
+```yaml
   GET https://aodocs.altirnao.com/api/document/v1/RnTzVT2x5Sb48h3vSQ?securityCode=12345likemyluggage
 ```
 
