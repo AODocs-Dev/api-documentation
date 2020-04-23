@@ -4,7 +4,12 @@ In order to have some test files and folders to work with, open up your [Google 
 
 Here's an example of what that might look like:
 
-![image placeholder](/img/api.png)
+![drive-new-folder](drive-new-folder.png)
+
+---
+
+![drive-new-file](drive-new-file.png)
+
 
 ## Folder ID
 

@@ -6,7 +6,7 @@ We put the most useful data-handling API methods together into a loose sequence 
 
 ## Before you begin
 
-If you haven't yet, make sure you familiarize yourself with the [key concepts of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, part of this section is devoted to help you [create some test files and folders](#heading=h.x1k4y4foz0cu) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
+If you haven't yet, make sure you familiarize yourself with the [key concepts of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, if you don't follow this section in sequence, one page is devoted to help you [create some test files and folders](#heading=h.x1k4y4foz0cu) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
 
 ## What you'll do
 
@@ -16,15 +16,15 @@ If you follow the sequence in this section, you'll port some Drive files to beco
 
 The list of steps is as follows:
 
-*   Get library and class info
+*   [Get library and class info](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/00-Overview)
     *   [Libraries](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Libraries)
         * List all available AODocs libraries (full)
         * List all available AODocs libraries (plain)
         * Get a specific library by ID
-    *   Classes
-        * [List all available classes in a specific library]
-        * [Get a specific class by ID]
-*   Creating, patching, and deleting documents
+    *   [Classes](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Classes)
+        * List classes (to find target classes for your documents)
+        * Get a specific class by ID
+*   Create, modify, delete documents
     *   Creating new documents with attachments
         * [Create test Drive folder and some files to work with as attachments](#heading=h.x1k4y4foz0cu)
         * [Create a new document and attach a Drive file](#heading=h.vllmj75wrdzj)
