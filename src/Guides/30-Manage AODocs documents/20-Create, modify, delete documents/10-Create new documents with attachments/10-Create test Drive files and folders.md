@@ -15,11 +15,14 @@ Here's an example of what that might look like:
 
 In Drive, files and folders are identified by their individual IDs.  When the URL says something like ```/drive/folders/1HczxnMexotWE3H9z8aebZepvkla60UEzz```, the long string of numbers and letters refers to the current Drive **folder ID**:
 
-![image placeholder](/docs/api.png)
+![folder-id-in-url-1](/img/folder-id-in-url-1.png)
+
+![folder-id-in-url-2](/img/folder-id-in-url-2.png)
+
 
 Make note of the **Drive folder ID** in the URL for later.
 
-##
+
 
 ## File ID
 
@@ -39,6 +42,6 @@ Make note of the **Drive file ID** for [later](#heading=h.vllmj75wrdzj).  It and
 
 ## Next steps
 
-Use a Drive file to [create a new AODocs document with an attachment](src/Managing%20AODocs%20data/Creating,%20patching,%20and%20deleting%20documents/Creating%20new%20documents%20with%20attachments/11-Create%20new%20document%20and%20attach%20Drive%20file).
+Use a Drive file to [create a new AODocs document with an attachment](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file).
 
 ---

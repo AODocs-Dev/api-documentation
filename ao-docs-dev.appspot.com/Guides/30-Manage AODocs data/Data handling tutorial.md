@@ -484,7 +484,7 @@ In an out-of-domain case such as this, the file itself gets automatically duplic
 
 ##### Request
 
-Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ````libraryId```` **in the request body**, not in the query string.  Same thing for the **optional** ````classId````, ````title````, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[`folderAodocsId]```` (target AODocs folder ID).
+Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ````libraryId```` **in the request body**, not in the query string.  Same thing for the **optional** ````classId````, ````title````, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[folderAodocsId]``` (target AODocs folder ID).
 
     Provide the ```fileId`` inside one of the two array fields in the request body:
 

@@ -54,7 +54,12 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 
 ### Request
 
-Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ````libraryId```` **in the request body**, not in the query string.  Same thing for the **optional** ````classId````, ````title````, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[`folderAodocsId]```` (target AODocs folder ID).
+Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ````libraryId```` **in the request body** instead of in the query string.  Same thing for the **optional** ````classId````, ````title````, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[folderAodocsId]``` (target AODocs folder ID).  In the API Explorer, the folders array is represented like this:
+
+![folders-array.png](/img/folders-array.png)
+
+![folders-array-2.png](/img/folders-array-2.png)
+
 
 Provide the ```fileId``` inside one of the two array fields in the request body:
 
