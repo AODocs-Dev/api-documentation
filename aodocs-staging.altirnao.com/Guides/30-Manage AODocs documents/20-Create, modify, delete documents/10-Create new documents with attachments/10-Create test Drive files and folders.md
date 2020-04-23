@@ -13,7 +13,7 @@ Here's an example of what that might look like:
 
 ## Folder ID
 
-In Drive, files and folders are identified by their individual IDs.  When the URL says something like ```<code>/drive/folders/<strong>1HczxnMexotWE3H9z8aebZepvkla60UEzz</strong></code>```, the long string of numbers and letters refers to the current Drive <strong>folder</strong> ID:
+In Drive, files and folders are identified by their individual IDs.  When the URL says something like ```/drive/folders/1HczxnMexotWE3H9z8aebZepvkla60UEzz```, the long string of numbers and letters refers to the current Drive **folder ID**:
 
 ![image placeholder](/docs/api.png)
 

@@ -68,7 +68,11 @@ For this method to do anything, you must specify the parts you want changed, and
 
 #### Example: Modify document with new/modified metadata
 
-For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
+For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  This will appear in the AODocs UI like this:
+
+![ricthtext-patch-ui.png](/doc/img/ricthtext-patch-ui.png)
+
+Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
 
 #### Sample request body (generic)
 
@@ -78,6 +82,7 @@ For example, in the request body, you can include some text in the ````richText`
   "title": "Hello-world-doc-001",
 }
 ```
+
 
 #### Example: Modify document with attachments
 
