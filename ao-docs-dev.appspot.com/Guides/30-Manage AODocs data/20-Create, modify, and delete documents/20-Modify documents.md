@@ -1,4 +1,4 @@
-# Modifying documents
+# Modify documents
 
 In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource.  Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
 

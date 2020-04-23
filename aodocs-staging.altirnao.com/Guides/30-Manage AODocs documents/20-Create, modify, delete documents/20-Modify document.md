@@ -185,10 +185,4 @@ Response fields of note:
 }
 ```
 
-### Example screenshots from the document page in the UI
-
-You can confirm that the change actually took place by looking at the title and description field of the target document in the UI:
-
-![image placeholder](/img/api.png)
-
 ---
