@@ -1,29 +1,29 @@
 # Overview
 
-We put the most useful API methods together into a sequence you can follow in the [API portal](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) to acquire the know-how needed to accomplish the most common data-handling goals, as well as to gain the confidence to tackle more advanced API tasks, including configuration and administration.
+We put the most useful data-handling API methods together into a loose sequence you can follow in the [API portal](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put).  Or you can pick and choose the parts that help you accomplish your immediate goals with AODocs.
 
-> ⭑   **Note**: Note: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI.  Use the one that suits your needs, or you can do them both to understand how they map to each other.
+> ⭑   **Note**: Note: You can perform most of the tasks in this tutorial either using the API or on your homepage in the AODocs user interface (UI).  Use the one that suits your needs, or you can do them both to understand how they map to each other.
 
 ## Before you begin
 
-If you haven't yet, make sure you familiarize yourself with the [basic terminology of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, [create some test files and folders](#heading=h.x1k4y4foz0cu) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
+If you haven't yet, make sure you familiarize yourself with the [key concepts of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, part of this section is devoted to help you [create some test files and folders](#heading=h.x1k4y4foz0cu) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
 
 ## What you'll do
 
-In this tutorial you'll port some Drive files to become attached to AODocs **documents** inside some AODocs **libraries**.  Once attached, you'll create/add/patch/update/delete **documents**, **attachments**, **properties**, and **metadata**.  Whenever appropriate, for each task, you'll get a link to the specific part of the API portal needed to accomplish the task.
+If you follow the sequence in this section, you'll port some Drive files to become attached to AODocs **documents** inside some AODocs **libraries**.  Once attached, you'll create/add/patch/update/delete **documents**, **attachments**, **properties**, and **metadata**.  Whenever appropriate, for each task, you'll get a link to the specific part of the API portal needed to accomplish the task.
 
-> ⭑   **Note**: Note: We recommend following all the steps in sequence, as they mostly depend on the previous steps.
+> ⭑   **Note**: We recommend following the sequence as some steps depend on previous steps.
 
 The list of steps is as follows:
 
-*   Getting the required IDs (Get AODocs library info / list all available libraries)
-    *   Libraries
-        * [List all available AODocs libraries (full)](#heading=h.vxpu1a1fihqk)
-        * [List all available AODocs libraries (plain)](#heading=h.l3tpn8bxn8c)
-        * [Get a specific library by ID](#heading=h.sgixsybfrj2a)
+*   Get library and class info
+    *   [Libraries](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Libraries)
+        * List all available AODocs libraries (full)
+        * List all available AODocs libraries (plain)
+        * Get a specific library by ID
     *   Classes
-        * [List all available classes in a specific library](#heading=h.z5cmdwh1c18a)
-        * [Get a specific class by ID](#heading=h.sdm6hvqbjhiq)
+        * [List all available classes in a specific library]
+        * [Get a specific class by ID]
 *   Creating, patching, and deleting documents
     *   Creating new documents with attachments
         * [Create test Drive folder and some files to work with as attachments](#heading=h.x1k4y4foz0cu)
