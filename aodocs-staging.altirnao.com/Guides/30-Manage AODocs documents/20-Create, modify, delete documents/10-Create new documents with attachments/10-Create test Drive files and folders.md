@@ -25,7 +25,11 @@ Make note of the **Drive folder ID** in the URL for later.
 
 To get the URL to display the **file** ID of the **file** that's currently open, click on the More options" menu (**⁝**), then on "Open in new window":
 
+![file-id-open-in-new-window-menu.png](/img/file-id-open-in-new-window-menu.png)
+
 Now the URL lists the Drive **file** ID (as opposed to **folder** ID):
+
+![file-id-in-ui](/img/file-id-in-ui.png)
 
 > ⭑   **Note**: Note: Certain Drive files such as Google Forms require an additional step of clicking on ```Edit``` (pencil icon usually in the bottom right of the page) and open the file in yet another view.  Only then does the URL display the proper file ID.
 
