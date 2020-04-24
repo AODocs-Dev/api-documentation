@@ -1,10 +1,7 @@
-# Introduction to AODocs resources
+# Overview
 
 
-## Key concepts
-
-
-### Resources
+## Resources
 
 An AODocs **object** such as a document or a library is a logical grouping of metadata arranged to serve an organizational purpose.
 
@@ -23,7 +20,7 @@ The fields of a representation include, but are not limited to the following:
 *   a listing of any subresources (if applicable)
 
 
-#### An example resource (library)
+### An example resource (library)
 
 ```json
 {
@@ -53,20 +50,20 @@ The fields of a representation include, but are not limited to the following:
 }
 ```
 
-### Non-resources
+## Non-resources
 
 
-#### Subresources
+### Subresources
 
 In AODocs APIs, a **subresource** is an **attribute** of a resource.  It is resource-like only in that it has a schema and can be represented in JSON.  However, no methods operate on it directly, and it cannot exist on its own, without its parent resource.  ```ApiPermission``` and ```ApiLibraryPermission``` are good examples of subresources: you can alter them only as part of the resource they belong to.
 
 
-#### Collections
+### Collections
 
 An AODocs **collection** is a **list** of resources or subresources.  It is not a resource by itself in the context of AODocs APIs.  What makes a collection meaningful is what it lists.  A list of documents (```ApiDocumentList```) is one example of a resource collection.  A list of libraries (```ApiLibraryList```) is another.  Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
 
 
-### Collections vs. resources vs. subresources
+## Collections vs. resources vs. subresources
 
 One way to explore what makes a collection different from a resource or a subresource is to use the example of permissions.  Permissions are subresources that can be listed both as a collection or as part of a resource.  Both the ```ApiLibraryPermissionsList``` and the ```ApiLibrary``` resource contain an array field of permissions: the former exclusively, the latter as part of its larger construct.
 
@@ -128,10 +125,10 @@ The server parses your abridged _request resource_, maps your fields to the fiel
 ## Common AODocs resources and collections
 
 
-### [Resource: ApiDocument](https://drive.google.com/a/altirnao.com/open?id=1qEfeA1tumsILjYzeFxdUQlApuEokxajKYrewOBjtU9U) (an AODocs document)
+[Resource: ApiDocument](https://drive.google.com/a/altirnao.com/open?id=1qEfeA1tumsILjYzeFxdUQlApuEokxajKYrewOBjtU9U) (an AODocs document)
 
 
-### [Collection: ApiLibraryList](https://drive.google.com/a/altirnao.com/open?id=1RUPR8U3qTwLpJECQrkhJitje4v56g2YzO-Pfkngk9TI) (a list of libraries)
+[Collection: ApiLibraryList](https://drive.google.com/a/altirnao.com/open?id=1RUPR8U3qTwLpJECQrkhJitje4v56g2YzO-Pfkngk9TI) (a list of libraries)
 
-### [Resource: ApiDocumentType](https://drive.google.com/a/altirnao.com/open?id=12jt__svbizg-W9fWr0fD3_qAiMfwLQwZZujFhMiiId0) (the class (type) of an AODocs document)
+[Resource: ApiDocumentType](https://drive.google.com/a/altirnao.com/open?id=12jt__svbizg-W9fWr0fD3_qAiMfwLQwZZujFhMiiId0) (the class (type) of an AODocs document)
 
