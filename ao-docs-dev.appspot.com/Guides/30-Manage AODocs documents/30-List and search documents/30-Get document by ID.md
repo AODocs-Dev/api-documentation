@@ -4,6 +4,7 @@ You can retrieve (the configuration of) a specific document to parse something f
 
 > ⭑   **Note**: Note: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
+
 ## Method and API
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
@@ -14,11 +15,11 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 ### Request
 
-Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```` not a Drive ````fileId````.
+Only ```documentId``` is mandatory, and it must be an AODocs ```documentId``` not a Drive ```fileId```.
 
 ### Sample request (asking for a full resource)
 
-```
+```yaml
 GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
@@ -26,7 +27,7 @@ If you need only some of the fields of the extensive ApiDocument resource to com
 
 ### Sample request (partial resource)
 
-```
+```yaml
 GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
 ```
 
