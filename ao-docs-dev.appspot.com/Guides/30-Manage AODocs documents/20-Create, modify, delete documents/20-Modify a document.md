@@ -1,4 +1,4 @@
-# Modifying documents
+# Modify a document
 
 In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource.  Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
 
@@ -115,7 +115,7 @@ Therefore, if you do not need to change anything to do with attachments, do not 
 > 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response).  This is the same result as sending a ```GET``` request to get a document.  This way you always have an up-to-date listing of what the target resource looks like on the server.  Read the array field(s) you need, and feed the fields into your next request.
 
 
-> ⭑   **Note**: Note: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
+> ⭑   **Note**: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
 
 #### Sample request body (```attachments``` non-empty)
 
