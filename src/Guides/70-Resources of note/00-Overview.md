@@ -36,7 +36,7 @@ The fields of a representation include, but are not limited to the following:
     "lastConfigModified": "1556010506520",
     "createdAt": "1435948376818",
     "daysBeforeDelete": 30,
-    "welcomeText": "&lt;p>Hello world!&lt;/p>",
+    "welcomeText": "<p>Hello world!</p>",
     "storageAdmin": "aodocs-aodocs@test.altirnao.com",
 },
 "documentTypes": {

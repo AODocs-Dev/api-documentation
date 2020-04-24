@@ -54,9 +54,6 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Play with the [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch) and note the code examples (such as cURL and Java):
 
-```http
-PATCH /document/v1/{documentId}
-```
 
 ```yaml
 PATCH /document/v1/{documentId}
@@ -89,7 +86,7 @@ Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will ch
 
 #### Sample request body (generic)
 
-```
+```json
 {
   "richText": "This is my <b>Hello world!</b> document.",
   "title": "Hello-world-doc-001",
@@ -99,9 +96,7 @@ Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will ch
 
 #### Example: Modify document with attachments
 
-Attachments are represented in the ```ApiDocument``` resource as an array field (see preceding
-
-[warning](#heading=h.uagnrz4vz8kz)).  As with any other field, when the field is sent to the server, its contents will ```PATCH`` (overwrite) the contents of the corresponding field on the target resource residing on the server.
+Attachments are represented in the ```ApiDocument``` resource as an array field (see preceding warning under "Modifying array fields").  As with any other field, when the field is sent to the server, its contents will ```PATCH`` (overwrite) the contents of the corresponding field on the target resource residing on the server.
 
 To alter what files are currently attached to your document, use the array field called ````attachments```` in the body of the request.  This array field holds the file ID(s) of Drive files you want to become the current attachments to your document.
 
@@ -130,21 +125,22 @@ When you send the  ```attachments``` array field filled out with file ID(s), you
 
  To keep any current attachments in your DMS document, you must explicitly state them here.  Also, if you want to keep their existing ordering, then you also must specify them in that order.
 
-```
+```yaml
 PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
+```
 
+```json
 {
   "attachments": // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
 
-[
-  {
-    "fileId": "1s1uFfWGHPZ0fUpvwdT-oCsrY7G9QndAU"
-  },
-  {
-    "fileId": "1QvvRHbXmLYlB66ZZf-fzoTVVDYfrNxO0"
-  }
-]
-
+  [
+    {
+      "fileId": "1s1uFfWGHPZ0fUpvwdT-oCsrY7G9QndAU"
+    },
+    {
+      "fileId": "1QvvRHbXmLYlB66ZZf-fzoTVVDYfrNxO0"
+    }
+  ]
 }
 ```
 
@@ -152,9 +148,11 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 In DMS, this is how you detach ("delete") attachments all at once.  The (ex-)attachments are still owned by the storage account.  With no parent document, however, no reference to them exists in either AODocs libraries or in Drive (except in logs).  To regain access to them you need the intervention of a domain administrator.
 
-```
+```yaml
 PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
+```
 
+```json
 {
   "attachments": []  // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets (empty square brackets means all attachments get detached!)
 }
@@ -162,12 +160,14 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 #### Sample request body (with ```attachments``` array field not included)
 
-```
+```yaml
 PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
+```
 
+```json
 {
-  // not including the attachments array field keeps attachments as they are, unmodified
-}
+}   // not including the attachments array field in the body keeps attachments as they are, unmodified
+
 ```
 
 ### Response
@@ -177,11 +177,11 @@ The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs
 Response fields of note:
 
 *   ````title```` (whatever you set it to)
-*   ````richText```` (document's Description field; supports HTML tags like “`&lt;b>Hello&lt;/b> world!`”
+*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
 ### Sample response
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-stag-DMS-lib-001",

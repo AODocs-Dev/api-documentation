@@ -117,7 +117,7 @@ You can also locate the ````libraryId```` of your target library inside the AODo
 
 Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
-```<code>/LibraryId_<strong>&lt;libraryId></strong>/</code>```
+```<code>/LibraryId_<strong><libraryId></strong>/</code>```
 
 ##### Example
 
@@ -765,7 +765,7 @@ For this method to do anything, you must specify the parts you want changed, and
 
 ###### Example: Patch document with new/modified metadata
 
-For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my &lt;b>Hello world!&lt;/b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
+For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
 
 ###### Sample request body (generic)
 
@@ -856,7 +856,7 @@ The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs
 Response fields of note:
 
 *   ````title```` (whatever you set it to)
-*   ````richText```` (document's Description field; supports HTML tags like “`&lt;b>Hello&lt;/b> world!`”
+*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
 ##### Sample response
 

@@ -159,7 +159,7 @@ The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs
 Response fields of note:
 
 *   ````title```` (whatever you set it to)
-*   ````richText```` (document's Description field; supports HTML tags like “`&lt;b>Hello&lt;/b> world!`”
+*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
 ### Sample response
 
