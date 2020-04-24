@@ -14,7 +14,7 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```` not a Drive ````fileId````.
 
-> ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
+> ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
 ### Sample request
 

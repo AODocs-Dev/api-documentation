@@ -14,11 +14,11 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```` not a Drive ````fileId````.
 
-> ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
+> ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
 ### Sample request
 
-```
+```yaml
 DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 
@@ -28,7 +28,7 @@ Because this is a deletion of a resource, there is no resource to return in the 
 
 ### Sample response
 
-```
+```yaml
 204
 ```
 ---

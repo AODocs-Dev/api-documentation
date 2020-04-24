@@ -26,7 +26,7 @@ Before you create a new empty document with one attachment, you **must know** th
 
 You also need the ````fileId```` of any Drive file that you want to attach to your document.  Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
 
-> ⭑   **Note**: Note: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
+> ⭑   **Note**: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
 
 Optionally, it's **good to know** your target class (what type of document this will be), but if you don't specify it, the document will automatically become of the same type as your target library's current default class.  Lastly, you should give a title to your new document.  If you don't, it'll get called "Untitled, which can get confusing.
 
@@ -42,7 +42,7 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 "folder":"AjaPv028i_mrOykI60KavWib2LTzSuYWr8"
 ```
 
-> ⭑   **Note**: Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
+> ⭑   **Note**: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
 > * You have to have ownership of each such file.
 > * You or your domain has to be whitelisted in the target domain.
 > * You have to have access to the target library.\
@@ -68,7 +68,7 @@ Provide the ```fileId``` inside one of the two array fields in the request body:
 
 If you attach a Drive file using ```attachments```, and then edit that attachment's content, the edits happen in the original Drive file because the attachment is a direct link to that file.
 
-> ⭑   **Note**: Note: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
+> ⭑   **Note**: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
 
 However, if you attach a Drive file using ```attachmentsToCopy```, that attachment is no longer the original file: it is a copy of it created during the attachment process.
 
@@ -98,7 +98,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 
-> ⭑   **Note**: Note: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
+> ⭑   **Note**: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
 
 ### Response
 
@@ -110,7 +110,7 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 
 ### Sample response
 
-> ⭑   **Note**: Note: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
+> ⭑   **Note**: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
 
 ```json
 {

@@ -2,7 +2,7 @@
 
 We put the most useful API methods together into a sequence you can follow in the [API portal](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) to acquire the know-how needed to accomplish the most common data-handling goals, as well as to gain the confidence to tackle more advanced API tasks, including configuration and administration.
 
-> ⭑   **Note**: Note: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI.  Use the one that suits your needs, or you can do them both to understand how they map to each other.
+> ⭑   **Note**: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI.  Use the one that suits your needs, or you can do them both to understand how they map to each other.
 
 ## Before you begin
 
@@ -12,7 +12,7 @@ If you haven't yet, make sure you familiarize yourself with the [basic terminolo
 
 In this tutorial you'll port some Drive files to become attached to AODocs **documents** inside some AODocs **libraries**.  Once attached, you'll create/add/patch/update/delete **documents**, **attachments**, **properties**, and **metadata**.  Whenever appropriate, for each task, you'll get a link to the specific part of the API portal needed to accomplish the task.
 
-> ⭑   **Note**: Note: We recommend following all the steps in sequence, as they mostly depend on the previous steps.
+> ⭑   **Note**: We recommend following all the steps in sequence, as they mostly depend on the previous steps.
 
 The list of steps is as follows:
 
@@ -417,7 +417,7 @@ To get the URL to display the **file** ID of the **file** that's currently open,
 
 Now the URL lists the Drive **file** ID (as opposed to **folder** ID):
 
-> ⭑   **Note**: Note: Certain Drive files such as Google Forms require an additional step of clicking on ```Edit``` (pencil icon usually in the bottom right of the page) and open the file in yet another view.  Only then does the URL display the proper file ID.
+> ⭑   **Note**: Certain Drive files such as Google Forms require an additional step of clicking on ```Edit``` (pencil icon usually in the bottom right of the page) and open the file in yet another view.  Only then does the URL display the proper file ID.
 
 Make note of the **Drive file ID** for [later](#heading=h.vllmj75wrdzj).  It and the **AODocs document ID** are the two most critical and commonly used pieces of identifying information in the **AODocs API**.
 
@@ -457,7 +457,7 @@ Before you create a new empty document with one attachment, you **must know** th
 
 You also need the ````fileId```` of any Drive file that you want to attach to your document.  Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
 
-> ⭑   **Note**: Note: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
+> ⭑   **Note**: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
 
 Optionally, it's **good to know** your target class (what type of document this will be), but if you don't specify it, the document will automatically become of the same type as your target library's current default class.  Lastly, you should give a title to your new document.  If you don't, it'll get called "Untitled, which can get confusing.
 
@@ -473,7 +473,7 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 "<strong>folder</strong>":"<strong>1jaPv028i_mrOykI60KavWib2LTzSuYWr8</strong>"
 ```
 
-> ⭑   **Note**: Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
+> ⭑   **Note**: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
 You have to have ownership of each such file.
 You or your domain has to be whitelisted in the target domain.
 You have to have access to the target library.
@@ -493,7 +493,7 @@ Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be atta
 
 If you attach a Drive file using ```attachments```, and then edit that attachment's content, the edits happen in the original Drive file because the attachment is a direct link to that file.
 
-> ⭑   **Note**: Note: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
+> ⭑   **Note**: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
 
 However, if you attach a Drive file using ```attachmentsToCopy```, that attachment is no longer the original file: it is a copy of it created during the attachment process.
 
@@ -522,7 +522,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
 }
 ```
 
-> ⭑   **Note**: Note: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
+> ⭑   **Note**: In the preceding sample request, note the ```attachments``` part in bold (or ```attachmentsToCopy``` if that's what you're using instead).  If you're attaching one or more Drive files, include this part, and list your attachments by ```fileId```.  If you're not attaching anything, remove this part altogether.
 
 ##### Response
 
@@ -534,7 +534,7 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 
 ##### Sample response
 
-> ⭑   **Note**: Note: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
+> ⭑   **Note**: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request.  The request identifies the original, the response identifies the copy.
 
 ```
 {
@@ -650,7 +650,7 @@ Play around with these two approaches using the AODocs [API Explorer](https://ap
 
 You can retrieve (the configuration of) a specific document to confirm it exists or to parse something from its metadata if you have its ````documentId````.
 
-> ⭑   **Note**: Note: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
+> ⭑   **Note**: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
 #### Method and API
 
@@ -678,7 +678,7 @@ If you need only some of the fields of the extensive ApiDocument resource to com
 GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libraryName%2CclassName%2ClibraryId%2CclassId%2Cid%2Ctitle%2CrichText
 ```
 
-> ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
+> ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
 ##### Response
 
@@ -799,7 +799,7 @@ Therefore, if you do not need to change anything to do with attachments, do not 
 > 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous patch operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response).  This is the same result as sending a ```GET``` request to get a document.  This way you always have an up-to-date listing of what the target resource looks like on the server.  Read the array field(s) you need, and feed the fields into your next request.
 
 
-> ⭑   **Note**: Note: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
+> ⭑   **Note**: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
 
 ###### Sample request body (```attachments``` non-empty)
 
@@ -899,7 +899,7 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```` not a Drive ````fileId````.
 
-> ⭑   **Note**: Note: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
+> ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
 ##### Sample request
 

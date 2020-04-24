@@ -2,7 +2,7 @@
 
 We put the most useful data-handling API methods together into a loose sequence you can follow in the [API portal](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put).  Or you can pick and choose the parts that help you accomplish your immediate goals with AODocs.
 
-> ⭑   **Note**: Note: You can perform most of the tasks in this tutorial either using the API or on your homepage in the AODocs user interface (UI).  Use the one that suits your needs, or you can do them both to understand how they map to each other.
+> ⭑   **Note**: You can perform most of the tasks in this tutorial either using the API or on your homepage in the AODocs user interface (UI).  Use the one that suits your needs, or you can do them both to understand how they map to each other.
 
 ## Before you begin
 
