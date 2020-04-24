@@ -6,7 +6,7 @@ We put the most useful data-handling API methods together into a loose sequence 
 
 ## Before you begin
 
-If you haven't yet, make sure you familiarize yourself with the [key concepts of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, if you don't follow this section in sequence, one page is devoted to help you [create some test files and folders](#heading=h.x1k4y4foz0cu) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
+If you haven't yet, make sure you familiarize yourself with the [key concepts of the AODocs universe](https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms).  Also, if you don't follow this section in sequence, one page is devoted to help you [create some test files and folders](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders) to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.
 
 ## What you'll do
 
@@ -26,15 +26,14 @@ The list of steps is as follows:
         * Get a specific class by ID
 *   Create, modify, delete documents
     *   Creating new documents with attachments
-        * [Create test Drive folder and some files to work with as attachments](#heading=h.x1k4y4foz0cu)
-        * [Create a new document and attach a Drive file](#heading=h.vllmj75wrdzj)
-        * [Get a document by ID (like the one you've just created)](#heading=h.who3eqr2ftgr)
-    * [Patching document's metadata and attachments](#heading=h.rplwmpu4br0n)
-    *   [Delete document](#heading=h.rplwmpu4br0n)
+        * [Create test Drive folder and some files to work with as attachments](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders)
+        * [Create a new document and attach a Drive file](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file)
+    * [Modify a document's metadata and attachments](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20a%20document)
+    *   [Delete document](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Delete%20document)
 *   Further:
     *   categories
     *   versions
     *   relations (should be for a more advanced tutorial)
     * [attachmentsToCopy](#heading=h.eqmetzsyjltr)
 
-Let's [get started](docs/src/Managing AODocs data/01-Getting required IDs/Libraries/02-Libraries-intro)!
+Let's [get started](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/00-Overview)!

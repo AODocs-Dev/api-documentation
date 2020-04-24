@@ -18,7 +18,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 
 ### Sample request
 
-```
+```yaml
 DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 
@@ -28,7 +28,7 @@ Because this is a deletion of a resource, there is no resource to return in the 
 
 ### Sample response
 
-```
+```yaml
 204
 ```
 ---
