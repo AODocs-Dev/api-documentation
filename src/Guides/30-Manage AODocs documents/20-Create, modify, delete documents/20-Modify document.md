@@ -158,14 +158,6 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 }
 ```
 
-```json
-{
-  // removes all current links to Drive files and replaces them with whatever is specified in the square brackets (empty square brackets means all attachments get detached!)
-  "attachments": []
-}
-```
-
-
 #### Sample request body (with ```attachments``` array field not included)
 
 ```yaml
