@@ -78,7 +78,7 @@ folders:
         - 10-Get library and class info
         - 20-Create, modify, delete documents
         - 30-List and search documents
-        - 40-Document workflow transitions
+        # - 40-Document workflow transitions
         folders:
           10-Get library and class info:
             ordering:

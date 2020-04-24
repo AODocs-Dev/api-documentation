@@ -79,92 +79,37 @@ You can get a library's list of permissions in two ways:
 
 The result looks the same in both cases:
 
-
-    {
-
-
+```json
+{
     "kind": "aodocs#libraryPermissionList",
-
-
     "permissions": [
-
-
-     {
-
-
-      "kind": "aodocs#libraryPermission",
-
-
-      "type": "user",
-
-
-      "role": "admin",
-
-
-      "value": "martin@test.altirnao.com",
-
-
-      "withLink": false,
-
-
-      "name": "Martin",
-
-
-     },
-
-
-     {
-
-
-      "kind": "aodocs#libraryPermission",
-
-
-      "type": "user",
-
-
-      "role": "admin",
-
-
-      "value": "aodocs.max@test.altirnao.com",
-
-
-      "withLink": false,
-
-
-      "name": "AODocs Files",
-
-
-     },
-
-
-     {
-
-
-      "kind": "aodocs#libraryPermission",
-
-
-      "type": "user",
-
-
-      "role": "admin",
-
-
-      "value": "bob@altirnao.com",
-
-
-      "withLink": false,
-
-
-      "name": "Bob",
-
-
-     }
-
-
-    ]
-
-
+    {
+        "kind": "aodocs#libraryPermission",
+        "type": "user",
+        "role": "admin",
+        "value": "martin@test.altirnao.com",
+        "withLink": false,
+        "name": "Martin",
+    },
+    {
+        "kind": "aodocs#libraryPermission",
+        "type": "user",
+        "role": "admin",
+        "value": "aodocs.max@test.altirnao.com",
+        "withLink": false,
+        "name": "AODocs Files",
+    },
+    {
+        "kind": "aodocs#libraryPermission",
+        "type": "user",
+        "role": "admin",
+        "value": "bob@altirnao.com",
+        "withLink": false,
+        "name": "Bob",
     }
+]
+}
+```
 
 > **Note**: By definition, a collection contains at least one **array field**.  And, unlike subresources, it is used by at least one method.
 
@@ -183,19 +128,10 @@ The server parses your abridged _request resource_, maps your fields to the fiel
 ## Common AODocs resources and collections
 
 
-### [Resource: ApiDocument](https://drive.google.com/a/altirnao.com/open?id=1qEfeA1tumsILjYzeFxdUQlApuEokxajKYrewOBjtU9U)
-
-An AODocs document
+### [Resource: ApiDocument](https://drive.google.com/a/altirnao.com/open?id=1qEfeA1tumsILjYzeFxdUQlApuEokxajKYrewOBjtU9U) (an AODocs document)
 
 
-### [Collection: ApiLibraryList](https://drive.google.com/a/altirnao.com/open?id=1RUPR8U3qTwLpJECQrkhJitje4v56g2YzO-Pfkngk9TI)
+### [Collection: ApiLibraryList](https://drive.google.com/a/altirnao.com/open?id=1RUPR8U3qTwLpJECQrkhJitje4v56g2YzO-Pfkngk9TI) (a list of libraries)
 
-A list of libraries
+### [Resource: ApiDocumentType](https://drive.google.com/a/altirnao.com/open?id=12jt__svbizg-W9fWr0fD3_qAiMfwLQwZZujFhMiiId0) (the class (type) of an AODocs document)
 
-
-### [Resource: ApiDocumentType](https://drive.google.com/a/altirnao.com/open?id=12jt__svbizg-W9fWr0fD3_qAiMfwLQwZZujFhMiiId0)
-
-The class (type) of an AODocs document
-
-
-<!-- Docs to Markdown version 1.0β19 -->

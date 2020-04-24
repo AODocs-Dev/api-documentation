@@ -1,4 +1,3 @@
-# This is a custom documentation page
----
+# Placeholder title
 
-Content will be fully customizable.
+Placeholder
