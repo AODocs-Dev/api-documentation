@@ -1,6 +1,5 @@
 # Overview
 
-
 ## Resources
 
 An AODocs **object** such as a document or a library is a logical grouping of metadata arranged to serve an organizational purpose.
@@ -115,7 +114,7 @@ The result looks the same in both cases:
 
 An AODocs resource lives on the resource server.  You interact with the resource by sending requests to the server to operate on it.  The server performs the requested operation and sends back the result.
 
-Most of the time, you include in your request a subset of the resource.  For example, if you need to _write_ to a resource (with ```PUT``` or ```PATCH```), you send an abridged representation of the resource in question (such as ```ApiDocument```) to the server, specifying just the parts you want altered.
+Most of the time, you include in your request a partial resource, a subset of its contents.  For example, if you need to _write_ to a resource (with ```PUT``` or ```PATCH```), you send an abridged representation of the resource in question (such as ```ApiDocument```) to the server, specifying just the parts you want altered.
 
 If you are retrieving a resource as part of a ```GET``` operation (read-only), the resource you send to the server is even smaller, specifying mostly just the fields that identify the resource you want.
 
