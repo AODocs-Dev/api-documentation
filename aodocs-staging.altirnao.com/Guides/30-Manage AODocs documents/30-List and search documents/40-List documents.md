@@ -12,6 +12,11 @@
 
 ![**Note**: This is available only to library administrators.](https://lingtalfi.com/services/pngtext?color=E1F5F6&size=12&text=**Note**%3A%20This%20is%20available%20only%20to%20library%20administrators.)
 
+![**Note**: This is available only to library administrators.](https://lingtalfi.com/services/pngtext?background-color=E1F5F6&size=12&text=**Note**%3A%20This%20is%20available%20only%20to%20library%20administrators.)
+
+![**Note**: This is available only to library administrators.](https://lingtalfi.com/services/pngtext?bg-color=E1F5F6&size=12&text=**Note**%3A%20This%20is%20available%20only%20to%20library%20administrators.)
+
+![**Note**: This is available only to library administrators.](https://lingtalfi.com/services/pngtext?bgcolor=E1F5F6&size=12&text=**Note**%3A%20This%20is%20available%20only%20to%20library%20administrators.)
 
 
 You can list documents associated with a particular library as follows.
