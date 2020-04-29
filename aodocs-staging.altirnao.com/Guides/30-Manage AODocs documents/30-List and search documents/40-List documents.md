@@ -2,17 +2,31 @@
 
 > **Note**: This is available only to library administrators.
 
-```diff
 
+```diff
++ this text is highlighted in green
+- this text is highlighted in red
 ```
 
-<em style="color: green;">// Add 1 to total and display in a paragraph</em>
-<strong style="color: blue;">document.write('&lt;p&gt;Sum: ' + (total + 1) + '&lt;/p&gt;');</strong></code></pre>
-
-&lt;em style=&quot;color: green;&quot;&gt;// Add 1 to total and display in a paragraph&lt;/em&gt;
-&lt;strong style=&quot;color: blue;&quot;&gt;document.write('&amp;lt;p&amp;gt;Sum: ' + (total + 1) + '&amp;lt;/p&amp;gt;');&lt;/strong&gt;&lt;/code&gt;&lt;/pre&gt;
-
-Some Markdown text with <span style="color:blue">some *blue* text</span>.
+RED APPLE (&#x1F34E;): 🍎
+GREEN APPLE (&#x1F34F;): 🍏
+BLUE HEART (&#x1F499;): 💙
+GREEN HEART (&#x1F49A;): 💚
+YELLOW HEART (&#x1F49B;): 💛
+PURPLE HEART (&#x1F49C;): 💜
+GREEN BOOK (&#x1F4D7;): 📗
+BLUE BOOK (&#x1F4D8;): 📘
+ORANGE BOOK (&#x1F4D9;): 📙
+LARGE RED CIRCLE (&#x1F534;): 🔴
+LARGE BLUE CIRCLE (&#x1F535;): 🔵
+LARGE ORANGE DIAMOND (&#x1F536;): 🔶
+LARGE BLUE DIAMOND (&#x1F537;): 🔷
+SMALL ORANGE DIAMOND (&#x1F538;): 🔸
+SMALL BLUE DIAMOND (&#x1F539;): 🔹
+UP-POINTING RED TRIANGLE (&#x1F53A;): 🔺
+DOWN-POINTING RED TRIANGLE (&#x1F53B;): 🔻
+UP-POINTING SMALL RED TRIANGLE (&#x1F53C;): 🔼
+DOWN-POINTING SMALL RED TRIANGLE (&#x1F53D;): 🔽
 
 You can list documents associated with a particular library as follows.
 
