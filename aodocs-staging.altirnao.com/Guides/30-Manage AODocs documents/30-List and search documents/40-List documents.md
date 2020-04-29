@@ -4,128 +4,14 @@
 
 
 ```diff
-+ > **Note**: This is available only to library administrators.
-- > **Note**: This is available only to library administrators.
-! > **Note**: This is available only to library administrators.
-# > **Note**: This is available only to library administrators.
++ **Note**: This is available only to library administrators.
+- **Note**: This is available only to library administrators.
+! **Note**: This is available only to library administrators.
+# **Note**: This is available only to library administrators.
 ```
 
-```json
-> **Note**: This is available only to library administrators.
-```
+![**Note**: This is available only to library administrators.](https://lingtalfi.com/services/pngtext?color=E1F5F6&size=12&text=**Note**%3A%20This%20is%20available%20only%20to%20library%20administrators.)
 
-```json
-**Note**: This is available only to library administrators.
-```
-
----
-
-```html
-> **Note**: This is available only to library administrators.
-```
-
-```html
-**Note**: This is available only to library administrators.
-```
-
----
-
-```csharp
-> **Note**: This is available only to library administrators.
-```
-
-```csharp
-**Note**: This is available only to library administrators.
-```
-
----
-
-```css
-> **Note**: This is available only to library administrators.
-```
-
-```css
-**Note**: This is available only to library administrators.
-```
-
----
-
-```javascript
-> **Note**: This is available only to library administrators.
-```
-
-```javascript
-**Note**: This is available only to library administrators.
-```
-
----
-
-```java
-> **Note**: This is available only to library administrators.
-```
-
-```java
-**Note**: This is available only to library administrators.
-```
-
----
-
-```go
-> **Note**: This is available only to library administrators.
-```
-
-```go
-**Note**: This is available only to library administrators.
-```
-
----
-
-```scala
-> **Note**: This is available only to library administrators.
-```
-
-```scala
-**Note**: This is available only to library administrators.
-```
-
----
-
-```rust
-> **Note**: This is available only to library administrators.
-```
-
-```rust
-**Note**: This is available only to library administrators.
-```
-
----
-
-```http
-> **Note**: This is available only to library administrators.
-```
-
-```http
-**Note**: This is available only to library administrators.
-```
-
----
-
-```python
-> **Note**: This is available only to library administrators.
-```
-
-```python
-**Note**: This is available only to library administrators.
-```
-
----
-
-
-[https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World](https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World)
-
-![https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World](https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World)
-
-`#00ff00`
 
 
 You can list documents associated with a particular library as follows.
