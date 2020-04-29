@@ -2,18 +2,19 @@
 
 > **Note**: This is available only to library administrators.
 
+```diff
+
+```
+
+<em style="color: green;">// Add 1 to total and display in a paragraph</em>
+<strong style="color: blue;">document.write('&lt;p&gt;Sum: ' + (total + 1) + '&lt;/p&gt;');</strong></code></pre>
+
+&lt;em style=&quot;color: green;&quot;&gt;// Add 1 to total and display in a paragraph&lt;/em&gt;
+&lt;strong style=&quot;color: blue;&quot;&gt;document.write('&amp;lt;p&amp;gt;Sum: ' + (total + 1) + '&amp;lt;/p&amp;gt;');&lt;/strong&gt;&lt;/code&gt;&lt;/pre&gt;
+
 Some Markdown text with <span style="color:blue">some *blue* text</span>.
 
 You can list documents associated with a particular library as follows.
-
-<pre>
-    some text<span style="background-color:#780000;">
-    and some text
-    with a different background</span>
-    and some more text
-    </pre>
-
-
 
 ## Method and API
 
