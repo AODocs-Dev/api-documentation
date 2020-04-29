@@ -4,29 +4,129 @@
 
 
 ```diff
-+ this text is highlighted in green
-- this text is highlighted in red
++ > **Note**: This is available only to library administrators.
+- > **Note**: This is available only to library administrators.
+! > **Note**: This is available only to library administrators.
+# > **Note**: This is available only to library administrators.
 ```
 
-RED APPLE (&#x1F34E;): 🍎
-GREEN APPLE (&#x1F34F;): 🍏
-BLUE HEART (&#x1F499;): 💙
-GREEN HEART (&#x1F49A;): 💚
-YELLOW HEART (&#x1F49B;): 💛
-PURPLE HEART (&#x1F49C;): 💜
-GREEN BOOK (&#x1F4D7;): 📗
-BLUE BOOK (&#x1F4D8;): 📘
-ORANGE BOOK (&#x1F4D9;): 📙
-LARGE RED CIRCLE (&#x1F534;): 🔴
-LARGE BLUE CIRCLE (&#x1F535;): 🔵
-LARGE ORANGE DIAMOND (&#x1F536;): 🔶
-LARGE BLUE DIAMOND (&#x1F537;): 🔷
-SMALL ORANGE DIAMOND (&#x1F538;): 🔸
-SMALL BLUE DIAMOND (&#x1F539;): 🔹
-UP-POINTING RED TRIANGLE (&#x1F53A;): 🔺
-DOWN-POINTING RED TRIANGLE (&#x1F53B;): 🔻
-UP-POINTING SMALL RED TRIANGLE (&#x1F53C;): 🔼
-DOWN-POINTING SMALL RED TRIANGLE (&#x1F53D;): 🔽
+```json
+> **Note**: This is available only to library administrators.
+```
+
+```json
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```html
+> **Note**: This is available only to library administrators.
+```
+
+```html
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```csharp
+> **Note**: This is available only to library administrators.
+```
+
+```csharp
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```css
+> **Note**: This is available only to library administrators.
+```
+
+```css
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```javascript
+> **Note**: This is available only to library administrators.
+```
+
+```javascript
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```java
+> **Note**: This is available only to library administrators.
+```
+
+```java
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```go
+> **Note**: This is available only to library administrators.
+```
+
+```go
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```scala
+> **Note**: This is available only to library administrators.
+```
+
+```scala
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```rust
+> **Note**: This is available only to library administrators.
+```
+
+```rust
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```http
+> **Note**: This is available only to library administrators.
+```
+
+```http
+**Note**: This is available only to library administrators.
+```
+
+---
+
+```python
+> **Note**: This is available only to library administrators.
+```
+
+```python
+**Note**: This is available only to library administrators.
+```
+
+---
+
+
+[https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World](https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World)
+
+![https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World](https://lingtalfi.com/services/pngtext?color=cc0000&size=10&text=Hello%20World)
+
+`#00ff00`
+
 
 You can list documents associated with a particular library as follows.
 
