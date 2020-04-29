@@ -6,6 +6,14 @@ Some Markdown text with <span style="color:blue">some *blue* text</span>.
 
 You can list documents associated with a particular library as follows.
 
+<pre>
+    some text<span style="background-color:#780000;">
+    and some text
+    with a different background</span>
+    and some more text
+    </pre>
+
+
 
 ## Method and API
 
