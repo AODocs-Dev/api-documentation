@@ -2,6 +2,8 @@
 
 > **Note**: This is available only to library administrators.
 
+Some Markdown text with <span style="color:blue">some *blue* text</span>.
+
 You can list documents associated with a particular library as follows.
 
 
