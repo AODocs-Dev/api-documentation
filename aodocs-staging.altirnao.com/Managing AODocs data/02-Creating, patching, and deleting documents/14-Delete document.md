@@ -16,9 +16,9 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 
 > ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
-### Sample request
+### Sample Request
 
-```
+```yaml
 DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 

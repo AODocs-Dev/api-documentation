@@ -26,9 +26,9 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Only ````libraryId```` is mandatory.
 
-### Sample request
+### Sample Request
 
-```
+```yaml
 GET https://aodocs.altirnao.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmNN
 ```
 

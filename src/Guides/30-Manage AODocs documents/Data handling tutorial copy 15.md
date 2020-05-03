@@ -499,9 +499,9 @@ However, if you attach a Drive file using ```attachmentsToCopy```, that attachme
 
 All these fields correspond to fields in the [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the **request resource** map directly to the fields of the **server resource** which gets altered by the ````PUT```` **operation** before being sent back as a **response resource**.
 
-##### Sample request
+##### Sample Request
 
-```
+```yaml
 PUT https://aodocs.altirnao.com/api/document/v1
 
  {
@@ -600,9 +600,9 @@ This is a rather generic case: you would do this any time you specifically want 
 
 When you put together your request to create an AODocs document with an attachment, you can tell AODocs to make a physical copy of the original Drive file (with the same name but with AODocs as owner).  To do this, specify the ````fileId```` of a specific Drive file as attachment source inside the ````attachmentsToCopy```` array field in the request body **instead of** the usual ````attachments```` array field.
 
-#### Sample request
+#### Sample Request
 
-```
+```yaml
 PUT https://aodocs.altirnao.com/api/document/v1 \
 
 {
@@ -901,9 +901,9 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 
 > ⭑   **Note**: To get an AODocs document (including its ```documentId```) by the Drive ID of one of its attachments, use the ```GET /document/v1/drive/{driveId}``` method.
 
-##### Sample request
+##### Sample Request
 
-```
+```yaml
 DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 

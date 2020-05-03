@@ -16,9 +16,9 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 There are no mandatory or recommended parameters to send.
 
-### Sample request
+### Sample Request
 
-```
+```yaml
 PUT https://aodocs.altirnao.com/api/library/v1/plain
 ```
 
