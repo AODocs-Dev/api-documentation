@@ -143,9 +143,9 @@ Additional response fields to note:
 
 *   `name` (of the library)
 
-### Sample response
+### Sample Response
 
-```
+```json
   {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",

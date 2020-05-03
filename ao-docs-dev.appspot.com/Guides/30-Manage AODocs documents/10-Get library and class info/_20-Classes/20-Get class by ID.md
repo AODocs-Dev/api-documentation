@@ -37,9 +37,9 @@ Response fields of note:
 *   ```libraryId``` (of the library you searched)
 *   ```defaultClass``` (whether or not this is the library's default class)
 
-### Sample response
+### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#documentType",
   "id": "RnTbOft44KfZYkfBpV",

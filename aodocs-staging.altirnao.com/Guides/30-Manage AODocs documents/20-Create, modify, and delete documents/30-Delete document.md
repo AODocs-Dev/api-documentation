@@ -26,9 +26,9 @@ DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMod
 
 Because this is a deletion of a resource, there is no resource to return in the response.  The response returns an HTTP code of ```204 (NO CONTENT)```.
 
-### Sample response
+### Sample Response
 
-```
+```json
 204
 ```
 ---

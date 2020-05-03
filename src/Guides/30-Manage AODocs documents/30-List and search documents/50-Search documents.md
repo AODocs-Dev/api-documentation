@@ -36,9 +36,9 @@ Response fields of note:
 
 *   ````richText```` (document's Description field; supports HTML tags like ```<b>Hello</b> world!```; read more about editing this field in [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
-### Sample response
+### Sample Response
 
-```
+```json
 {
     "kind": "aodocs#documentList",
     "documentList": [

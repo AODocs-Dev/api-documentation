@@ -161,9 +161,9 @@ Response fields of note:
 *   ````title```` (whatever you set it to)
 *   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
-### Sample response
+### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-stag-DMS-lib-001",

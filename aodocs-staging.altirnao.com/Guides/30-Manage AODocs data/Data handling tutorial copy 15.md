@@ -84,9 +84,9 @@ Additional fields to note:
 *   ````favorited```` (whether or not the library is starred as a favorite)
 *   any other fields of interest
 
-##### Sample response
+##### Sample Response
 
-```
+```json
   {
   "kind": "aodocs#libraryList",
   "libraries": [
@@ -159,9 +159,9 @@ Additional response fields to note:
 
 #####
 
-##### Sample response
+##### Sample Response
 
-```
+```json
   {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
@@ -367,9 +367,9 @@ Response fields of note:
 *   ```libraryId``` (of the library you searched)
 *   ```defaultClass``` (whether or not this is the library's default class)
 
-##### Sample response
+##### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#documentType",
   "id": "RnTbOft44KfZYkfBpV",
@@ -615,9 +615,9 @@ PUT https://aodocs.altirnao.com/api/document/v1 \
 }
 ```
 
-#### Sample response
+#### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-dms-by-alt-on-test-001",
@@ -688,9 +688,9 @@ Response fields of note:
 
 *   ````richText```` (document's Description field; supports HTML tags like ```<b>Hello</b> world!```; read more about editing this field in [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
-##### Sample response
+##### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-stag-DMS-lib-001",
@@ -858,9 +858,9 @@ Response fields of note:
 *   ````title```` (whatever you set it to)
 *   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
-##### Sample response
+##### Sample Response
 
-```
+```json
 {
   "kind": "aodocs#document",
   "libraryName": "mfie-stag-DMS-lib-001",
@@ -911,9 +911,9 @@ DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMod
 
 Because this is a deletion of a resource, there is no resource to return in the response.  The response returns an HTTP code of ```204 (NO CONTENT)```.
 
-##### Sample response
+##### Sample Response
 
-```
+```json
 204
 ```
 
