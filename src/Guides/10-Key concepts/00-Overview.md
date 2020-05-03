@@ -12,6 +12,17 @@ The following diagram shows the interactions between the major components:
 
 ![architecture-diagram.png](/img/architecture-diagram.png)
 
+<figure>
+  <img src="/img/architecture-diagram.png" alt="sample image">
+  <figcaption>This caption should be used to describe the image.</figcaption>
+</figure>
+
+<figure class="screenshot">
+  <img src="/img/architecture-diagram.png" alt="sample image">
+  <figcaption>This caption should be used to describe the image.</figcaption>
+</figure>
+
+
 **Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
 
 
