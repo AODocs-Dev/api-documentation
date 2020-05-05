@@ -203,9 +203,9 @@ This flag allows write access to these two fields: it exists so that tools like 
    </td>
   </tr>
   <tr>
-   <td>RICH TEXT (like <code>description</code>)
+   <td>RICH TEXT (like <code>richText</code> AKA Description in the UI)
    </td>
-   <td>Text that is will be rendered as HTML
+   <td>Text that is rendered as HTML
    </td>
   </tr>
   <tr>
@@ -243,7 +243,7 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
 
 ```json
     {
-    "title": "mfie-new-doc-024",
+    "title": "my-new-doc-024",
     "libraryId": "RsjaTyH8w59078Zx7Dk",
     "fields": [
      {
@@ -264,11 +264,11 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
 
 <table>
   <tr>
-   <td>TYPE OF CUSTOM FIELD
+   <td><strong>TYPE OF CUSTOM FIELD</strong>
    </td>
-   <td>EXPECTED JSON FORMAT
+   <td><strong>EXPECTED JSON FORMAT</strong>
    </td>
-   <td>CAN BE MULTIVALUE?
+   <td><strong>CAN BE MULTIVALUE?</strong>
    </td>
   </tr>
   <tr>
@@ -322,7 +322,7 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
   <tr>
    <td>BOOLEAN
    </td>
-   <td>```true``` or ```false```
+   <td><code>true</code> or <code>false</code>
    </td>
    <td>No
    </td>
