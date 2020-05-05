@@ -180,7 +180,7 @@ Here's what it looks like when you try to authenticate using an invalid security
 
 
 
-## ____Additional HTTP status codes {: #custom_id }
+## ____Additional HTTP status codes
 
 
 *   List of errors **unique** to API:
