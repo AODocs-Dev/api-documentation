@@ -197,7 +197,7 @@ This flag allows write access to these two fields: it exists so that tools like 
    </td>
   </tr>
   <tr>
-   <td>TEXT (like ```title``` <pre>title</title> <code>title</code>)
+   <td>TEXT (like ```title``` <pre>title</pre> <code>title</code>)
    </td>
    <td>Text with no HTML parsing; you can add line breaks
    </td>
