@@ -13,9 +13,9 @@ Read more about [managing custom fields in the UI](https://support.aodocs.com/hc
 
 ## Limits
 
-Documents have a 1MB size limit, so any otherwise unlimited field like richText or custom fields of type TEXT must fit inside this restriction.
+Documents have a 1MB size limit, so any otherwise unlimited field like `richText` or custom fields of type `TEXT` must fit inside this restriction.
 
-Additionally, the ```title``` system field, as well as any other STRING fields have a 1500 byte limit.
+Additionally, the ```title``` system field, as well as any other `STRING` fields have a 1500 byte limit.
 
 
 ## Setting system and custom fields
@@ -31,17 +31,17 @@ In a document resource, system fields are top-level fields (not nested), and you
 #### Sample request
 
 ```yaml
-    PUT https://ao-docs.appspot.com/_ah/api/document/v1
+    PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
     {
     "title": "mfie-new-doc-023",
     "richText": "mfie-new-doc-023-richText",
-    "creationDate": "944002800000",
+    "creationDate": "123456789000",
     "initialAuthor": "0x0006@gmail.com",
     "updateAuthor": "0x0008@gmail.com",
-    "modificationDate": "944002890000",
+    "modificationDate": "987654321000",
     "setModifiedDate": true,
     "libraryId": "RsjaTyHw59078Zx7Dk"
     }
@@ -110,31 +110,27 @@ modification
   <tr>
    <td>updateAuthor
    </td>
-   <td>No, autopop*
-   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
-   <td>No, autopop*
-   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
   </tr>
   <tr>
    <td>modificationDate
    </td>
-   <td>No, autopop*
-   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
-   <td>No, autopop*
-   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
   </tr>
   <tr>
    <td>title
    </td>
-   <td>Yes**
+   <td>Yesᵇ
    </td>
    <td>Yes
    </td>
@@ -144,7 +140,7 @@ modification
    </td>
   </tr>
   <tr>
-   <td>```richText```
+   <td>richText
    </td>
    <td>Yes
    </td>
@@ -158,21 +154,21 @@ modification
 </table>
 
 
-* ```autopop``` means system populates the fields with current system values
+ᵃ ```autopop``` means system populates the fields with current system values
 
-** ```title``` is automatically populated as "Untitled" if left unspecified
+ᵇ ```title``` is automatically populated as "Untitled" if left unspecified
 
 
-##### Use case: setModifiedDate flag
+#### Use case: setModifiedDate flag
 
 When you update a document with the API, whether it's creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: ```modifiedDate``` and ```updateAuthor```.
 
 This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values.  For actions that have the requirement of preserving the ```modifiedDate``` and ```updateAuthor``` fields as is, explicitly pass their previous values along with your document changes and the ```setModifiedDate``` flag  set to ```true```.
 
-Sample request
+##### Sample request
 
 ```yaml
-    PUT https://ao-docs.appspot.com/_ah/api/document/v1
+    PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
@@ -195,13 +191,13 @@ Sample request
 
 <table>
   <tr>
-   <td>TYPE OF SYSTEM FIELD
+   <td><strong>TYPE OF SYSTEM FIELD</strong>
    </td>
-   <td>EXPECTED API FORMAT
+   <td><strong>EXPECTED API FORMAT</strong>
    </td>
   </tr>
   <tr>
-   <td>TEXT (like ```title```)
+   <td>TEXT (like ```title``` <pre>title</title> <code>title</code>)
    </td>
    <td>Text with no HTML parsing; you can add line breaks
    </td>
@@ -242,7 +238,7 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
 #### Sample request
 
 ```yaml
-    PUT https://ao-docs.appspot.com/_ah/api/document/v1
+    PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
