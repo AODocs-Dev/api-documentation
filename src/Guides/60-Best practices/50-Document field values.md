@@ -197,25 +197,25 @@ This flag allows write access to these two fields: it exists so that tools like 
    </td>
   </tr>
   <tr>
-   <td>TEXT (like ```title``` <pre>title</pre> <code>title</code>)
+   <td>TEXT (like <code>title</code>)
    </td>
    <td>Text with no HTML parsing; you can add line breaks
    </td>
   </tr>
   <tr>
-   <td>RICH TEXT (like ```description```)
+   <td>RICH TEXT (like <code>description</code>)
    </td>
    <td>Text that is will be rendered as HTML
    </td>
   </tr>
   <tr>
-   <td>DATETIME (like ```creationDate``` and ```modificationDate``` )
+   <td>DATETIME (like <code>creationDate</code> and <code>modificationDate</code> )
    </td>
    <td>Unix timestamp in milliseconds since the beginning of 1 January 1970, as a JSON string (will not accept integers)
    </td>
   </tr>
   <tr>
-   <td>PERSON (like ```initialAuthor``` and ```updateAuthor```)
+   <td>PERSON (like <code>initialAuthor</code> and <code>updateAuthor</code>)
    </td>
    <td>Any string value; we recommend valid Google account email addresses to benefit from the workflow features on these fields
    </td>
