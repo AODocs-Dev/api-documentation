@@ -12,9 +12,9 @@ The most useful methods to list and get libraries are the following:
 
 ---
 
-# List libraries and find target library ID for your documents
+# List libraries and find target library ID for your documents (v1)
 
-To list target libraries on your domain, select a target library for your AODocs documents to live in, and note the target library's unique identifier, ```libraryId```.
+To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library's unique identifier, ```libraryId```.
 
 ## Method and API
 
