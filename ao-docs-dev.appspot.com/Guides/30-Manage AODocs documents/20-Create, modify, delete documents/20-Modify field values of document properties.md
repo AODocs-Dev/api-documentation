@@ -1,4 +1,4 @@
-# Modifying field values of document properties
+# Modify field values of document properties
 
 AODocs documents are composed of metadata, including (but not limited to) system and custom properties defined as part of a specific document type (also known as class).
 

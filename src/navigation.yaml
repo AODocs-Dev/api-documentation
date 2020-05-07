@@ -117,8 +117,9 @@ folders:
             ordering:
             - 00-Overview
             - 10-Create new documents with attachments
-            - 20-Modify a document
-            - 30-Delete document
+            - 20-Modify field values of document properties
+            - 30-Modify document attachments
+            - 40-Delete document
             folders:
               10-Create new documents with attachments:
                 ordering:
@@ -146,13 +147,13 @@ folders:
       60-Best practices:
         ordering:
         - 00-Overview
-        - 10-Status codes and error types
+        - 10-HTTP status codes and error scenarios
         # - 20-HTTP status codes
-        - 20-Common error scenarios and fixes
-        - 30-Pagination principles
-        # - 40-Troubleshooting
-        - 40-Improve performance
-        - 50-Document field values
+        # - 20-Common error scenarios and fixes
+        # - 30-Pagination principles
+        # # - 40-Troubleshooting
+        # - 40-Improve performance
+        # - 50-Document field values
 
       70-Resources of note:
         ordering:
