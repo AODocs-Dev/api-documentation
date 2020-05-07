@@ -11,7 +11,7 @@ AODocs APIs are the under-the-hood mechanisms which let you issue direct request
 ## Architecture
 
 The following diagram shows the interactions between the major components:
-
+<!--
 ![architecture-diagram.png](/img/architecture-diagram.png)
 
 **Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
@@ -83,7 +83,7 @@ A Google Drive storage location that a specific user owns. Ownership of the cont
 
 **_OAuth 2.0_**
 
-The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
+The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens. -->
 
 ---
 
