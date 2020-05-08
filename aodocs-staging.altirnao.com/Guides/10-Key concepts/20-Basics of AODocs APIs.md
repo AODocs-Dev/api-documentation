@@ -53,7 +53,7 @@ manage the fluctuating usage.
  -->
 
 
-## Glossary
+<!-- ## Glossary
 
 The following terms define key components shown in Figure 1:
 
@@ -83,7 +83,7 @@ A Google Drive storage location that a specific user owns. Ownership of the cont
 
 **_OAuth 2.0_**
 
-The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens. -->
+The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens. --> -->
 
 ---
 
@@ -135,9 +135,9 @@ You interact with the API by asking the server to use simple HTTP operations (``
 
 You send these HTTP commands/requests to the resource server, and parse the responses that come back.  You can do this using the following methods:
 
-* in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com)
+* in person, manually, using the interactive [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 * using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
-* programmatically, using code (cURL, Java, etc.) to automate request/response interactions
+* programmatically, using code to automate request/response interactions
 
 On a high level, the interaction consists of three stages:
 
