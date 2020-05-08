@@ -1,4 +1,4 @@
-# Authenticate your users
+# Overview
 
 Every request sent to the AODocs **API** must include some method of authentication to verify the identity of a **Google user with access to AODocs**, and to authorize any activity done on their behalf. This is required regardless of whether the **API requestor** is a person manually interacting with the API portal; or a client app interacting on their behalf.
 
@@ -15,7 +15,7 @@ You can gain credentials to be authenticated with AODocs APIs in two ways, depen
 
 ### Security code
 
-This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall.  If you don't need access to Google Drive APIs, this is the quickest way to get started.  Read more about how to [access APIs with AODocs security code](https://drive.google.com/a/altirnao.com/open?id=1IL9vuBYtJGCqQmX4Ry-PqRrzjTM6QcjUpD7byNFXfJA).
+This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall.  If you don't need access to Google Drive APIs, this is the quickest way to get started.  Read more about how to [access APIs with AODocs security code](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Security%20code).
 
 
 ### Bearer tokens (access or ID tokens)
