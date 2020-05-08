@@ -62,10 +62,12 @@ Content-Type: application/json \
 ```
 
 ```http
+GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
+
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
 ```
-
+<!--
 ```html
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
@@ -89,13 +91,15 @@ Content-Type: application/json \
 ```erlang
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
-```
+``` -->
 
 ```scala
+GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
+
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
 ```
-
+<!--
 ```java
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
@@ -120,7 +124,7 @@ Content-Type: application/json \
 Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
 ```
-
+ -->
 
 
 ```json
