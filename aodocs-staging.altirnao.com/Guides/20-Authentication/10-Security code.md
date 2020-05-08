@@ -24,9 +24,10 @@ Read more about the [principle of least privilege](https://en.wikipedia.org/wiki
 
 #### Use case: Library isolation
 
-It is not possible to restrict a security code to access only a specific library (but not other libraries).  To get around this limitation, you should restrict access at the user level: that is, create a technical user in GSuite that has access only to the needed libraries and not to restricted ones.  Create a user-level security code for this user in order to access the API.  The user's access is already determined by this point, and the security code does not have to take care of any authorization nuances..  In effect, what you end up with is a user who has access to just one library.
+It is not possible to restrict a security code to access only a specific library (but not other libraries).  To get around this limitation, you should restrict access at the user level: that is, create a technical _user_ in GSuite that has access only to the needed libraries and not to restricted ones.  Create a user-level security code for this user in order to access the API.  The user's access is already determined by this point, and the security code does not have to take care of any authorization nuances..  In effect, what you end up with is a user who has access to just one library.
 
 This is a good pattern to use if you have an integration that needs access to a specific resource or collection.  It also minimizes pressure to reuse security codes that have scope that is broader than necessary.
+
 
 #### Use case: Domain-wide access
 
@@ -46,7 +47,6 @@ When you're playing with the API Explorer, it sends the security code you provid
 
 > ⭑   Note: We strongly recommend this method because query parameters get captured by web server logs, whereas headers do not.
 
-
 Send the security code in the header as follows:
 
 ```Authorization: securityCode [YOUR SECURITY CODE]```
@@ -61,11 +61,74 @@ Authorization: securityCode [YOUR_SECURITY_CODE] \
 Content-Type: application/json \
 ```
 
+```http
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```html
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```javascript
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```csharp
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```go
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```erlang
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```scala
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```java
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```python
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```ruby
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```php
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+```json
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+```
+
+
+
 ```json
 {
   "libraryId": "Rngc1ug8K6WmL3IjZ8"
 }
 ```
+
 
 If you've started working with the API client factory which we provide with the Java API client, [you can use this feature out of the box](https://github.com/AODocs-Dev/aodocs-api-java-clients/blob/master/aodocs-api-client-factory/src/main/java/com/altirnao/aodocs/api/client/AODocsApiClientFactory.java#L88).
 
@@ -83,16 +146,19 @@ Append the security code to the query as follows:
 #### Example request with security code as query parameter
 
 ```yaml
-  GET https://aodocs.altirnao.com/api/document/v1/RnTzVT2x5Sb48h3vSQ?securityCode=12345likemyluggage
+  GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?securityCode=12345likemyluggage
 ```
+
+
 
 ### Authentication errors with security codes
 
 Security code errors occur only when the security code is:
+
+
 
 *   missing
 *   incorrect
 *   expired
 
 To create, manage, and troubleshoot your security codes, see the [Manage security codes](https://support.aodocs.com/hc/en-us/articles/205650054-Manage-security-codes) article in the AODocs Knowledge Base.
-
