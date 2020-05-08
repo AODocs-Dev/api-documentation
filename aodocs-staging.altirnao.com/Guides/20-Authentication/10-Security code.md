@@ -87,16 +87,12 @@ Append the security code to the query as follows:
   GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?securityCode=12345likemyluggage
 ```
 
-
-
 ### Authentication errors with security codes
 
 Security code errors occur only when the security code is:
-
-
 
 *   missing
 *   incorrect
 *   expired
 
-To create, manage, and troubleshoot your security codes, see the [Manage security codes](https://support.aodocs.com/hc/en-us/articles/205650054-Manage-security-codes) article in the AODocs Knowledge Base.
+To create, manage, and troubleshoot your security codes, see the aforementioned [Manage security codes](https://support.aodocs.com/hc/en-us/articles/205650054-Manage-security-codes) article in the AODocs Knowledge Base.
