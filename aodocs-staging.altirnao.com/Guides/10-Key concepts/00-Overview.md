@@ -1,22 +1,16 @@
 # Overview
 
-Just like _manually_ with the AODocs UI, AODocs APIs let you _programmatically_ access, manage, and configure AODocs objects and their associated metadata, including libraries, classes, documents, attachments, and properties.
+AODocs APIs let you _programmatically_ access, manage, and configure AODocs objects and their associated metadata, including libraries, classes, documents, attachments, and properties.
 
-<!-- > ⭑   **Note**: A NOTE ABOUT SERVICE ACCOUNTS?   . -->
+Most of the features available to users accessing the AODocs UI through a web browser are also available with the AODocs API.
 
 The APIs also let you interact indirectly with some AODocs-related [Google Drive API](https://developers.google.com/drive/api/v3/about-sdk) functionality, including some mediated access to files and folders in Drive.
-
-## Architecture
 
 The following diagram shows the interactions between the major components:
 
 ![architecture-diagram.png](/img/architecture-diagram.png)
 
-
 **Figure 1**: AODocs architecture diagram (AODocs components in blue, Google components in gray)
-
-
-## Glossary
 
 The following terms define key components shown in Figure 1:
 
@@ -32,7 +26,7 @@ The REST API that allows you to leverage Google Drive storage from within your a
 
 The REST API that allows you to leverage AODocs functionality from within your app.
 
-**_Client app_**
+**_Third-party app_**
 
 An app that leverages AODocs APIs (and, indirectly, Google Drive APIs) as its document management and file storage solution.
 
@@ -46,7 +40,8 @@ A Google Drive storage location that a specific user owns. Ownership of the cont
 
 **_OAuth 2.0_**
 
-The authorization protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
+The protocol that Google Drive API requires to authenticate your app users. If your application uses [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in), it handles the OAuth 2.0 flow and application access tokens.
+
 
 ## Next steps
 
