@@ -176,11 +176,11 @@ If the server succeeds in fulfilling the request, it responds with a 200-series 
 
 If there was something wrong with the request or with the server's ability to perform the operation, the response comes back as a status code and JSON-formatted error message to help guide your next steps.
 
-##### Error handling and troubleshooting
+#### Error handling and troubleshooting
 
-The response provides a standard HTTP status code to indicate success, failure, or some other condition, and to guide the next steps.  Generally 200-299 (especially 200) means most everything went well, and anything greater than 299 means something went wrong.
+The response provides a standard HTTP status code to indicate success (2xx), failure (4xx), or some other condition (5xx), and an error message to guide the next steps.
 
-Read more in [HTTP status codes in AODocs APIs](https://docs.google.com/document/d/1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc/edit) to determine the type of issue and how to resolve it.
+Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
 
 
 ## Pagination
