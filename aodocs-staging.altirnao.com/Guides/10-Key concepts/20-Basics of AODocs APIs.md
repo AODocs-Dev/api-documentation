@@ -6,34 +6,15 @@ AODocs APIs are the under-the-hood mechanisms which let you issue direct request
 * create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
 * configure AODocs folders, roles, versions, and permissions
 
----
-
-## Architecture
-
-The following diagram shows the interactions between the major components:
-
 ## When to use Drive APIs vs. AODocs APIs
 
-### Summary
-
-To manage **Drive file content** — before or after attaching to AODocs — you can only use **[Drive APIs](https://developers.google.com/drive/api/v3/)**.
-
-
-> ⭑   Note: You can use any available version of Google Drive APIs.
-
-
-To **attach Drive files to AODocs documents**, you have to use both **Drive and AODocs** APIs together.
-
-To manage **folders and permissions**, you have to use either **Drive or AODocs** APIs, depending on what account owns the resource.
-
-To manage and configure **AODocs documents**, you can use only **AODocs APIs**.
-
-
-### Elaboration
 
 The purpose of **Drive** APIs is to upload, read, alter, copy, and download **Drive** files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents.
 
+> ⭑   Note: You can use any available version of Google Drive APIs.
+
 To attach **Drive** files to **AODocs** documents, you have to use **both Drive and AODocs APIs** together because they need to work in tandem to connect the two worlds.
+
 
 Once attached, you can do most things you need with only AODocs APIs: you will still use Drive APIs to perform any tasks related to the content of the attachments like reading, copying, and downloading Drive files; but you will use **AODocs APIs exclusively** for all tasks related to the **AODocs documents** wrapped around the Drive files, such as managing and configuring AODocs metadata, roles, and workflows.
 
@@ -47,9 +28,6 @@ Some of the concrete tasks you can perform with the AODocs APIs:
 
 To **manage folders** and **edit permissions**, use **either Drive or AODocs APIs** depending on which storage account has ownership of the file: Drive APIs for TF; AODocs APIs for DMS and SF.
 
-> ⭑   Note: It is not a common use case, but some of the things you can do with the `documentId` API can also be done using the ```driveId``` API by using attachment IDs instead of document IDs.
-
-Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.  Familiarizing yourself with [Common error scenarios]([click](https://drive.google.com/a/altirnao.com/open?id=1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc)) can help, and if it's something else altogether, it might be time to dive into some [Troubleshooting]([click](https://drive.google.com/a/altirnao.com/open?id=1UQ1fU7jGUJRi7BneQcA0OwQZ7nBEStfTGb9u0E1YRh8)).
 
 
 ---
@@ -78,8 +56,6 @@ On a high level, the interaction consists of three stages:
 
 You send a request containing the following information to the resource server:
 
-
-
 * **operation** to be performed (mandatory 100% of the time)
 * URI of the API **endpoint** (mandatory 100% of the time)
 * parameters (not all mandatory, and not all the time)
@@ -97,26 +73,6 @@ You send a request containing the following information to the resource server:
 * JSON request body containing specific **target resource fields** you want populated (sometimes mandatory depending on operation and resource)
 
 
-#### Operating on a resource (or "verbing a noun")
-
-AODocs APIs are designed around [principles of REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), allowing you to request, receive, and alter server resources (nouns) with a small number of standard, programming-language agnostic HTTP operation commands (verbs):
-
-* GET (retrieves)
-* PUT (inserts)
-* POST (creates)
-* DELETE (deletes)
-* PATCH (updates)
-
-These commands are variants of elemental HTTP operations of **c**reate, **r**etrieve, **u**pdate, or **d**elete — CRUD for short.   You send a request for the server to apply a CRUD operation to a resource (for example, `GET library` or `DELETE document`), and the server sends back the success/failure results.
-
-In AODocs, things are no different: you specify CRUD commands (**verbs**) along with pertinent _parameters_ as a request to the server to operate on your behalf on AODocs resources (**nouns**) to achieve the results you want.
-
-#### Parameters
-
-The parameters you send in the request define and focus the scope of what is to be operated on and how.  You provide parameters either because it is something the _server_ requires (for example, authentication, or unique identifiers of the resource you want to work on); or because it is something _you_ want (for example, to filter the bulk of the results down to a smaller, more readable subset).
-
-![Server needs vs. client wants](/img/server-needs-client-wants.png)
-
 
 ##### Types of parameters
 
@@ -128,10 +84,6 @@ There are generally three ways you can send parameters inside a request:
 * as a **query** parameter (```GET /library/v1?**documentId=abcd12345**```)
 * as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
 
-The way the resource server is implemented determines which part of the request should carry which piece of required information, but the design often conforms to certain common patterns of usage.
-
-For example, the server knows **auth tokens** are normally sent inside the **header** instead of as query parameters because the latter tend to get recorded and become visible in web server logs, presenting a security risk. For internal servers (test, staging, etc.), the server also knows to look for security codes in the query parameters (see following).
-
 Specific API names (like AODocs ```/search/v1/``` or ```/library/v1/``` APIs) are considered **path parameters**.  These parameters get outlined in the part of the URL before the ```?```.  The server expects to find target API names in the path.
 
 Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```, and the server has built-in mechanisms to parse this information.
@@ -142,78 +94,6 @@ The following query parameters exist globally across the API:
 * security code (auth mechanism)
 * fields query parameter (to filter results and improve performance)
 
-On the other hand, specific **resource fields** to be created or updated (sometimes mandatory) get sent as part of the request resource, in the **request body**., especially if the resource contains too many fields to write as query parameters.  The server knows how to take the request body and match and reconcile its fields with those of the target resource, performing the requested operations field-to-field.
-
-
-#### Sending parameters
-
-Take the base endpoint URI, and add to it any required specifics.  This includes, but is not limited to the following:
-
-* the resource
-* the resource ID
-* subresource
-* subresource ID
-* parameters
-
-Then issue an HTTP verb (CRUD command) to the newly-assembled URI:
-
-```
-HTTP-VERB base-endpoint/api/version/resource/{resourceId}/subresource/{subresourceId}?param1=vparam1val&param2=param2val
-```
-
-### Request examples
-
-Get a library by ID:
-
-```
-GET https://aodocs.altirnao.com/api/library/v1/{libraryId}?securityCode=12345likemyluggage
-```
-
-Search documents with specific view:
-
-```
-POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/views/{viewId}?include=NONE
-```
-
-
-#### Putting it all together: Constructing a request
-
-On a high level, your request is a bundle of pieces of text containing the following:
-
-
-
-* the operation you want the server to perform (such as ```GET``` or ```PUT```)
-* service endpoint
-* the name of the API to connect to on the server and its version
-* target resource (such as library, document, or class)
-* all the parameters the server needs to do the work
-* all the parameters that you want in order to get the results you want
-
-You can find the specifics of each of these in the API reference for each potential task you wish to perform.  For example, a request to [create a new document of a given class in a given library](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put) is composed of the following:
-
-
-
-* the operation (```PUT```)
-* the base endpoint (```https://aodocs.altirnao.com/api```)
-* the API and its version (```document/v1```)
-* the target resource of type ```ApiDocument``` (implied)
-* the parameter the server requires (```libraryId```)
-* client-desired parameters such as ```classId``` and ```title```
-
-
-#### Example request
-
-```http
-PUT https://aodocs.altirnao.com/api/document/v1
-```
-
-```json
-{
-    "libraryId": "RnTG8PD8u8ZqTuDVHcv",
-    "classId": "RnTf1mx835gaTJLzoFp",
-    "title":"My Important AODocs Document"
-}
-```
 
 ### Step 2: Server performs operation on the requested resource
 
@@ -229,20 +109,6 @@ If the resource server accepts your request, it then does the following:
     * the targeted resource (usually; one exception is after DELETE)
 
 For example, the server might apply a ```GET``` request to an ```ApiLibraryList``` resource/collection and return the resource/collection to the requesting party.
-
-
-#### Resources
-
-REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
-
-A resource type (such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented.  A representation of a resource is the (in our case JSON-formatted) instance of the schema above.  This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
-
-The client sends the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```.  Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
-
-> **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
-
-Read more about [AODocs resources](../70-Resources%20of%20note/00-Overview).
-
 
 
 ### Step 3: Server sends a response
@@ -268,22 +134,16 @@ If there was something wrong with the request or with the server's ability to pe
 
 The response provides a standard HTTP status code to indicate success, failure, or some other condition, and to guide the next steps.  Generally 200-299 (especially 200) means most everything went well, and anything greater than 299 means something went wrong.
 
-Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.  Familiarizing yourself with [Common error scenarios](https://drive.google.com/a/altirnao.com/open?id=1QtpGtWHZb8BfOZ9Abp0vxD1l7ZyGSgZuvMS7YQ3XvJc) can help, and if it's something else altogether, it might be time to dive into some [Troubleshooting](https://drive.google.com/a/altirnao.com/open?id=1UQ1fU7jGUJRi7BneQcA0OwQZ7nBEStfTGb9u0E1YRh8).
+Read more in [HTTP status codes in AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=10f3WLbxpce247fYG8qWKGIfzaUPtZjxh2l3tqeAWO6M) to determine the [type of issue](https://drive.google.com/a/altirnao.com/open?id=1AG_735FJv2x1EJSxchd3BQ1B-ZUVitUCsB8M3gITO4w) and how to resolve it.
 
+## Pagination
 
----
 
 ## Beta vs. v1 version
 
 Any version marked ```beta``` is still being developed and can change without notice.
 
----
 
-## Pagination
-
-TBD
-
----
 
 ## Next steps
 
