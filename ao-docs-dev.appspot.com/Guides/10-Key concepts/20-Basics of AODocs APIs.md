@@ -104,7 +104,11 @@ There are generally three ways you can send parameters inside a request:
 
 Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` ```?```, and this is where the server expects to find them.
 
+</em><code>)
+
 Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```.  The resource server has built-in mechanisms to parse this information.
+
+<code>)
 
 > 💡   Tip: The following query parameters exist globally across AODocs APIs:
 >
