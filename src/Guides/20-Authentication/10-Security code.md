@@ -22,14 +22,14 @@ Security codes can be generated for two levels of AODocs authorization:
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 
-#### Use case: Library isolation
+### Use case: Library isolation
 
 It is not possible to restrict a security code to access only a specific library (but not other libraries).  To get around this limitation, you should restrict access at the user level: that is, create a technical _user_ in GSuite that has access only to the needed libraries and not to restricted ones.  Create a user-level security code for this user in order to access the API.  The user's access is already determined by this point, and the security code does not have to take care of any authorization nuances..  In effect, what you end up with is a user who has access to just one library.
 
 This is a good pattern to use if you have an integration that needs access to a specific resource or collection.  It also minimizes pressure to reuse security codes that have scope that is broader than necessary.
 
 
-#### Use case: Domain-wide access
+### Use case: Domain-wide access
 
 In general, we recommend using levels of access that are as low as possible.  However, in certain cases, it makes sense to create a security code with **domain-admin levels of access**.  For example, you might have an auditing tool that needs to fetch all the audits for all the libraries.  Or you might have a dedicated integration between AODocs and an internal CRM, and you want to update some AODocs documents whenever something happens in the CRM.  Or any other **carefully designed and secured integration**.
 
@@ -49,7 +49,9 @@ When you're playing with the API Explorer, it sends the security code you provid
 
 Send the security code in the header as follows:
 
-```Authorization: securityCode [YOUR SECURITY CODE]```
+```yaml
+Authorization: securityCode [YOUR SECURITY CODE]
+```
 
 
 #### Example request with security code as header parameter
@@ -71,20 +73,21 @@ Content-Type: application/json \
 If you've started working with the API client factory which we provide with the Java API client, [you can use this feature out of the box](https://github.com/AODocs-Dev/aodocs-api-java-clients/blob/master/aodocs-api-client-factory/src/main/java/com/altirnao/aodocs/api/client/AODocsApiClientFactory.java#L88).
 
 
-### Not recommended: Send the security code as a query parameter
+### Not recommended: Sending the security code as a query parameter
 
 > ⭑   Note: Unless you are protected by a sandbox (such as the API Explorer), we recommend that you do not send your security code as a query parameter.  Query parameters tend to get recorded and become exposed in web server logs, ultimately presenting a security risk.
 
+To send the security code as a query parameter, append the security code to the query as follows:
 
-Append the security code to the query as follows:
-
-```securityCode=[YOUR SECURITY CODE]```
+```yaml
+securityCode=[YOUR SECURITY CODE]
+```
 
 
 #### Example request with security code as query parameter
 
 ```yaml
-  GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?securityCode=12345likemyluggage
+GET https://aodocs.altirnao.com/api/document/v1/Rn5...aBvSQ?securityCode=12345likemyluggage
 ```
 
 ### Authentication errors with security codes
