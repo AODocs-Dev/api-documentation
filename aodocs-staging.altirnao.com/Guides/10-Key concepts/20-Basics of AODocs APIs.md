@@ -43,13 +43,11 @@ AODocs APIs are designed around [principles of REST](https://cloud.google.com/ap
 
 *   in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 *   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
-*   programmatically, using code (cURL, Java, etc.) to automate request/response interactions
+*   programmatically, using code to automate request/response interactions
 
 The AODocs API shares a lot of similarities in its design with the Google APIs, so if you’re familiar with the various G Suite APIs (Drive, Calendar, GMail) you should be able to understand the AODocs API principles very quickly.
 
 On a high level, the interaction consists of three stages:
-
-
 
 1. request to perform an operation on a resource sent to the server
 2. operation performed server-side
@@ -57,15 +55,12 @@ On a high level, the interaction consists of three stages:
 
 ### Step 1: Client sends request to the server
 
-
 #### API Request structure
 
 You send a request containing the following information to the API server:
 
-
-
-*   URI of the API **endpoint** (mandatory)
-*   **Type of HTTP request **to be performed (mandatory)
+*   URL of the API **endpoint** (mandatory)
+*   **Type of HTTP request** to be performed (mandatory)
 *   Parameters (not all mandatory, and not all the time)
     *   Headers
         *   Authentication and authorization info
@@ -96,23 +91,22 @@ Different parts of the request naturally lend themselves to carrying certain kin
 
 There are generally three ways you can send parameters inside a request:
 
-*   as a **path** parameter (```GET /library/v1/**abcd12345**?include=NONE```)
-*   as a **query** parameter (```GET /library/v1?**documentId=abcd12345**```)
+*   as a **path** parameter (<code>GET /library/v1/<strong>abcd12345</strong>?include=NONE</code>)
+*   as a **query** parameter (<code>GET /library/v1?<strong>documentId=abcd12345</strong></code>)
+*   as a **path** parameter (```GET /library/v1/abcd12345?include=NONE```)
+*   as a **query** parameter (```GET /library/v1?documentId=abcd12345```)
 *   as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
 *   inside the header (```Authorization: Bearer &lt;token>```)
 
-Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` `````?````, and this is where the server expects to find them.
+Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` ```?```, and this is where the server expects to find them.
 
-Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the` ``?```.  The resource server has built-in mechanisms to parse this information.
-
+Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```.  The resource server has built-in mechanisms to parse this information.
 
 > 💡   Tip: The following query parameters exist globally across AODocs APIs:
-
-* domain
-* security code (authentication mechanism)
-* fields query parameter (to filter results and improve performance)
-
-
+>
+> * domain
+> * security code (authentication mechanism)
+> * fields query parameter (to filter results and improve performance)
 
 #### API resources
 
@@ -130,9 +124,7 @@ They are returned as **the response body** when a request is successful. Usually
 
 Read more about [AODocs resources](https://drive.google.com/a/altirnao.com/open?id=1k5JAfE2TbdDUbxUweDJNVPdT5nf40pL8kCu1Ies8BQY).
 
-
 #### Creating a document
-
 
 ```yaml
 PUT https://aodocs.altirnao.com/api/document/v1
