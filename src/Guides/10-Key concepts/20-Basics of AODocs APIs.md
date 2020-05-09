@@ -183,6 +183,9 @@ The response provides a standard HTTP status code to indicate success (2xx), fai
 Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
 
 
+<a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios" target="_blank">HTTP status codes in AODocs APIs</a>
+
+
 ## Pagination
 
 Pagination comes into play when dealing with resource collections, since the results are often longer than a single page.  Read more in [Performance: filtering and paginating results](https://docs.google.com/document/d/1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI/edit#).
