@@ -91,16 +91,27 @@ Different parts of the request naturally lend themselves to carrying certain kin
 
 There are generally three ways you can send parameters inside a request:
 
+BOLD:
+
 *   as a **path** parameter (<code>GET /library/v1/<strong>abcd12345</strong>?include=NONE</code>)
 *   as a **query** parameter (<code>GET /library/v1?<strong>documentId=abcd12345</strong></code>)
 *   as one of the JSON-formatted resource fields inside the **request body** (<code><strong>{"documentId": "abcd12345"}</strong></code>)
 *   inside the header (<code><strong>Authorization: Bearer \<token\></strong></code>)
+
+ITALICS:
 
 *   as a **path** parameter (<code>GET /library/v1/<em>abcd12345</em>?include=NONE</code>)
 *   as a **query** parameter (<code>GET /library/v1?<em>documentId=abcd12345</em></code>)
 *   as one of the JSON-formatted resource fields inside the **request body** (<code><em>{"documentId": "abcd12345"}</em></code>)
 *   inside the header (<code><em>Authorization: Bearer \<token\></em></code>)
 
+CODEBLOCK COLOR TEST:
+
+*   as a **path** parameter (<code>GET /library/v1/<em color="blue">abcd12345</em>?include=NONE</code>)
+*   as a **path** parameter (<code color="blue">GET /library/v1/<em>abcd12345</em>?include=NONE</code>)
+*   as a **path** parameter (<code><span>GET /library/v1/<em color="blue">abcd12345</em>?include=NONE</span></code>)
+*   as a **path** parameter (<code color="blue"><span>GET /library/v1/<em>abcd12345</em>?include=NONE</span></code>)
+*   as a **path** parameter (<code><span color="blue">GET /library/v1/<em>abcd12345</em>?include=NONE</span></code>)
 
 Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` ```?```, and this is where the server expects to find them.
 
