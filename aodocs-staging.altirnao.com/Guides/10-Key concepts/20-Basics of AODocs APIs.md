@@ -93,22 +93,18 @@ There are generally three ways you can send parameters inside a request:
 
 *   as a **path** parameter (<code>GET /library/v1/<strong>abcd12345</strong>?include=NONE</code>)
 *   as a **query** parameter (<code>GET /library/v1?<strong>documentId=abcd12345</strong></code>)
-*   as one of the JSON-formatted resource fields inside the **request body** (<code><strong>{"documentId": "abcd12345"}</strong><code>)
-*   inside the header (<code><strong>Authorization: Bearer \<token\></strong><code>)
+*   as one of the JSON-formatted resource fields inside the **request body** (<code><strong>{"documentId": "abcd12345"}</strong></code>)
+*   inside the header (<code><strong>Authorization: Bearer \<token\></strong></code>)
 
 *   as a **path** parameter (<code>GET /library/v1/<em>abcd12345</em>?include=NONE</code>)
 *   as a **query** parameter (<code>GET /library/v1?<em>documentId=abcd12345</em></code>)
-*   as one of the JSON-formatted resource fields inside the **request body** (<code><em>{"documentId": "abcd12345"}</em><code>)
-*   inside the header (<code><em>Authorization: Bearer \<token\></em><code>)
+*   as one of the JSON-formatted resource fields inside the **request body** (<code><em>{"documentId": "abcd12345"}</em></code>)
+*   inside the header (<code><em>Authorization: Bearer \<token\></em></code>)
 
 
 Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` ```?```, and this is where the server expects to find them.
 
-* </em><code>)
-
 Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```.  The resource server has built-in mechanisms to parse this information.
-
-* <code>)
 
 > 💡   Tip: The following query parameters exist globally across AODocs APIs:
 >
@@ -120,23 +116,11 @@ Search filters, security codes, and other **query parameters** are commonly stru
 
 REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
 
-* </em><code>)
-
-
 A resource type (such as ```[ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```) is the schema that outlines how a resource can be represented.  A representation of a resource is the (in our case JSON-formatted) instance of the schema above.  This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
-
-* <code>)
-
 
 You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```.  Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
 
-* <code></em><code>)
-
-
 API resources (like a Document or Library) that you want to create or update _must_ be  sent as part of the request resource, in the **request body.**
-
-* <code><code>)
-
 
 They are returned as **the response body** when a request is successful. Usually, the format of an API resource is the same in the request body and the response body.
 
