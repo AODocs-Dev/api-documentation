@@ -93,10 +93,14 @@ There are generally three ways you can send parameters inside a request:
 
 *   as a **path** parameter (<code>GET /library/v1/<strong>abcd12345</strong>?include=NONE</code>)
 *   as a **query** parameter (<code>GET /library/v1?<strong>documentId=abcd12345</strong></code>)
-*   as a **path** parameter (```GET /library/v1/abcd12345?include=NONE```)
-*   as a **query** parameter (```GET /library/v1?documentId=abcd12345```)
-*   as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
-*   inside the header (```Authorization: Bearer &lt;token>```)
+*   as one of the JSON-formatted resource fields inside the **request body** (<code><strong>{"documentId": "abcd12345"}</strong><code>)
+*   inside the header (<code><strong>Authorization: Bearer \<token\></strong><code>)
+
+*   as a **path** parameter (<code>GET /library/v1/<em>abcd12345</em>?include=NONE</code>)
+*   as a **query** parameter (<code>GET /library/v1?<em>documentId=abcd12345</em></code>)
+*   as one of the JSON-formatted resource fields inside the **request body** (<code><em>{"documentId": "abcd12345"}</em><code>)
+*   inside the header (<code><em>Authorization: Bearer \<token\></em><code>)
+
 
 Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the` ```?```, and this is where the server expects to find them.
 
