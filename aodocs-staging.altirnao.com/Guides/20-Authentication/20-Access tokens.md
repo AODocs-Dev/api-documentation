@@ -44,14 +44,14 @@ When you receive tokens from Google, they should look something along the lines 
 ### Sample tokens from Google
 
 ```json
-  {
-    "access_token": "ya29.Il-3B5J8...Fhl3a-yRjpg",
+{
+  "access_token": "ya29.Il-3B5J8...Fhl3a-yRjpg",
   "id_token": "eyJhbGc8i...AaNVQ"
-"expires_in": 3600,
+  "expires_in": 3600,
   "token_type": "Bearer",
   "scope": "openid https://www.googleapis.com/auth/userinfo.email",
   "refresh_token": "1//04c68onWq2AZDqCgYIARAAGAQSNwF-L9Ir2sI1rrhHr4IsCX_yNfu1YM9yc8AqB-u04JncAQwIxM1mU9Qv1NGvzLSiixS768nWovE"
-    }
+}
 ```
 
 > ⭑   **Note**: Access tokens usually start with the string ```ya29.```, and because they're opaque (not actual data but pointers to data elsewhere), they're usually shorter than ID tokens.  The latter are longer because they contain actual data, encoded into three pieces: header, claims, and signature.
@@ -66,8 +66,6 @@ You can access AODocs APIs by including one of the tokens as an ````Authorizatio
 ```yaml
 Authorization: Bearer < access_token | id_token >
 ```
-
-`Authorization: Bearer < access_token | id_token >`
 
 ### Example request with token as header parameter
 

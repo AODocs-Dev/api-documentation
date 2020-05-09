@@ -66,7 +66,7 @@ folders:
         ordering:
         - 00-Overview
         - 10-Security code
-        - 20-Access tokens
+        - 20-Bearer tokens
         # - 20-OAuth 2.0
         # - 30-JSON Web Token (JWT)
         - 30-Sample use cases
