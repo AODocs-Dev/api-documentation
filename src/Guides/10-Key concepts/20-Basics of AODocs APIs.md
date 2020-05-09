@@ -180,10 +180,12 @@ If there was something wrong with the request or with the server's ability to pe
 
 The response provides a standard HTTP status code to indicate success (2xx), failure (4xx), or some other condition (5xx); as well as an error message to guide the next steps.
 
-VERSION 1 (link opens in same tab)
+VERSION 1 (hyperlink opens in same tab)
+
 Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios)to determine the type of issue and how to resolve it.
 
-VERSION 2 (link opens in separate tab)
+VERSION 2 (hyperlink opens in separate tab)
+
 Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios" target="_blank" rel="noopener"><span>HTTP status codes in AODocs APIs</span></a> to determine the type of issue and how to resolve it.
 
 
