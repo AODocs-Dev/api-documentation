@@ -155,7 +155,7 @@ folders:
 
       70-Resources of note:
         ordering:
-        - 00-Overview
+        - 00-Introduction to resources
         - 10-ApiDocument
         - 15-ApiLibrary
         - 20-ApiDocumentType

@@ -1,7 +1,4 @@
-# Overview
-
-
-### **Resources**
+# Introduction to resources
 
 An AODocs object such as a document or a library is a logical grouping of metadata arranged to serve an organizational purpose.
 
@@ -72,7 +69,6 @@ You can get a library's list of permissions in two ways:
 
 The result looks the same in both cases:
 
-
 ```json
 {
     "kind": "aodocs#libraryPermissionList",
@@ -107,13 +103,11 @@ The result looks the same in both cases:
 
 > **Note**: By definition, a collection contains at least one **array field**.  And, unlike subresources, it is used by at least one method.
 
-### **How to interact with resources**
+## **How to interact with resources**
 
 An AODocs resource lives on the resource server. You interact with the resource by sending requests to the server to operate on it. The server performs the requested operation and sends back the result.
 
 Most of the time, you include in your request a subset of the resource:
-
-
 
 *   When creating a resource (with a ```PUT```) or updating it fully (with a ```POST```), you are not required to send the complete resource, as most fields have a default value.
 *   If you need to update a resource _partially_ (with a `PATCH` request), send an abridged representation of the resource in question (such as `ApiDocument`) to the server, specifying just the parts you want altered.

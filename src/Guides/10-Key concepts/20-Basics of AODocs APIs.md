@@ -193,8 +193,6 @@ APIs not marked as `beta` are considered “stable”: they have permanence and 
 
 Here is how you can get started working with AODocs APIs:
 
-
-
 *   Try following the sequence of methods in the [Manage AODocs documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
 *   Use the [interactive API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
 *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I).
