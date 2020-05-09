@@ -182,11 +182,17 @@ The response provides a standard HTTP status code to indicate success (2xx), fai
 
 VERSION 1 (hyperlink opens in same tab)
 
-Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios)to determine the type of issue and how to resolve it.
+Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
 
 VERSION 2 (hyperlink opens in separate tab)
 
 Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios" target="_blank" rel="noopener"><span>HTTP status codes in AODocs APIs</span></a> to determine the type of issue and how to resolve it.
+
+VERSION 3 (hyperlink opens in separate tab; no span tag)
+
+Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios" target="_blank" rel="noopener">HTTP status codes in AODocs APIs</a> to determine the type of issue and how to resolve it.
+
+
 
 
 ## Pagination
