@@ -178,7 +178,7 @@ If there was something wrong with the request or with the server's ability to pe
 
 #### Error handling and troubleshooting
 
-The response provides a standard HTTP status code to indicate success (2xx), failure (4xx), or some other condition (5xx), and an error message to guide the next steps.
+The response provides a standard HTTP status code to indicate success (2xx), failure (4xx), or some other condition (5xx); as well as an error message to guide the next steps.
 
 Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
 

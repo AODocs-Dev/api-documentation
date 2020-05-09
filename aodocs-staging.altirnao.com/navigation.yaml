@@ -70,7 +70,7 @@ folders:
         # - 20-OAuth 2.0
         # - 30-JSON Web Token (JWT)
         - 30-Sample use cases
-        # - 50-Auth appendix
+        - 50-Auth appendix
 
       30-Manage AODocs documents:
         ordering:
