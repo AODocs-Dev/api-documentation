@@ -2,8 +2,8 @@
 
 AODocs APIs are the HTTP endpoints which let you issue direct requests to the resource server to perform many of the manual tasks done in the AODocs UI:
 
-*   list and search for resources such as libraries, classes, or documents
-*   create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
+*   search for and list resources such as libraries, classes, or documents
+*   create, modify, and remove (trash or delete) documents, their properties, and their attachments
 *   configure AODocs folders, roles, versions, and permissions
 
 Most of the tasks (and more) that can be achieved from the AODocs UI can also be performed using the API.
