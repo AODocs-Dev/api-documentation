@@ -30,10 +30,9 @@ The list of steps is as follows:
         * [Create a new document and attach a Drive file](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file)
     * [Modify a document's metadata and attachments](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20a%20document)
     *   [Delete document](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Delete%20document)
-*   Further:
+<!-- *   Further:
     *   categories
     *   versions
-    *   relations (should be for a more advanced tutorial)
-    * [attachmentsToCopy](#heading=h.eqmetzsyjltr)
+    *   relations (should be for a more advanced tutorial) -->
 
 Let's [get started](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/00-Overview)!
