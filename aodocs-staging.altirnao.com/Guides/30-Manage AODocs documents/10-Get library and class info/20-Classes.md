@@ -4,14 +4,12 @@ Libraries contain documents of various types. These document types, defined ahea
 
 These methods are useful when working with classes:
 
+*   [List all available AODocs classes in a specific library](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+*   [Get a specific class](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
-
-*   [List all available AODocs classes in a specific library](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Classes#heading=h.z5cmdwh1c18a)
-*   [Get a specific class](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Classes#heading=h.z5cmdwh1c18a)
-
+What follows is an elaboration on these methods.
 
 ---
-
 
 
 ## List classes (to find target classes for your documents)
@@ -23,7 +21,7 @@ You can list available target classes for your documents as follows:
 
 Play with the API Explorer:
 
-### [PUT /documentType/v1/libraries/{libraryId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+### [PUT /documentType/v1/libraries/{libraryId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 
 
 ### Guidelines
@@ -42,12 +40,22 @@ GET https://aodocs.altirnao.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmN
 ```
 
 
-To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the `fields` query parameter with `items(displayName,id,kind),kind` as follows:
+To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the `fields` query parameter with `items(displayName,id,kind),kind` with `%2C` in place of each comma as follows:
 
 
+```yaml
+?fields=items(displayName%2Cid%2Ckind)%2Ckind
 ```
-fields=items(displayName%2Cid%2Ckind)%2Ckind
+
+```json
+?fields=items(displayName%2Cid%2Ckind)%2Ckind
 ```
+
+<code>?<strong>fields=items(displayName%2Cid%2Ckind)%2Ckind</strong></code>
+
+<code>?<strong>fields</strong>=<strong>items(displayName</strong>%2C<strong>id</strong>%2C<strong>kind)</strong>%2C<strong>kind</strong></code>
+
+<code><strong>?</strong>fields<strong>=</strong>items(displayName<strong>%2C</strong>id<strong>%2C</strong>kind)<strong>%2C</strong>kind</code>
 
 
 
@@ -142,7 +150,7 @@ You can retrieve (the configuration of) a specific class/documentType to confirm
 Play with the API Explorer:
 
 
-[GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+[GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
 In the command above:
 
