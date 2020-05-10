@@ -156,8 +156,8 @@ folders:
         ordering:
         - 00-Introduction to resources
         - 10-ApiDocument
-        - 15-ApiLibrary
-        - 20-ApiDocumentType
+        # - 15-ApiLibrary
+        # - 20-ApiDocumentType
 
       80-APIs of note:
         ordering:
