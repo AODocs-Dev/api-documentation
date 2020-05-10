@@ -6,9 +6,10 @@ In this section, we explore the following:
 
 * [List documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/40-List%20documents)
 
+* [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
+
 * [Search documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
 
-* [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
 
 ---
 
@@ -162,7 +163,7 @@ The response returns an [ApiDocumentCount](/docs/aodocs-staging.altirnao.com/1/t
   "kind": "aodocs#documentCount",
   "count": 12
 }
-
+```
 
 ---
 
