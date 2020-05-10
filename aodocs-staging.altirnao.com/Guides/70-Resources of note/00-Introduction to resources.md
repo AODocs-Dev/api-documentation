@@ -116,7 +116,7 @@ In all cases, the server parses your abridged _request resource_, maps your fiel
 
 ## Common AODocs resources and collections
 
-[Resource: ApiDocument](docs/aodocs-staging.altirnao.com/1/types/ApiDocument) (an AODocs document)
+[Resource: ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) (an AODocs document)
 
 [Collection: ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) (a list of libraries)
 
