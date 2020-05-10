@@ -66,7 +66,7 @@ folders:
         - 00-Overview
         - 10-Security code
         - 20-Bearer tokens
-        - 30-Sample use cases
+        # - 30-Sample use cases
         - 50-Auth appendix
 
       30-Manage AODocs documents:
