@@ -161,8 +161,8 @@ folders:
 
       80-APIs of note:
         ordering:
-        # - 00-Overview
-        # - 05-ApiDocument
+        - 00-Overview
+        # - 05-document
         # - 10-search
         # - 15-documentType
         # - 20-library
