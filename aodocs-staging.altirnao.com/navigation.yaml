@@ -133,8 +133,8 @@ folders:
       60-Best practices:
         ordering:
         - 00-Overview
-        - 10-HTTP status codes and error scenarios
-        - 20-Performance — filtering and paginating results
+        - 10-HTTP status codes and errors
+        - 20-Performance
 
       70-Resources of note:
         ordering:
