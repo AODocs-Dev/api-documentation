@@ -159,8 +159,8 @@ folders:
         # - 15-ApiLibrary
         # - 20-ApiDocumentType
 
-      80-APIs of note:
-        ordering:
+      # 80-APIs of note:
+      #   ordering:
         # - 00-Overview
         # - 05-document
         # - 10-search
