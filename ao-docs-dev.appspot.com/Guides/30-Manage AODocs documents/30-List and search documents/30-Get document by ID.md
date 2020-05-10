@@ -7,7 +7,7 @@ You can retrieve (the configuration of) a specific document to parse something f
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [GET /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 

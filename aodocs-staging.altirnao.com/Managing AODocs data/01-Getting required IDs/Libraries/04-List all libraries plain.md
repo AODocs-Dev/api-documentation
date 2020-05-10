@@ -6,7 +6,7 @@ This is the same as asking for the full ```ApiLibraryList``` collection and usin
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /library/v1/plain](../../../../routes/library/v1/plain/put)
 

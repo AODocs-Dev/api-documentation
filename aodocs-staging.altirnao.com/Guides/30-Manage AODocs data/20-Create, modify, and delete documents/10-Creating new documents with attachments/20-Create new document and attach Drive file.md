@@ -14,7 +14,7 @@ To create a new document, you send a request to the server with an ```ApiDocumen
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /document/v1](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put)
 

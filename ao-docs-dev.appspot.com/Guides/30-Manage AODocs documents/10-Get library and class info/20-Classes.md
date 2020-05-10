@@ -16,7 +16,7 @@ You can list available target classes for your documents as follows:
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /documentType/v1/libraries/{libraryId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 
@@ -111,7 +111,7 @@ You can retrieve (the configuration of) a specific class/documentType to confirm
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 

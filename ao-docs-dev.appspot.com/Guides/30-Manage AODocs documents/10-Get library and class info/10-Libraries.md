@@ -18,7 +18,7 @@ To list target libraries on your domain, select a target library for your AODocs
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /library/v1](../../../../routes/library/v1/put)
 
@@ -112,7 +112,7 @@ This is the same as asking for the full ```ApiLibraryList``` collection and usin
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /library/v1/plain](../../../../routes/library/v1/plain/put)
 
@@ -171,7 +171,7 @@ You can retrieve to parse something from its metadata (or to confirm it exists) 
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [GET /library/{libId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 

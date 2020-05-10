@@ -4,7 +4,7 @@ To list target libraries on your domain, select a target library for your AODocs
 
 ## Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ### [PUT /library/v1](../../../../routes/library/v1/put)
 

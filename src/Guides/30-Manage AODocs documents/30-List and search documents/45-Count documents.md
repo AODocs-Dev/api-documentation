@@ -3,6 +3,7 @@
 > **Note**: This is available only to library administrators.
 
 You can count the number of documents associated with a particular library (and optionally class) as follows.
+
 ## **Method and API**
 
 Play with the API Explorer:

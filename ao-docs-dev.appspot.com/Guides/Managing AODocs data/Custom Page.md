@@ -59,7 +59,7 @@ List target libraries on your domain, select a target library for your AODocs do
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 PUT /library/v1
@@ -138,7 +138,7 @@ If you want just the library name and ID in your response, use the plain list as
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 PUT /library/v1/plain
@@ -195,7 +195,7 @@ You can retrieve (the configuration of) a specific library to confirm it exists 
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 GET /library/{libId}
@@ -268,7 +268,7 @@ You can list available target classes for your documents as follows:
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 PUT /documentType/v1/libraries/{libraryId}
@@ -356,7 +356,7 @@ You can retrieve (the configuration of) a specific class/documentType to confirm
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}
@@ -468,7 +468,7 @@ To create a new document, you send a request to the server with an ```ApiDocumen
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 PUT /document/v1
@@ -645,7 +645,7 @@ You can retrieve (the configuration of) a specific document to confirm it exists
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 GET /document/v1/{documentId}
@@ -750,7 +750,7 @@ An easy way to try this out is to modify your AODocs document's title, as well a
 
 #### Method and API
 
-Play with the API Explorer and note the code examples (such as cURL and Java):
+Play with the API Explorer:
 
 ```
 PUT /document/v1/{documentId}
