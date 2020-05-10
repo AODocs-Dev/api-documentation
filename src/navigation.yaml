@@ -26,21 +26,11 @@
 ordering:
 - Introduction
 - Guides
-# - dls
 - Resources
 - API Reference
 
 
 folders:
-  # dls:
-  #   ordering:
-  #   - 00-Overview
-    # - 00-Introduction.docx
-    # - browser-test.json
-    # - navigation.yaml
-    # - test.json
-    # - tree.txt
-
   Guides:
     ordering:
     - 00-Getting Started
@@ -51,8 +41,7 @@ folders:
     # - 50-Manage workflows
     - 60-Best practices
     - 70-Resources of note
-    # - 80-APIs of note
-    # - Future custom section
+    - 80-APIs of note
 
     folders:
       10-Key concepts:
@@ -159,9 +148,9 @@ folders:
         # - 15-ApiLibrary
         # - 20-ApiDocumentType
 
-      # 80-APIs of note:
-      #   ordering:
-        # - 00-Overview
+      80-APIs of note:
+        ordering:
+        - 00-Overview
         # - 05-document
         # - 10-search
         # - 15-documentType
