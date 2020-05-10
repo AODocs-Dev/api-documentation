@@ -253,9 +253,7 @@ You can also locate the `libraryId` of your target library inside the AODocs UI.
 
 Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
-```yaml
-/LibraryId_<code><strong>\<libraryId\></strong></code>
-```
+<code>/LibraryId_<strong>\<libraryId\></strong></code>
 
 #### Example
 
