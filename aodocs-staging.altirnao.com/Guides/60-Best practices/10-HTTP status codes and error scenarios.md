@@ -42,7 +42,6 @@ For example, if you try to **identify** yourself to AODocs with **incorrect secu
 
 ## Common status codes in the AODocs API
 
-
 <table>
   <tr>
    <td>Code
@@ -146,32 +145,51 @@ For example, if you try to **identify** yourself to AODocs with **incorrect secu
   </tr>
 </table>
 
-
-
 ## Error response format
 
 AODocs APIs return two kinds of error information:
-
-
 
 *   HTTP error codes (with some information in the header)
 *   A response-body JSON object with additional details to help you determine how to handle the error (specifically ```reason``` and ```message``` fields)
 
 AODocs APIs report errors in the standard HTTP way with JSON-formatted response bodies that look like the following (not including the header information):
 
+```http
+[HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
+```
+
+```json
+{
+  "error": {
+    "errors": [
+      {
+        "domain": "[domain]",
+        "reason": "[CONCISE DEFAULT OR CUSTOMIZED HTTP STATUS REASON]",
+        "message": "[VERBOSE CUSTOM MESSAGE]"
+      }
+    ],
+    "code": [HTTPS STATUS CODE (same as above)],
+    "message": "[VERBOSE CUSTOM MESSAGE (same as above)]"
+ }
+}
+```
+
+
 
 ```json
 [HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
-{"error": {
- "errors": [
-  {
-   "domain": "[domain]",
-   "reason": "[CONCISE DEFAULT OR CUSTOMIZED HTTP STATUS REASON]",
-   "message": "[VERBOSE CUSTOM MESSAGE]"
-  }
- ],
- "code": [HTTPS STATUS CODE (same as above)],
- "message": "[VERBOSE CUSTOM MESSAGE (same as above)]"
+
+{
+  "error": {
+    "errors": [
+      {
+        "domain": "[domain]",
+        "reason": "[CONCISE DEFAULT OR CUSTOMIZED HTTP STATUS REASON]",
+        "message": "[VERBOSE CUSTOM MESSAGE]"
+      }
+    ],
+    "code": [HTTPS STATUS CODE (same as above)],
+    "message": "[VERBOSE CUSTOM MESSAGE (same as above)]"
  }
 }
 ```
@@ -217,9 +235,14 @@ Some examples of 400 errors include:
     *   "The classes with Folder acl source must contain a security category."
     *   "The name of the class must be unique in the library"
 
+        ```
 > ⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect requests.
+```
+
+
 
 Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:
+
 
 ```
 {
