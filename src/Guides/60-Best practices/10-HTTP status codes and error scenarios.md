@@ -303,7 +303,7 @@ To fix this error, make sure your security code is correct.  The request should 
 ### Unauthorized access to a resource
 
 
-#### Incorrect permissions
+#### Insufficient permissions
 
 This means the client app does not have the correct permission levels to access the resource.
 
@@ -365,8 +365,8 @@ To fix this error check your permission levels or whether you own the target res
 
 This error can occur because of any of the following:
 
-*   Missing or incorrect resource-ID ("There is no library with id: 'OtbBk6G8Am0ATEy8P8'")
-*   Resource doesn't exist: _"No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"_
+*   Missing or incorrect resource-ID (*"There is no library with id: 'OtbBk6G8Am0ATEy8P8'"*)
+*   Resource doesn't exist (*"No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"*)
 
 
 ### Incorrect resource ID parameter
@@ -391,12 +391,12 @@ For example, if the ```libraryId``` parameter is incorrect (not existing or miss
 ```
 
 
-To fix this error, check the ```message``` field for the "incorrect" parameter in question (in this case "`Library with id `'OtbBk68GAm0ATEy8P8'"), and verify its ID is correct.
+To fix this error, check the ```message``` field for the "incorrect" parameter in question (in this case "Library with id `'OtbBk68GAm0ATEy8P8'"), and verify its ID is correct.
 
 
 ### Resource not found
 
-If your mandatory parameter is correct, but the resource has moved or doesn't exist, you might get the following error:
+If your mandatory parameter is correct, but the resource doesn't exist, you might get the following error:
 
 
 ```
@@ -425,8 +425,6 @@ If your mandatory parameter is correct, but the resource has moved or doesn't ex
 ### **Resolve a 409 error: Conflict (retry)**
 
 This error can occur because the resource is being accessed by more than one caller at the same time. The best strategy is to retry.
-
-> **Note**: Of all 400-series errors, this is the only one that should be retried.
 
 > **Note**: Of all 400-series errors, this is the only one that should be retried.
 
