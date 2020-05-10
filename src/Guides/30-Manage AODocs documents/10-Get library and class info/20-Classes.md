@@ -138,14 +138,25 @@ You can retrieve (the configuration of) a specific class/documentType to confirm
 
 Play with the API Explorer:
 
-
-[GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
-
 #### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
-### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
-## [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+In the command above:
+
+*   `documentType` is the API
+*   `v1` is the API version
+*   `libraries` is the top-level resource
+*   `documentTypes` or class is the nested resource
+
+
+### Guidelines
+
+
+### Method and API
+
+Play with the API Explorer:
+
+### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
 
 In the command above:
