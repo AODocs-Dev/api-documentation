@@ -106,7 +106,11 @@ The search can be conducted without any parameters, returning all libraries that
 
 Several useful parameters are available to help narrow the search.
 
-##### Request parameters of note
+#### Request parameters of note
+
+##### query
+
+##### `query`
 
 `query`
 
