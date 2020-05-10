@@ -1,5 +1,10 @@
 # Performance considerations
 
+There are several ways that you can improve the performance of your interactions with AODocs APIs.  They include the following:
+
+* Requesting that the results that come back be filtered down to a manageable subset
+* Grouping the results into pages of specific length
+
 ## Filtering API results
 
 The `fields` query parameter is identical in design to [Google's design for JSON resource filtering](https://developers.google.com/drive/api/v3/fields-parameter).  You can filter the results by populating the ```fields``` query parameter with just the fields you want to come back in the response resource.
