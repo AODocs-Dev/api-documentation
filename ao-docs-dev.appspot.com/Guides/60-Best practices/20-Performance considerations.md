@@ -1,4 +1,6 @@
-# Filtering API results
+# Performance considerations
+
+## Filtering API results
 
 The `fields` query parameter is identical in design to [Google's design for JSON resource filtering](https://developers.google.com/drive/api/v3/fields-parameter).  You can filter the results by populating the ```fields``` query parameter with just the fields you want to come back in the response resource.
 
@@ -22,6 +24,8 @@ defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,va
 
 The value should be URL-encoded when passed as the query parameter (comma should be replaced by `%2C`).
 
+### Example request
+
 For example, if you were adding a new class and wanted the response resource to contain the fields above, the request might look like this:
 
 ```http
@@ -35,7 +39,7 @@ POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZq
 }
 ```
 
-#### Response
+### Example response
 
 Here is what the response to that request looks like, filtered with your list:
 

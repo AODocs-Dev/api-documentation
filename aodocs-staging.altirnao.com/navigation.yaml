@@ -134,7 +134,7 @@ folders:
         ordering:
         - 00-Overview
         - 10-HTTP status codes and errors
-        - 20-Performance
+        - 20-Performance considerations
 
       70-Resources of note:
         ordering:
