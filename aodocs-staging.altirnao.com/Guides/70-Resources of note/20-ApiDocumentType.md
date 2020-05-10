@@ -1,3 +1,3 @@
-# Placeholder title
+# [DRAFT] ApiDocumentType
 
 Placeholder

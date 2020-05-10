@@ -155,90 +155,26 @@ folders:
       70-Resources of note:
         ordering:
         - 00-Introduction to resources
-        - 10-ApiDocument
+        # - 10-ApiDocument
         # - 15-ApiLibrary
         # - 20-ApiDocumentType
 
       80-APIs of note:
         ordering:
-        - 00-Overview
-        - 05-ApiDocument
-        - 10-search
-        - 15-documentType
-        - 20-library
-        - 25-category
-        - 30-referenceCatalog
-        - 35-relation
-        - 40-workflow
-        - 45-view
-        - 50-folder
-        - 55-user
-        - 60-job
-        - 65-domain
-        - 30-documentType
+        # - 00-Overview
+        # - 05-ApiDocument
+        # - 10-search
+        # - 15-documentType
+        # - 20-library
+        # - 25-category
+        # - 30-referenceCatalog
+        # - 35-relation
+        # - 40-workflow
+        # - 45-view
+        # - 50-folder
+        # - 55-user
+        # - 60-job
+        # - 65-domain
+        # - 30-documentType
 
-
-      # Future custom section:
-      #   ordering:
-      #   - Example Page
-      #   - Custom Page
-      #   - Subsection1
-      #   - SubsectionA
-      #   folders:
-      #     SubsectionA:
-      #       ordering:
-      #       - Overview
-      #       - SubsectionB
-      #       folders:
-      #         SubsectionB:
-      #           ordering:
-      #           - Overview
-      #           - SubsectionC
-      #           folders:
-      #             SubsectionC:
-      #               ordering:
-      #               - Overview
-      #               - SubsectionD
-      #               folders:
-      #                 SubsectionD:
-      #                   ordering:
-      #                   - Overview
-      #                   - SubsectionE
-      #                   folders:
-      #                     SubsectionE:
-      #                       ordering:
-      #                       - Overview
-      #                       - SubsectionF
-      #                       folders:
-      #                         SubsectionF:
-      #                           ordering:
-      #                           - Overview
-      #     Subsection1:
-      #       ordering:
-      #       - Overview
-      #       - Subsection2
-      #       folders:
-      #         Subsection2:
-      #           ordering:
-      #           - Overview
-      #           - Subsection3
-      #           folders:
-      #             Subsection3:
-      #               ordering:
-      #               - Overview
-      #               - Subsection4
-      #               folders:
-      #                 Subsection4:
-      #                   ordering:
-      #                   - Overview
-      #                   - Subsection5
-      #                   folders:
-      #                     Subsection5:
-      #                       ordering:
-      #                       - Overview
-      #                       - Subsection6
-      #                       folders:
-      #                         Subsection6:
-      #                           ordering:
-      #                           - Overview
 
