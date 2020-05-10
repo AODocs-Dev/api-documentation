@@ -112,7 +112,9 @@ Several useful parameters are available to help narrow the search.
 
 ##### `query`
 
-`query`
+#### `query`
+
+**`query`**
 
 The `query` query parameter is what ultimately determines what results come back, filtering them on a text string.  You can search for the following:
 
