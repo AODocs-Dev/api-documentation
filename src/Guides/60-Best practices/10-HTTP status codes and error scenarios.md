@@ -297,7 +297,7 @@ This error can occur for the following reasons:
 ```
 
 
-To fix this error, make sure your security code is correct.  The request should not be repeated with the same credentials, but may resend with a new or different security code.
+To fix this error, make sure your security code is correct.  The request should not be repeated with the same credentials, but may be re-sent with a new or different security code.
 
 
 ### Unauthorized access to a resource
@@ -391,7 +391,7 @@ For example, if the ```libraryId``` parameter is incorrect (not existing or miss
 ```
 
 
-To fix this error, check the ```message``` field for the "incorrect" parameter in question (in this case "Library with id `'OtbBk68GAm0ATEy8P8'"), and verify its ID is correct.
+To fix this error, check the ```message``` field for the "incorrect" parameter in question (in this case *"Library with id `'OtbBk68GAm0ATEy8P8'"*), and verify its ID is correct.
 
 
 ### Resource not found
@@ -399,19 +399,19 @@ To fix this error, check the ```message``` field for the "incorrect" parameter i
 If your mandatory parameter is correct, but the resource doesn't exist, you might get the following error:
 
 
-```
+```json
 {
-    "error": {
-     "errors": [
-      {
-        "domain": "global",
-        "reason": "notFound",
-        "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"
-      }
-     ],
-     "code": 404,
-     "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"
+  "error": {
+    "errors": [
+    {
+      "domain": "global",
+      "reason": "notFound",
+      "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"
     }
+    ],
+    "code": 404,
+    "message": "No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"
+  }
 }
 ```
 
