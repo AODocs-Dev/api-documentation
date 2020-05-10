@@ -108,12 +108,6 @@ Several useful parameters are available to help narrow the search.
 
 #### Request parameters of note
 
-##### query
-
-##### `query`
-
-#### `query`
-
 **`query`**
 
 The `query` query parameter is what ultimately determines what results come back, filtering them on a text string.  You can search for the following:
@@ -127,31 +121,31 @@ The `query` query parameter is what ultimately determines what results come back
 
 > **Note**: The double quotes return only adjacent words in a phrase.  For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
 
-`userSuperAdminAccess` (default: `false`)
+**`userSuperAdminAccess`** (default: `false`)
 
 By default, you receive a response containing no more information than you need.  If you are a domain administrator (superadmin), you can change the `userSuperAdminAccess`'s default value of `false` to `true` to elevate your privileges to return libraries accessible to all domain administrators.
 
-`minimumCurrentUserRole`
+**`minimumCurrentUserRole`**
 
 Use this flag if you want to have access to libraries you are at least an `ADMIN` of.  For example, if you want to know which libraries you're authorized to import content into, then you don't want to consider libraries you only have `READER` privileges for (since you can't import at that level).
 
-`libtypes`
+**`libtypes`**
 
 You can specify which of the three types of libraries you get in the response in any combination.  Specifying none is the same as specifying all.
 
-`storageAccount`
+**`storageAccount`**
 
 You can either request results from all storage accounts available to you, or you can specify one storage account at a time.
 
-`labelIds`
+**`labelIds`**
 
 When you list all libraries in the UI, you can see a list of labels in the left panel ordered alphabetically.  With this parameter, you can request libraries by label, including several at a time.
 
-`favorite`
+**`favorite`**
 
 If set to `true`, returns just this user's favorite libraries.
 
-`orderBy`
+**`orderBy`**
 
 You can either get your results ordered arbitrarily, or you can use this parameter to sort your results by one and only one of the following:
 
@@ -162,11 +156,11 @@ You can either get your results ordered arbitrarily, or you can use this paramet
 
 > **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results.  Check the `incompleteResults` flag in the response.
 
-`limit` (default: 20)
+**`limit`** (default: 20)
 
 You can choose an arbitrary number of results to display, up to 1000.
 
-`requirePreciseResults` (default: `false`)
+**`requirePreciseResults`** (default: `false`)
 
 If you don't specify this parameter, the result will contain a `totalResultCount` field that is an estimate of the total number of results matching your query (not only for the current page).  The `estimatedResultCount` field in the response will be set to `true`.
 
@@ -174,7 +168,7 @@ This is the default behavior: the query is usually much faster when all it has t
 
 If `requirePreciseResults` is set to `true`, then up to 25,000 results, the response's `totalResultCount` will contain the exact number of results that match your initial request, and beyond that, it'll contain an estimate.  The `estimatedResultCount` will be set to `true` in either case.
 
-`include` (default: `nothing`)
+**`include`** (default: `nothing`)
 
 If you want information in addition to the default `nothing` setting, change the `include` parameter to one of the following:
 
@@ -186,7 +180,7 @@ If you want information in addition to the default `nothing` setting, change the
 
 > **Note**: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.
 
-`pageToken`
+**`pageToken`**
 
 This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes.  If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
 
