@@ -134,12 +134,7 @@ folders:
         ordering:
         - 00-Overview
         - 10-HTTP status codes and error scenarios
-        # - 20-HTTP status codes
-        # - 20-Common error scenarios and fixes
-        # - 30-Pagination principles <<<<==================================
-        # # - 40-Troubleshooting
-        # - 40-Improve performance
-        # - 50-Document field values
+        - 20-Performance — filtering and paginating results
 
       70-Resources of note:
         ordering:
