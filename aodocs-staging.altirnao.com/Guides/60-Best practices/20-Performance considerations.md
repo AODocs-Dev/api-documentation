@@ -23,7 +23,7 @@ As an arbitrary example,  let's say you were interested in only the following fi
 
 You can tell the server to return your requested resource with just those fields and omit all others.  Populate the ````fields```` query parameter of your request with the preceding list as follows:
 
-```http
+```yaml
 defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
 ```
 
@@ -33,7 +33,7 @@ The value should be URL-encoded when passed as the query parameter (comma should
 
 For example, if you were adding a new class and wanted the response resource to contain the fields above, the request might look like this:
 
-```http
+```yaml
 POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZqg/documentTypes?fields=defaultClass%2Cfields(id%2CreadOnly)%2Cid%2Ckind%2ClibraryId%2Cname%2Cpermissions(role%2Ctype%2Cvalue)%2Csections(fields%2Fid%2Cid)%2Cvalue
 ```
 
@@ -48,7 +48,7 @@ POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZq
 
 Here is what the response to that request looks like, filtered with your list:
 
-```http
+```yaml
 200
 ```
 

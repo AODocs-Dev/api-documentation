@@ -241,7 +241,7 @@ To get your desired library back in the response you have to provide the library
 ###### **Sample request**
 
 
-```http
+```yaml
 GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 

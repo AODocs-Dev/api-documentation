@@ -48,7 +48,7 @@ Play with the API Explorer:
 
 Play with the [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch) and note the code examples (such as cURL and Java):
 
-```http
+```yaml
 PATCH /document/v1/{documentId}
 ```
 

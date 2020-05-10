@@ -154,7 +154,7 @@ AODocs APIs return two kinds of error information:
 
 AODocs APIs report errors in the standard HTTP way with JSON-formatted response bodies that look like the following (not including the header information):
 
-```http
+```yaml
 [HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
 ```
 

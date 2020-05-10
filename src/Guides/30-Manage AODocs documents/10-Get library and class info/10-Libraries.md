@@ -151,12 +151,12 @@ You can either get your results ordered arbitrarily, or you can use this paramet
 
 *   `NAME` (ascending)
 *   `LAST_ACCESSED` (descending)
-*   `TASK_COUNT (descending)
+*   `TASK_COUNT` (descending)
 *   `FAVORITE_FIRST`
 
 > **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results.  Check the `incompleteResults` flag in the response.
 
-**`limit`** (default: 20)
+**`limit`** (default: `20`)
 
 You can choose an arbitrary number of results to display, up to 1000.
 
@@ -357,7 +357,7 @@ To get your desired library back in the response you have to provide the library
 ##### Sample request
 
 
-```http
+```yaml
 GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 

@@ -16,7 +16,7 @@ As an arbitrary example,  let's say you were interested in only the following fi
 
 You can tell the server to return your requested resource with just those fields and omit all others.  Populate the ````fields```` query parameter of your request with the preceding list as follows:
 
-```http
+```yaml
 defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
 ```
 
@@ -43,7 +43,7 @@ For example, if you were adding a new class and wanted the response resource to 
 
 Here is what the response to that request looks like, filtered with your list:
 
-```http
+```yaml
     200
 ```
 

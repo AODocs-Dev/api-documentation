@@ -146,7 +146,7 @@ Play with the API Explorer:
 
 ### **Sample request**
 
-```http
+```yaml
 POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
 ```
 
