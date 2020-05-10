@@ -56,7 +56,7 @@ In AODocs APIs, a **subresource** is an **attribute** of a resource.  It is reso
 
 An AODocs **collection** is a **list** of resources or subresources.  It is not a resource by itself in the context of AODocs APIs.  What makes a collection meaningful is what it lists.  A list of documents (```ApiDocumentList```) is one example of a resource collection.  A list of libraries (```ApiLibraryList```) is another.  Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
 
-> **Note**: Requests for collections often return too many results and are best handled using [pagination](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI).
+> **Note**: Requests for collections often return too many results and are best handled using [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations).
 
 ## Collections vs. resources vs. subresources
 

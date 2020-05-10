@@ -120,7 +120,7 @@ They are returned as **the response body** when a request is successful. Usually
 
 > **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
-Read more about [AODocs resources](/docs/aodocs-staging.altirnao.com/1/c/Guides/70-Resources%20of%20note/00-Overview).
+Read more about [AODocs resources](/docs/aodocs-staging.altirnao.com/1/c/Guides/70-Resources%20of%20note/00-Introduction%20to%20resources).
 
 #### Creating a document
 
@@ -180,7 +180,7 @@ Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20pra
 
 ## Pagination
 
-Pagination comes into play when dealing with resource collections, since the results are often longer than a single page.  Read more in [Performance: filtering and paginating results](https://docs.google.com/document/d/1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI/edit#).
+Pagination comes into play when dealing with resource collections, since the results are often longer than a single page.  Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) page.
 
 ## Beta vs. non-beta versions
 
@@ -198,5 +198,5 @@ Here is how you can get started working with AODocs APIs:
 <!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
 *   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview).
 *   Check the [AODocs Reference](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs.
-*   Read the "Best practices" section.
+*   Read the [Best practices](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview) section.
 *   Have trouble falling asleep?  Read the [Auth appendix](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/50-Auth%20appendix), which includes all the most essential soporific auth RFCs.
