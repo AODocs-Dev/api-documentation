@@ -1,18 +1,18 @@
 # Filtering API results
 
-The `fields` query parameter is designed identical to [Google's design](https://developers.google.com/drive/api/v3/fields-parameter) for JSON resource filtering.  You can filter the results by populating the ```fields``` query parameter with just the fields you want to come back in the response resource.
+The `fields` query parameter is identical in design to [Google's design for JSON resource filtering](https://developers.google.com/drive/api/v3/fields-parameter).  You can filter the results by populating the ```fields``` query parameter with just the fields you want to come back in the response resource.
 
 As an arbitrary example,  let's say you were interested in only the following fields:
 
-*   defaultClass
-*   fields(id,readOnly)
-*   id
-*   kind
-*   libraryId
-*   name
-*   permissions(role,type,value)
-*   sections(fields/id,id)
-*   value
+*   `defaultClass`
+*   `fields(id,readOnly)`
+*   `id`
+*   `kind`
+*   `libraryId`
+*   `name`
+*   `permissions(role,type,value)`
+*   `sections(fields/id,id)`
+*   `value`
 
 You can tell the server to return your requested resource with just those fields and omit all others.  Populate the ````fields```` query parameter of your request with the preceding list as follows:
 
@@ -20,23 +20,19 @@ You can tell the server to return your requested resource with just those fields
 defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
 ```
 
-```json
-defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
-```
-
-
 The value should be URL-encoded when passed as the query parameter (comma should be replaced by `%2C`).
 
 For example, if you were adding a new class and wanted the response resource to contain the fields above, the request might look like this:
 
+```http
+POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZqg/documentTypes?fields=defaultClass%2Cfields(id%2CreadOnly)%2Cid%2Ckind%2ClibraryId%2Cname%2Cpermissions(role%2Ctype%2Cvalue)%2Csections(fields%2Fid%2Cid)%2Cvalue
+```
 
 ```json
-    POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZqg/documentTypes?fields=defaultClass%2Cfields(id%2CreadOnly)%2Cid%2Ckind%2ClibraryId%2Cname%2Cpermissions(role%2Ctype%2Cvalue)%2Csections(fields%2Fid%2Cid)%2Cvalue
-
-    {
-    "displayName": "my-new-class-002",
-    "managedPermissionSource": "FOLDER"
-    }
+{
+  "displayName": "my-new-class-002",
+  "managedPermissionSource": "FOLDER"
+}
 ```
 
 #### Response
@@ -44,7 +40,7 @@ For example, if you were adding a new class and wanted the response resource to 
 Here is what the response to that request looks like, filtered with your list:
 
 ```http
-    200
+200
 ```
 
 
@@ -82,15 +78,11 @@ Here is what the response to that request looks like, filtered with your list:
 }
 ```
 
-
-
 ## Paginating resource collection responses
 
 For API methods that return a collection of resources, there’s usually the need to be able to paginate the results, as there might be too many of them to fit in a single response. The API methods that support pagination usually have two parameters:
 
-
-
-*   A “limit” parameter (also named `pageSize` or `maxResults` in some methods) to indicate the maximum number of results to return in a single page
+*   A `limit` parameter (also named `pageSize` or `maxResults` in some methods) to indicate the maximum number of results to return in a single page
 *   A `pageToken` parameter, used to get subsequent result pages
 
 A successful response on these methods will return a collection of resources, and IF (and only if) there are more results matching the user’s query / criteria, a `nextPageToken` field.
