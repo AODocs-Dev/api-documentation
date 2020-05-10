@@ -40,7 +40,7 @@ This method has no mandatory parameters, but without setting any filtering it tr
 PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 ```
 
-Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method to get just the key-value pairs of `name` and `id`.
+Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
 
 
 #### Response
@@ -67,7 +67,7 @@ Additional fields to note:
   "libraries": [
     {
       "kind": "aodocs#library",
-      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "libraryId": "RnTG8PD8u8ZqTuDVHcv",
       "name": "mfie-stag-DMS-lib-001",
       "defaultDocumentType": "RnTbOft844KfZYkfBpV",
       "rootFolderId": "1S7ayht8i78VtuNl-SebgGTu_wliznnR47",
@@ -191,7 +191,7 @@ This parameter is used for [pagination](https://drive.google.com/a/altirnao.com/
 GET https://aodocs-staging.altirnao.com/api/library/v2beta1/search
 ```
 
-Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method to get just the key-value pairs of `name` and `id`.
+Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
 
 
 #### Sample request (specific search)
@@ -224,7 +224,7 @@ Additional fields to note:
   "kind": "aodocs#librarySearchResultList",
   "libraries": [
     {
-      "id": "R6l0hkc0sxwUgY987R",
+      "id": "R6l0hkc80sxwUgY987R",
       "name": "my TF library 001",
       "libraryType": "TF",
       "storageAccount": "storage-account@test.altirnao.com",
@@ -262,7 +262,7 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 
 
 ```yaml
-/LibraryId_RnTG8PDu8ZqTuDVHcv
+/LibraryId_RnTG8PD8u8ZqTuDVHcv
 ```
 
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
@@ -326,7 +326,7 @@ Additional response fields to note:
 ```json
  {
       "kind": "aodocs#plainLibrary",
-      "libraryId": "RnTG8PDu8ZqTuDVHcv",
+      "libraryId": "RnTG8PD8u8ZqTuDVHcv",
       "name": "mfie-stag-DMS-lib-001",
       "lastModified": "1579005945318",
       "lastConfigModified": "1579005945318"
@@ -369,7 +369,7 @@ Play with the API Explorer:
 To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
 
 
-###### Sample request
+##### Sample request
 
 
 ```http
@@ -378,13 +378,11 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 
 
 
-###### Response
+##### Response
 
 The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
-
-
 
 *   `libraryId`
 *   `name` / homeUrl
@@ -394,13 +392,13 @@ Response fields of note:
 *   any other fields of interest
 
 
-###### Sample response (include=NONE)
+##### Sample response (include=NONE)
 
 
 ```json
 {
   "kind": "aodocs#library",
-  "libraryId": "RnTG8PDu8ZqTuDVHcv",
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
   "name": "mfie-stag-DMS-lib-001",
   "homeUrl": "mfie-stag-dms-lib-001",
   "daysBeforeDelete": 30,
@@ -409,9 +407,9 @@ Response fields of note:
   "pushToMyDrive": false,
   "onlyAdminsCanManageFolders": false,
   "onlyAdminsCanEditRootFolder": false,
-  "defaultDocumentType": "RnTbOft44KfZYkfBpV",
+  "defaultDocumentType": "RnTbOft844KfZYkfBpV",
   "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
-  "defaultView": "RnTbOoSwQ32JuKPEi1",
+  "defaultView": "RnTbOoS8wQ32JuKPEi1",
   "favorited": true
   ...
 }
