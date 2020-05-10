@@ -13,7 +13,7 @@ When a request **succeeds** it normally returns a JSON-formatted **representatio
 For example, if you try to **identify** yourself to AODocs with **incorrect security code**, you will receive a reply that the request was disallowed, with a status code of **403 Forbidden**, with an elaboration in the form of a ```message``` field meant only for humans:
 
 
-```
+```json
 403
 {
  "error": {
@@ -33,12 +33,12 @@ For example, if you try to **identify** yourself to AODocs with **incorrect secu
 
 
 > ⭑   Note: The status code is the only truly reliable, machine-readable indication of what happened to the request.
-
-The ```reason``` and ```message``` fields are provided to help troubleshoot what happened.  They are both human-readable elaborations on the status code.
-
-The ```reason``` field is concise and generally has a default value that maps to its associated status code.  However, it can also be overridden by AODocs APIs to provide a more precise reason than its default, generic phrase.   The ```reason``` field also aims to be stable enough (part of the API "contract") to be machine-readable for error analysis, but might get amended between major AODocs versions (usually to make it more precise).
-
-The ```message``` field is verbose and human-readable but not machine-usable in any stable or meaningful way.  It can change without warning (including without major version release) and applications should not depend on its content.
+>
+> The ```reason``` and ```message``` fields are provided to help troubleshoot what happened.  They are both human-readable elaborations on the status code.
+>
+> The ```reason``` field is concise and generally has a default value that maps to its associated status code.  However, it can also be overridden by AODocs APIs to provide a more precise reason than its default, generic phrase.   The ```reason``` field also aims to be stable enough (part of the API "contract") to be machine-readable for error analysis, but might get amended between major AODocs versions (usually to make it more precise).
+>
+> The ```message``` field is verbose and human-readable but not machine-usable in any stable or meaningful way.  It can change without warning (including without major version release) and applications should not depend on its content.
 
 ## Common status codes in the AODocs API
 
@@ -160,7 +160,7 @@ AODocs APIs return two kinds of error information:
 AODocs APIs report errors in the standard HTTP way with JSON-formatted response bodies that look like the following (not including the header information):
 
 
-```
+```json
 [HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
 {"error": {
  "errors": [
@@ -217,14 +217,9 @@ Some examples of 400 errors include:
     *   "The classes with Folder acl source must contain a security category."
     *   "The name of the class must be unique in the library"
 
-        ```
 > ⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect requests.
-```
-
-
 
 Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:
-
 
 ```
 {
