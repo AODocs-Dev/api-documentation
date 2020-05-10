@@ -249,24 +249,17 @@ Additional fields to note:
 
 ---
 
-
-
-### **List libraries and find <code>libraryId</code> in UI</strong>
+### List libraries and find <code>libraryId</code> in UI
 
 You can also locate the `libraryId` of your target library inside the AODocs UI. Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
 
-
 ![libraryid-in-ui.png](/img/libraryid-in-ui.png)
 
-
 Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
-
 
 ```yaml
 /LibraryId_<libraryId>
 ```
-
-
 
 #### **Example**
 
@@ -275,19 +268,20 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 /LibraryId_RnTG8PDu8ZqTuDVHcv
 ```
 
-
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
 
 
 
 ---
 
-
-
 ## **List libraries plain (alternative to List libraries)**
+
+## List libraries plain (alternative to List libraries)
 
 If you only need the library name and ID in the response, then you can use the plain library list (`ApiPlainLibraryList`) as an alternative to the full library list (`ApiLibraryList`). It is usually much faster than the standard library list API method, but returns much less information.
 
+
+### Method and API
 
 ### **Method and API**
 
