@@ -89,8 +89,7 @@ Additional fields to note:
 
 ## List and search libraries (v2beta1)
 
-This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope, without which the full list of libraries available to you comes back in the response.
-
+This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope.  Without them, what comes back in the response is the full list of libraries available to you.
 
 ### Method and API
 
@@ -183,7 +182,7 @@ If you want information in addition to the default `nothing` setting, change thi
 
 `pageToken`
 
-This parameter is used for [pagination](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI) purposes.  If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
+This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes.  If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
 
 #### Sample request (no parameters: list all)
 
@@ -255,7 +254,7 @@ You can also locate the `libraryId` of your target library inside the AODocs UI.
 Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
 ```yaml
-/LibraryId_<libraryId>
+/LibraryId_<code><strong>\<libraryId\></strong></code>
 ```
 
 #### Example
