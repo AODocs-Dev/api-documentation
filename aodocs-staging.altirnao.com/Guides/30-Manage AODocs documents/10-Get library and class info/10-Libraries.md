@@ -11,9 +11,7 @@ The most useful methods to list and get libraries are the following:
 *   [List libraries plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
 *   [Get a specific library by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
-
 ---
-
 
 ## List libraries and find target library ID for your documents (legacy v1)
 
@@ -354,16 +352,14 @@ Play with the API Explorer:
 To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
 
 
-##### Sample request
+#### Sample request
 
 
 ```yaml
 GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 
-
-
-##### Response
+#### Response
 
 The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
@@ -377,7 +373,7 @@ Response fields of note:
 *   any other fields of interest
 
 
-##### Sample response (include=NONE)
+#### Sample response (include=NONE)
 
 
 ```json
@@ -399,6 +395,4 @@ Response fields of note:
   ...
 }
 ```
-
-
 
