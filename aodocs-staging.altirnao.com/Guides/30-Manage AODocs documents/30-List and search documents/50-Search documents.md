@@ -16,9 +16,14 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Searches documents of a class matching the provided query. Might become very slow or timeout when iterating over many results pages. If the result set contains more than 10k documents, it's highly likely some results will be missing. You should always check if precision=INCOMPLETE_RESULT in the response.
 
+> **Note**: By default, the method includes attachments in the search.  You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
+
+
 ### Request
 
 ```libraryId``` is a path parameter and ```classId``` is a query parameter.  These are the only mandatory arguments.  However, the ```searchQuery``` query parameter is what ultimately determines what results come back, filtering them on a text string.
+
+> **Note**: If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a ```searchQuery``` query parameter.  For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the ```searchQuery``` query parameter finds it, but "big document" does not.
 
 
 ### Sample request
@@ -31,10 +36,6 @@ POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/{libraryId}/sea
 
 The response returns an [ApiSearchResult](../../../../types/ApiSearchResult) resource, listing all documents that match the specified query.
 
-
-Response fields of note:
-
-*   ````richText```` (document's Description field; supports HTML tags like ```<b>Hello</b> world!```; read more about editing this field in [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
 ### Sample Response
 
