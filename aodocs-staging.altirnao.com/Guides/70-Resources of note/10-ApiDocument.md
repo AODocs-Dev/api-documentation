@@ -1,22 +1,17 @@
-# Resource: ````ApiDocument````
+# Resource: ```ApiDocument```
 
 
 ## What it is
 
-The ```ApiDocument``` resource is a representation of an AODocs document: that is, a JSON-formatted listing of all of the metadata that an AODocs document is made up of.
+The [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource is a representation of an AODocs document: that is, a JSON-formatted listing of all of the metadata that an AODocs document is made up of.
 
 This includes, but is not limited to the following:
 
-
-
-*   system properties like date and title
-*   custom properties
-*   rich text description field
+*   system properties like modifiedDate, title, and rich-text description field
+*   user-defined custom properties
 *   a listing of Google Drive attachments, if any
 
-> ⭑   Note: The AODocs ```ApiDocument``` resource is not the same as the Google Drive Files resource.  They are both core resources of their respective APIs, and they do interact, but they are two different and distinct things: a Drive file is what becomes an attachment to an AODocs document.
-
-
+> ⭑   Note: The AODocs ```ApiDocument``` resource is not the same as the [Google Drive Files resource](https://developers.google.com/drive/api/v3/reference/files).  They are both core resources of their respective APIs, and they do interact, but they are two different and distinct things: a Drive file is what becomes an attachment to an AODocs document.  That is, an AODocs document acquires a reference/link to a managed Drive file.
 
 The ```ApiDocument``` resource lives on the AODocs resource server, and you interact with it there.  You send calls to the server to operate on the resource, and the server performs the operation and sends back the result of the operation to you.
 
