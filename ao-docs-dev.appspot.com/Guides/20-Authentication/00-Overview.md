@@ -39,7 +39,7 @@ The AODocs API only requires the identity scope “[https://www.googleapis.com/a
 
 Finally, if you need robust and secure access to **AODocs APIs-only** (without being able to access Drive APIs), you have the option of ID tokens.
 
-See [additional authentication use cases](https://drive.google.com/a/altirnao.com/open?id=1VN1XZqFUCHNNG7Ya278gFxx4jaIp-6LKAs17JEoedhY).
+<!-- See [additional authentication use cases](https://drive.google.com/a/altirnao.com/open?id=1VN1XZqFUCHNNG7Ya278gFxx4jaIp-6LKAs17JEoedhY). -->
 
 
 ## General principles
