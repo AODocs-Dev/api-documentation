@@ -215,24 +215,23 @@ Some examples of 400 errors include:
 Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:
 
 
-```
+```json
 {
-    "error": {
-        "errors": [
-        {
-            "domain": "global",
-            "reason": "badRequest",
-            "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
-            mutually exclusive"
-        }
-        ],
-        "code": 400,
-        "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
-        mutually exclusive"
+  "error": {
+    "errors": [
+    {
+      "domain": "global",
+      "reason": "badRequest",
+      "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+      mutually exclusive"
     }
+    ],
+    "code": 400,
+    "message": "Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+    mutually exclusive"
+  }
 }
 ```
-
 
 To fix this specific error, provide only one of the indicated mutually exclusive parameters. When encountering a 400 error in general, follow the hint provided in the `message` field.
 
@@ -246,14 +245,14 @@ To fix this specific error, provide only one of the indicated mutually exclusive
 This error means credentials were missing or invalid (expired or unauthorized access token).
 
 
-```
+```json
 {
   "error": {
     "errors": [
     {
-        "domain": "global",
-        "reason": "required",
-        "message": "You must use oauth 2 to authenticate"
+      "domain": "global",
+      "reason": "required",
+      "message": "You must use oauth 2 to authenticate"
     }
     ],
     "code": 401,
@@ -268,17 +267,9 @@ To fix this error, check whether you've provided credentials, and if you have, w
 ---
 
 
-
-
----
-
-
-
 ## Resolve a 403 error: Forbidden
 
 This error can occur for the following reasons:
-
-
 
 *   Invalid security code
 *   Insufficient access to a resource
@@ -289,7 +280,7 @@ This error can occur for the following reasons:
 ### Invalid security code
 
 
-```
+```json
 {
   "error": {
     "errors": [
@@ -320,7 +311,7 @@ This means the client app does not have the correct permission levels to access 
 ##### Sample response message 1:
 
 
-```
+```json
 {
 "error": {
   "errors": [
@@ -343,7 +334,7 @@ This means the client app does not have the correct permission levels to access 
 ##### Sample response message 2:
 
 
-```
+```json
 {
   "error": {
     "errors": [
@@ -374,8 +365,6 @@ To fix this error check your permission levels or whether you own the target res
 
 This error can occur because of any of the following:
 
-
-
 *   Missing or incorrect resource-ID ("There is no library with id: 'OtbBk6G8Am0ATEy8P8'")
 *   Resource doesn't exist: _"No entity was found matching the key: !altirnao.com:Document(\"RwMUllP8yrBZFx9BWlN\")"_
 
@@ -385,7 +374,7 @@ This error can occur because of any of the following:
 For example, if the ```libraryId``` parameter is incorrect (not existing or misspelled), you get the following error:
 
 
-```
+```json
 {
   "error": {
     "errors": [
