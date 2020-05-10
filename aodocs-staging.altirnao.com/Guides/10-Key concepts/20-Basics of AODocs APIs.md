@@ -170,13 +170,7 @@ If there was something wrong with the request or with the server's ability to pe
 
 The response provides a standard HTTP status code to indicate success (**2xx**), failure (**4xx**), or some other condition (**5xx**); as well as an error message to guide the next steps.
 
-VERSION 1 (hyperlink opens in same tab)
-
 Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
-
-VERSION 2 (hyperlink opens in separate tab)
-
-Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios" target="_blank" rel="noopener"><span>HTTP status codes in AODocs APIs</span></a> to determine the type of issue and how to resolve it.
 
 ## Pagination
 
@@ -193,10 +187,10 @@ APIs not marked as `beta` are considered “stable”: they have permanence and 
 
 Here is how you can get started working with AODocs APIs:
 
-*   Try following the sequence of methods in the [Manage AODocs documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
-*   Use the [interactive API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
+*   Try following the sequence of methods in the [Manage AODocs documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
+*   Use the [interactive API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
 <!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
 *   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview).
-*   Check the [AODocs Reference](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs.
+*   Check the [AODocs Reference](/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs.
 *   Read the [Best practices](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview) section.
 *   Have trouble falling asleep?  Read the [Auth appendix](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/50-Auth%20appendix), which includes all the most essential soporific auth RFCs.
