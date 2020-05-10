@@ -24,6 +24,7 @@ To list target libraries on your domain, select a target library for your AODocs
 
 Play with the API Explorer:
 
+#### [PUT /library/v1](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)
 
 #### **[PUT /library/v1](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)**
 
@@ -99,7 +100,7 @@ This method allows you to search for target libraries on your domain with string
 
 Play with the API Explorer:
 
-#### **[GET /search/v2beta1/search](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)**
+#### **[GET /search/v2beta1/search](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)
 
 
 ### Usage/notes/guidelines
@@ -261,7 +262,7 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 /LibraryId_<libraryId>
 ```
 
-#### **Example**
+#### **Example
 
 
 ```yaml
@@ -274,8 +275,6 @@ Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/arti
 
 ---
 
-## **List libraries plain (alternative to List libraries)**
-
 ## List libraries plain (alternative to List libraries)
 
 If you only need the library name and ID in the response, then you can use the plain library list (`ApiPlainLibraryList`) as an alternative to the full library list (`ApiLibraryList`). It is usually much faster than the standard library list API method, but returns much less information.
@@ -283,23 +282,21 @@ If you only need the library name and ID in the response, then you can use the p
 
 ### Method and API
 
-### **Method and API**
-
 Play with the API Explorer:
 
 
-#### **[PUT /library/v1/plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put)**
+#### **[PUT /library/v1/plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put)
 
 
-### **Usage/notes/guidelines**
+### **Usage/notes/guidelines
 
 
-#### **Request**
+#### **Request
 
 There are no mandatory or recommended parameters to send.
 
 
-#### **Sample request**
+#### **Sample request
 
 
 ```yaml
@@ -308,7 +305,7 @@ PUT https://aodocs.altirnao.com/api/library/v1/plain
 
 
 
-#### **Response**
+#### **Response
 
 The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
@@ -327,7 +324,7 @@ Additional response fields to note:
 *   `name` (of the library)
 
 
-#### **Sample response**
+#### **Sample response
 
 
 ```json
@@ -355,28 +352,28 @@ Additional response fields to note:
 
 
 
-## **Get a specific library by ID**
+## **Get a specific library by ID
 
 You can retrieve to parse something from its metadata (or to confirm it exists) if you have its `libraryId`.
 
 
-### **Method and API**
+### **Method and API
 
 Play with the API Explorer:
 
 
-#### **[GET /library/{libId}](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)**
+#### **[GET /library/{libId}](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
 
-### **Usage/notes/guidelines**
+### **Usage/notes/guidelines
 
 
-#### **Request**
+#### **Request
 
 To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
 
 
-###### **Sample request**
+###### **Sample request
 
 
 ```http
@@ -385,7 +382,7 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 
 
 
-###### **Response**
+###### **Response
 
 The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
@@ -401,7 +398,7 @@ Response fields of note:
 *   any other fields of interest
 
 
-###### **Sample response (include=NONE)**
+###### **Sample response (include=NONE)
 
 
 ```json
