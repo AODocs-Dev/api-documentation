@@ -88,6 +88,7 @@ folders:
           30-List and search documents:
             ordering:
             - 00-Overview
+            - 35-List, search, and count documents
             - 30-Get document by ID
             - 40-List documents
             - 45-Count documents

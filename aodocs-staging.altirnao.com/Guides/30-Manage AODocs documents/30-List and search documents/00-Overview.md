@@ -228,7 +228,7 @@ The response returns an [ApiSearchResult](/docs/aodocs-staging.altirnao.com/1/ty
     ...
     ]
 }
-
+```
 
 ---
 
