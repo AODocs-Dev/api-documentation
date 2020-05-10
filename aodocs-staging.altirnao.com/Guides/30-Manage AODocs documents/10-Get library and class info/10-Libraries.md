@@ -170,13 +170,13 @@ If `requirePreciseResults` is set to `true`, then up to 25,000 results, the resp
 
 `include` (default: `nothing`)
 
-If you want information in addition to the default `nothing` setting, change this parameter to one of the following:
+If you want information in addition to the default `nothing` setting, change the `include` parameter to one of the following:
 
-*   STATISTICS (only for domain administrators)
-*   LABELS
-*   IS_FAVORITE
-*   LAST_ACCESSED
-*   TASK_COUNT
+*   `STATISTICS` (only for domain administrators)
+*   `LABELS`
+*   `IS_FAVORITE`
+*   `LAST_ACCESSED`
+*   `TASK_COUNT`
 
 > **Note**: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.
 
@@ -257,20 +257,17 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 
 #### Example
 
+<code>/LibraryId_<strong>RnTG8PD8u8ZqTuDVHcv</strong></code>
 
-```yaml
-/LibraryId_RnTG8PD8u8ZqTuDVHcv
-```
 
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
-
 
 
 ---
 
 ## List libraries plain (alternative to List libraries)
 
-If you only need the library name and ID in the response, then you can use the plain library list (`ApiPlainLibraryList`) as an alternative to the full library list (`ApiLibraryList`). It is usually much faster than the standard library list API method, but returns much less information.
+If you only need the library name and ID in the response, then you can use the plain library list ([ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) as an alternative to the full library list ([ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList). It is usually much faster than the standard library list API method, but returns much less information.
 
 
 ### Method and API
@@ -302,8 +299,6 @@ PUT https://aodocs.altirnao.com/api/library/v1/plain
 
 The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
-
-
 *   library name
 *   library ID
 *   modification dates
@@ -311,8 +306,6 @@ The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/doc
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
-
-
 
 *   `name` (of the library)
 
@@ -338,12 +331,7 @@ Additional response fields to note:
     ...
 ```
 
-
-
-
 ---
-
-
 
 ## Get a specific library by ID
 
