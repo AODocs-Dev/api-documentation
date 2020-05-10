@@ -7,7 +7,7 @@ These methods are useful when working with classes:
 *   [List all available AODocs classes in a specific library](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 *   [Get a specific class](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
-What follows is an elaboration on these methods.
+What follows is an elaboration on each of these methods.
 
 ---
 
@@ -46,17 +46,6 @@ To return just the bare minimum of class ID and displayName in the response, you
 ```yaml
 ?fields=items(displayName%2Cid%2Ckind)%2Ckind
 ```
-
-```json
-?fields=items(displayName%2Cid%2Ckind)%2Ckind
-```
-
-<code>?<strong>fields=items(displayName%2Cid%2Ckind)%2Ckind</strong></code>
-
-<code>?<strong>fields</strong>=<strong>items(displayName</strong>%2C<strong>id</strong>%2C<strong>kind)</strong>%2C<strong>kind</strong></code>
-
-<code><strong>?</strong>fields<strong>=</strong>items(displayName<strong>%2C</strong>id<strong>%2C</strong>kind)<strong>%2C</strong>kind</code>
-
 
 
 #### Response
@@ -152,9 +141,14 @@ Play with the API Explorer:
 
 [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
+#### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+
+### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+
+## [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+
+
 In the command above:
-
-
 
 *   `documentType` is the API
 *   `v1` is the API version
