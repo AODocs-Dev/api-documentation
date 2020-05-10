@@ -1,4 +1,4 @@
-# ** Count documents of a library**
+# Count documents of a library
 
 > **Note**: This is available only to library administrators.
 

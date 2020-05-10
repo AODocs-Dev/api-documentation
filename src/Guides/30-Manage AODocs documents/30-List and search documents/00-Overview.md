@@ -8,6 +8,7 @@ In this section, we explore the following:
 
 * [Search documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
 
+* [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
 
 
 
