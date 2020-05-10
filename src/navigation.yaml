@@ -60,7 +60,6 @@ folders:
         - 00-Overview
         - 10-Basics of AODocs
         - 20-Basics of AODocs APIs
-        # - 99-File download test
 
       20-Authentication:
         ordering:
