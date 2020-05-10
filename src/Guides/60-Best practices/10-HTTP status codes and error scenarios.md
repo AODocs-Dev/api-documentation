@@ -174,27 +174,6 @@ AODocs APIs report errors in the standard HTTP way with JSON-formatted response 
 }
 ```
 
-
-
-```json
-[HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
-
-{
-  "error": {
-    "errors": [
-      {
-        "domain": "[domain]",
-        "reason": "[CONCISE DEFAULT OR CUSTOMIZED HTTP STATUS REASON]",
-        "message": "[VERBOSE CUSTOM MESSAGE]"
-      }
-    ],
-    "code": [HTTPS STATUS CODE (same as above)],
-    "message": "[VERBOSE CUSTOM MESSAGE (same as above)]"
- }
-}
-```
-
-
 It is the client app's responsibility to catch and handle all standard errors encountered when using the REST API. The following list guides you toward that end.
 
 
@@ -206,19 +185,13 @@ Usually, 4xx errors should not be retried, while 5xx should.  The only exception
 
 For example, if your resource is not currently in a state to allow concurrent edits from more than one party, then you could employ [exponential backoff](https://developers.google.com/drive/api/v3/handle-errors#exponential-backoff) and retry several times, letting the user know that their request is being worked on, and asking them to hang on.
 
-
-
 ---
-
-
 
 ## Resolve a 400 error: Bad Request
 
 This error means the input is incorrect — something in the query is missing or not valid.
 
 Some examples of 400 errors include:
-
-
 
 *   Using mutually exclusive parameters at the same time:
     *   ""Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"
@@ -235,9 +208,7 @@ Some examples of 400 errors include:
     *   "The classes with Folder acl source must contain a security category."
     *   "The name of the class must be unique in the library"
 
-        ```
 > ⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect requests.
-```
 
 
 
@@ -264,7 +235,6 @@ Here is an example of a 400 error, this one resulting from providing more than o
 
 
 To fix this specific error, provide only one of the indicated mutually exclusive parameters. When encountering a 400 error in general, follow the hint provided in the `message` field.
-
 
 
 ---
