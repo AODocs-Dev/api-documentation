@@ -11,6 +11,8 @@ The most useful methods to list and get libraries are the following:
 *   [List libraries plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
 *   [Get a specific library by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
+What follows are elaborations on these methods.
+
 ---
 
 ## List libraries and find target library ID for your documents (legacy v1)
