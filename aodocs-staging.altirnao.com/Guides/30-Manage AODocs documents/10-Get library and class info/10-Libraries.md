@@ -1,61 +1,68 @@
 # Get AODocs library info (list all available libraries)
 
-AODocs content is contained in libraries.  Your libraries should already exist; if they don't, a library administrator needs to [create them first](https://support.aodocs.com/hc/en-us/articles/115002366923-Create-a-library-from-scratch).
+AODocs content is contained in libraries. Your libraries should already exist; if they don't, a library administrator needs to [create them first](https://support.aodocs.com/hc/en-us/articles/115002366923-Create-a-library-from-scratch).
 
 Once your libraries exist, you can list them to get an idea of where to place your content.
 
 The most useful methods to list and get libraries are the following:
 
-* [List all available AODocs libraries (full)](03-List%20all%20libraries)
-* [List all available AODocs libraries (plain)](#heading=h.l3tpn8bxn8c)
-* [Get a specific library](#heading=h.sgixsybfrj2a)
+*   [List libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
+*   [List and search libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
+*   [List libraries plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
+*   [Get a specific library by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+
 
 ---
 
-# List libraries and find target library ID for your documents (v1)
 
-To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library's unique identifier, ```libraryId```.
+## List libraries and find target library ID for your documents (legacy v1)
 
-## Method and API
+To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library's unique identifier, `libraryId`.
+
+
+### Method and API
 
 Play with the API Explorer:
 
-### [PUT /library/v1](../../../../routes/library/v1/put)
 
-## Usage/notes/guidelines
-
-### Request
+#### **[PUT /library/v1](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)**
 
 
-> ⚠  **Warning/Alert**: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
-
-This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ```include``` query parameter to ```NONE```.
+### Usage/notes/guidelines
 
 
+#### Request
 
-### Sample request
+> ⚠ **Warning/Alert**: This method requests all metadata for all libraries on the domain. Not recommended without filtering!
+
+This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response. We strongly recommend you set the `include` query parameter to `NONE`.
+
+#### Sample request
 
 ```yaml
 PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 ```
 
-Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
+Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method to get just the key-value pairs of `name` and `id`.
 
-### Response
 
-The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ```include=NONE``` the response is smaller and far more manageable.
+#### Response
 
-Take note of the `libraryId` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
+The response returns an [ApiLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
+
+Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional fields to note:
 
-*   ```name``` (of the library)
-*   ```defaultDocumentType``` (the library's default class ID)
-*   ```rootFolderId``` (the ID of the topmost level of the library's hierarchy)
-*   ```favorited``` (whether or not the library is starred as a favorite)
+*   `name` (of the library)
+*   `defaultDocumentType` (the library's default class ID)
+*   `rootFolderId` (the ID of the topmost level of the library's hierarchy)
+*   `favorited` (whether or not the library is starred as a favorite)
 *   any other fields of interest
 
-### Sample response
+
+#### Sample response
+
 
 ```json
 {
@@ -65,8 +72,8 @@ Additional fields to note:
       "kind": "aodocs#library",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "name": "mfie-stag-DMS-lib-001",
-      "defaultDocumentType": "RnTbOft44KfZYkfBpV",
-      "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+      "defaultDocumentType": "RnTbOft844KfZYkfBpV",
+      "rootFolderId": "1S7ayht8i78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,
       ...
     },
@@ -74,79 +81,263 @@ Additional fields to note:
       "kind": "aodocs#library",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
       "name": "mfie-sf-lib-005",
-      "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
-      "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
+      "defaultDocumentType": "Rngc4rL89JCj5xwTtrF",
+      "rootFolderId": "1yAMvoT8BFEvI_8GXghiyTEJqevJeW7q9C",
       "favorited": true
     }
 }
 ```
 
-## List libraries and find ```libraryId``` in UI
+---
 
-You can also locate the ```libraryId``` of your target library inside the AODocs UI.  Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
+## List and search libraries (v2beta1)
+
+This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope, without which the full list of libraries available to you comes back in the response.
+
+
+### Method and API
+
+Play with the API Explorer:
+
+#### **[GET /search/v2beta1/search](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)**
+
+
+### Usage/notes/guidelines
+
+The search can be conducted without any parameters, returning all libraries that you are authorized to access, in an undefined order.
+
+#### Request
+
+Several useful parameters are available to help narrow the search.
+
+##### Request parameters of note
+
+`query`
+
+The `query` query parameter is what ultimately determines what results come back, filtering them on a text string.  You can search for the following:
+
+*   a word (like _blue_)
+*   several words in any order (_document big blue_)
+*   an exact phrase (_"big blue document"_ — two or more words in exact order in double quotes)
+*   an inexact phrase (_~"big blue document"_ — exact phrase but allowing for common variants of its constituent words, like _bigger_, _blues_, and _documenting_)
+*   a substring of characters in a word (only at the prefix position, e.g. _docu_)
+*   a library ID (equivalent of get library)
+
+> **Note**: The double quotes return only adjacent words in a phrase.  For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
+
+`userSuperAdminAccess` (default: `false`)
+
+By default, you receive a response containing no more information than you need.  If you are a domain administrator (superadmin), you can change the `userSuperAdminAccess`'s default value of `false` to `true` to elevate your privileges to return libraries accessible to all domain administrators.
+
+`minimumCurrentUserRole`
+
+Use this flag if you want to have access to libraries you are at least an `ADMIN` of.  For example, if you want to know which libraries you're authorized to import content into, then you don't want to consider libraries you only have `READER` privileges for (since you can't import at that level).
+
+`libtypes`
+
+You can specify which of the three types of libraries you get in the response in any combination.  Specifying none is the same as specifying all.
+
+`storageAccount`
+
+You can either request results from all storage accounts available to you, or you can specify one storage account at a time.
+
+`labelIds`
+
+When you list all libraries in the UI, you can see a list of labels in the left panel ordered alphabetically.  With this parameter, you can request libraries by label, including several at a time.
+
+`favorite`
+
+If set to `true`, returns just this user's favorite libraries.
+
+`orderBy`
+
+You can either get your results ordered arbitrarily, or you can use this parameter to sort your results by one and only one of the following:
+
+*   `NAME` (ascending)
+*   `LAST_ACCESSED` (descending)
+*   `TASK_COUNT (descending)
+*   `FAVORITE_FIRST`
+
+> **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results.  Check the `incompleteResults` flag in the response.
+
+`limit` (default: 20)
+
+You can choose an arbitrary number of results to display, up to 1000.
+
+`requirePreciseResults` (default: `false`)
+
+If you don't specify this parameter, the result will contain a `totalResultCount` field that is an estimate of the total number of results matching your query (not only for the current page).  The `estimatedResultCount` field in the response will be set to `true`.
+
+This is the default behavior: the query is usually much faster when all it has to do is estimate the total number of results (instead of counting).  The downside is that it's just an estimate — within about an order of magnitude — so the higher the values, the more significant the divergence.
+
+If `requirePreciseResults` is set to `true`, then up to 25,000 results, the response's `totalResultCount` will contain the exact number of results that match your initial request, and beyond that, it'll contain an estimate.  The `estimatedResultCount` will be set to `true` in either case.
+
+`include` (default: `nothing`)
+
+If you want information in addition to the default `nothing` setting, change this parameter to one of the following:
+
+*   STATISTICS (only for domain administrators)
+*   LABELS
+*   IS_FAVORITE
+*   LAST_ACCESSED
+*   TASK_COUNT
+
+> **Note**: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.
+
+`pageToken`
+
+This parameter is used for [pagination](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI) purposes.  If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
+
+#### Sample request (no parameters: list all)
+
+```yaml
+GET https://aodocs-staging.altirnao.com/api/library/v2beta1/search
+```
+
+Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method to get just the key-value pairs of `name` and `id`.
+
+
+#### Sample request (specific search)
+
+
+```yaml
+GET https://aodocs-staging.altirnao.com/api/library/v2beta1/search?query=001&minimumCurrentUserRole=WRITER&libTypes=TF&favorite=true&orderBy=LAST_ACCESSED&limit=3&requirePreciseResults=true&facets=true&include=LAST_ACCESSED HTTP/1.1
+```
+
+#### Response
+
+The response returns an [ApiLibrarySearchResultList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList) resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means "all").
+
+Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
+
+Additional fields to note:
+
+*   `name` (of the library)
+*   `defaultDocumentType` (the library's default class ID)
+*   `rootFolderId` (the ID of the topmost level of the library's hierarchy)
+*   `favorited` (whether or not the library is starred as a favorite)
+*   any other fields of interest
+
+
+#### Sample response
+
+
+```json
+{
+  "kind": "aodocs#librarySearchResultList",
+  "libraries": [
+    {
+      "id": "R6l0hkc0sxwUgY987R",
+      "name": "my TF library 001",
+      "libraryType": "TF",
+      "storageAccount": "storage-account@test.altirnao.com",
+      "rootFolderId": "1Rxi3ir8tGD1ektc6M5NnEP8Lz2NVNen9A",
+      "folderVisibility": "PUBLICLY_EDITABLE",
+      "onlyAdminsCanManageFolders": false,
+      "currentUserRole": "ADMIN",
+      "kind": "aodocs#librarySearchResult",
+      "lastAccessed": null
+    },
+    ...
+  ],
+  "nextPageToken": "eyJpbk18lbW9yeSI6Z...c0Mn0=",
+  "totalResultCount": 51,
+  "estimatedResultCount": false,
+  "incompleteResults": false
+  }
+```
+
+---
+
+
+
+### **List libraries and find <code>libraryId</code> in UI</strong>
+
+You can also locate the `libraryId` of your target library inside the AODocs UI. Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
+
 
 ![libraryid-in-ui.png](/img/libraryid-in-ui.png)
 
 
-Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
+Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
-```
-/LibraryId_libraryId
+
+```yaml
+/LibraryId_<libraryId>
 ```
 
-### Example
 
-```
+
+#### **Example**
+
+
+```yaml
 /LibraryId_RnTG8PDu8ZqTuDVHcv
 ```
 
+
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
+
+
 
 ---
 
-# List libraries plain (alternative to List libraries)
 
-If you only need the library name and ID in the response, then you can use the plain library list (```ApiPlainLibraryList```) as an alternative to the full library list (```ApiLibraryList```).
 
-This is the same as asking for the full ```ApiLibraryList``` collection and using the ```fields``` field to filter the response down to just the ```name``` and ```id``` fields.
+## **List libraries plain (alternative to List libraries)**
 
-## Method and API
+If you only need the library name and ID in the response, then you can use the plain library list (`ApiPlainLibraryList`) as an alternative to the full library list (`ApiLibraryList`). It is usually much faster than the standard library list API method, but returns much less information.
+
+
+### **Method and API**
 
 Play with the API Explorer:
 
-### [PUT /library/v1/plain](../../../../routes/library/v1/plain/put)
 
-## Usage/notes/guidelines
+#### **[PUT /library/v1/plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put)**
 
-### Request
+
+### **Usage/notes/guidelines**
+
+
+#### **Request**
 
 There are no mandatory or recommended parameters to send.
 
-### Sample Request
+
+#### **Sample request**
+
 
 ```yaml
 PUT https://aodocs.altirnao.com/api/library/v1/plain
 ```
 
 
-### Response
 
-The response returns an [ApiPlainLibraryList](../../../../types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+#### **Response**
+
+The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+
+
 
 *   library name
 *   library ID
 *   modification dates
 
-Take note of the ````libraryId```` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
 
+
+
 *   `name` (of the library)
 
-### Sample Response
+
+#### **Sample response**
+
 
 ```json
-  {
+ {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "name": "mfie-stag-DMS-lib-001",
@@ -163,25 +354,35 @@ Additional response fields to note:
     ...
 ```
 
+
+
+
 ---
 
-# Get a specific library by ID
 
-You can retrieve to parse something from its metadata (or to confirm it exists) if you have its ```libraryId```.
 
-## Method and API
+## **Get a specific library by ID**
+
+You can retrieve to parse something from its metadata (or to confirm it exists) if you have its `libraryId`.
+
+
+### **Method and API**
 
 Play with the API Explorer:
 
-### [GET /library/{libId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
-## Usage/notes/guidelines
+#### **[GET /library/{libId}](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)**
 
-### Request
 
-To get your desired library back in the response you have to provide the library ID.  This is the only mandatory field.  If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
+### **Usage/notes/guidelines**
 
-##### Sample request
+
+#### **Request**
+
+To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
+
+
+###### **Sample request**
 
 
 ```http
@@ -190,7 +391,7 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 
 
 
-##### Response
+###### **Response**
 
 The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
@@ -198,7 +399,7 @@ Response fields of note:
 
 
 
-*   ````libraryId````
+*   `libraryId`
 *   `name` / homeUrl
 *   `rootFolderId` (the ID of the topmost level of the library's hierarchy)
 *   `defaultDocumentType` (the library's default class ID)
@@ -206,10 +407,10 @@ Response fields of note:
 *   any other fields of interest
 
 
-##### Sample response (include=NONE)
+###### **Sample response (include=NONE)**
 
 
-```
+```json
 {
   "kind": "aodocs#library",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
@@ -230,4 +431,4 @@ Response fields of note:
 ```
 
 
----
+
