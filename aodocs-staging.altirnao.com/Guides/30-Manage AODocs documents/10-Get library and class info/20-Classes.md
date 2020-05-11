@@ -63,7 +63,7 @@ Response fields of note:
 *   any other fields of interest
 
 
-#### Sample full (abridged) response
+#### Sample full response
 
 
 ```json
@@ -90,24 +90,24 @@ Response fields of note:
 
 
 
-#### Sample filtered response (complete)
+#### Sample filtered response
 
 
 ```json
 {
-"kind": "aodocs#classList",
-"items": [
- {
-  "kind": "aodocs#classId",
-  "id": "Rmk8LOJ1y0Jlwq8cxz",
-  "displayName": "testClassInsideDMS"
- },
- {
-  "kind": "aodocs#classId",
-  "id": "Rmn9gYNz9JwCVfQaIK",
-  "displayName": "testClass2insideDMS"
- }
-]
+  "kind": "aodocs#classList",
+  "items": [
+    {
+      "kind": "aodocs#classId",
+      "id": "Rmk8LOJ1y0Jlwq8cxz",
+      "displayName": "testClassInsideDMS"
+    },
+    {
+      "kind": "aodocs#classId",
+      "id": "Rmn9gYNz9JwCVfQaIK",
+      "displayName": "testClass2insideDMS"
+    }
+  ]
 }
 ```
 
@@ -119,27 +119,19 @@ You can also list your library classes in the UI, on the Library Administration 
 
 Go to Administration > Library administration. In the left-hand pane, go to Library configuration > Document classes. This is where your classes are listed. Note the singular green checkmark signifying the library's default class.
 
-
 ![list-classes-in-ui.png](/img/list-classes-in-ui.png)
-
-
-
 
 ---
 
-
-
 ## Get a specific class by ID
 
-You can retrieve (the configuration of) a specific class/documentType to confirm it exists or to parse something from its metadata if you have its `classId`/`documentTypeId`.
-
+You can retrieve (the configuration of) a specific class/documentType to confirm it exists or to parse something from its metadata if you have its `documentTypeId` (class ID).
 
 ### Method and API
 
 Play with the API Explorer:
 
 ### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
-
 
 In the command above:
 
@@ -159,11 +151,6 @@ Pass the mandatory class ID (`documentTypeId`) and the library ID (`libId`) of t
 GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86axGNklquDP/documentTypes/Rs4xuIg86e45fvAsn9L
 ```
 
-<code>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/<strong>Rs4xtue86axGNklquDP</strong>/documentTypes/<strong>Rs4xuIg86e45fvAsn9L</strong></code>
-
-<code><strong>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/</strong>Rs4xtue86axGNklquDP<strong>/documentTypes/</strong>Rs4xuIg6e45fvAsn9L</code>
-
-
 #### Response
 
 The response returns an [ApiDocumentType](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
@@ -181,10 +168,11 @@ Response fields of note:
 
 ```json
 {
-  "kind": "aodocs#documentType",
-  "id": "RnTbOft44KfZYkfBpV",
-  "displayName": "mfie-stag-dms-class-001-not-default",
-  "libraryId": "RnTG8PDu8ZqTuDVHcv",
+  {
+    "kind": "aodocs#documentType",
+    "id": "RnTbOft44KfZYkfBpV",
+    "displayName": "mfie-stag-dms-class-001-not-default",
+    "libraryId": "RnTG8PDu8ZqTuDVHcv",
   },
   "defaultClass": true,
 }
