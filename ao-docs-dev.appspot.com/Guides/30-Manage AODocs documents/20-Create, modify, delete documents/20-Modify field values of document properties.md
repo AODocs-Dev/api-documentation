@@ -165,7 +165,7 @@ This flag allows write access to these two fields: it exists so that tools like 
 #### Sample request
 
 ```yaml
-    PUT https://aodocs.altirnao.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
