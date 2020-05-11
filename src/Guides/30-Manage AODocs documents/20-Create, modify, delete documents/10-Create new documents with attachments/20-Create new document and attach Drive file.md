@@ -10,7 +10,6 @@ To get familiar with document creation, try to [create AODocs documents in the U
 
 To create a new document with AODocs APIs, send a request to the server with an `ApiDocument` resource, listing:
 
-
 *   mandatory resource fields required by the server (like target library ID)
 *   optional but useful fields (like document title, class ID, and folder ID)
 *   any Drive IDs of files to attach — zero or more for DMS libraries; and a mandatory single one for TF/SF
@@ -103,10 +102,6 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 If the request succeeds, the response returns a `200 OK` status code and a JSON-formatted representation of an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as `id`, and its `classId` is what you specified in the request, else of the library's default type.
 
-`ApiDocument` response fields of note:
-
-*   `richText` (document's Description field; supports HTML tags like `<b>Hello</b> world!`; read more about changing this field in the [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
-
 ### Sample response
 
 > ⭑   **Note**: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request. The request identifies the original, the response identifies the copy.
@@ -133,32 +128,32 @@ If the request succeeds, the response returns a `200 OK` status code and a JSON-
     }
   ],
   "folders": [
- {  // library root folder
-  "kind": "aodocs#folder",
-  "libraryId": "Rs4xtue86axGNklquDP",
-  "libraryName": "mfie-sf-prod-001",
-  "folderAodocsId": "0", // ⇐ "0" means root folder
-  "fileId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu", // ⇐ root folder Drive ID
-  "name": "mfie-sf-prod-001",
-  "parentFolderIsRoot": false,
-  "folderIsRoot": true,
-   ...
- },
- { // actual folder the document is in
-  "kind": "aodocs#folder",
-  "libraryId": "Rs4xtue86axGNklquDP",
-  "libraryName": "mfie-sf-prod-001",
-   ...
-  "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma",
-  "parentFolderAodocsId": "0", // ⇐ we are one level below root
-  "parentFolderDriveId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu",
-  "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma", // ⇐ subfolder Drive ID
-  "name": "test-sf-prod-001-subfolder1",
-  "parentFolderIsRoot": true, // ⇐ we are one level below root
-  "folderIsRoot": false,
-   ...
- }
-],
+    {  // library root folder
+      "kind": "aodocs#folder",
+      "libraryId": "Rs4xtue86axGNklquDP",
+      "libraryName": "mfie-sf-prod-001",
+      "folderAodocsId": "0", // ⇐ "0" means root folder
+      "fileId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu", // ⇐ root folder Drive ID
+      "name": "mfie-sf-prod-001",
+      "parentFolderIsRoot": false,
+      "folderIsRoot": true,
+      ...
+   },
+    { // actual folder the document is in
+      "kind": "aodocs#folder",
+      "libraryId": "Rs4xtue86axGNklquDP",
+      "libraryName": "mfie-sf-prod-001",
+      ...
+      "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma",
+      "parentFolderAodocsId": "0", // ⇐ we are one level below root
+      "parentFolderDriveId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu",
+      "fileId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma", // ⇐ subfolder Drive ID
+      "name": "test-sf-prod-001-subfolder1",
+      "parentFolderIsRoot": true, // ⇐ we are one level below root
+      "folderIsRoot": false,
+      ...
+   }
+  ],
 "numberOfAttachments": 1,
 }
 ```
