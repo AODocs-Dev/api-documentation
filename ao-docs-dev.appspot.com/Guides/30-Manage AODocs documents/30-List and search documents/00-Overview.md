@@ -2,13 +2,13 @@
 
 In this section, we explore the following:
 
-* [Get document by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/30-Get%20document%20by%20ID)
+* [Get document by ID](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/30-Get%20document%20by%20ID)
 
-* [List documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/40-List%20documents)
+* [List documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/40-List%20documents)
 
 * [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
 
-* [Search documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
+* [Search documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
 
 
 ---
@@ -24,7 +24,7 @@ You can retrieve (the configuration of) a specific document to parse something f
 
 Play with the API Explorer:
 
-### [GET /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+### [GET /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 
 ## Guidelines
 
@@ -50,7 +50,7 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ```id```, and its class is what you specified in the request, else of the library's default type.
 
 ### Sample Response
 
@@ -72,7 +72,7 @@ The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs
 
 # List documents of a library
 
-> **Note**: This is available only to library administrators.
+> ⭑  **Note**: This is available only to library administrators.
 
 You can list documents associated with a particular library as follows.
 
@@ -128,7 +128,7 @@ The response returns an [ApiDocumentList](../../../../types/ApiDocumentList) res
 
 # Count documents of a library
 
-> **Note**: This is available only to library administrators.
+> ⭑  **Note**: This is available only to library administrators.
 
 You can count the number of documents associated with a particular library (and optionally class) as follows.
 
@@ -169,7 +169,7 @@ The response returns an [ApiDocumentCount](/docs/aodocs-staging.altirnao.com/1/t
 
 # Search documents of a class
 
-<!-- > **Note**: This is available only to library administrators. -->
+<!-- > ⭑  **Note**: This is available only to library administrators. -->
 
 You can search for documents associated with a particular library and a particular class as follows.
 
@@ -186,14 +186,14 @@ Play with the API Explorer:
 
 This method searches documents of a class matching the provided query. It might become very slow or time out when iterating over many pages of results. If the result set contains more than 10,000 documents, it's highly likely the response will get truncated and some results will be missing. You should always check if ```precision=INCOMPLETE_RESULT``` in the response.
 
-> **Note**: By default, the method includes attachments in the search. You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
+> ⭑  **Note**: By default, the method includes attachments in the search. You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
 
 
 ### Request
 
 `libraryId` is a path parameter and `classId` is a query parameter. These are the only mandatory arguments. However, the `searchQuery` query parameter is what ultimately determines what results come back, filtering them on a text string.
 
-> **Note**: If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a ```searchQuery``` query parameter. For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the ```searchQuery``` query parameter finds it, but "big document" does not.
+> ⭑  **Note**: If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a ```searchQuery``` query parameter. For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the ```searchQuery``` query parameter finds it, but "big document" does not.
 
 
 ### Sample request

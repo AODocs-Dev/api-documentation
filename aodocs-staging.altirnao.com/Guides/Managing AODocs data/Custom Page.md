@@ -1,6 +1,6 @@
 # [OLD] Data handling tutorial
 
-We put the most useful API methods together into a sequence you can follow in the [API portal](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) to acquire the know-how needed to accomplish the most common data-handling goals, as well as to gain the confidence to tackle more advanced API tasks, including configuration and administration.
+We put the most useful API methods together into a sequence you can follow in the [API portal](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) to acquire the know-how needed to accomplish the most common data-handling goals, as well as to gain the confidence to tackle more advanced API tasks, including configuration and administration.
 
 > ⭑   **Note**: You can perform most of the tasks in this tutorial either using the API or on your homepage in the UI. Use the one that suits your needs, or you can do them both to understand how they map to each other.
 
@@ -55,7 +55,7 @@ _____________________________
 
 ### List libraries and find target library ID for your documents
 
-List target libraries on your domain, select a target library for your AODocs documents to live in, and note the target library's unique identifier ````libraryId````
+List target libraries on your domain, select a target library for your AODocs documents to live in, and note the target library's unique identifier ```libraryId```
 
 #### Method and API
 
@@ -75,16 +75,16 @@ This method has no mandatory parameters, but without setting any filtering it tr
 
 ##### Response
 
-The response returns an [ApiLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter ````include=NONE```` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter ```include=NONE``` the response is smaller and far more manageable.
 
-Take note of the ````libraryId```` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the ```libraryId``` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional fields to note:
 
-*   ````name```` (of the library)
-*   ````defaultDocumentType```` (the library's default class ID)
-*   ````rootFolderId```` (the ID of the topmost level of the library's hierarchy)
-*   ````favorited```` (whether or not the library is starred as a favorite)
+*   ```name``` (of the library)
+*   ```defaultDocumentType``` (the library's default class ID)
+*   ```rootFolderId``` (the ID of the topmost level of the library's hierarchy)
+*   ```favorited``` (whether or not the library is starred as a favorite)
 *   any other fields of interest
 
 ##### Sample Response
@@ -116,7 +116,7 @@ Additional fields to note:
 
 #### List libraries and find ```libraryId``` in UI
 
-You can also locate the ````libraryId```` of your target library inside the AODocs UI. Go to your homepage > My libraries by clicking on the "My libraries" link in thepper left corner of most pages:
+You can also locate the ```libraryId``` of your target library inside the AODocs UI. Go to your homepage > My libraries by clicking on the "My libraries" link in thepper left corner of most pages:
 
  Ophe desired target library, and note the library ID in t GIt's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
@@ -152,13 +152,13 @@ There are no mandatory or recommended parameters to send.
 
 ##### Response
 
-The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+The response returns an [ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
 *   library name
 *   library ID
 *   modification dates
 
-Take note of the ````libraryId```` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the ```libraryId``` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
 
@@ -191,7 +191,7 @@ _____________________________
 
 ### Get a specific library by ID
 
-You can retrieve (the configuration of) a specific library to confirm it exists or to parse something from its metadata if you have its ````libraryId````
+You can retrieve (the configuration of) a specific library to confirm it exists or to parse something from its metadata if you have its ```libraryId```
 
 #### Method and API
 
@@ -209,11 +209,11 @@ To get your desired library back in the response you have to provide the library
 
 ##### Response
 
-The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
+The response returns an [ApiLibrary](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
 
-*   ````libraryId````
+*   ```libraryId```
 *   `name` / homeUrl
 *   `rootFolderId` (the ID of the topmost level of the library's hierarchy)
 *   `defaultDocumentType` (the library's default class ID)
@@ -278,15 +278,15 @@ PUT /documentType/v1/libraries/{libraryId}
 
 ##### Request
 
-Only ````libraryId```` is mandatory.
+Only ```libraryId``` is mandatory.
 
-To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ````fields```` query parameter with ````items(displayName,id,kind),kind```` as follows:
+To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ```fields``` query parameter with ```items(displayName,id,kind),kind``` as follows:
 
-````fields=items(displayName%2Cid%2Ckind)%2Ckind````
+```fields=items(displayName%2Cid%2Ckind)%2Ckind```
 
 ##### Response
 
-The response returns an [ApiDocumentTypeList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
+The response returns an [ApiDocumentTypeList](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
 Response fields of note:
 
@@ -370,11 +370,11 @@ Pass the mandatory ```classId```/```documentId```, as well as the ```libraryId``
 
 ##### Response
 
-The response returns an [ApiDocumentType](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
+The response returns an [ApiDocumentType](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
 
 Response fields of note:
 
-*   ````id```` (of the class)
+*   ```id``` (of the class)
 *   ```displayName``` (of the class)
 *   ```libraryId``` (of the library you searched)
 *   ```defaultClass``` (whether or not this is the library's default class)
@@ -454,7 +454,7 @@ ____________________________________
 
 ### Create new document and attach Drive file
 
-When you create a TF/SF document, you must attach one and only one attachment (using a Drive file's ````fileId```` ). You create a DMS document the same way, but you can do it with any number of attachments (including zero).
+When you create a TF/SF document, you must attach one and only one attachment (using a Drive file's ```fileId``` ). You create a DMS document the same way, but you can do it with any number of attachments (including zero).
 
 For example, you might have a spreadsheet in Google Drive that you want to manage with AODocs. Wrapping a new AODocs document around your spreadsheet allows you to use all the AODocs document management features and properties like custom properties and workflows.
 
@@ -480,9 +480,9 @@ PUT /document/v1
 
 ##### Prerequisites
 
-Before you create a new empty document with one attachment, you **must know** the ````libraryId```` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
+Before you create a new empty document with one attachment, you **must know** the ```libraryId``` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
 
-You also need the ````fileId```` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
+You also need the ```fileId``` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
 
 > ⭑   **Note**: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
 
@@ -506,7 +506,7 @@ In an out-of-domain case such as this, the file itself gets automatically duplic
 
 ##### Request
 
-Pass the **mandatory** parameters of ````fileId```` (for any Drive file to be attached) and ````libraryId```` **in the request body**, not in the query string. Same thing for the **optional** ````classId````, ````title````, and ````folderAodocsId````.
+Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ```libraryId``` **in the request body**, not in the query string. Same thing for the **optional** ```classId```, ```title```, and ```folderAodocsId```.
 
     You provide the ```fileId``` inside either of the two array fields in the request body:
 
@@ -519,7 +519,7 @@ If you attach a Drive file using ```attachments```, and then edit that attachmen
 
 If you attach a Drive file using ```attachmentsToCopy```, and then edit that attachment's content, the edits happen in the copy of the original Drive file created during the attachment process.
 
-All these fields correspond to fields in the [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the **request resource** map directly to the fields of the **server resource** which gets altered by the ````PUT```` **operation** before being sent back as a **response resource**.
+All these fields correspond to fields in the [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the **request resource** map directly to the fields of the **server resource** which gets altered by the ```PUT``` **operation** before being sent back as a **response resource**.
 
 ##### Sample Request
 
@@ -542,11 +542,11 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 ##### Response
 
-If the request succeeds, the response returns a ```200 OK``` status code and a JSON-formatted representation of an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as ````id````, and its ````classId```` is what you specified in the request, else of the library's default type.
+If the request succeeds, the response returns a ```200 OK``` status code and a JSON-formatted representation of an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as ```id```, and its ```classId``` is what you specified in the request, else of the library's default type.
 
-````ApiDocument```` response fields of note:
+```ApiDocument``` response fields of note:
 
-*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
+*   ```richText``` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
 ##### Sample response
 
@@ -583,11 +583,11 @@ _____________________________
 
 ### Using ```attachmentsToCopy``` instead of ```attachments```
 
-Sometimes it makes more sense to **create an attachment using a copy of a Drive file** instead of the source file itself. This is done using the ````attachmentsToCopy```` alternative to ````attachments````.
+Sometimes it makes more sense to **create an attachment using a copy of a Drive file** instead of the source file itself. This is done using the ```attachmentsToCopy``` alternative to ```attachments```.
 
 This is a rather generic case: you would do this any time you specifically want to start with a duplicate of the original instead of the original itself. For example, certain files and their versions get frozen by a new policy, but their content is still useful as a template for future work.
 
-When you put together your request to create an AODocs document with an attachment, you can tell AODocs to make a physical copy of the original Drive file (with the same name but with AODocs as owner). To do this, specify the ````fileId```` of a specific Drive file as attachment source inside the ````attachmentsToCopy```` array field in the request body **instead of** the usual ````attachments```` array field.
+When you put together your request to create an AODocs document with an attachment, you can tell AODocs to make a physical copy of the original Drive file (with the same name but with AODocs as owner). To do this, specify the ```fileId``` of a specific Drive file as attachment source inside the ```attachmentsToCopy``` array field in the request body **instead of** the usual ```attachments``` array field.
 
 #### Sample Request
 
@@ -631,7 +631,7 @@ PUT https://aodocs.altirnao.com/api/document/v1 \
 }
 ```
 
-Play around with these two approaches using the AODocs [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put).
+Play around with these two approaches using the AODocs [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put).
 
 ###
 
@@ -639,7 +639,7 @@ _____________________________
 
 ### Get specific document by ID
 
-You can retrieve (the configuration of) a specific document to confirm it exists or to parse something from its metadata if you have its ````documentId````.
+You can retrieve (the configuration of) a specific document to confirm it exists or to parse something from its metadata if you have its ```documentId```.
 
 > ⭑   **Note**: As always, you can look for the file in the UI as well. If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up. Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
@@ -655,7 +655,7 @@ GET /document/v1/{documentId}
 
 ##### Request
 
-Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```` not a Drive ````fileId````.
+Only ```documentId``` is mandatory, and it must be an AODocs ```documentId``` not a Drive ```fileId```.
 
 ##### Sample request (asking for a full resource)
 
@@ -675,11 +675,11 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ##### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ```id```, and its class is what you specified in the request, else of the library's default type.
 
 Response fields of note:
 
-*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
+*   ```richText``` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
 ##### Sample Response
 
@@ -728,7 +728,7 @@ Response fields of note:
 
 ## Modifying documents with PATCH
 
-In AODocs, you can modify a document or its component parts with the ````PATCH```` operation which **overwrites** the target resource. Specifically with ````PATCH````, anything you specify in your request replaces its corresponding part in the server resource, and what you don't specify remains unmodified.
+In AODocs, you can modify a document or its component parts with the ```PATCH``` operation which **overwrites** the target resource. Specifically with ```PATCH```, anything you specify in your request replaces its corresponding part in the server resource, and what you don't specify remains unmodified.
 
 In general, this is perfectly benign. However, things are riskier with any parts of the resource arranged in arrays, such as attachments.
 
@@ -746,7 +746,7 @@ You can modify a document's metadata by patching, which is effectively a replace
 
 For example, you could update the permissions of a specific document or an attachment. Or change one of the document's properties, like its title.
 
-An easy way to try this out is to modify your AODocs document's title, as well as the Description property that exists in each document. In the API this is called ````richText````. Take any document where this Description field is empty or has nothing important, and patch it with some test text.
+An easy way to try this out is to modify your AODocs document's title, as well as the Description property that exists in each document. In the API this is called ```richText```. Take any document where this Description field is empty or has nothing important, and patch it with some test text.
 
 #### Method and API
 
@@ -764,9 +764,9 @@ Because this is an overwrite operation, you have to know what you want to overwr
 
 ##### Request
 
-Only ````documentId```` is mandatory (to identify which document's metadata to alter), but if you don't specify anything to change, then nothing will change. Pass the changes you want as **request-body parameters** (not as query parameters).
+Only ```documentId``` is mandatory (to identify which document's metadata to alter), but if you don't specify anything to change, then nothing will change. Pass the changes you want as **request-body parameters** (not as query parameters).
 
-For example, set the title field to ````Hello-world-doc-001```` and the ````richText```` field to ````This is my <b>Hello world!</b>````` document.` and execute the request.
+For example, set the title field to ```Hello-world-doc-001``` and the ```richText``` field to ```This is my <b>Hello world!</b>```` document.` and execute the request.
 
 ##### Sample request body
 
@@ -780,12 +780,12 @@ For example, set the title field to ````Hello-world-doc-001```` and the ````rich
 
 ##### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly patched document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified).
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly patched document with the overwritten fields (here just ```title``` and ```richText```, and everything else remains unmodified).
 
 Response fields of note:
 
-*   ````title```` (whatever you set it to)
-*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
+*   ```title``` (whatever you set it to)
+*   ```richText``` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”; read more about [modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
 ##### Sample Response
 

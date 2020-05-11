@@ -78,9 +78,9 @@ Basically everything else, including:
 
 ## Test dump (ignore)
 
-Tests of relative and root-relative links to [https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/00-Getting%20Started](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/00-Getting%20Started):
+Tests of relative and root-relative links to [/docs/aodocs-staging.altirnao.com/1/c/Guides/00-Getting%20Started](/docs/aodocs-staging.altirnao.com/1/c/Guides/00-Getting%20Started):
 
-> **Note**: Except where otherwise noted, **nothing** below works whether by clicking or trying to download:
+> ⭑  **Note**: Except where otherwise noted, **nothing** below works whether by clicking or trying to download:
 
 [/Guides/00-Getting started.md](/Guides/00-Getting%20Started)
 

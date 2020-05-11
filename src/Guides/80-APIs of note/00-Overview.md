@@ -41,13 +41,11 @@ Search AODocs documents and libraries.
 ### category
 
 
-
 *   AODocs categories
 *   Read more (link to full document API: category)
 
 
 ### referenceCatalog
-
 
 
 *   AODocs reference catalogs (**API-only**)
@@ -57,13 +55,11 @@ Search AODocs documents and libraries.
 ### relation
 
 
-
 *   x
 *   Read more (link to full document API: relation)
 
 
 ### documentType
-
 
 
 *   AODocs document classes
@@ -73,13 +69,11 @@ Search AODocs documents and libraries.
 ### workflow
 
 
-
 *   AODocs workflows
 *   Read more (link to full document API: workflow)
 
 
 ### library
-
 
 
 *   AODocs libraries
@@ -89,7 +83,6 @@ Search AODocs documents and libraries.
 ### job
 
 
-
 *   x
 *   Read more (link to full document API: job)
 
@@ -97,13 +90,11 @@ Search AODocs documents and libraries.
 ### view
 
 
-
 *   x
 *   Read more (link to full document API: view)
 
 
 ### folder
-
 
 
 *   AODocs storage account folders (**TF/SF-only**)
@@ -117,14 +108,12 @@ Search AODocs documents and libraries.
 ### user
 
 
-
 *   AODocs users and **Google Groups **a
     *   getCurrentUser (and also domain, groups, defaultDomain, availableDomains, lastLogin, lastEdit, superAdmin, canCreateLibraries, external, impersonable
 *   Read more (link to full document API: user)
 
 
 ### domain
-
 
 
 *   AODocs domain actions (**domain admins only**)

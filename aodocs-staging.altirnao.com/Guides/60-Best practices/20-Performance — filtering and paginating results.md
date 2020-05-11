@@ -14,7 +14,7 @@ As an arbitrary example,  let's say you were interested in only the following fi
 *   sections(fields/id,id)
 *   value
 
-You can tell the server to return your requested resource with just those fields and omit all others. Populate the ````fields```` query parameter of your request with the preceding list as follows:
+You can tell the server to return your requested resource with just those fields and omit all others. Populate the ```fields``` query parameter of your request with the preceding list as follows:
 
 ```yaml
 defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
@@ -83,11 +83,9 @@ Here is what the response to that request looks like, filtered with your list:
 ```
 
 
-
 ## Paginating resource collection responses
 
 For API methods that return a collection of resources, there’s usually the need to be able to paginate the results, as there might be too many of them to fit in a single response. The API methods that support pagination usually have two parameters:
-
 
 
 *   A “limit” parameter (also named `pageSize` or `maxResults` in some methods) to indicate the maximum number of results to return in a single page
@@ -97,4 +95,4 @@ A successful response on these methods will return a collection of resources, an
 
 To get the next page of results, you have to take this ```nextPageToken``` from the response and pass it as the ```pageToken``` query parameter in the next request (with the other parameters unchanged) to get to the next page.
 
-> **Note**: For performance reasons, we recommend adjusting the number of requested results to the needs of the user. The more results are requested, the larger the latency.
+> ⭑  **Note**: For performance reasons, we recommend adjusting the number of requested results to the needs of the user. The more results are requested, the larger the latency.

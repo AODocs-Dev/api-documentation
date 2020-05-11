@@ -31,7 +31,7 @@ The response returns an [ApiPlainLibraryList](../../../../types/ApiPlainLibraryL
 *   library ID
 *   modification dates
 
-Take note of the ````libraryId```` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the ```libraryId``` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
 

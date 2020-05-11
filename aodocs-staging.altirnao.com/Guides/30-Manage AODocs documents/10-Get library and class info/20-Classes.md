@@ -50,10 +50,9 @@ To return just the bare minimum of class ID and displayName in the response, you
 
 #### Response
 
-The response returns an [ApiDocumentTypeList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
+The response returns an [ApiDocumentTypeList](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
 Response fields of note:
-
 
 
 *   `id` (of the class)
@@ -89,7 +88,6 @@ Response fields of note:
 ```
 
 
-
 #### Sample filtered response
 
 
@@ -110,7 +108,6 @@ Response fields of note:
   ]
 }
 ```
-
 
 
 ## List classes in the UI

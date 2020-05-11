@@ -6,7 +6,7 @@ You can retrieve to parse something from its metadata (or to confirm it exists) 
 
 Play with the API Explorer:
 
-### [GET /library/{libId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+### [GET /library/{libId}](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
 ## Usage/notes/guidelines
 
@@ -22,16 +22,14 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 
 
-
 ##### Response
 
-The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
+The response returns an [ApiLibrary](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
 
 
-
-*   ````libraryId````
+*   ```libraryId```
 *   `name` / homeUrl
 *   `rootFolderId` (the ID of the topmost level of the library's hierarchy)
 *   `defaultDocumentType` (the library's default class ID)

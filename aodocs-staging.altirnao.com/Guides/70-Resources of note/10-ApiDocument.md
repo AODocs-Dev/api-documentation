@@ -50,7 +50,6 @@ PUT https://aodocs-apis.com/api/document/v1?securityCode=abc123
 ```
 
 
-
 ## JSON representation (full?  sample?)
 
 ____________________________________________

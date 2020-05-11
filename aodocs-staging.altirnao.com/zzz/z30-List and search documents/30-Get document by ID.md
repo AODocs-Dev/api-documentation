@@ -9,7 +9,7 @@ You can retrieve (the configuration of) a specific document to parse something f
 
 Play with the API Explorer:
 
-### [GET /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+### [GET /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 
 ## Guidelines
 
@@ -35,7 +35,7 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ```id```, and its class is what you specified in the request, else of the library's default type.
 
 ### Sample Response
 

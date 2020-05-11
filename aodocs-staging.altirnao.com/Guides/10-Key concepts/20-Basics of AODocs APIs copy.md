@@ -41,14 +41,13 @@ To manage and configure **AODocs documents**, you can use only **AODocs APIs**.
 AODocs APIs are designed around [principles of REST](https://cloud.google.com/apis/design/resources): to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request. You then parse the responses that come back. You can do this using the following methods:
 
 
-*   in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+*   in person, manually, using the interactive [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 *   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
 *   programmatically, using code (cURL, Java, etc.) to automate request/response interactions
 
 The AODocs API shares a lot of similarities in its design with the Google APIs, so if you’re familiar with the various G Suite APIs (Drive, Calendar, GMail) you should be able to understand the AODocs API principles very quickly.
 
 On a high level, the interaction consists of three stages:
-
 
 
 1. request to perform an operation on a resource sent to the server
@@ -61,7 +60,6 @@ On a high level, the interaction consists of three stages:
 #### API Request structure
 
 You send a request containing the following information to the API server:
-
 
 
 *   URI of the API **endpoint** (mandatory)
@@ -87,7 +85,7 @@ To access AODocs APIs, you must use the following base URL:
 
 ```https://aodocs.altirnao.com/api/```
 
-> **Note**: This URL is used to build interactions with AODocs API resources but yields no useful results on its own.
+> ⭑  **Note**: This URL is used to build interactions with AODocs API resources but yields no useful results on its own.
 
 
 #### Types of parameters
@@ -101,7 +99,7 @@ There are generally three ways you can send parameters inside a request:
 *   as one of the JSON-formatted resource fields inside the **request body** (```**{"documentId": "abcd12345"}**```)
 *   inside the header (```Authorization: Bearer &lt;token>```)
 
-Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**. These parameters get provided in the part of the URL after the host name and before the` `````?````, and this is where the server expects to find them.
+Specific variable parts of the endpoint URL (like AODocs ```/documentType/v1/**typeId**``` or ```/library/v1/**libraryId**``` APIs) are considered **path parameters**. These parameters get provided in the part of the URL after the host name and before the` ````?```, and this is where the server expects to find them.
 
 Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the` ``?```. The resource server has built-in mechanisms to parse this information.
 
@@ -113,12 +111,11 @@ Search filters, security codes, and other **query parameters** are commonly stru
 * fields query parameter (to filter results and improve performance)
 
 
-
 #### API resources
 
 REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
 
-A resource type (such as ```[ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
+A resource type (such as ```[ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
 
 You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```. Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
 
@@ -126,7 +123,7 @@ API resources (like a Document or Library) that you want to create or update _mu
 
 They are returned as **the response body** when a request is successful. Usually, the format of an API resource is the same in the request body and the response body.
 
-> **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
+> ⭑  **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
 Read more about [AODocs resources](https://drive.google.com/a/altirnao.com/open?id=1k5JAfE2TbdDUbxUweDJNVPdT5nf40pL8kCu1Ies8BQY).
 
@@ -167,7 +164,7 @@ The server either succeeds in fulfilling the request, or something goes wrong. T
 
 #### Server succeeded
 
-If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as ```[ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```.
+If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as ```[ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```.
 
 
 > ⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently. If you delete the document permanently, the ```documentId``` stops being recognized from that point on. If you send the document to Trash, the document ID persists.
@@ -200,11 +197,10 @@ APIs not marked as `beta` are considered “stable”: they have permanence and 
 Here is how you can get started working with AODocs APIs:
 
 
-
-*   Try following the sequence of methods in the [Manage AODocs documents](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
-*   Use the [interactive API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses
+*   Try following the sequence of methods in the [Manage AODocs documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
+*   Use the [interactive API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses
 *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I)
 *   Review and select the appropriate mechanism for [gaining access to AODocs APIs](https://drive.google.com/a/altirnao.com/open?id=1XEgIlXhQ05oCsOJuuTR0L7JHAohBUNedJGkvg2AFXd4)
-*   Check the [AODocs Reference](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs
+*   Check the [AODocs Reference](/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs
 *   Read the "Best practices" section
 *   Have trouble falling asleep?  Read the [Appendix](https://drive.google.com/a/altirnao.com/open?id=1su4gnY2t94N662H8UNeZ4A5VzlScTky_k7lqHs2ZwyY), which includes all the most essential soporific auth RFCs

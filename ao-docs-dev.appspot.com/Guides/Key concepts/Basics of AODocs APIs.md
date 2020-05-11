@@ -3,7 +3,6 @@
 AODocs APIs are the under-the-hood mechanisms which let you issue direct requests to the resource server to perform many of the manual tasks you can perform in the AODocs UI:
 
 
-
 *   list and search for resources such as libraries, classes, or documents
 *   create (insert), change (patch), and remove (delete) documents, their properties, and their attachments
 *   configure AODocs folders, roles, versions, and permissions
@@ -16,13 +15,11 @@ You interact with the API by asking the server to use simple HTTP operations (``
 You send these HTTP commands/requests to the resource server, and parse the responses that come back. You can do this using the following methods:
 
 
-
-*   in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com)
+*   in person, manually, using the interactive [API Explorer](/docs/aodocs-staging.altirnao.com)
 *   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
 *   programmatically, using code (cURL, Java, etc.) to automate request/response interactions
 
 On a high level, the interaction consists of three stages:
-
 
 
 *   request to perform an operation on a resource sent to the server
@@ -36,7 +33,6 @@ On a high level, the interaction consists of three stages:
 #### Request structure
 
 You send a request containing the following information to the resource server:
-
 
 
 *   **operation** to be performed (mandatory 100% of the time)
@@ -79,7 +75,6 @@ The parameters you send in the request define and focus the scope of what is to 
 Different parts of the request naturally lend themselves to carrying certain kinds of parameters, or at least are used that way customarily.
 
 There are generally three ways you can send parameters inside a request:
-
 
 
 *   as a **path** parameter (```GET /library/v1/**abcd12345**?include=NONE```)
@@ -137,7 +132,6 @@ POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/views/{view
 On a high level, your request is a bundle of pieces of text containing the following:
 
 
-
 *   the operation you want the server to perform (such as ```GET``` or ```PUT```)
 *   service endpoint
 *   the name of the API to connect to on the server and its version
@@ -145,8 +139,7 @@ On a high level, your request is a bundle of pieces of text containing the follo
 *   all the parameters the server needs to do the work
 *   all the parameters that you want in order to get the results you want
 
-You can find the specifics of each of these in the API reference for each potential task you wish to perform. For example, a request to [create a new document of a given class in a given library](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put) is composed of the following:
-
+You can find the specifics of each of these in the API reference for each potential task you wish to perform. For example, a request to [create a new document of a given class in a given library](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put) is composed of the following:
 
 
 *   the operation (```PUT```)
@@ -171,13 +164,11 @@ PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 
-
 ### Step 2: Server performs operation on the requested resource
 
 The resource server hosts and performs operations on a requested resource (such as a library), subresources (such as a glossary of a library), or a collection of resources (such as a list of libraries).
 
 If the resource server accepts your request, it then does the following:
-
 
 
 *   performs requested operation on target resource (library, etc.) or subresource (glossary, etc.)
@@ -193,7 +184,7 @@ For example, the server might apply a ```GET``` request to an ```ApiLibraryList`
 
 ### Step 3: Server sends a response
 
-If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as ```[ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```.
+If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as ```[ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)```.
 
 
 ```
@@ -215,7 +206,7 @@ REST-oriented APIs such as AODocs model each of their objects (such as document,
 
 In general, a resource is the _concept_ of any addressable collection of information, such as an AODocs document or a library.
 
-A resource type is the schema that outlines how a resource can be represented. For example, [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) is the type of resource; an AODocs *document resource* is an instantiation of this type; and the resource has a JSON-formatted *representation* that can be viewed and altered and sent back and forth between the client and the server.
+A resource type is the schema that outlines how a resource can be represented. For example, [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) is the type of resource; an AODocs *document resource* is an instantiation of this type; and the resource has a JSON-formatted *representation* that can be viewed and altered and sent back and forth between the client and the server.
 
 In short, each resource has an address it can be reached at, and a JSON-formatted representation that can be retrieved and manipulated.
 
@@ -223,11 +214,9 @@ In short, each resource has an address it can be reached at, and a JSON-formatte
 Read more about [AODocs resources](https://docs.google.com/document/d/1k5JAfE2TbdDUbxUweDJNVPdT5nf40pL8kCu1Ies8BQY/edit).
 
 
-
 ## Beta vs. v1 version
 
 Any version marked ```beta``` is still being developed and can change without notice.
-
 
 
 ## When to use Drive and AODocs APIs
@@ -261,7 +250,6 @@ Once attached, you can do most things you need with only AODocs APIs: you will s
 Some of the concrete tasks you can perform with the AODocs APIs:
 
 
-
 *   List libraries
 *   List classes
 *   Create a document of a specific class inside a specific library
@@ -279,7 +267,6 @@ To **manage folders** and **edit permissions**, use **either Drive or AODocs API
 ## Next steps
 
 Here are some resources to help you get started working with the AODocs APIs:
-
 
 
 *   Try a hands-on tutorial to [learn common operations in an example sequence](https://drive.google.com/a/altirnao.com/open?id=1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA)

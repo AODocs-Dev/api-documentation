@@ -15,7 +15,7 @@ This error means that everything was executed according to plan, but no response
 
 To make sure the action was performed correctly, send another request testing the effects of the previous request. This usually means issuing a GET request to retrieve the resource from the server for analysis.
 
-> **Note**: If the original request was a DELETE, the response is always a 204, effectively stating: "There is no resource the server can send back because it got deleted as requested".
+> ⭑  **Note**: If the original request was a DELETE, the response is always a 204, effectively stating: "There is no resource the server can send back because it got deleted as requested".
 
 ---
 
@@ -73,7 +73,6 @@ This error means credentials were incorrect or not provided.
   }
 }
 ```
-
 
 
 ---
@@ -176,7 +175,7 @@ To fix this error contact the domain administrator.
 
 #### No AODocs parent
 
-This is not a permission error as such; rather, it is a NO that answers the question "Is this Drive file attached to an AODocs document?" asked using the [POST /document/v1/drive/{driveId}/check](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/drive/%7BdriveId%7D/check/post) method.
+This is not a permission error as such; rather, it is a NO that answers the question "Is this Drive file attached to an AODocs document?" asked using the [POST /document/v1/drive/{driveId}/check](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/drive/%7BdriveId%7D/check/post) method.
 
 If the response is positive, its JSON body contains the ID of the AODocs document.
 
@@ -257,7 +256,7 @@ If your mandatory parameter is correct, but the resource has moved or doesn't ex
 
 This error can occur because the resource is being accessed by more than one caller at the same time. The best strategy is to retry.
 
-> **Note**: Of all 400-series errors, this is the only one that should be retried.
+> ⭑  **Note**: Of all 400-series errors, this is the only one that should be retried.
 
 ---
 

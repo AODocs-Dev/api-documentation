@@ -27,11 +27,9 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
 ```
 
 
-
 ```
 ⭑   **Note**: The status code is the only truly reliable, machine-readable indication of what happened to the request. The ```reason``` and ```message``` fields are human-readable elaborations on the status code provided to troubleshoot what happened. The ```reason``` field is part of the HTTP status code, but the ```message``` field can change without warning and applications should not depend on its text content.
 ```
-
 
 
 ## HTTP status code number ranges and meanings
@@ -75,7 +73,6 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
    </td>
   </tr>
 </table>
-
 
 
 ##
@@ -180,9 +177,7 @@ For example, if you try to **identify** yourself to AODocs with **incorrect cred
 </table>
 
 
-
 ## ____Additional HTTP status codes
-
 
 
 *   List of errors **unique** to API:

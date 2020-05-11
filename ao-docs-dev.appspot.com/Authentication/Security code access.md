@@ -15,14 +15,12 @@ You can generate a security code with an expiry date by following the [Manage se
 Security codes can be generated for two levels of AODocs authorization:
 
 
-
 *   User-level (strongly encouraged)
 *   Domain administrator
 
     ```
 ⭑   Note: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended. Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
 ```
-
 
 
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
@@ -61,7 +59,7 @@ When you're playing with the API Explorer, it sends the security code you provid
 
 Send the security code in the header as follows:
 
-````Authorization: securityCode <security code value>````
+```Authorization: securityCode <security code value>```
 
 
 #### Example request with security code as header parameter
@@ -92,7 +90,7 @@ If you've started working with the API client factory which we provide with the 
 
 Append the security code to the query as follows:
 
-````securityCode=<security code value>````
+```securityCode=<security code value>```
 
 
 #### Example request with security code as query parameter
@@ -103,11 +101,9 @@ Append the security code to the query as follows:
 ```
 
 
-
 ### Authentication errors with security codes
 
 Security code errors occur only when the security code is:
-
 
 
 *   missing

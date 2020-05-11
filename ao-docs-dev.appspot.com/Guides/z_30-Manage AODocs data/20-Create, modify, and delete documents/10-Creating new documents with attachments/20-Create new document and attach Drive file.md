@@ -1,6 +1,6 @@
 # Create new document and attach Drive file
 
-When you create a TF/SF document, you must attach one and only one attachment (using a Drive file's ````fileId```` ). You create a DMS document the same way, but you can do it with any number of attachments (including zero).
+When you create a TF/SF document, you must attach one and only one attachment (using a Drive file's ```fileId``` ). You create a DMS document the same way, but you can do it with any number of attachments (including zero).
 
 For example, you might have a spreadsheet in Google Drive that you want to manage with AODocs. Wrapping a new AODocs document around your spreadsheet allows you to use all the AODocs document management features and properties like custom properties and workflows.
 
@@ -16,15 +16,15 @@ To create a new document, you send a request to the server with an ```ApiDocumen
 
 Play with the API Explorer:
 
-### [PUT /document/v1](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put)
+### [PUT /document/v1](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put)
 
 ## Guidelines
 
 ### Prerequisites
 
-Before you create a new empty document with one attachment, you **must know** the ````libraryId```` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
+Before you create a new empty document with one attachment, you **must know** the ```libraryId``` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
 
-You also need the ````fileId```` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
+You also need the ```fileId``` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](#heading=h.hhg7itlz0n58).
 
 > ⭑   **Note**: In the API Explorer's "Request body" window, ```fileId``` is part of the ```attachments``` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under ```attachmentsToCopy``` .
 
@@ -54,7 +54,7 @@ The preceding is just a URL-encoded version of this ```folder:folderId``` pair:
 
 ### Request
 
-Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ````libraryId```` **in the request body** instead of in the query string. Same thing for the **optional** ````classId````, ````title````, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[folderAodocsId]``` (target AODocs folder ID). In the API Explorer, the folders array is represented like this:
+Pass the **mandatory** parameters of ```fileId``` (for any Drive file to be attached) and ```libraryId``` **in the request body** instead of in the query string. Same thing for the **optional** ```classId```, ```title```, and either ```folders[fileId]``` (desired target Drive folder ID) or ```folders[folderAodocsId]``` (target AODocs folder ID). In the API Explorer, the folders array is represented like this:
 
 ![folders-array.png](/img/folders-array.png)
 
@@ -72,7 +72,7 @@ If you attach a Drive file using ```attachments```, and then edit that attachmen
 
 However, if you attach a Drive file using ```attachmentsToCopy```, that attachment is no longer the original file: it is a copy of it created during the attachment process.
 
-All these fields correspond to fields in the [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the **request resource** map directly to the fields of the **server resource** which gets altered by the ````PUT```` **operation** before being sent back as a **response resource**.
+All these fields correspond to fields in the [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the **request resource** map directly to the fields of the **server resource** which gets altered by the ```PUT``` **operation** before being sent back as a **response resource**.
 
 ### Sample request
 
@@ -102,11 +102,11 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 ### Response
 
-If the request succeeds, the response returns a ```200 OK``` status code and a JSON-formatted representation of an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as ````id````, and its ````classId```` is what you specified in the request, else of the library's default type.
+If the request succeeds, the response returns a ```200 OK``` status code and a JSON-formatted representation of an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as ```id```, and its ```classId``` is what you specified in the request, else of the library's default type.
 
-````ApiDocument```` response fields of note:
+```ApiDocument``` response fields of note:
 
-*   ````richText```` (document's Description field; supports HTML tags like ```<b>Hello</b> world!```; read more about changing this field in [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
+*   ```richText``` (document's Description field; supports HTML tags like ```<b>Hello</b> world!```; read more about changing this field in [Modifying documents with PATCH](https://docs.google.com/document/d/1_xHBm2TSTJU7u3eL1BNo0thYiFlQPGDD3cLTN_ZemrA/edit#heading=h.jqqjrnnjon39)
 
 ### Sample response
 

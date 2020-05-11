@@ -7,13 +7,13 @@ You can list available target classes for your documents as follows:
 
 Play with the API Explorer:
 
-### [PUT /documentType/v1/libraries/{libraryId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+### [PUT /documentType/v1/libraries/{libraryId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 
 ## Guidelines
 
 ### Request
 
-Only ````libraryId```` is mandatory.
+Only ```libraryId``` is mandatory.
 
 ### Sample Request
 
@@ -21,7 +21,7 @@ Only ````libraryId```` is mandatory.
 GET https://aodocs.altirnao.com/api/documentType/v1/libraries/RrVcEFb8wtDeNAnlmNN
 ```
 
-To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ````fields```` query parameter with ````items(displayName,id,kind),kind```` as follows:
+To return just the bare minimum of class ID and displayName in the response, you can filter the results by populating the ```fields``` query parameter with ```items(displayName,id,kind),kind``` as follows:
 
 ```
 fields=items(displayName%2Cid%2Ckind)%2Ckind
@@ -29,11 +29,11 @@ fields=items(displayName%2Cid%2Ckind)%2Ckind
 
 ### Response
 
-The response returns an [ApiDocumentTypeList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
+The response returns an [ApiDocumentTypeList](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
 Response fields of note:
 
-*   ````id```` (of the class)
+*   ```id``` (of the class)
 *   ```displayName```(of the class)
 *   ```libraryId``` (of the library we searched)
 *   ```defaultClass``` (whether or not this is the library's default class)

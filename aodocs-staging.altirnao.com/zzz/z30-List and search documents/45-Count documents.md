@@ -1,6 +1,6 @@
 # Count documents of a library
 
-> **Note**: This is available only to library administrators.
+> ⭑  **Note**: This is available only to library administrators.
 
 You can count the number of documents associated with a particular library (and optionally class) as follows.
 

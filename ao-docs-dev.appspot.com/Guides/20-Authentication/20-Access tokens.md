@@ -61,7 +61,7 @@ Once you have obtained a token, you select which token is more appropriate for y
 *   access token for AODocs _and_ Drive
 *   ID token for just AODocs
 
-You can access AODocs APIs by including one of the tokens as an ````Authorization```` HTTP header's ````Bearer```` value:
+You can access AODocs APIs by including one of the tokens as an ```Authorization``` HTTP header's ```Bearer``` value:
 
 ```yaml
 Authorization: Bearer < access_token | id_token >

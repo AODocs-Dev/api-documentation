@@ -6,7 +6,7 @@ System properties are pieces of metadata defined at the document level, found in
 
 Custom properties are document metadata defined by an administrator during the creation of a class. Once defined, each document that belongs to the class takes on all the properties defined in its class.
 
-> **Note**: Properties can be added and deleted after class creation.
+> ⭑  **Note**: Properties can be added and deleted after class creation.
 
 Read more about [managing custom fields in the UI](https://support.aodocs.com/hc/en-us/articles/115000051523#h_76055d8f-c7aa-4eaa-b9d7-68aaea6a170b).
 
@@ -54,7 +54,6 @@ In AODocs APIs, you can define system field values for a document when it is eit
 The following table outlines allowances and requirements for each system field.
 
 [system fields modifiability](https://docs.google.com/spreadsheets/d/1nCqUro-ko9t_jKXGn-V3TBAL9tHsbPNDAgR0OGYcOIo/edit?usp=sharing)
-
 
 
 
@@ -223,14 +222,13 @@ This flag allows write access to these two fields: it exists so that tools like 
 </table>
 
 
-
 ### Setting custom fields
 
 In a document resource, custom fields are found inside the ```fields``` array.  Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
 
 In order to populate custom fields, you must know the ```fieldId``` of the particular property defined within the target class. You then use it to tell the server which values of this particular property should be set. To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
 
-> **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
+> ⭑  **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
 
 Once the target class is identified, populate ```fields[].values[]``` with the desired values.
 
@@ -256,7 +254,6 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
     ]
     }
 ```
-
 
 
 #### Expected API formats for custom fields

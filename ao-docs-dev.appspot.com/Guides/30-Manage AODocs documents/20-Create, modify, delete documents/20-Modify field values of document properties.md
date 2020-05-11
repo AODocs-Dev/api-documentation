@@ -6,7 +6,7 @@ System properties are pieces of metadata defined at the document level, found in
 
 Custom properties are document metadata defined by an administrator during the creation of a class. Once defined, each document that belongs to the class takes on all the properties defined in its class.
 
-> **Note**: Properties can be added and deleted after class creation.
+> ⭑  **Note**: Properties can be added and deleted after class creation.
 
 Read more about [managing custom fields in the UI](https://support.aodocs.com/hc/en-us/articles/115000051523#h_76055d8f-c7aa-4eaa-b9d7-68aaea6a170b).
 
@@ -229,7 +229,7 @@ Custom fields are defined in the document's class when it's created; and you or 
 
 In order to populate custom fields, you must know the ```fieldId``` of the particular property of your target class (that each document in that class has). You then use it to tell the server which values of this particular property should be set. To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
 
-> **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
+> ⭑  **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
 
 Once the target class is identified, populate ```fields[].values[]``` with the values you want.
 

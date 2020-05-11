@@ -8,7 +8,6 @@ Every request you send to the AODocs API must include some method of **authentic
 You can gain authenticated and authorized access to AODocs APIs in three ways, depending on your circumstances and needs:
 
 
-
 * [Security code](#heading=h.4b4ihq8ip2iq) (least secure, quickest, for internal testing)
 * [OAuth 2.0 access_token](#heading=h.yzf7peetlblk) (secure, needed to access Drive API)
 * [JSON Web Token (JWT) id_token](#heading=h.zcit90u9guab) (secure, no scope, for AODocs API only)

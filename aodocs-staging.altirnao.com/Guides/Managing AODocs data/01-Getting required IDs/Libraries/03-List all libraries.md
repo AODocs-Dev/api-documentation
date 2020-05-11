@@ -18,7 +18,6 @@ Play with the API Explorer:
 This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response. We strongly recommend you set the ```include``` query parameter to ```NONE```.
 
 
-
 ### Sample request
 
 ```yaml

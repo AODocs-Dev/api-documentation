@@ -1,6 +1,6 @@
 # List documents of a library
 
-> **Note**: This is available only to library administrators.
+> ⭑  **Note**: This is available only to library administrators.
 
 You can list documents associated with a particular library as follows.
 

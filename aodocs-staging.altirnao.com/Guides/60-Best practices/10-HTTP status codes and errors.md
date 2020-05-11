@@ -31,7 +31,6 @@ For example, if you try to **identify** yourself to AODocs with **incorrect secu
 ```
 
 
-
 > ⭑   Note: The status code is the only truly reliable, machine-readable indication of what happened to the request.
 >
 > The ```reason``` and ```message``` fields are provided to help troubleshoot what happened. They are both human-readable elaborations on the status code.
@@ -211,7 +210,6 @@ Some examples of 400 errors include:
 > ⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect requests.
 
 
-
 Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:
 
 
@@ -237,7 +235,6 @@ To fix this specific error, provide only one of the indicated mutually exclusive
 
 
 ---
-
 
 
 ## Resolve a 401 error: Unauthorized
@@ -330,7 +327,6 @@ This means the client app does not have the correct permission levels to access 
 ```
 
 
-
 ##### Sample response message 2:
 
 
@@ -356,9 +352,7 @@ This means the client app does not have the correct permission levels to access 
 To fix this error check your permission levels or whether you own the target resource.
 
 
-
 ---
-
 
 
 ## Resolve a 404 error: Not Found
@@ -417,21 +411,17 @@ If your mandatory parameter is correct, but the resource doesn't exist, you migh
 
 
 
-
 ---
-
 
 
 ### **Resolve a 409 error: Conflict (retry)**
 
 This error can occur because the resource is being accessed by more than one caller at the same time. The best strategy is to retry.
 
-> **Note**: Of all 400-series errors, this is the only one that should be retried.
-
+> ⭑  **Note**: Of all 400-series errors, this is the only one that should be retried.
 
 
 ---
-
 
 
 ### **Resolve a 500 error: Internal server error (retry)**

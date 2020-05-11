@@ -59,7 +59,7 @@ In AODocs APIs, a **subresource** is an **attribute** of a resource. It is resou
 
 An AODocs **collection** is a **list** of resources or subresources. It is not a resource by itself in the context of AODocs APIs. What makes a collection meaningful is what it lists. A list of documents (```ApiDocumentList```) is one example of a resource collection. A list of libraries (```ApiLibraryList```) is another. Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
 
-> **Note**: Requests for collections often return too many results and are best handled using [pagination](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI).
+> ⭑  **Note**: Requests for collections often return too many results and are best handled using [pagination](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI).
 
 ## Collections vs. resources vs. subresources
 
@@ -105,14 +105,13 @@ The result looks the same in both cases:
 }
 ```
 
-> **Note**: By definition, a collection contains at least one **array field**. And, unlike subresources, it is used by at least one method.
+> ⭑  **Note**: By definition, a collection contains at least one **array field**. And, unlike subresources, it is used by at least one method.
 
 ### **How to interact with resources**
 
 An AODocs resource lives on the resource server. You interact with the resource by sending requests to the server to operate on it. The server performs the requested operation and sends back the result.
 
 Most of the time, you include in your request a subset of the resource:
-
 
 
 *   When creating a resource (with a ```PUT```) or updating it fully (with a ```POST```), you are not required to send the complete resource, as most fields have a default value.

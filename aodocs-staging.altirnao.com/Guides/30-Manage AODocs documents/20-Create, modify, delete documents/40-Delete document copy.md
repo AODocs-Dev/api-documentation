@@ -6,7 +6,7 @@ You can delete a specific document if you have its `documentId`. You can either 
 
 Play with the API Explorer and note the code examples (such as cURL and Java):
 
-### **[DELETE /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)**
+### **[DELETE /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)**
 
 ## **Guidelines**
 
@@ -14,7 +14,7 @@ Play with the API Explorer and note the code examples (such as cURL and Java):
 
 Only `documentId` is mandatory, and it must be an AODocs `documentId` not a Drive `fileId`.
 
-> ⭑ Note: To get an AODocs document (including its `documentId`) by the Drive ID of one of its attachments, use the `GET /document/v1/drive/{driveId}` method.
+> ⭑ **Note**: To get an AODocs document (including its `documentId`) by the Drive ID of one of its attachments, use the `GET /document/v1/drive/{driveId}` method.
 
 ### **Sample request**
 

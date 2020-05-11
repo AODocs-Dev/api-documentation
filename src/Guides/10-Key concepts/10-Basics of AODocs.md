@@ -35,7 +35,6 @@ A **domain** contains **libraries** (of 3 types) that contain **documents** (of 
 An AODocs **domain** contains libraries of **three types**:
 
 
-
 * **Team Folders (TF)**: each document must have one and only one attachment
 * **Secured Folders (SF)**: same as TF — one and only one attachment
 * **Document Management libraries (DMS)**: a document can have **any number of attachments**: zero, one, or more

@@ -6,10 +6,10 @@ Once your libraries exist, you can list them to get an idea of where to place yo
 
 The most useful methods to list and get libraries are the following:
 
-*   [List libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
-*   [List and search libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
-*   [List libraries plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
-*   [Get a specific library by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+*   [List libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
+*   [List and search libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
+*   [List libraries plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
+*   [Get a specific library by ID](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
 
 ---
@@ -25,7 +25,7 @@ To list target libraries on your domain, select a target library for your AODocs
 Play with the API Explorer:
 
 
-#### **[PUT /library/v1](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)**
+#### **[PUT /library/v1](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)**
 
 
 ### Usage/notes/guidelines
@@ -46,17 +46,16 @@ PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 ```
 
 
-Alternatively use the [List plain libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/04-List%20all%20libraries%20plain) method to get just the key-value pairs of `name` and `id`.
+Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/04-List%20all%20libraries%20plain) method to get just the key-value pairs of `name` and `id`.
 
 
 #### Response
 
-The response returns an [ApiLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
 
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional fields to note:
-
 
 
 *   `name` (of the library)
@@ -95,16 +94,13 @@ Additional fields to note:
 
 
 
-
 ---
 
 
 
 
 
-
 ---
-
 
 
 ### **List libraries and find <code>libraryId</code> in UI</strong>
@@ -123,7 +119,6 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 ```
 
 
-
 #### **Example**
 
 
@@ -135,9 +130,7 @@ Open the desired target library, and note the library ID in the URL. It's the lo
 Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51) inside your AODocs and specific libraries.
 
 
-
 ---
-
 
 
 ## **List libraries plain (alternative to List libraries)**
@@ -169,11 +162,9 @@ PUT https://aodocs.altirnao.com/api/library/v1/plain
 ```
 
 
-
 #### **Response**
 
-The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
-
+The response returns an [ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
 
 *   library name
@@ -183,7 +174,6 @@ The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/doc
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
-
 
 
 *   `name` (of the library)
@@ -212,9 +202,7 @@ Additional response fields to note:
 
 
 
-
 ---
-
 
 
 ## **Get a specific library by ID**
@@ -246,13 +234,11 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 ```
 
 
-
 ###### **Response**
 
-The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
+The response returns an [ApiLibrary](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
-
 
 
 *   `libraryId`
@@ -285,6 +271,5 @@ Response fields of note:
   ...
 }
 ```
-
 
 

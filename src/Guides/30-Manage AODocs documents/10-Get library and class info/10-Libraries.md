@@ -6,10 +6,10 @@ Once your libraries exist, you can list them to get an idea of where to place yo
 
 The most useful methods to list and get libraries are the following:
 
-*   [List libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
-*   [List and search libraries](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
-*   [List libraries plain](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
-*   [Get a specific library by ID](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+*   [List libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
+*   [List and search libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
+*   [List libraries plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
+*   [Get a specific library by ID](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
 
 What follows are elaborations on these methods.
 
@@ -45,7 +45,7 @@ Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1
 
 #### Response
 
-The response returns an [ApiLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
 
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
@@ -95,7 +95,7 @@ This method allows you to search for target libraries on your domain with string
 
 Play with the API Explorer:
 
-#### [GET /search/v2beta1/search](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)
+#### [GET /search/v2beta1/search](/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)
 
 
 ### Usage/notes/guidelines
@@ -119,7 +119,7 @@ The `query` query parameter is what ultimately determines what results come back
 *   a substring of characters in a word (only at the prefix position, e.g. _docu_)
 *   a library ID (equivalent of get library)
 
-> **Note**: The double quotes return only adjacent words in a phrase. For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
+> ⭑  **Note**: The double quotes return only adjacent words in a phrase. For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
 
 **`userSuperAdminAccess`** (default: `false`)
 
@@ -154,7 +154,7 @@ You can either get your results ordered arbitrarily, or you can use this paramet
 *   `TASK_COUNT` (descending)
 *   `FAVORITE_FIRST`
 
-> **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results. Check the `incompleteResults` flag in the response.
+> ⭑  **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results. Check the `incompleteResults` flag in the response.
 
 **`limit`** (default: `20`)
 
@@ -178,7 +178,7 @@ If you want information in addition to the default `nothing` setting, change the
 *   `LAST_ACCESSED`
 *   `TASK_COUNT`
 
-> **Note**: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.
+> ⭑  **Note**: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.
 
 **`pageToken`**
 
@@ -202,7 +202,7 @@ GET https://aodocs.altirnao.com/api/library/v2beta1/search?query=001&minimumCurr
 
 #### Response
 
-The response returns an [ApiLibrarySearchResultList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList) resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means "all").
+The response returns an [ApiLibrarySearchResultList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList) resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means "all").
 
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
@@ -294,10 +294,9 @@ PUT https://aodocs.altirnao.com/api/library/v1/plain
 ```
 
 
-
 #### Response
 
-The response returns an [ApiPlainLibraryList](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+The response returns an [ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
 *   library name
 *   library ID
@@ -363,7 +362,7 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 
 #### Response
 
-The response returns an [ApiLibrary](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
+The response returns an [ApiLibrary](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
 

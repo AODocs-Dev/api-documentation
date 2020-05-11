@@ -32,7 +32,6 @@ Here's what it looks like when you try to authenticate using an invalid security
 
 
 
-
 ## HTTP status code number ranges and meanings
 
 
@@ -74,7 +73,6 @@ Here's what it looks like when you try to authenticate using an invalid security
    </td>
   </tr>
 </table>
-
 
 
 ##
@@ -177,7 +175,6 @@ Here's what it looks like when you try to authenticate using an invalid security
    </td>
   </tr>
 </table>
-
 
 
 ## ____Additional HTTP status codes

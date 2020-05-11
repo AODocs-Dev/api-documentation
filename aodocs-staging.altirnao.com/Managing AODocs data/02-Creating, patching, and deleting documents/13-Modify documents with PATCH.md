@@ -1,12 +1,12 @@
 # Modifying documents with PATCH
 
-In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource. Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
+In AODocs, you can modify resources (such as a document) with the ```PATCH``` operation which **replaces/overwrites** the fields of the target resource. Specifically, with ```PATCH```, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
 
 ## Patching simple fields
 
 One simple example of patching is changing one of the document's properties, like its title. Or even replacing all its attachments with new links to new Drive files.
 
-An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ````richText```` in the API). Take any document where this Description field contains nothing important, and replace what's currently there with some new text by patching (see
+An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ```richText``` in the API). Take any document where this Description field contains nothing important, and replace what's currently there with some new text by patching (see
 
 [following](#heading=h.8gzunnbam38t)).
 
@@ -42,7 +42,7 @@ There are two cases to consider:
 
 Play with the API Explorer:
 
-#### [PATCH /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
+#### [PATCH /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
 
 ## Guidelines
 
@@ -52,13 +52,13 @@ Because this is an overwrite operation, you have to know which pieces you want t
 
 ### Request
 
-Only ````documentId```` is mandatory (to identify which document's metadata to alter). However,  including only the ```documentId``` parameter is the degenerate case: if that's all you specify, and specify no changes, then the Last Modified date of the document gets reset, but otherwise no changes take place.
+Only ```documentId``` is mandatory (to identify which document's metadata to alter). However,  including only the ```documentId``` parameter is the degenerate case: if that's all you specify, and specify no changes, then the Last Modified date of the document gets reset, but otherwise no changes take place.
 
 For this method to do anything, you must specify the parts you want changed, and you must send them as **request-body parameters** (not as query parameters).
 
 #### Example: Patch document with new/modified metadata
 
-For example, in the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property. If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request. Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
+For example, in the request body, you can include some text in the ```richText``` field, which corresponds to your document's ```Description``` property. If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request. Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will change the title of your target document.
 
 #### Sample request body (generic)
 
@@ -75,7 +75,7 @@ Attachments are represented in the ```ApiDocument``` resource as an array field 
 
 [warning](#heading=h.uagnrz4vz8kz)). As with any other field, when the field is sent to the server, its contents will ```PATCH`` (overwrite) the contents of the corresponding field on the target resource residing on the server.
 
-To alter what files are currently attached to your document, use the array field called ````attachments```` in the body of the request. This array field holds the file ID(s) of Drive files you want to become the current attachments to your document.
+To alter what files are currently attached to your document, use the array field called ```attachments``` in the body of the request. This array field holds the file ID(s) of Drive files you want to become the current attachments to your document.
 
 In the case of TF/SF documents, this is relatively foolproof since you are limited to a single attachment. There is only one action that carries any risk, and that's replacing the attachment with another one by accidentally sending a [non-empty ```attachments``` array field](#heading=h.tb6iuzrmzm9x).
 
@@ -144,12 +144,12 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly patched document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified). If you altered the ```attachments``` array field, the response includes the new content.
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly patched document with the overwritten fields (here just ```title``` and ```richText```, and everything else remains unmodified). If you altered the ```attachments``` array field, the response includes the new content.
 
 Response fields of note:
 
-*   ````title```` (whatever you set it to)
-*   ````richText```` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
+*   ```title``` (whatever you set it to)
+*   ```richText``` (document's Description field; supports HTML tags like “`<b>Hello</b> world!`”
 
 ### Sample Response
 

@@ -44,7 +44,7 @@ The preceding is simply a URL-encoded version of this `folder:folderId` pair:
 "folder":"AjaPv028i_mrOykI60KavWib2LTzSuYWr8"
 ```
 
-> ⭑ Note: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
+> ⭑ **Note**: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:
 >
 > *   You have to have ownership of each such file.
 > *   You or your domain has to be whitelisted in the target domain.
@@ -100,7 +100,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 ### Response
 
-If the request succeeds, the response returns a `200 OK` status code and a JSON-formatted representation of an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as `id`, and its `classId` is what you specified in the request, else of the library's default type.
+If the request succeeds, the response returns a `200 OK` status code and a JSON-formatted representation of an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as `id`, and its `classId` is what you specified in the request, else of the library's default type.
 
 ### Sample response
 

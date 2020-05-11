@@ -6,7 +6,7 @@ You can delete a specific document if you have its `documentId`. You can either 
 
 Play with the API Explorer:
 
-## [DELETE /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+## [DELETE /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 
 ## Guidelines
 ### Request
@@ -22,7 +22,6 @@ Only `documentId` is mandatory, and it must be an AODocs `documentId` not a Driv
 DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
 ```
 ### Response
-
 
 
 Because this is a deletion of a resource, there is no resource to return in the response. The response returns an HTTP code of `204 (NO CONTENT)`.
