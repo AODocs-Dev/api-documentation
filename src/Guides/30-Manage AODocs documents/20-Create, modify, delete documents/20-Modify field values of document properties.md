@@ -31,11 +31,11 @@ In a document resource, system fields are top-level fields (not nested), and you
 #### Sample request
 
 ```yaml
-    PUT https://aodocs.altirnao.com/api/document/v1
+PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
-    {
+{
     "title": "mfie-new-doc-023",
     "richText": "mfie-new-doc-023-richText",
     "creationDate": "123456789000",
@@ -44,7 +44,7 @@ In a document resource, system fields are top-level fields (not nested), and you
     "modificationDate": "987654321000",
     "setModifiedDate": true,
     "libraryId": "RsjaTyHw59078Zx7Dk"
-    }
+}
 ```
 
 #### Updatability of system fields
@@ -132,7 +132,7 @@ modification
   <tr>
    <td>title
    </td>
-   <td>Yesᵃ
+   <td>Yes¹
    </td>
    <td>Yes
    </td>
@@ -155,7 +155,7 @@ modification
   </tr>
 </table>
 
-ᵃ ```title``` is automatically populated as "Untitled" if left unspecified
+¹ ```title``` is automatically populated as "Untitled" if left unspecified
 
 
 #### Use case: setModifiedDate flag
