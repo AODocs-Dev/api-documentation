@@ -102,9 +102,9 @@ Search filters, security codes, and other **query parameters** are commonly stru
 
 > 💡   Tip: The following query parameters exist globally across AODocs APIs:
 >
->   * domain
->   * security code (authentication mechanism)
->   * fields query parameter (to filter results and improve performance)
+>       * domain
+>       * security code (authentication mechanism)
+>       * fields query parameter (to filter results and improve performance)
 
 #### API resources
 
