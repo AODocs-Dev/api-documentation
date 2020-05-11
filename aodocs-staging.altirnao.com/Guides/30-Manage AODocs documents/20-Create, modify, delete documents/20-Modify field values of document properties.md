@@ -55,6 +55,7 @@ The following table outlines allowances and requirements for each system field (
 
 
 
+
 <table>
   <tr>
    <td rowspan="2" ><strong>Are the following</strong>
@@ -107,20 +108,24 @@ modification
   <tr>
    <td>updateAuthor
    </td>
-   <td>No, current user  </td>
+   <td>No, current user
+   </td>
    <td>Yes
    </td>
-   <td>No, current user  </td>
+   <td>No, current user
+   </td>
    <td>Yes
    </td>
   </tr>
   <tr>
    <td>modificationDate
    </td>
-   <td>No, current date   </td>
+   <td>No, current date
+   </td>
    <td>Yes
    </td>
-   <td>No, current date   </td>
+   <td>No, current date
+   </td>
    <td>Yes
    </td>
   </tr>
@@ -159,24 +164,23 @@ When you update a document with the API, whether it's creation or modification, 
 
 This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values.  For actions that have the requirement of preserving the ```modifiedDate``` and ```updateAuthor``` fields as is, explicitly pass their previous values along with your document changes and the ```setModifiedDate``` flag  set to ```true```.
 
-##### Sample request
+#### Sample request
 
 ```yaml
     PUT https://aodocs.altirnao.com/api/document/v1
 ```
 
 ```json
-    {
-        "title": "my new AODocs document",
-        "richText": "Hello, world!",
-        "creationDate": "123456789000",
-        "initialAuthor": "mypersonalemail@gmail.com",
-        "updateAuthor": "mypersonal@gmail.com",
-        "setModifiedDate": true,
-        "modificationDate": "987654321000",
-        "libraryId": "RsjaTyH8w59078Zx7Dk",
-    }
-
+{
+    "title": "my new AODocs document",
+    "richText": "Hello, world!",
+    "creationDate": "123456789000",
+    "initialAuthor": "mypersonalemail@gmail.com",
+    "updateAuthor": "mypersonal@gmail.com",
+    "setModifiedDate": true,
+    "modificationDate": "987654321000",
+    "libraryId": "RsjaTyH8w59078Zx7Dk",
+}
 ```
 
 
@@ -197,7 +201,7 @@ This flag allows write access to these two fields: it exists so that tools like 
    </td>
   </tr>
   <tr>
-   <td>RICH TEXT (like <code>richText</code> AKA Description in the UI)
+   <td>RICH TEXT (like <code>richText</code> AKA "Description" in the UI)
    </td>
    <td>Text that is rendered as HTML
    </td>
@@ -217,11 +221,11 @@ This flag allows write access to these two fields: it exists so that tools like 
 </table>
 
 
-
 ### Setting custom fields
 
 In a document resource, custom fields are found inside the ```fields``` array.
-> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server.  Read about it in more detail on the [Modifying document attachments](https://drive.google.com/a/altirnao.com/open?id=1vSBw6aTfoHVyaY2PaUJh2F01aj7fM_gAX0URttdd2Fo) page.
+
+> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide.  Read about it in more detail on the [Modify document attachments](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments) page.
 
 Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
 
@@ -229,7 +233,7 @@ In order to populate custom fields, you must know the ```fieldId``` of the parti
 
 > **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
 
-Once the target class is identified, populate ```fields[].values[]``` with the desired values.
+Once the target class is identified, populate ```fields[].values[]``` with the values you want.
 
 
 #### Sample request
@@ -239,22 +243,20 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
 ```
 
 ```json
-    {
+{
     "title": "my-new-doc-024",
     "libraryId": "RsjaTyH8w59078Zx7Dk",
     "fields": [
-     {
-      "fieldId": "RxUjYCe8AAx2YAju5NW",
-      "values": [
-       "a@a.com",
-       "b@b.com"
-      ]
-     }
+        {
+            "fieldId": "RxUjYCe8AAx2YAju5NW",
+            "values": [
+                "a@a.com",
+                "b@b.com"
+            ]
+        }
     ]
-    }
+}
 ```
-
-
 
 #### Expected API formats for custom fields
 
@@ -287,9 +289,9 @@ Once the target class is identified, populate ```fields[].values[]``` with the d
   <tr>
    <td>PERSON
    </td>
-   <td>A JSON string  representing a user or group email address (this field type only accepts groups when it is multivalued)
+   <td>A JSON string  representing a user or group email address
    </td>
-   <td>Yes
+   <td>Yes (only accepts groups when multivalued, as groups are considered “multiple persons”)
    </td>
   </tr>
   <tr>
