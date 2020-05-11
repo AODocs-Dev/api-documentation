@@ -68,13 +68,13 @@ folders:
         folders:
           10-Get library and class info:
             ordering:
-            - 00-Overview
+            # - 00-Overview
             - 10-Libraries
             - 20-Classes
 
           20-Create, modify, delete documents:
             ordering:
-            - 00-Overview
+            # - 00-Overview
             - 10-Create new documents with attachments
             - 20-Modify field values of document properties
             - 30-Modify document attachments
