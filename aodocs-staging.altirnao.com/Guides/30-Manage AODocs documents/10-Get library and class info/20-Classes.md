@@ -159,9 +159,9 @@ Pass the mandatory class ID (`documentTypeId`) and the library ID (`libId`) of t
 GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86axGNklquDP/documentTypes/Rs4xuIg86e45fvAsn9L
 ```
 
-<code>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/<strong>Rs4xtue86axGNklquDP</strong>/documentTypes/<strong>Rs4xuIg86e45fvAsn9L</strong><code>
+<code>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/<strong>Rs4xtue86axGNklquDP</strong>/documentTypes/<strong>Rs4xuIg86e45fvAsn9L</strong></code>
 
-<code><strong>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/</strong>Rs4xtue86axGNklquDP<strong>/documentTypes/</strong>Rs4xuIg6e45fvAsn9L<code>
+<code><strong>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/</strong>Rs4xtue86axGNklquDP<strong>/documentTypes/</strong>Rs4xuIg6e45fvAsn9L</code>
 
 
 #### Response
