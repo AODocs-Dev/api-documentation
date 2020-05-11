@@ -1,4 +1,4 @@
-# Introduction: Creating new AODocs documents
+# Creating new AODocs documents
 
 In AODocs, you can create new documents with either just a single attachment (TF/SF/DMS), or any number of attachments including zero (DMS-only).
 
