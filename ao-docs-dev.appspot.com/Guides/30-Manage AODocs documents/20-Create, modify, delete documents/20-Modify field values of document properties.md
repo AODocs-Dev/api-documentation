@@ -39,11 +39,11 @@ PUT https://aodocs.altirnao.com/api/document/v1
     "title": "mfie-new-doc-023",
     "richText": "mfie-new-doc-023-richText",
     "creationDate": "123456789000",
-    "initialAuthor": "0x0006@gmail.com",
-    "updateAuthor": "0x0008@gmail.com",
+    "initialAuthor": "account1@gmail.com",
+    "updateAuthor": "account2@gmail.com",
     "modificationDate": "987654321000",
     "setModifiedDate": true,
-    "libraryId": "RsjaTyHw59078Zx7Dk"
+    "libraryId": "RsjaTyH8w59078Zx7Dk"
 }
 ```
 
@@ -52,8 +52,6 @@ PUT https://aodocs.altirnao.com/api/document/v1
 In AODocs APIs, you can define system field values for a document when it is either created or updated.  Some of these fields can be created or modified only if you set the ```setModifiedDate``` boolean flag to ```true```.
 
 The following table outlines allowances and requirements for each system field (`sMD` means `setModifiedDate`):
-
-
 
 
 <table>
