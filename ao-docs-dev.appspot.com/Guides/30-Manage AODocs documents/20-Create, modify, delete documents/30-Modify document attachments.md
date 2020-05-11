@@ -56,7 +56,7 @@ To alter what files are currently attached to your document, use the array field
 
 ##### TF/SF
 
-In the case of TF/SF documents, this is relatively foolproof since you are limited to a single attachment. There is only one action that carries any risk, and that's replacing the attachment with another one by accidentally sending a [non-empty attachments array field](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20document#heading=h.tb6iuzrmzm9x).  See the following "Sample request body (```attachments``` non-empty)".
+In the case of TF/SF documents, this is relatively foolproof since you are limited to a single attachment. There is only one action that carries any risk, and that's replacing the attachment with another one by accidentally sending a non-empty attachments array field.  See the following "Sample request body (`attachments` non-empty)".
 
 
 ##### DMS
@@ -74,7 +74,7 @@ For example, if you have an existing DMS document with one attachment, but want 
 
 Therefore, if you do not need to change anything to do with attachments, do not send the `attachments` array field at all. This ensures that the `attachments` array field in the resource on the server remains unmodified, keeping your attachments as they are.
 
-> 💡 **Tip**: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation which returns the `ApiDocument` resource in full (or partial if you used the `fields` field to [filter the response](https://drive.google.com/a/altirnao.com/open?id=1rUH-H2uGCp4xMwOV_XtKld1FJo6qai_60ZZZ3JP3ePI)). This is the same result as sending a `GET` request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.
+> 💡 **Tip**: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation which returns the `ApiDocument` resource in full (or partial if you used the `fields` field to [filter the response](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations). This is the same result as sending a `GET` request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.
 
 > ⭑ **Note**: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the `attachments` array fields are generalizable to other array fields.
 
@@ -93,6 +93,7 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 ```
 
 ```json
+// removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
 {
   "attachments": // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
   [
@@ -133,15 +134,14 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 ```
 
 ```json
+// not including the attachments array field in the body keeps attachments as they are, unmodified
 {
 }   // not including the attachments array field in the body keeps attachments as they are, unmodified
 ```
 
-
-
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the `attachments` array field in your request, the response includes the new content.
+The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the `attachments` array field in your request, the response includes the new content.
 
 
 ### Sample response
