@@ -1,6 +1,6 @@
 # Authenticate and authorize your users
 
-Every request you send to the AODocs API must include some method of **authentication** to verify identity.  Based on this identity, , as well as of **authorization** to provide permissions based on identity.
+Every request you send to the AODocs API must include some method of **authentication** to verify identity. Based on this identity, , as well as of **authorization** to provide permissions based on identity.
 
 
 ## About the mechanisms
@@ -19,7 +19,7 @@ You can gain authenticated and authorized access to AODocs APIs in three ways, d
 Make sure you provide to your users a level of API access that is functional but **least-elevated possible**, raising their level temporarily only when necessary.
 
 
-> ⭑   **Note**: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended.  Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
+> ⭑   **Note**: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended. Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.
 
 
 Read more about the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
@@ -29,7 +29,7 @@ Read more about the [principle of least privilege](https://en.wikipedia.org/wiki
 
 ### Security code
 
-This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall.  If you don't need access to Google Drive APIs, this is the quickest way to get started.  Read more about how to [access APIs with AODocs security code](src/Authentication/Security%20code%20access).
+This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to [access APIs with AODocs security code](src/Authentication/Security%20code%20access).
 
 
 ### OAuth 2.0
@@ -47,7 +47,7 @@ Read more about how to [access APIs with OAuth 2.0](https://drive.google.com/a/a
 
 ### JSON Web Tokens (JWT)
 
-JWT is a secure token like OAuth 2.0, but without scope so it can be used only on AODocs APIs.  Read more about how to [access APIs with JSON Web Token](https://drive.google.com/a/altirnao.com/open?id=1K0yXBQwTBMm5FEwJotwFkjzc-moD2h-BwzfxlN3YOkk).
+JWT is a secure token like OAuth 2.0, but without scope so it can be used only on AODocs APIs. Read more about how to [access APIs with JSON Web Token](https://drive.google.com/a/altirnao.com/open?id=1K0yXBQwTBMm5FEwJotwFkjzc-moD2h-BwzfxlN3YOkk).
 
 
 ## What to use when

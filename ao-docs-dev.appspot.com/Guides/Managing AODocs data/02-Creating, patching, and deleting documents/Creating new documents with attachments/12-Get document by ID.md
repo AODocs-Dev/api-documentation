@@ -2,7 +2,7 @@
 
 You can retrieve (the configuration of) a specific document to parse something from its metadata (or just confirm it exists) if you have its ```documentId```.
 
-> ⭑   **Note**: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
+> ⭑   **Note**: As always, you can look for the file in the UI as well. If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up. Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
 ## Method and API
 
@@ -22,7 +22,7 @@ Only ````documentId```` is mandatory, and it must be an AODocs ````documentId```
 GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
-If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
+If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter. For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
 
 ### Sample request (partial resource)
 
@@ -34,7 +34,7 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID.  The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
 
 Response fields of note:
 

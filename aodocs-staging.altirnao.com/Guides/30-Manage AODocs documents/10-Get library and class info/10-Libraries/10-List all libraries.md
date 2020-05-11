@@ -13,9 +13,9 @@ Play with the API Explorer:
 ### Request
 
 
-> ⚠  **Warning/Alert**: This method requests all metadata for all libraries on the domain.  Not recommended without filtering!
+> ⚠  **Warning/Alert**: This method requests all metadata for all libraries on the domain. Not recommended without filtering!
 
-This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response.  We strongly recommend you set the ```include``` query parameter to ```NONE```.
+This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response. We strongly recommend you set the ```include``` query parameter to ```NONE```.
 
 
 
@@ -25,13 +25,13 @@ This method has no mandatory parameters, but without setting any filtering it tr
 PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 ```
 
-Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```.  This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
+Alternatively use the **[List plain libraries](04-List%20all%20libraries%20plain)** method to get just the key-value pairs of```name``` and ```id```. This is equivalent to requesting the full ```ApiLibraryList``` resource but with the ```fields``` field to filter out everything except ```name``` and ```id```.
 
 ### Response
 
-The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain.  With the recommended parameter ```include=NONE``` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](../../../../types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter ```include=NONE``` the response is smaller and far more manageable.
 
-Take note of the `libraryId` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional fields to note:
 
@@ -59,7 +59,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "defaultDocumentType": "Rngc4rL9JCj5xwTtrF",
       "rootFolderId": "1yAMvoTBFEvI_8GXghiyTEJqevJeW7q9C",
       "favorited": true
@@ -69,12 +69,12 @@ Additional fields to note:
 
 ## List libraries and find ```libraryId``` in UI
 
-You can also locate the ```libraryId``` of your target library inside the AODocs UI.  Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
+You can also locate the ```libraryId``` of your target library inside the AODocs UI. Go to your homepage > My libraries by clicking on the "My libraries" link in the upper left corner of most pages:
 
 ![libraryid-in-ui.png](/img/libraryid-in-ui.png)
 
 
-Open the desired target library, and note the library ID in the URL.  It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
+Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after `LibraryId_` (up to and _excluding_ the next slash):
 
 ```
 /LibraryId_libraryId

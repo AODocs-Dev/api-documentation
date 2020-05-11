@@ -2,9 +2,9 @@
 
 AODocs documents are composed of metadata, including (but not limited to) system and custom properties defined as part of a specific document type (also known as class).
 
-System properties are pieces of metadata defined at the document level, found in every document.  Most of them are set by the system and are read-only.  Some of them can be modified.
+System properties are pieces of metadata defined at the document level, found in every document. Most of them are set by the system and are read-only. Some of them can be modified.
 
-Custom properties are document metadata defined by an administrator during the creation of a class.  Once defined, each document that belongs to the class takes on all the properties defined in its class.
+Custom properties are document metadata defined by an administrator during the creation of a class. Once defined, each document that belongs to the class takes on all the properties defined in its class.
 
 > **Note**: Properties can be added and deleted after class creation.
 
@@ -49,7 +49,7 @@ In a document resource, system fields are top-level fields (not nested), and you
 
 #### Updatability of system fields
 
-In AODocs APIs, you can define system field values for a document when it is either created or updated.  Some of these fields can be created or modified only if you set the ```setModifiedDate``` boolean flag to ```true```.
+In AODocs APIs, you can define system field values for a document when it is either created or updated. Some of these fields can be created or modified only if you set the ```setModifiedDate``` boolean flag to ```true```.
 
 The following table outlines allowances and requirements for each system field (`sMD` means `setModifiedDate`):
 
@@ -157,7 +157,7 @@ modification
 
 When you update a document with the API, whether it's creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: ```modifiedDate``` and ```updateAuthor```, that will get the current date and current user value regardless of the field values you put in the request.
 
-This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values.  For actions that have the requirement of preserving the ```modifiedDate``` and ```updateAuthor``` fields as is, explicitly pass their previous values along with your document changes and the ```setModifiedDate``` flag  set to ```true```.
+This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values. For actions that have the requirement of preserving the ```modifiedDate``` and ```updateAuthor``` fields as is, explicitly pass their previous values along with your document changes and the ```setModifiedDate``` flag  set to ```true```.
 
 ##### Sample request
 
@@ -221,11 +221,11 @@ This flag allows write access to these two fields: it exists so that tools like 
 ### Setting custom fields
 
 In a document resource, custom fields are found inside the ```fields``` array.
-> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server.  Read about it in more detail on the [Modifying document attachments](https://drive.google.com/a/altirnao.com/open?id=1vSBw6aTfoHVyaY2PaUJh2F01aj7fM_gAX0URttdd2Fo) page.
+> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server. Read about it in more detail on the [Modifying document attachments](https://drive.google.com/a/altirnao.com/open?id=1vSBw6aTfoHVyaY2PaUJh2F01aj7fM_gAX0URttdd2Fo) page.
 
 Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
 
-In order to populate custom fields, you must know the ```fieldId``` of the particular property of your target class (that each document in that class has).  You then use it to tell the server which values of this particular property should be set.  To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
+In order to populate custom fields, you must know the ```fieldId``` of the particular property of your target class (that each document in that class has). You then use it to tell the server which values of this particular property should be set. To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
 
 > **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
 

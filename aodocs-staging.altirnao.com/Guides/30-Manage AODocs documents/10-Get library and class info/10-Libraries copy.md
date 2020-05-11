@@ -85,7 +85,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "defaultDocumentType": "Rngc4rL89JCj5xwTtrF",
       "rootFolderId": "1yAMvoT8BFEvI_8GXghiyTEJqevJeW7q9C",
       "favorited": true
@@ -203,7 +203,7 @@ Additional response fields to note:
     {
       "kind": "aodocs#plainLibrary",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "lastModified": "1579619340936",
       "lastConfigModified": "1579619340936"
     }

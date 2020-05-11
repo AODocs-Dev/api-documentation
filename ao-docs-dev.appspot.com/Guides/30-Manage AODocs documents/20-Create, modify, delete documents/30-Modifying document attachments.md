@@ -1,21 +1,21 @@
 # Modify a document
 
-In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource.  Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
+In AODocs, you can modify resources (such as a document) with the ````PATCH```` operation which **replaces/overwrites** the fields of the target resource. Specifically, with ````PATCH````, anything you specify in your request resource replaces its corresponding part in the server resource; and what you don't specify remains unmodified.
 
 ## Modifying simple fields
 
-One simple example of modifying is changing one of the document's properties, like its title.  Or even replacing all its attachments with new links to new Drive files.
+One simple example of modifying is changing one of the document's properties, like its title. Or even replacing all its attachments with new links to new Drive files.
 
-An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ````richText```` in the API).  Take any document where this Description field contains nothing important, and replace what's currently there with some new text by using the `PATCH` operation (see [following](#heading=h.8gzunnbam38t)).
+An easy way to try this out is to create a test AODocs document and modify its ```Description``` property (called ````richText```` in the API). Take any document where this Description field contains nothing important, and replace what's currently there with some new text by using the `PATCH` operation (see [following](#heading=h.8gzunnbam38t)).
 
-To modify a specific document by its ID, you send a request resource to replace corresponding fields in a target resource.  More specifically, you send a (partial) ```ApiDocument``` resource where the specific target resource resides on the server, making sure that:
+To modify a specific document by its ID, you send a request resource to replace corresponding fields in a target resource. More specifically, you send a (partial) ```ApiDocument``` resource where the specific target resource resides on the server, making sure that:
 
 *   the request **resource** contains _only_ the resource fields you want modified
 *   the resource **fields** included in the request are _not empty_ unless you actually want the target resource fields to become empty/deleted
 
 ## Modifying array fields
 
-In general, modifying is perfectly benign.  However, things are riskier with any parts of the resource arranged in arrays.  One example is using the ```attachments``` array field in DMS documents.  However, this extends to any request containing array fields.
+In general, modifying is perfectly benign. However, things are riskier with any parts of the resource arranged in arrays. One example is using the ```attachments``` array field in DMS documents. However, this extends to any request containing array fields.
 
 There are two cases to consider:
 
@@ -31,7 +31,7 @@ There are two cases to consider:
 
 > (The one-attachment restriction in TF/SF prevents this possibility; however it still applies for other types of array field.)
 
-> Additionally, if you want any of the current objects to remain in the array field (as you alter it), you have to specify them each time in the array field in your request, including their current position).  For example, if you use the ```attachments``` array field with DMS documents, then you have to deliberately send the complete list of what you want the array to contain from then on, in the order you want.
+> Additionally, if you want any of the current objects to remain in the array field (as you alter it), you have to specify them each time in the array field in your request, including their current position). For example, if you use the ```attachments``` array field with DMS documents, then you have to deliberately send the complete list of what you want the array to contain from then on, in the order you want.
 
 > (Missteps such as accidental detaching or re-ordering of attachments are not possible with TF/SF documents because you only ever modify the one attachment.)
 
@@ -66,17 +66,17 @@ PATCH /document/v1/{documentId}
 
 ### Prerequisites
 
-Because this is an overwrite operation, you have to know which pieces you want to replace with your new changes, including overwriting with nothing (deleting).  And you have to be aware of the power of this operation to make changes that are somewhat complicated to undo.
+Because this is an overwrite operation, you have to know which pieces you want to replace with your new changes, including overwriting with nothing (deleting). And you have to be aware of the power of this operation to make changes that are somewhat complicated to undo.
 
 ### Request
 
-Only ````documentId```` is mandatory (to identify which document's metadata to alter).  However,  including only the ```documentId``` parameter is the degenerate case: if that's all you specify, and specify no changes, then the Last Modified date of the document gets reset, but otherwise no changes take place.
+Only ````documentId```` is mandatory (to identify which document's metadata to alter). However,  including only the ```documentId``` parameter is the degenerate case: if that's all you specify, and specify no changes, then the Last Modified date of the document gets reset, but otherwise no changes take place.
 
 For this method to do anything, you must specify the parts you want changed, and you must send them as **request-body parameters** (not as query parameters).
 
 #### Example: Modify document with new/modified metadata
 
-In the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property.  If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request.  This will appear in the AODocs UI like this:
+In the request body, you can include some text in the ````richText```` field, which corresponds to your document's ```Description``` property. If you send the request with this field set to (arbitrarily) ```This is my <b>Hello world!</b> document```, then the server will change the ```richText```  field inside the server resource when you execute the request. This will appear in the AODocs UI like this:
 
 ![ricthtext-patch-ui.png](/img/ricthtext-patch-ui.png)
 
@@ -96,11 +96,11 @@ Similarly, if you send the ```title``` as ```Hello-world-doc-001```, you will ch
 
 #### Example: Modify document with attachments
 
-Attachments are represented in the ```ApiDocument``` resource as an array field (see preceding warning under "Modifying array fields").  As with any other field, when the field is sent to the server, its contents will ```PATCH`` (overwrite) the contents of the corresponding field on the target resource residing on the server.
+Attachments are represented in the ```ApiDocument``` resource as an array field (see preceding warning under "Modifying array fields"). As with any other field, when the field is sent to the server, its contents will ```PATCH`` (overwrite) the contents of the corresponding field on the target resource residing on the server.
 
-To alter what files are currently attached to your document, use the array field called ````attachments```` in the body of the request.  This array field holds the file ID(s) of Drive files you want to become the current attachments to your document.
+To alter what files are currently attached to your document, use the array field called ````attachments```` in the body of the request. This array field holds the file ID(s) of Drive files you want to become the current attachments to your document.
 
-In the case of TF/SF documents, this is relatively foolproof since you are limited to a single attachment.  There is only one action that carries any risk, and that's replacing the attachment with another one by accidentally sending a [non-empty ```attachments``` array field](#heading=h.tb6iuzrmzm9x).
+In the case of TF/SF documents, this is relatively foolproof since you are limited to a single attachment. There is only one action that carries any risk, and that's replacing the attachment with another one by accidentally sending a [non-empty ```attachments``` array field](#heading=h.tb6iuzrmzm9x).
 
 However, when dealing with DMS-document attachments, you must proceed more cautiously because DMS documents have no attachment restrictions, and you must thus consider multiple potential outcomes depending on how you phrase ```attachments```.
 
@@ -108,11 +108,11 @@ If you are using the ```attachments``` array field in your request and you happe
 
 This means that if you are actually including the ```attachments``` array field in your request, then **you must explicitly specify what you want to keep each time**; and if you send it to the server **empty**, the server will **empty** the target document of all its attachments.
 
-For example, if you have an existing DMS document with one attachment, but want to add another attachment to it, you must specify both attachments (the existing _and_ the new), and in the correct order.  If you only specify the new attachment, the original attachment will get detached, and your new attachment will get attached in its place, replacing the original.  Result: a single attachment (the new one).
+For example, if you have an existing DMS document with one attachment, but want to add another attachment to it, you must specify both attachments (the existing _and_ the new), and in the correct order. If you only specify the new attachment, the original attachment will get detached, and your new attachment will get attached in its place, replacing the original. Result: a single attachment (the new one).
 
-Therefore, if you do not need to change anything to do with attachments, do not send the ```attachments``` array field at all.  This ensures that the ```attachments``` array field in the resource on the server remains unmodified, keeping your attachments as they are.
+Therefore, if you do not need to change anything to do with attachments, do not send the ```attachments``` array field at all. This ensures that the ```attachments``` array field in the resource on the server remains unmodified, keeping your attachments as they are.
 
-> 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response).  This is the same result as sending a ```GET``` request to get a document.  This way you always have an up-to-date listing of what the target resource looks like on the server.  Read the array field(s) you need, and feed the fields into your next request.
+> 💡   Tip: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation, which returns the ```ApiDocument``` resource in full (or partial if you used the ```fields``` field to filter the response). This is the same result as sending a ```GET``` request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.
 
 
 > ⭑   **Note**: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the ```attachments``` array fields are generalizable to other array fields.
@@ -121,9 +121,9 @@ Therefore, if you do not need to change anything to do with attachments, do not 
 
 When you send the  ```attachments``` array field filled out with file ID(s), you are saying to the server that you want these files in this specific order to be the attachments from now on, regardless of what used to be attached up until now.
 
- In the case of TF/SF, you are restricted to exactly one file ID inside the ```attachments``` array field.  In the case of DMS, this restriction does not exist.
+ In the case of TF/SF, you are restricted to exactly one file ID inside the ```attachments``` array field. In the case of DMS, this restriction does not exist.
 
- To keep any current attachments in your DMS document, you must explicitly state them here.  Also, if you want to keep their existing ordering, then you also must specify them in that order.
+ To keep any current attachments in your DMS document, you must explicitly state them here. Also, if you want to keep their existing ordering, then you also must specify them in that order.
 
 ```yaml
 PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
@@ -146,7 +146,7 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 #### Sample request body (DMS-only, with ```attachments``` array field empty)
 
-In DMS, this is how you detach ("delete") attachments all at once.  The (ex-)attachments are still owned by the storage account.  With no parent document, however, no reference to them exists in either AODocs libraries or in Drive (except in logs).  To regain access to them you need the intervention of a domain administrator.
+In DMS, this is how you detach ("delete") attachments all at once. The (ex-)attachments are still owned by the storage account. With no parent document, however, no reference to them exists in either AODocs libraries or in Drive (except in logs). To regain access to them you need the intervention of a domain administrator.
 
 ```yaml
 PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
@@ -172,7 +172,7 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified).  If you altered the ```attachments``` array field, the response includes the new content.
+The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields (here just ````title```` and ````richText````, and everything else remains unmodified). If you altered the ```attachments``` array field, the response includes the new content.
 
 Response fields of note:
 

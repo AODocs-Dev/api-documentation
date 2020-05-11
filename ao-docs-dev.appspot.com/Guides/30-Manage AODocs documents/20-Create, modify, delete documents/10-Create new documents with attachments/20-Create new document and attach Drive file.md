@@ -65,7 +65,7 @@ Provide the `fileId` inside one of the two array fields (or both) in the request
 
 If you attach a Drive file using `attachments`, and then edit that attachment's content, the edits happen in the original Drive file because the attachment is a direct link to that file.
 
-> ⭑   **Note**: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive.  It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
+> ⭑   **Note**: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive. It's still accessible via search and via the "Shared with me" shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).
 
 However, if you attach a Drive file using `attachmentsToCopy`, that attachment is no longer the original file: it is a copy of it created during the attachment process.
 
@@ -131,10 +131,10 @@ If the request succeeds, the response returns a `200 OK` status code and a JSON-
     {  // library root folder
       "kind": "aodocs#folder",
       "libraryId": "Rs4xtue86axGNklquDP",
-      "libraryName": "mfie-sf-prod-001",
+      "libraryName": "my-sf-prod-001",
       "folderAodocsId": "0", // ⇐ "0" means root folder
       "fileId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu", // ⇐ root folder Drive ID
-      "name": "mfie-sf-prod-001",
+      "name": "my-sf-prod-001",
       "parentFolderIsRoot": false,
       "folderIsRoot": true,
       ...
@@ -142,7 +142,7 @@ If the request succeeds, the response returns a `200 OK` status code and a JSON-
     { // actual folder the document is in
       "kind": "aodocs#folder",
       "libraryId": "Rs4xtue86axGNklquDP",
-      "libraryName": "mfie-sf-prod-001",
+      "libraryName": "my-sf-prod-001",
       ...
       "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma",
       "parentFolderAodocsId": "0", // ⇐ we are one level below root

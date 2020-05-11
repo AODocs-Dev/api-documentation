@@ -1,6 +1,6 @@
 # Delete a specific document by ID
 
-You can delete a specific document if you have its ````documentId````.  You can either delete it permanently, or just send it to Trash.  You can retrieve it from the Trash, or leave it there and it will get deleted after some designated amount of time.
+You can delete a specific document if you have its ````documentId````. You can either delete it permanently, or just send it to Trash. You can retrieve it from the Trash, or leave it there and it will get deleted after some designated amount of time.
 
 ## Method and API
 
@@ -24,7 +24,7 @@ DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMod
 
 ### Response
 
-Because this is a deletion of a resource, there is no resource to return in the response.  The response returns an HTTP code of ```204 (NO CONTENT)```.
+Because this is a deletion of a resource, there is no resource to return in the response. The response returns an HTTP code of ```204 (NO CONTENT)```.
 
 ### Sample Response
 

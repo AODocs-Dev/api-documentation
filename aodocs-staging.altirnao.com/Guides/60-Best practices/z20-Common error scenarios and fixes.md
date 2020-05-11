@@ -13,7 +13,7 @@ It is the client app's responsibility to catch and handle all standard errors en
 
 This error means that everything was executed according to plan, but no response could be produced or sent back to confirm the effects of the action.
 
-To make sure the action was performed correctly, send another request testing the effects of the previous request.  This usually means issuing a GET request to retrieve the resource from the server for analysis.
+To make sure the action was performed correctly, send another request testing the effects of the previous request. This usually means issuing a GET request to retrieve the resource from the server for analysis.
 
 > **Note**: If the original request was a DELETE, the response is always a 204, effectively stating: "There is no resource the server can send back because it got deleted as requested".
 
@@ -21,7 +21,7 @@ To make sure the action was performed correctly, send another request testing th
 
 ## Resolve a 400 error: Bad Request
 
-This error means the input is incorrect — something in the query is missing or not valid.  Some examples include:
+This error means the input is incorrect — something in the query is missing or not valid. Some examples include:
 
 *   Using mutually exclusive parameters at the same time: *"Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive"*
 *   Trying to violate the one-attachement restriction of TF/SF libraries: *"In the google libraries the documents should always have exactly one attachment."*
@@ -50,7 +50,7 @@ Here is an example of a 400 error, this one resulting from providing more than o
 }
 ```
 
-To fix this specific error, provide only one of the indicated mutually exclusive parameters.  In general, when encountering a 400 error, follow the hint provided in the ```message``` field.
+To fix this specific error, provide only one of the indicated mutually exclusive parameters. In general, when encountering a 400 error, follow the hint provided in the ```message``` field.
 
 ---
 
@@ -255,7 +255,7 @@ If your mandatory parameter is correct, but the resource has moved or doesn't ex
 
 ## Resolve a 409 error: Conflict (retry)
 
-This error can occur because the resource is being accessed by more than one caller at the same time.  The best strategy is to retry.
+This error can occur because the resource is being accessed by more than one caller at the same time. The best strategy is to retry.
 
 > **Note**: Of all 400-series errors, this is the only one that should be retried.
 
@@ -263,7 +263,7 @@ This error can occur because the resource is being accessed by more than one cal
 
 ## Resolve a 500 error: Internal server error (retry)
 
-This error occurs because of some unforeseen condition on the server.  The best strategy is to retry.
+This error occurs because of some unforeseen condition on the server. The best strategy is to retry.
 
 
 ---

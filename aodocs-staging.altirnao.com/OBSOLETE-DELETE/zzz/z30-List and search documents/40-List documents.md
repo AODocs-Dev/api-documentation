@@ -14,12 +14,12 @@ Play with the API Explorer:
 
 ### Request
 
-```libraryId``` is a path parameter.  It is the only mandatory parameter.
+```libraryId``` is a path parameter. It is the only mandatory parameter.
 
 ### Sample request
 
 ```yaml
-POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/Rs511XR8xAxGXu7nZYj/list
+POST https://aodocs.altirnao.com/api/search/v1/libraries/Rs511XR8xAxGXu7nZYj/list
 ```
 
 ### Response

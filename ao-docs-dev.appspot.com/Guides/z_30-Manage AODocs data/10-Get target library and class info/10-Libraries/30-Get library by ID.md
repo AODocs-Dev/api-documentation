@@ -12,7 +12,7 @@ Play with the API Explorer:
 
 ### Request
 
-To get your desired library back in the response you have to provide the library ID.  This is the only mandatory field.  If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
+To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
 
 ##### Sample request
 

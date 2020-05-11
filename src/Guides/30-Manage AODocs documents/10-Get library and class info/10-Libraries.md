@@ -77,7 +77,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "defaultDocumentType": "Rngc4rL89JCj5xwTtrF",
       "rootFolderId": "1yAMvoT8BFEvI_8GXghiyTEJqevJeW7q9C",
       "favorited": true
@@ -89,7 +89,7 @@ Additional fields to note:
 
 ## List and search libraries (v2beta1)
 
-This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope.  Without them, what comes back in the response is the full list of libraries available to you.
+This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope. Without them, what comes back in the response is the full list of libraries available to you.
 
 ### Method and API
 
@@ -110,7 +110,7 @@ Several useful parameters are available to help narrow the search.
 
 **`query`**
 
-The `query` query parameter is what ultimately determines what results come back, filtering them on a text string.  You can search for the following:
+The `query` query parameter is what ultimately determines what results come back, filtering them on a text string. You can search for the following:
 
 *   a word (like _blue_)
 *   several words in any order (_document big blue_)
@@ -119,19 +119,19 @@ The `query` query parameter is what ultimately determines what results come back
 *   a substring of characters in a word (only at the prefix position, e.g. _docu_)
 *   a library ID (equivalent of get library)
 
-> **Note**: The double quotes return only adjacent words in a phrase.  For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
+> **Note**: The double quotes return only adjacent words in a phrase. For example, if your document is called _big blue document_, then sending _"big blue"_ or _"blue document"_ (with the double quotes) as a phrase in the ```query``` query parameter finds _big blue document_, but sending _"big document"_ as a phrase does not.
 
 **`userSuperAdminAccess`** (default: `false`)
 
-By default, you receive a response containing no more information than you need.  If you are a domain administrator (superadmin), you can change the `userSuperAdminAccess`'s default value of `false` to `true` to elevate your privileges to return libraries accessible to all domain administrators.
+By default, you receive a response containing no more information than you need. If you are a domain administrator (superadmin), you can change the `userSuperAdminAccess`'s default value of `false` to `true` to elevate your privileges to return libraries accessible to all domain administrators.
 
 **`minimumCurrentUserRole`**
 
-Use this flag if you want to have access to libraries you are at least an `ADMIN` of.  For example, if you want to know which libraries you're authorized to import content into, then you don't want to consider libraries you only have `READER` privileges for (since you can't import at that level).
+Use this flag if you want to have access to libraries you are at least an `ADMIN` of. For example, if you want to know which libraries you're authorized to import content into, then you don't want to consider libraries you only have `READER` privileges for (since you can't import at that level).
 
 **`libtypes`**
 
-You can specify which of the three types of libraries you get in the response in any combination.  Specifying none is the same as specifying all.
+You can specify which of the three types of libraries you get in the response in any combination. Specifying none is the same as specifying all.
 
 **`storageAccount`**
 
@@ -139,7 +139,7 @@ You can either request results from all storage accounts available to you, or yo
 
 **`labelIds`**
 
-When you list all libraries in the UI, you can see a list of labels in the left panel ordered alphabetically.  With this parameter, you can request libraries by label, including several at a time.
+When you list all libraries in the UI, you can see a list of labels in the left panel ordered alphabetically. With this parameter, you can request libraries by label, including several at a time.
 
 **`favorite`**
 
@@ -154,7 +154,7 @@ You can either get your results ordered arbitrarily, or you can use this paramet
 *   `TASK_COUNT` (descending)
 *   `FAVORITE_FIRST`
 
-> **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results.  Check the `incompleteResults` flag in the response.
+> **Note**: The `orderBy` parameter bears a performance penalty and has a limit of 10,000 results. Check the `incompleteResults` flag in the response.
 
 **`limit`** (default: `20`)
 
@@ -162,11 +162,11 @@ You can choose an arbitrary number of results to display, up to 1000.
 
 **`requirePreciseResults`** (default: `false`)
 
-If you don't specify this parameter, the result will contain a `totalResultCount` field that is an estimate of the total number of results matching your query (not only for the current page).  The `estimatedResultCount` field in the response will be set to `true`.
+If you don't specify this parameter, the result will contain a `totalResultCount` field that is an estimate of the total number of results matching your query (not only for the current page). The `estimatedResultCount` field in the response will be set to `true`.
 
-This is the default behavior: the query is usually much faster when all it has to do is estimate the total number of results (instead of counting).  The downside is that it's just an estimate — within about an order of magnitude — so the higher the values, the more significant the divergence.
+This is the default behavior: the query is usually much faster when all it has to do is estimate the total number of results (instead of counting). The downside is that it's just an estimate — within about an order of magnitude — so the higher the values, the more significant the divergence.
 
-If `requirePreciseResults` is set to `true`, then up to 25,000 results, the response's `totalResultCount` will contain the exact number of results that match your initial request, and beyond that, it'll contain an estimate.  The `estimatedResultCount` will be set to `true` in either case.
+If `requirePreciseResults` is set to `true`, then up to 25,000 results, the response's `totalResultCount` will contain the exact number of results that match your initial request, and beyond that, it'll contain an estimate. The `estimatedResultCount` will be set to `true` in either case.
 
 **`include`** (default: `nothing`)
 
@@ -182,12 +182,12 @@ If you want information in addition to the default `nothing` setting, change the
 
 **`pageToken`**
 
-This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes.  If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
+This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes. If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
 
 #### Sample request (no parameters: list all)
 
 ```yaml
-GET https://aodocs-staging.altirnao.com/api/library/v2beta1/search
+GET https://aodocs.altirnao.com/api/library/v2beta1/search
 ```
 
 Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
@@ -197,7 +197,7 @@ Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1
 
 
 ```yaml
-GET https://aodocs-staging.altirnao.com/api/library/v2beta1/search?query=001&minimumCurrentUserRole=WRITER&libTypes=TF&favorite=true&orderBy=LAST_ACCESSED&limit=3&requirePreciseResults=true&facets=true&include=LAST_ACCESSED HTTP/1.1
+GET https://aodocs.altirnao.com/api/library/v2beta1/search?query=001&minimumCurrentUserRole=WRITER&libTypes=TF&favorite=true&orderBy=LAST_ACCESSED&limit=3&requirePreciseResults=true&facets=true&include=LAST_ACCESSED HTTP/1.1
 ```
 
 #### Response
@@ -324,7 +324,7 @@ Additional response fields to note:
     {
       "kind": "aodocs#plainLibrary",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "lastModified": "1579619340936",
       "lastConfigModified": "1579619340936"
     }

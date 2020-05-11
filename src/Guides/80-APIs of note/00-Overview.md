@@ -6,7 +6,7 @@ Generally, the methods work as follows:
 *   GET (gets single or list)
 *   POST (creates)
 *   DELETE (deletes)
-*   PATCH (updates).  we don't do UPDATE, 'cause PATCH suffices [but under documentId POST updates?
+*   PATCH (updates). we don't do UPDATE, 'cause PATCH suffices [but under documentId POST updates?
 
 ## Global fields
 

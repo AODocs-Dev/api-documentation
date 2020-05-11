@@ -50,17 +50,17 @@ The fields of a representation include, but are not limited to the following:
 
 ### Subresources
 
-In AODocs APIs, a **subresource** is an **attribute** of a resource.  It is resource-like only in that it has a schema and can be represented in JSON.  However, no methods operate on it directly, and it cannot exist on its own, without its parent resource.  ```ApiPermission``` and ```ApiLibraryPermission``` are good examples of subresources: you can alter them only as part of the resource they belong to.
+In AODocs APIs, a **subresource** is an **attribute** of a resource. It is resource-like only in that it has a schema and can be represented in JSON. However, no methods operate on it directly, and it cannot exist on its own, without its parent resource. ```ApiPermission``` and ```ApiLibraryPermission``` are good examples of subresources: you can alter them only as part of the resource they belong to.
 
 ### Collections
 
-An AODocs **collection** is a **list** of resources or subresources.  It is not a resource by itself in the context of AODocs APIs.  What makes a collection meaningful is what it lists.  A list of documents (```ApiDocumentList```) is one example of a resource collection.  A list of libraries (```ApiLibraryList```) is another.  Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
+An AODocs **collection** is a **list** of resources or subresources. It is not a resource by itself in the context of AODocs APIs. What makes a collection meaningful is what it lists. A list of documents (```ApiDocumentList```) is one example of a resource collection. A list of libraries (```ApiLibraryList```) is another. Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
 
 > **Note**: Requests for collections often return too many results and are best handled using [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations).
 
 ## Collections vs. resources vs. subresources
 
-One way to explore what makes a collection different from a resource or a subresource is to use the example of permissions.  Permissions are subresources that can be listed both as a collection or as part of a resource.  Both the ```ApiLibraryPermissionsList``` and the ```ApiLibrary``` resource contain an array field of permissions: the former exclusively, the latter as part of its larger construct.
+One way to explore what makes a collection different from a resource or a subresource is to use the example of permissions. Permissions are subresources that can be listed both as a collection or as part of a resource. Both the ```ApiLibraryPermissionsList``` and the ```ApiLibrary``` resource contain an array field of permissions: the former exclusively, the latter as part of its larger construct.
 
 You can get a library's list of permissions in two ways:
 
@@ -101,7 +101,7 @@ The result looks the same in both cases:
 }
 ```
 
-> **Note**: By definition, a collection contains at least one **array field**.  And, unlike subresources, it is used by at least one method.
+> **Note**: By definition, a collection contains at least one **array field**. And, unlike subresources, it is used by at least one method.
 
 ## **How to interact with resources**
 

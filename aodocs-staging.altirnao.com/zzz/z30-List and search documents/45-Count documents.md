@@ -14,12 +14,12 @@ Play with the API Explorer:
 
 ### **Request**
 
-`libraryId` is a path parameter. It is the only mandatory parameter.  However, using the ```classId``` helps narrow the response to documents of a specific class you want.
+`libraryId` is a path parameter. It is the only mandatory parameter. However, using the ```classId``` helps narrow the response to documents of a specific class you want.
 
 ### **Sample request**
 
 ```yaml
-POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
+POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
 ```
 
 

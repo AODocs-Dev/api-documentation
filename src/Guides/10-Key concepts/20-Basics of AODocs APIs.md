@@ -11,7 +11,7 @@ Most of the tasks (and more) that can be achieved from the AODocs UI can also be
 
 ## When to use Drive APIs vs. AODocs APIs
 
-The purpose of **Drive** APIs is to upload, read, alter, copy, and download **Drive** files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents.  Only **[Drive APIs](https://developers.google.com/drive/api/v3/)** can be used for this purpose, and the AODocs API does not provide any way to interact with the content of the Drive files directly.
+The purpose of **Drive** APIs is to upload, read, alter, copy, and download **Drive** files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents. Only **[Drive APIs](https://developers.google.com/drive/api/v3/)** can be used for this purpose, and the AODocs API does not provide any way to interact with the content of the Drive files directly.
 
 > ⭑   Note: You can use any available version of Google Drive APIs (v2 or v3).
 
@@ -38,7 +38,7 @@ To manage and configure **AODocs documents**, you can use only **AODocs APIs**.
 
 ## Interacting with APIs
 
-AODocs APIs are designed around [principles of REST](https://cloud.google.com/apis/design/resources): to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request.  You then parse the responses that come back.  You can do this using the following methods:
+AODocs APIs are designed around [principles of REST](https://cloud.google.com/apis/design/resources): to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request. You then parse the responses that come back. You can do this using the following methods:
 
 *   in person, manually, using the interactive [API Explorer](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 *   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
@@ -96,9 +96,9 @@ There are generally three ways you can send parameters inside a request:
 *   as one of the JSON-formatted resource fields inside the **request body** (<code><strong>{"documentId": "abcd12345"}</strong></code>)
 *   inside the header (<code><strong>Authorization: Bearer \<token\></strong></code>)
 
-Specific variable parts of the endpoint URL (like AODocs <code>/documentType/v1/**typeId**</code> or <code>/library/v1/**libraryId**</code> APIs) are considered **path parameters**.  These parameters get provided in the part of the URL after the host name and before the `?`, and this is where the server expects to find them.
+Specific variable parts of the endpoint URL (like AODocs <code>/documentType/v1/**typeId**</code> or <code>/library/v1/**libraryId**</code> APIs) are considered **path parameters**. These parameters get provided in the part of the URL after the host name and before the `?`, and this is where the server expects to find them.
 
-Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```.  The resource server has built-in mechanisms to parse this information.
+Search filters, security codes, and other **query parameters** are commonly strung into a key-value list in the part of the URL after the ```?```. The resource server has built-in mechanisms to parse this information.
 
 > 💡   Tip: The following query parameters exist globally across AODocs APIs:
 >
@@ -110,9 +110,9 @@ Search filters, security codes, and other **query parameters** are commonly stru
 
 REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
 
-A resource type (such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented.  A representation of a resource is the (in our case JSON-formatted) instance of the schema above.  This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
+A resource type (such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
 
-You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```.  Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
+You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```. Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
 
 API resources (like a Document or Library) that you want to create or update _must_ be  sent as part of the request resource, in the **request body.**
 
@@ -153,14 +153,14 @@ For example, the server might apply a ```GET``` request to an ```ApiLibraryList`
 
 ### Step 3: Server sends a response
 
-The server either succeeds in fulfilling the request, or something goes wrong.  The latter case is uncommon, but when it does occur, many things can be the culprit.
+The server either succeeds in fulfilling the request, or something goes wrong. The latter case is uncommon, but when it does occur, many things can be the culprit.
 
 #### Server succeeded
 
-If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on.  Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument).
+If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument).
 
 
-> ⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently.  If you delete the document permanently, the ```documentId``` stops being recognized from that point on.  If you send the document to Trash, the document ID persists.
+> ⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently. If you delete the document permanently, the ```documentId``` stops being recognized from that point on. If you send the document to Trash, the document ID persists.
 
 #### Server did not succeed
 
@@ -174,7 +174,7 @@ Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.co
 
 ## Pagination
 
-Pagination comes into play when dealing with resource collections, since the results are often longer than a single page.  Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) page.
+Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) page.
 
 ## Beta vs. non-beta versions
 

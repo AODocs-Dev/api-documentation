@@ -87,7 +87,7 @@ Response fields of note:
 
 You can also list your library classes in the UI, on the Library Administration page.
 
-Go to Administration > Library administration.  In the left-hand pane, go to Library configuration > Document classes.  This is where your classes are listed.  Note the singular green checkmark signifying the library's default class.
+Go to Administration > Library administration. In the left-hand pane, go to Library configuration > Document classes. This is where your classes are listed. Note the singular green checkmark signifying the library's default class.
 
 ![image placeholder](/docs/img/api.png)
 

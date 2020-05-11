@@ -134,10 +134,10 @@ If the request succeeds, the response returns a `200 OK` status code and a JSON-
  {  // library root folder
   "kind": "aodocs#folder",
   "libraryId": "Rs4xtue86axGNklquDP",
-  "libraryName": "mfie-sf-prod-001",
+  "libraryName": "my-sf-prod-001",
   "folderAodocsId": "0", ⇐ "0" means root folder
   "fileId": "1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu", // ⇐ root folder Drive ID
-  "name": "mfie-sf-prod-001",
+  "name": "my-sf-prod-001",
   "parentFolderIsRoot": false,
   "folderIsRoot": true,
    ...
@@ -145,7 +145,7 @@ If the request succeeds, the response returns a `200 OK` status code and a JSON-
  { // actual folder the document is in
   "kind": "aodocs#folder",
   "libraryId": "Rs4xtue86axGNklquDP",
-  "libraryName": "mfie-sf-prod-001",
+  "libraryName": "my-sf-prod-001",
    ...
   "folderAodocsId": "1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma",
   "parentFolderAodocsId": "0", // ⇐ we are one level below root

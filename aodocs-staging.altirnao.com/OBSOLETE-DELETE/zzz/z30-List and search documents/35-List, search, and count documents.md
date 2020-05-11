@@ -17,7 +17,7 @@ In this section, we explore the following:
 
 You can retrieve (the configuration of) a specific document to parse something from its metadata (or just confirm it exists) if you have its ```documentId```.
 
-> ⭑   **Note**: As always, you can look for the file in the UI as well.  If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up.  Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
+> ⭑   **Note**: As always, you can look for the file in the UI as well. If for whatever reason it does not appear there after you've created a new document, it might be because of the way your Views are set up. Go to your Library administration page, go to Views, and select the checkbox called "View documents from other classes".
 
 
 ## Method and API
@@ -38,7 +38,7 @@ Only ```documentId``` is mandatory, and it must be an AODocs ```documentId``` no
 GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ
 ```
 
-If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter.  For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
+If you need only some of the fields of the extensive ApiDocument resource to come back, you can specify them in the ```fields``` array field of the request and sending this list as a query parameter. For example, you might want to request only the library name, class name, library ID, class ID, document ID, title, and the document description.
 
 ### Sample request (partial resource)
 
@@ -50,7 +50,7 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ### Response
 
-The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID.  The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ````id````, and its class is what you specified in the request, else of the library's default type.
 
 ### Sample Response
 
@@ -86,12 +86,12 @@ Play with the API Explorer:
 
 ### Request
 
-```libraryId``` is a path parameter.  It is the only mandatory parameter.
+```libraryId``` is a path parameter. It is the only mandatory parameter.
 
 ### Sample request
 
 ```yaml
-POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/Rs511XR8xAxGXu7nZYj/list
+POST https://aodocs.altirnao.com/api/search/v1/libraries/Rs511XR8xAxGXu7nZYj/list
 ```
 
 ### Response
@@ -142,12 +142,12 @@ Play with the API Explorer:
 
 ### **Request**
 
-`libraryId` is a path parameter. It is the only mandatory parameter.  However, using the ```classId``` helps narrow the response to documents of a specific class you want.
+`libraryId` is a path parameter. It is the only mandatory parameter. However, using the ```classId``` helps narrow the response to documents of a specific class you want.
 
 ### **Sample request**
 
 ```yaml
-POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
+POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
 ```
 
 
@@ -184,23 +184,23 @@ Play with the API Explorer:
 
 ### Usage/notes/guidelines
 
-This method searches documents of a class matching the provided query.  It might become very slow or time out when iterating over many pages of results. If the result set contains more than 10,000 documents, it's highly likely the response will get truncated and some results will be missing. You should always check if ```precision=INCOMPLETE_RESULT``` in the response.
+This method searches documents of a class matching the provided query. It might become very slow or time out when iterating over many pages of results. If the result set contains more than 10,000 documents, it's highly likely the response will get truncated and some results will be missing. You should always check if ```precision=INCOMPLETE_RESULT``` in the response.
 
-> **Note**: By default, the method includes attachments in the search.  You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
+> **Note**: By default, the method includes attachments in the search. You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
 
 
 ### Request
 
 `libraryId` is a path parameter and `classId` is a query parameter. These are the only mandatory arguments. However, the `searchQuery` query parameter is what ultimately determines what results come back, filtering them on a text string.
 
-> **Note**: If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a ```searchQuery``` query parameter.  For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the ```searchQuery``` query parameter finds it, but "big document" does not.
+> **Note**: If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a ```searchQuery``` query parameter. For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the ```searchQuery``` query parameter finds it, but "big document" does not.
 
 
 ### Sample request
 
 
 ```yaml
-POST https://aodocs-staging.altirnao.com/api/search/v1/libraries/RrVWqiT8059P4t8aVYI/search?classId=RrVWtjs801GlsyxIDJe&searchQuery=%22blue%20document%22
+POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVWqiT8059P4t8aVYI/search?classId=RrVWtjs801GlsyxIDJe&searchQuery=%22blue%20document%22
 ```
 
 ### Response

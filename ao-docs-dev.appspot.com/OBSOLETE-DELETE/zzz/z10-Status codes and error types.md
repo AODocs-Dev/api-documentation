@@ -2,9 +2,9 @@
 
 The HTTP status code that comes back along with the response indicates whether your request **succeeded**, **failed**, or **something else happened**.
 
-Generally the **200-series codes** indicate some degree of **success**., with **200** and **201** being the most desirable, because the server not only **understood** and **accepted** the request, but also was **completely successful in executing the operation**.  The **400-series codes** indicate some degree of **failure** in fulfilling the request, although anything **above 299** means something went wrong.
+Generally the **200-series codes** indicate some degree of **success**., with **200** and **201** being the most desirable, because the server not only **understood** and **accepted** the request, but also was **completely successful in executing the operation**. The **400-series codes** indicate some degree of **failure** in fulfilling the request, although anything **above 299** means something went wrong.
 
-When a request **succeeds** it normally returns a JSON-formatted **representation of the requested resource**.  When it **fails**, the response is instead a JSON-formatted **error message** for troubleshooting purposes.  The appropriate HTTP status code is always part of the response.
+When a request **succeeds** it normally returns a JSON-formatted **representation of the requested resource**. When it **fails**, the response is instead a JSON-formatted **error message** for troubleshooting purposes. The appropriate HTTP status code is always part of the response.
 
 For example, if you try to **identify** yourself to AODocs with **incorrect credentials**, you will receive a reply that the request was disallowed, with a status code of **403: Forbidden**, with an elaboration in the form of a ```message``` field meant only for humans.
 
@@ -28,7 +28,7 @@ Here's what it looks like when you try to authenticate using an invalid security
 }
 ```
 
-> ⭑   **Note**: The status code is the only truly reliable, machine-readable indication of what happened to the request.  The ```reason``` and ```message``` fields are human-readable elaborations on the status code provided to troubleshoot what happened.  The ```reason``` field is part of the HTTP status code, but the ```message``` field can change without warning and applications should not depend on its text content.
+> ⭑   **Note**: The status code is the only truly reliable, machine-readable indication of what happened to the request. The ```reason``` and ```message``` fields are human-readable elaborations on the status code provided to troubleshoot what happened. The ```reason``` field is part of the HTTP status code, but the ```message``` field can change without warning and applications should not depend on its text content.
 
 
 
@@ -101,7 +101,7 @@ Here's what it looks like when you try to authenticate using an invalid security
    </td>
    <td>Everything worked out great.
    </td>
-   <td>Nothing to do.  Life is beautiful.  La pura vida.
+   <td>Nothing to do. Life is beautiful. La pura vida.
    </td>
   </tr>
   <tr>
@@ -219,7 +219,7 @@ Drive apps should catch and handle all errors that might be encountered when usi
 
 ## Retry basics
 
-Some error conditions are temporary and the request can be retried a moment or two later.  Depending on the nature of the request and the perceived circumstance of the user, you can let them know something is wrong after any number of retries that makes sense from a UX perspective (including zero, straight away).
+Some error conditions are temporary and the request can be retried a moment or two later. Depending on the nature of the request and the perceived circumstance of the user, you can let them know something is wrong after any number of retries that makes sense from a UX perspective (including zero, straight away).
 
 For example, if your resource is not currently in a state to allow simultaneous edits from more than one party, then you could employ [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) and retry several times, letting the user know that their request is being worked on, and asking them to hang on.
 

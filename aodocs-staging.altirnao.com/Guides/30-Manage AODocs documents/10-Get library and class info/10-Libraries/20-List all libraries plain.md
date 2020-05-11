@@ -31,7 +31,7 @@ The response returns an [ApiPlainLibraryList](../../../../types/ApiPlainLibraryL
 *   library ID
 *   modification dates
 
-Take note of the ````libraryId```` of your target library.  The library ID is one of the most commonly used identifiers in the AODocs APIs.
+Take note of the ````libraryId```` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
 Additional response fields to note:
 
@@ -50,7 +50,7 @@ Additional response fields to note:
     {
       "kind": "aodocs#plainLibrary",
       "libraryId": "Rngc1ug8K6WmL3IjZ8",
-      "name": "mfie-sf-lib-005",
+      "name": "my-sf-lib-005",
       "lastModified": "1579619340936",
       "lastConfigModified": "1579619340936"
     }

@@ -8,7 +8,7 @@ The **400-series codes** indicate the server understood your request correctly, 
 
 The **500-series codes** indicate an unexpected failure on the server, that might be temporary or not. This kind of failure should usually be retried.
 
-When a request **succeeds** it normally returns a JSON-formatted **representation of the requested resource**.  When it **fails**, the response is instead a JSON-formatted **error message** for troubleshooting purposes.  The appropriate HTTP status code is always part of the response.
+When a request **succeeds** it normally returns a JSON-formatted **representation of the requested resource**. When it **fails**, the response is instead a JSON-formatted **error message** for troubleshooting purposes. The appropriate HTTP status code is always part of the response.
 
 For example, if you try to **identify** yourself to AODocs with **incorrect security code**, you will receive a reply that the request was disallowed, with a status code of **403 Forbidden**, with an elaboration in the form of a ```message``` field meant only for humans:
 
@@ -34,11 +34,11 @@ For example, if you try to **identify** yourself to AODocs with **incorrect secu
 
 > ⭑   Note: The status code is the only truly reliable, machine-readable indication of what happened to the request.
 >
-> The ```reason``` and ```message``` fields are provided to help troubleshoot what happened.  They are both human-readable elaborations on the status code.
+> The ```reason``` and ```message``` fields are provided to help troubleshoot what happened. They are both human-readable elaborations on the status code.
 >
-> The ```reason``` field is concise and generally has a default value that maps to its associated status code.  However, it can also be overridden by AODocs APIs to provide a more precise reason than its default, generic phrase.   The ```reason``` field also aims to be stable enough (part of the API "contract") to be machine-readable for error analysis, but might get amended between major AODocs versions (usually to make it more precise).
+> The ```reason``` field is concise and generally has a default value that maps to its associated status code. However, it can also be overridden by AODocs APIs to provide a more precise reason than its default, generic phrase.  The ```reason``` field also aims to be stable enough (part of the API "contract") to be machine-readable for error analysis, but might get amended between major AODocs versions (usually to make it more precise).
 >
-> The ```message``` field is verbose and human-readable but not machine-usable in any stable or meaningful way.  It can change without warning (including without major version release) and applications should not depend on its content.
+> The ```message``` field is verbose and human-readable but not machine-usable in any stable or meaningful way. It can change without warning (including without major version release) and applications should not depend on its content.
 
 ## Common status codes in the AODocs API
 
@@ -179,9 +179,9 @@ It is the client app's responsibility to catch and handle all standard errors en
 
 ## Retry basics
 
-Some error conditions are temporary and the request can be retried later.  Depending on the nature of the request and the perceived circumstance of the user, you can let them know something is wrong after any number of retries that makes sense from a UX perspective (including zero, straight away).
+Some error conditions are temporary and the request can be retried later. Depending on the nature of the request and the perceived circumstance of the user, you can let them know something is wrong after any number of retries that makes sense from a UX perspective (including zero, straight away).
 
-Usually, 4xx errors should not be retried, while 5xx should.  The only exception in the 4xx range is the 409 error, that indicates that a resource is being worked on by another user while trying to edit it.  It should sometimes be retried.  To confirm that this is the case, AODocs provides an additional hint, through a response header called “X-aodocs-retryable”: if the value of this error is “true”, then the error is expected to be transient, and the request should be retried until it succeeds.
+Usually, 4xx errors should not be retried, while 5xx should. The only exception in the 4xx range is the 409 error, that indicates that a resource is being worked on by another user while trying to edit it. It should sometimes be retried. To confirm that this is the case, AODocs provides an additional hint, through a response header called “X-aodocs-retryable”: if the value of this error is “true”, then the error is expected to be transient, and the request should be retried until it succeeds.
 
 For example, if your resource is not currently in a state to allow concurrent edits from more than one party, then you could employ [exponential backoff](https://developers.google.com/drive/api/v3/handle-errors#exponential-backoff) and retry several times, letting the user know that their request is being worked on, and asking them to hang on.
 
@@ -262,7 +262,7 @@ This error means credentials were missing or invalid (expired or unauthorized ac
 ```
 
 
-To fix this error, check whether you've provided credentials, and if you have, whether they're correct.  Furthermore, check the expiry date of your token and authorization levels of your credentials.` `
+To fix this error, check whether you've provided credentials, and if you have, whether they're correct. Furthermore, check the expiry date of your token and authorization levels of your credentials.` `
 
 ---
 
@@ -297,7 +297,7 @@ This error can occur for the following reasons:
 ```
 
 
-To fix this error, make sure your security code is correct.  The request should not be repeated with the same credentials, but may be re-sent with a new or different security code.
+To fix this error, make sure your security code is correct. The request should not be repeated with the same credentials, but may be re-sent with a new or different security code.
 
 
 ### Unauthorized access to a resource
