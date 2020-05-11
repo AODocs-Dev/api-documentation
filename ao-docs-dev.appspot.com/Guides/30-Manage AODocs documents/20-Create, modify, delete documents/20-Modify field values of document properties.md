@@ -36,8 +36,8 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 ```json
 {
-    "title": "mfie-new-doc-023",
-    "richText": "mfie-new-doc-023-richText",
+    "title": "my-new-doc-023",
+    "richText": "my-new-doc-023-richText",
     "creationDate": "123456789000",
     "initialAuthor": "account1@gmail.com",
     "updateAuthor": "account2@gmail.com",

@@ -50,7 +50,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "defaultDocumentType": "RnTbOft44KfZYkfBpV",
       "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,

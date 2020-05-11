@@ -76,7 +76,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "defaultDocumentType": "RnTbOft844KfZYkfBpV",
       "rootFolderId": "1S7ayht8i78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,
@@ -196,7 +196,7 @@ Additional response fields to note:
  {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "lastModified": "1579005945318",
       "lastConfigModified": "1579005945318"
     },
@@ -270,10 +270,10 @@ Response fields of note:
 {
   "kind": "aodocs#library",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
-  "name": "mfie-stag-DMS-lib-001",
-  "homeUrl": "mfie-stag-dms-lib-001",
+  "name": "my-DMS-lib-001",
+  "homeUrl": "my-dms-lib-001",
   "daysBeforeDelete": 30,
-  "welcomeText": "<p>Welcome to your new Document Management library: mfie-stag-DMS-lib-001</p><br><p>To get started...</p>",
+  "welcomeText": "<p>Welcome to your new Document Management library: my-DMS-lib-001</p><br><p>To get started...</p>",
   "storageAdmin": "storage.account@test.aodocs.com",
   "pushToMyDrive": false,
   "onlyAdminsCanManageFolders": false,

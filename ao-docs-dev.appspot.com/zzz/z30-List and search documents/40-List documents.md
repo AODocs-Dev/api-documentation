@@ -34,12 +34,12 @@ The response returns an [ApiDocumentList](../../../../types/ApiDocumentList) res
     "documentList": [
     {
         "kind": "aodocs#document",
-        "libraryName": "mfie-stag-DMS-lib-001",
-        "className": "mfie-stag-dms-class-002",
+        "libraryName": "my-DMS-lib-001",
+        "className": "my-dms-class-002",
         "libraryId": "RnTG8PDu8ZqTuDVHcv",
         "classId": "RnTf1mx35gaTJLzoFp",
         "id": "RnTzVT28x5Sb48h3vSQ",  <— documentId
-        "title": "mfie-stag-dms-doc-002",
+        "title": "my-dms-doc-002",
         "richText"": "",
         ...
     }

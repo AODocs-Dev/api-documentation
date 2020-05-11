@@ -43,7 +43,7 @@ Response fields of note:
 {
   "kind": "aodocs#documentType",
   "id": "RnTbOft44KfZYkfBpV",
-  "displayName": "mfie-stag-dms-class-001-not-default",
+  "displayName": "my-dms-class-001-not-default",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
   },
   "defaultClass": true,

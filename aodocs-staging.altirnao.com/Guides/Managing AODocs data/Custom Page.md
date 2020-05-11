@@ -96,7 +96,7 @@ Additional fields to note:
     {
       "kind": "aodocs#library",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "defaultDocumentType": "RnTbOft44KfZYkfBpV",
       "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
       "favorited": false,
@@ -172,7 +172,7 @@ Additional response fields to note:
   {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "lastModified": "1579005945318",
       "lastConfigModified": "1579005945318"
     },
@@ -226,15 +226,15 @@ Response fields of note:
 {
   "kind": "aodocs#library",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
-  "name": "mfie-stag-DMS-lib-001",
-  "name_i18n": "mfie-stag-DMS-lib-001",
+  "name": "my-DMS-lib-001",
+  "name_i18n": "my-DMS-lib-001",
   "domainName": "test.aodocs.com",
   "lastModified": "1579005945318",
   "lastConfigModified": "1579005945318",
   "createdAt": "1578929230251",
-  "homeUrl": "mfie-stag-dms-lib-001",
+  "homeUrl": "my-dms-lib-001",
   "daysBeforeDelete": 30,
-  "welcomeText": "<p>Welcome to your new Document Management library: mfie-stag-DMS-lib-001</p><br><p>To get started...</p>",
+  "welcomeText": "<p>Welcome to your new Document Management library: my-DMS-lib-001</p><br><p>To get started...</p>",
   "storageAdmin": "storage.account@test.aodocs.com",
   "pushToMyDrive": false,
   "notifyUsersAboutPushToMyDrive": true,
@@ -305,14 +305,14 @@ Response fields of note:
     {
       "kind": "aodocs#classId",
       "id": "RnTbOft44KfZYkfBpV",
-      "displayName": "mfie-stag-dms-class-001-default",
+      "displayName": "my-dms-class-001-default",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "defaultClass": true,
     },
     {
       "kind": "aodocs#classId",
       "id": "RnTf1mx35gaTJLzoFp",
-      "displayName": "mfie-stag-dms-class-002-not-default",
+      "displayName": "my-dms-class-002-not-default",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "defaultClass": false,
     }
@@ -385,7 +385,7 @@ Response fields of note:
 {
   "kind": "aodocs#documentType",
   "id": "RnTbOft44KfZYkfBpV",
-  "displayName": "mfie-stag-dms-class-001-not-default",
+  "displayName": "my-dms-class-001-not-default",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
   },
   "defaultClass": true,
@@ -534,7 +534,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
   ],
   "libraryId": "RnTG8PD8u8ZqTuDVHcv",
   "classId": "RnTf1mx35gaTJLzoFp",
-  "title": "mfie-stag-dms-doc-002"
+  "title": "my-dms-doc-002"
 }
 ```
 
@@ -555,9 +555,9 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 ```
 {
   "kind": "aodocs#document",
-  "libraryName": "mfie-dms-by-alt-on-test-001",
-  "className": "mfie-dms-by-alt-on-test-001-class-001",
-  "className_i18n": "mfie-dms-by-alt-on-test-001-class-001",
+  "libraryName": "my-dms-by-alt-on-test-001",
+  "className": "my-dms-by-alt-on-test-001-class-001",
+  "className_i18n": "my-dms-by-alt-on-test-001-class-001",
   "libraryId": "RrVcEFb8wtDeNAnlmNN",
   "classId": "RrVcdN280MKJwPyE7sh",
   "id": "RrVsvlY80jV2N7NcCIy",  // <— documentId
@@ -609,8 +609,8 @@ PUT https://aodocs.altirnao.com/api/document/v1 \
 ```json
 {
   "kind": "aodocs#document",
-  "libraryName": "mfie-dms-by-alt-on-test-001",
-  "className": "mfie-dms-by-alt-on-test-001-class-001",
+  "libraryName": "my-dms-by-alt-on-test-001",
+  "className": "my-dms-by-alt-on-test-001-class-001",
   "libraryId": "RrVcEFbwtDeNAnlmNN",
   "classId": "RrVcdN20MKJwPyE7sh",
   "id": "RrVsvlY0jV2N7NcCIy",  // <— documentId
@@ -686,12 +686,12 @@ Response fields of note:
 ```json
 {
   "kind": "aodocs#document",
-  "libraryName": "mfie-stag-DMS-lib-001",
-  "className": "mfie-stag-dms-class-002",
+  "libraryName": "my-DMS-lib-001",
+  "className": "my-dms-class-002",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
   "classId": "RnTf1mx35gaTJLzoFp",
   "id": "RnTzVT28x5Sb48h3vSQ",  <— documentId
-  "title": "mfie-stag-dms-doc-002",
+  "title": "my-dms-doc-002",
   "richText"": "",
 }
 ```
@@ -792,9 +792,9 @@ Response fields of note:
 ```json
 {
   "kind": "aodocs#document",
-  "libraryName": "mfie-stag-DMS-lib-001",
-  "className": "mfie-stag-dms-class-002",
-  "className_i18n": "mfie-stag-dms-class-002",
+  "libraryName": "my-DMS-lib-001",
+  "className": "my-dms-class-002",
+  "className_i18n": "my-dms-class-002",
   "libraryId": "RnTG8PDu8ZqTuDVHcv",
   "classId": "RnTf1mx35gaTJLzoFp",
   "id": "RnTzVT2x5Sb48h3vSQ",

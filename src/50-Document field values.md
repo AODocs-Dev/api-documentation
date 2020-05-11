@@ -1,4 +1,4 @@
-# Modifying field values of document properties
+# Document field values
 
 AODocs documents are composed of metadata, including (but not limited to) system and custom properties defined as part of a specific document type (also known as class).
 
@@ -36,8 +36,8 @@ In a document resource, system fields are top-level fields (not nested), and you
 
 ```json
     {
-    "title": "mfie-new-doc-023",
-    "richText": "mfie-new-doc-023-richText",
+    "title": "my-new-doc-023",
+    "richText": "my-new-doc-023-richText",
     "creationDate": "123456789000",
     "initialAuthor": "0x0006@gmail.com",
     "updateAuthor": "0x0008@gmail.com",
@@ -51,7 +51,10 @@ In a document resource, system fields are top-level fields (not nested), and you
 
 In AODocs APIs, you can define system field values for a document when it is either created or updated.  Some of these fields can be created or modified only if you set the ```setModifiedDate``` boolean flag to ```true```.
 
-The following table outlines allowances and requirements for each system field (`sMD` means `setModifiedDate`):
+The following table outlines allowances and requirements for each system field.
+
+[system fields modifiability](https://docs.google.com/spreadsheets/d/1nCqUro-ko9t_jKXGn-V3TBAL9tHsbPNDAgR0OGYcOIo/edit?usp=sharing)
+
 
 
 
@@ -107,27 +110,27 @@ modification
   <tr>
    <td>updateAuthor
    </td>
-   <td>No, current user  </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
-   <td>No, current user  </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
   </tr>
   <tr>
    <td>modificationDate
    </td>
-   <td>No, current date   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
-   <td>No, current date   </td>
+   <td>No, autopopᵃ   </td>
    <td>Yes
    </td>
   </tr>
   <tr>
    <td>title
    </td>
-   <td>Yesᵃ
+   <td>Yesᵇ
    </td>
    <td>Yes
    </td>
@@ -150,12 +153,15 @@ modification
   </tr>
 </table>
 
-ᵃ ```title``` is automatically populated as "Untitled" if left unspecified
+
+ᵃ ```autopop``` means system populates the fields with current system values
+
+ᵇ ```title``` is automatically populated as "Untitled" if left unspecified
 
 
 #### Use case: setModifiedDate flag
 
-When you update a document with the API, whether it's creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: ```modifiedDate``` and ```updateAuthor```, that will get the current date and current user value regardless of the field values you put in the request.
+When you update a document with the API, whether it's creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: ```modifiedDate``` and ```updateAuthor```.
 
 This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values.  For actions that have the requirement of preserving the ```modifiedDate``` and ```updateAuthor``` fields as is, explicitly pass their previous values along with your document changes and the ```setModifiedDate``` flag  set to ```true```.
 
@@ -220,12 +226,9 @@ This flag allows write access to these two fields: it exists so that tools like 
 
 ### Setting custom fields
 
-In a document resource, custom fields are found inside the ```fields``` array.
-> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server.  Read about it in more detail on the [Modifying document attachments](https://drive.google.com/a/altirnao.com/open?id=1vSBw6aTfoHVyaY2PaUJh2F01aj7fM_gAX0URttdd2Fo) page.
+In a document resource, custom fields are found inside the ```fields``` array.   Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
 
-Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
-
-In order to populate custom fields, you must know the ```fieldId``` of the particular property of your target class (that each document in that class has).  You then use it to tell the server which values of this particular property should be set.  To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
+In order to populate custom fields, you must know the ```fieldId``` of the particular property defined within the target class.  You then use it to tell the server which values of this particular property should be set.  To do this, populate ```fields[].fieldId``` with your target class's ```fieldId```.
 
 > **Note**: Alternatively, you can populate ```fields[].fieldName``` with the target class's ```fieldName```. However, this is **not recommended**, as the name of a field can change.
 

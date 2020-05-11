@@ -93,7 +93,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
   ],
   "libraryId": "RnTG8PD8u8ZqTuDVHcv",
   "classId": "RnTf1mx835gaTJLzoFp",
-  "title": "mfie-stag-dms-doc-002"
+  "title": "my-dms-doc-002"
 }
 ```
 
@@ -115,9 +115,9 @@ If the request succeeds, the response returns a ```200 OK``` status code and a J
 ```json
 {
   "kind": "aodocs#document",
-  "libraryName": "mfie-dms-by-alt-on-test-001",
-  "className": "mfie-dms-by-alt-on-test-001-class-001",
-  "className_i18n": "mfie-dms-by-alt-on-test-001-class-001",
+  "libraryName": "my-dms-by-alt-on-test-001",
+  "className": "my-dms-by-alt-on-test-001-class-001",
+  "className_i18n": "my-dms-by-alt-on-test-001-class-001",
   "libraryId": "RrVcEFb8wtDeNAnlmNN",
   "classId": "RrVcdN280MKJwPyE7sh",
   "id": "RrVsvlY80jV2N7NcCIy",  // <— documentId

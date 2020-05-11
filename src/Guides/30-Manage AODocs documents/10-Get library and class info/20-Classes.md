@@ -73,14 +73,14 @@ Response fields of note:
     {
       "kind": "aodocs#classId",
       "id": "RnTbOft44KfZYkfBpV",
-      "displayName": "mfie-stag-dms-class-001-default",
+      "displayName": "my-dms-class-001-default",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "defaultClass": true,
     },
     {
       "kind": "aodocs#classId",
       "id": "RnTf1mx35gaTJLzoFp",
-      "displayName": "mfie-stag-dms-class-002-not-default",
+      "displayName": "my-dms-class-002-not-default",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
       "defaultClass": false,
     }
@@ -171,7 +171,7 @@ Response fields of note:
   {
     "kind": "aodocs#documentType",
     "id": "RnTbOft44KfZYkfBpV",
-    "displayName": "mfie-stag-dms-class-001-not-default",
+    "displayName": "my-dms-class-001-not-default",
     "libraryId": "RnTG8PDu8ZqTuDVHcv",
   },
   "defaultClass": true,

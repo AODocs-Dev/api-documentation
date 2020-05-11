@@ -43,7 +43,7 @@ Additional response fields to note:
   {
       "kind": "aodocs#plainLibrary",
       "libraryId": "RnTG8PDu8ZqTuDVHcv",
-      "name": "mfie-stag-DMS-lib-001",
+      "name": "my-DMS-lib-001",
       "lastModified": "1579005945318",
       "lastConfigModified": "1579005945318"
     },

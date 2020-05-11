@@ -36,8 +36,8 @@ In a document resource, system fields are top-level fields (not nested), and you
 
 ```json
     {
-    "title": "mfie-new-doc-023",
-    "richText": "mfie-new-doc-023-richText",
+    "title": "my-new-doc-023",
+    "richText": "my-new-doc-023-richText",
     "creationDate": "123456789000",
     "initialAuthor": "0x0006@gmail.com",
     "updateAuthor": "0x0008@gmail.com",
