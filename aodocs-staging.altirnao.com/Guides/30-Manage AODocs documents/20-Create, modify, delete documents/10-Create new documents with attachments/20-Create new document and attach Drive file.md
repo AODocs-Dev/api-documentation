@@ -26,7 +26,7 @@ Play with the API Explorer:
 
 Before you create a new empty document with one attachment, you must know the `libraryId` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
 
-You also need the `fileId` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders).
+You also need the `fileId` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders).
 
 > ⭑   **Note**: In the API Explorer's "Request body" window, `fileId` is part of the `attachments` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under `attachmentsToCopy` .
 
