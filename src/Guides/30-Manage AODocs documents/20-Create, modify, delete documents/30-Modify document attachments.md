@@ -6,14 +6,10 @@ In general, modifying is perfectly benign. However, things carry extra risk with
 
 There are two cases to consider:
 
-
-
 *   array field not included in request: corresponding target array does not get modified on the server
 *   array field included in request (including empty!): completely overwrites target array field with whatever is in the square brackets in the order provided:
     *   object specified in array position _n_: object placed in target array at position _n_
     *   object not specified: object is removed from target array
-
-
 
 > ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server.
 >
@@ -29,7 +25,7 @@ There are two cases to consider:
 
 Play with the API Explorer:
 
-### [PATCH /document/v1/{documentId}](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
+### [PATCH /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
 
 
 ## Guidelines
@@ -93,21 +89,18 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 ```
 
 ```json
-// removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
 {
   "attachments": // ⇐ removes all current links to Drive files and replaces them with whatever is specified in the square brackets that follow
   [
     {
-      "fileId": "1s1uFfWGHPZ0fUpvwdT-oCsrY7G9QndAU"
+      "fileId": "1s1uFfW8GHPZ0fUpvwdT-oCsrY7G9QndAU"
     },
     {
-      "fileId": "1QvvRHbXmLYlB66ZZf-fzoTVVDYfrNxO0"
+      "fileId": "1QvvRHb8XmLYlB66ZZf-fzoTVVDYfrNxO0"
     }
   ]
 }
 ```
-
-
 
 #### Sample request body (DMS-only, with `attachments` array field empty)
 
@@ -124,8 +117,6 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 }
 ```
 
-
-
 #### Sample request body (with `attachments` array field not included)
 
 
@@ -134,7 +125,6 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 ```
 
 ```json
-// not including the attachments array field in the body keeps attachments as they are, unmodified
 {
 }   // not including the attachments array field in the body keeps attachments as they are, unmodified
 ```
