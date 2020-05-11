@@ -86,14 +86,6 @@ folders:
                 - 00-Overview
                 - 10-Create test Drive files and folders
                 - 20-Create new document and attach Drive file
-          # 30-List and search documents:
-          #   ordering:
-          #   - 00-Overview
-          #   - 35-List, search, and count documents
-          #   - 30-Get document by ID
-          #   - 40-List documents
-          #   - 45-Count documents
-          #   - 50-Search documents
 
       40-Configure AODocs libraries:
         ordering:
