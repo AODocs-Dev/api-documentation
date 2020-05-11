@@ -148,74 +148,27 @@ In the command above:
 *   `libraries` is the top-level resource
 *   `documentTypes` or class is the nested resource
 
----
-
-### Method and API
-
-Play with the API Explorer:
-
-#### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
-
-In the command above:
-
-*   `documentType` is the API
-*   `v1` is the API version
-*   `libraries` is the top-level resource
-*   `documentTypes` or class is the nested resource
-
----
-
-#### Method and API
-
-Play with the API Explorer:
-
-#### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
-
-
-In the command above:
-
-*   `documentType` is the API
-*   `v1` is the API version
-*   `libraries` is the top-level resource
-*   `documentTypes` or class is the nested resource
-
----
-
-#### Method and API
-
-Play with the API Explorer:
-
-##### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
-
-In the command above:
-
-*   `documentType` is the API
-*   `v1` is the API version
-*   `libraries` is the top-level resource
-*   `documentTypes` or class is the nested resource
-
----
-
 ### Guidelines
 
 #### Request
 
-Pass the mandatory ````classId````/````documentId````, as well as the ````libId```` of the library the class resides in as **_path_ parameters** (not in the query string).
+Pass the mandatory class ID (`documentTypeId`) and the library ID (`libId`) of the library the class resides in — both as **_path_ parameters** (not in the query string).
 
 
 ```yaml
-GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue6axGNklquDP/documentTypes/Rs4xuIg6e45fvAsn9L
+GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86axGNklquDP/documentTypes/Rs4xuIg86e45fvAsn9L
 ```
 
+<code>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/<strong>Rs4xtue86axGNklquDP</strong>/documentTypes/<strong>Rs4xuIg86e45fvAsn9L</strong><code>
+
+<code><strong>GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/</strong>Rs4xtue86axGNklquDP<strong>/documentTypes/</strong>Rs4xuIg6e45fvAsn9L<code>
 
 
 #### Response
 
-The response returns an [ApiDocumentType](https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
+The response returns an [ApiDocumentType](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
 
 Response fields of note:
-
-
 
 *   `id` (of the class)
 *   `displayName` (of the class)
