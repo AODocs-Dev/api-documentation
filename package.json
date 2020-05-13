@@ -2,7 +2,7 @@
   "name": "api-documentation",
   "version": "1.0.0",
   "dependencies": {
-    "ncp": "^2.0.0"
+    "sync-directory": "^2.1.2"
   },
   "scripts": {
     "copy": "node copy.js"

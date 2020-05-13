@@ -138,6 +138,7 @@ Authorization: Bearer [YOUR_ACCESS_TOKEN]
 }
 ```
 
+
 ### Step 2: Server performs operation on the requested resource
 
 The resource server hosts and performs operations on a requested resource (such as a library), subresources (such as a library's permissions), or a collection of resources (such as a list of libraries).
