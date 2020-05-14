@@ -156,4 +156,6 @@ let finalNav = yaml.safeDump(navigation).replace(/\d{2}-/g, '');
 services.forEach(service => {
   //TODO change the navigation.yaml to rename nodes
   fs.writeFileSync(`${service}/navigation.yaml`, finalNav);
+  fs.mkdirSync(`${service}/img`);
+  fs.readdirSync('src/img').forEach(img => fs.copyFileSync(`src/img/${img}`, `${service}/img/${img}`));
 });
