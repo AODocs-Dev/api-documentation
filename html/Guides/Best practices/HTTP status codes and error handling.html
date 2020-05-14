@@ -1,0 +1,349 @@
+<html lang="en"><head><meta charset="UTF-8"><title>HTTP status codes and error handling</title></head><body><h1>HTTP status codes and error handling</h1>
+<p>The HTTP status code that comes back along with the response indicates whether your request <strong>succeeded</strong>, <strong>failed</strong>, or <strong>something else happened</strong>.</p>
+<p>Generally the <strong>200-series codes</strong> indicate some degree of <strong>success</strong>., with <strong>200</strong> and <strong>201 and 204</strong> being the usual ones, because the server not only <strong>understood</strong> and <strong>accepted</strong> the request, but also was <strong>completely successful in executing the operation</strong>.</p>
+<p>The <strong>400-series codes</strong> indicate the server understood your request correctly, but could  fulfil it for some  reason which resulted in a failure. This kind of failure should usually not be retried, except in specific cases (se below).</p>
+<p>The <strong>500-series codes</strong> indicate an unexpected failure on the server, that might be temporary or not. This kind of failure should usually be retried.</p>
+<p>When a request <strong>succeeds</strong> it normally returns a JSON-formatted <strong>representation of the requested resource</strong>. When it <strong>fails</strong>, the response is instead a JSON-formatted <strong>error message</strong> for troubleshooting purposes. The appropriate HTTP status code is always part of the response.</p>
+<p>For example, if you try to <strong>identify</strong> yourself to AODocs with <strong>incorrect security code</strong>, you will receive a reply that the request was disallowed, with a status code of <strong>403 Forbidden</strong>, with an elaboration in the form of a <code>message</code> field meant only for humans:</p>
+<pre><code class="language-json">403
+{
+ &quot;error&quot;: {
+  &quot;errors&quot;: [
+   {
+    &quot;domain&quot;: &quot;global&quot;,
+    &quot;reason&quot;: &quot;forbidden&quot;,
+    &quot;message&quot;: &quot;Invalid security code.&quot;
+   }
+  ],
+  &quot;code&quot;: 403,
+  &quot;message&quot;: &quot;Invalid security code.&quot;
+ }
+}
+</code></pre>
+<blockquote>
+<p>⭑   Note: The status code is the only truly reliable, machine-readable indication of what happened to the request.</p>
+<p>The <code>reason</code> and <code>message</code> fields are provided to help troubleshoot what happened. They are both human-readable elaborations on the status code.</p>
+<p>The <code>reason</code> field is concise and generally has a default value that maps to its associated status code. However, it can also be overridden by AODocs APIs to provide a more precise reason than its default, generic phrase.  The <code>reason</code> field also aims to be stable enough (part of the API &quot;contract&quot;) to be machine-readable for error analysis, but might get amended between major AODocs versions (usually to make it more precise).</p>
+<p>The <code>message</code> field is verbose and human-readable but not machine-usable in any stable or meaningful way. It can change without warning (including without major version release) and applications should not depend on its content.</p>
+</blockquote>
+<h2>Common status codes in the AODocs API</h2>
+<table>
+  <tr>
+   <td>Code
+   </td>
+   <td>Message
+   </td>
+   <td>Description
+   </td>
+   <td>Recommended action
+   </td>
+  </tr>
+  <tr>
+   <td>200
+   </td>
+   <td>OK
+   </td>
+   <td>Everything worked out great.
+   </td>
+   <td>Nothing to do.
+   </td>
+  </tr>
+  <tr>
+   <td>204
+   </td>
+   <td>No content
+   </td>
+   <td>We did what you asked but there is no response. Usually used for resource deletion.
+   </td>
+   <td>Double-check the effects of your action.
+   </td>
+  </tr>
+  <tr>
+   <td>400
+   </td>
+   <td>Bad Request
+   </td>
+   <td>You provided something wrong in the input — something in the query is missing or not valid.
+   </td>
+   <td>Look at the error message to see what's wrong, but it's usually your parameters.
+   </td>
+  </tr>
+  <tr>
+   <td>401
+   </td>
+   <td>Unauthorized
+   </td>
+   <td>Authentication has failed or has not been provided.
+   </td>
+   <td>Check if you included your credentials, and if they are correct.
+   </td>
+  </tr>
+  <tr>
+   <td>403
+   </td>
+   <td>Forbidden
+   </td>
+   <td>Your credentials are valid and accepted by the server, but the action is still not authorized.
+   </td>
+   <td>Check if you have access to the resource / action you’re trying to access / perform
+   </td>
+  </tr>
+  <tr>
+   <td>404
+   </td>
+   <td>Not Found
+   </td>
+   <td>The resource you are looking for does not exist here at this location.
+   </td>
+   <td>The resource was either moved to a different location or deleted. You might also have an invalid request URL.
+   </td>
+  </tr>
+  <tr>
+   <td>409
+   </td>
+   <td>Conflict
+   </td>
+   <td>Concurrent modification is not allowed at the moment, resulting in a conflict condition.
+   </td>
+   <td><strong>This is the only 400-series condition you should ever retry.</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>412
+   </td>
+   <td>Precondition failed
+   </td>
+   <td>The current status of the resource does not allow the requested operation
+   </td>
+   <td>Check error message for information on the invalid status
+   </td>
+  </tr>
+  <tr>
+   <td>500
+   </td>
+   <td>Internal Server Error
+   </td>
+   <td>Something is wrong on our end but we have no explanation.
+   </td>
+   <td><strong>Retry</strong> with exponential backoff
+   </td>
+  </tr>
+</table>
+<h2>Error response format</h2>
+<p>AODocs APIs return two kinds of error information:</p>
+<ul>
+<li>HTTP error codes (with some information in the header)</li>
+<li>A response-body JSON object with additional details to help you determine how to handle the error (specifically <code>reason</code> and <code>message</code> fields)</li>
+</ul>
+<p>AODocs APIs report errors in the standard HTTP way with JSON-formatted response bodies that look like the following (not including the header information):</p>
+<pre><code class="language-yaml">[HTTP STATUS CODE (400-599)] [DEFAULT HTTP STATUS MESSAGE]
+</code></pre>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;domain&quot;: &quot;[domain]&quot;,
+        &quot;reason&quot;: &quot;[CONCISE DEFAULT OR CUSTOMIZED HTTP STATUS REASON]&quot;,
+        &quot;message&quot;: &quot;[VERBOSE CUSTOM MESSAGE]&quot;
+      }
+    ],
+    &quot;code&quot;: [HTTPS STATUS CODE (same as above)],
+    &quot;message&quot;: &quot;[VERBOSE CUSTOM MESSAGE (same as above)]&quot;
+ }
+}
+</code></pre>
+<p>It is the client app's responsibility to catch and handle all standard errors encountered when using the REST API. The following list guides you toward that end.</p>
+<h2>Retry basics</h2>
+<p>Some error conditions are temporary and the request can be retried later. Depending on the nature of the request and the perceived circumstance of the user, you can let them know something is wrong after any number of retries that makes sense from a UX perspective (including zero, straight away).</p>
+<p>Usually, 4xx errors should not be retried, while 5xx should. The only exception in the 4xx range is the 409 error, that indicates that a resource is being worked on by another user while trying to edit it. It should sometimes be retried. To confirm that this is the case, AODocs provides an additional hint, through a response header called “X-aodocs-retryable”: if the value of this error is “true”, then the error is expected to be transient, and the request should be retried until it succeeds.</p>
+<p>For example, if your resource is not currently in a state to allow concurrent edits from more than one party, then you could employ <a href="https://developers.google.com/drive/api/v3/handle-errors#exponential-backoff">exponential backoff</a> and retry several times, letting the user know that their request is being worked on, and asking them to hang on.</p>
+<hr />
+<h2>Resolve a 400 error: Bad Request</h2>
+<p>This error means the input is incorrect — something in the query is missing or not valid.</p>
+<p>Some examples of 400 errors include:</p>
+<ul>
+<li>Using mutually exclusive parameters at the same time:
+<ul>
+<li>&quot;&quot;Parameters libraryTemplateId, sourceLibraryId and driveFolderId are mutually exclusive&quot;</li>
+</ul>
+</li>
+<li>Trying to violate the one-attachement restriction of TF/SF libraries:
+<ul>
+<li>&quot;In the google libraries the documents should always have exactly one attachment.&quot;</li>
+</ul>
+</li>
+<li>Trying to attach a Drive file without specifying its ID:
+<ul>
+<li>&quot;The file id is mandatory in attachments&quot;</li>
+</ul>
+</li>
+<li>Using a method on a library type that does not permit the method:
+<ul>
+<li>&quot;This method cannot be used in a Document Management library&quot;</li>
+</ul>
+</li>
+<li>Invalid or missing or conflicting parameter or resource field values or formats:
+<ul>
+<li>&quot;The libraryId can't be null or empty&quot;</li>
+<li>&quot;Display name can't be null&quot;</li>
+<li>&quot;The managed permission source can't be null&quot;</li>
+<li>&quot;The classes with Folder acl source must contain a security category.&quot;</li>
+<li>&quot;The name of the class must be unique in the library&quot;</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⭑   Note: This is not a complete list: 400 errors are a broad category encompassing all kinds of incorrect requests.</p>
+</blockquote>
+<p>Here is an example of a 400 error, this one resulting from providing more than one mutually exclusive parameter:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;badRequest&quot;,
+      &quot;message&quot;: &quot;Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+      mutually exclusive&quot;
+    }
+    ],
+    &quot;code&quot;: 400,
+    &quot;message&quot;: &quot;Parameters libraryTemplateId, sourceLibraryId and driveFolderId are \
+    mutually exclusive&quot;
+  }
+}
+</code></pre>
+<p>To fix this specific error, provide only one of the indicated mutually exclusive parameters. When encountering a 400 error in general, follow the hint provided in the <code>message</code> field.</p>
+<hr />
+<h2>Resolve a 401 error: Unauthorized</h2>
+<p>This error means credentials were missing or invalid (expired or unauthorized access token).</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;required&quot;,
+      &quot;message&quot;: &quot;You must use oauth 2 to authenticate&quot;
+    }
+    ],
+    &quot;code&quot;: 401,
+    &quot;message&quot;: &quot;You must use oauth 2 to authenticate&quot;
+  }
+}
+</code></pre>
+<p>To fix this error, check whether you've provided credentials, and if you have, whether they're correct. Furthermore, check the expiry date of your token and authorization levels of your credentials.<code> </code></p>
+<hr />
+<h2>Resolve a 403 error: Forbidden</h2>
+<p>This error can occur for the following reasons:</p>
+<ul>
+<li>Invalid security code</li>
+<li>Insufficient access to a resource
+<ul>
+<li>No read access to the resource</li>
+<li>Insufficient permission to perform a specification modification on the resource</li>
+</ul>
+</li>
+</ul>
+<h3>Invalid security code</h3>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;forbidden&quot;,
+      &quot;message&quot;: &quot;Invalid security code&quot;
+    }
+    ],
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;Invalid security code&quot;
+  }
+}
+</code></pre>
+<p>To fix this error, make sure your security code is correct. The request should not be repeated with the same credentials, but may be re-sent with a new or different security code.</p>
+<h3>Unauthorized access to a resource</h3>
+<h4>Insufficient permissions</h4>
+<p>This means the client app does not have the correct permission levels to access the resource.</p>
+<h5>Sample response message 1:</h5>
+<pre><code class="language-json">{
+&quot;error&quot;: {
+  &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;forbidden&quot;,
+      &quot;message&quot;: &quot;Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission \
+      level: 'CONTRIBUTOR'&quot;
+    }
+    ],
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;Access denied to library with id: 'OtbBk6G8Am0ATUEy8P8' Required permission \
+    level: 'CONTRIBUTOR'&quot;
+  }
+}
+</code></pre>
+<h5>Sample response message 2:</h5>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;forbidden&quot;,
+      &quot;message&quot;: &quot;File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached \
+      to the document: not owned by you or the library storage admin&quot;
+    }
+    ],
+    &quot;code&quot;: 403,
+    &quot;message&quot;: &quot;File '1OHbt3F8VOc2Wh68K8iqX2R4RWnP4_N4xkRGFXX3qVMnQ' cannot be attached \
+    to the document: not owned by you or the library storage admin&quot;
+  }
+}
+</code></pre>
+<p>To fix this error check your permission levels or whether you own the target resource.</p>
+<hr />
+<h2>Resolve a 404 error: Not Found</h2>
+<p>This error can occur because of any of the following:</p>
+<ul>
+<li>Missing or incorrect resource-ID (<em>&quot;There is no library with id: 'OtbBk6G8Am0ATEy8P8'&quot;</em>)</li>
+<li>Resource doesn't exist (<em>&quot;No entity was found matching the key: !altirnao.com:Document(&quot;RwMUllP8yrBZFx9BWlN&quot;)&quot;</em>)</li>
+</ul>
+<h3>Incorrect resource ID parameter</h3>
+<p>For example, if the <code>libraryId</code> parameter is incorrect (not existing or misspelled), you get the following error:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+      {
+        &quot;domain&quot;: &quot;global&quot;,
+        &quot;reason&quot;: &quot;notFound&quot;,
+        &quot;message&quot;: &quot;Library with id 'OtbBk68GAm0ATEy8P8' does not exist&quot;
+      }
+    ],
+    &quot;code&quot;: 404,
+    &quot;message&quot;: &quot;Library with id 'OtbBk68G8Am0ATEy8P8' does not exist&quot;
+  }
+}
+</code></pre>
+<p>To fix this error, check the <code>message</code> field for the &quot;incorrect&quot; parameter in question (in this case <em>&quot;Library with id `'OtbBk68GAm0ATEy8P8'&quot;</em>), and verify its ID is correct.</p>
+<h3>Resource not found</h3>
+<p>If your mandatory parameter is correct, but the resource doesn't exist, you might get the following error:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;errors&quot;: [
+    {
+      &quot;domain&quot;: &quot;global&quot;,
+      &quot;reason&quot;: &quot;notFound&quot;,
+      &quot;message&quot;: &quot;No entity was found matching the key: !altirnao.com:Document(\&quot;RwMUllP8yrBZFx9BWlN\&quot;)&quot;
+    }
+    ],
+    &quot;code&quot;: 404,
+    &quot;message&quot;: &quot;No entity was found matching the key: !altirnao.com:Document(\&quot;RwMUllP8yrBZFx9BWlN\&quot;)&quot;
+  }
+}
+</code></pre>
+<hr />
+<h3><strong>Resolve a 409 error: Conflict (retry)</strong></h3>
+<p>This error can occur because the resource is being accessed by more than one caller at the same time. The best strategy is to retry.</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: Of all 400-series errors, this is the only one that should be retried.</p>
+</blockquote>
+<hr />
+<h3><strong>Resolve a 500 error: Internal server error (retry)</strong></h3>
+<p>This error occurs because of some unforeseen condition on the server. The best strategy is to retry.</p>
+</body></html>

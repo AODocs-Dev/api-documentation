@@ -1,0 +1,81 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Performance considerations</title></head><body><h1>Performance considerations</h1>
+<p>There are several ways that you can improve the performance of your interactions with AODocs APIs. They include the following:</p>
+<ul>
+<li>Requesting that the results that come back be filtered down to a manageable subset</li>
+<li>Grouping the results into pages of specific length</li>
+</ul>
+<h2>Filtering API results</h2>
+<p>The <code>fields</code> query parameter is identical in design to <a href="https://developers.google.com/drive/api/v3/fields-parameter">Google's design for JSON resource filtering</a>. You can filter the results by populating the <code>fields</code> query parameter with just the fields you want to come back in the response resource.</p>
+<p>As an arbitrary example,  let's say you were interested in only the following fields:</p>
+<ul>
+<li><code>defaultClass</code></li>
+<li><code>fields(id,readOnly)</code></li>
+<li><code>id</code></li>
+<li><code>kind</code></li>
+<li><code>libraryId</code></li>
+<li><code>name</code></li>
+<li><code>permissions(role,type,value)</code></li>
+<li><code>sections(fields/id,id)</code></li>
+<li><code>value</code></li>
+</ul>
+<p>You can tell the server to return your requested resource with just those fields and omit all others. Populate the <code>fields</code> query parameter of your request with the preceding list as follows:</p>
+<pre><code class="language-yaml">defaultClass,fields(id,readOnly),id,kind,libraryId,name,permissions(role,type,value),sections(fields/id,id),value
+</code></pre>
+<p>The value should be URL-encoded when passed as the query parameter (comma should be replaced by <code>%2C</code>).</p>
+<h3>Example request</h3>
+<p>For example, if you were adding a new class and wanted the response resource to contain the fields above, the request might look like this:</p>
+<pre><code class="language-yaml">POST https://aodocs.altirnao.com/api/documentType/v1/libraries/Rrisfh406YlzF1PZqg/documentTypes?fields=defaultClass%2Cfields(id%2CreadOnly)%2Cid%2Ckind%2ClibraryId%2Cname%2Cpermissions(role%2Ctype%2Cvalue)%2Csections(fields%2Fid%2Cid)%2Cvalue
+</code></pre>
+<pre><code class="language-json">{
+  &quot;displayName&quot;: &quot;my-new-class-002&quot;,
+  &quot;managedPermissionSource&quot;: &quot;FOLDER&quot;
+}
+</code></pre>
+<h3>Example response</h3>
+<p>Here is what the response to that request looks like, filtered with your list:</p>
+<pre><code class="language-yaml">200
+</code></pre>
+<pre><code class="language-json">{
+  &quot;kind&quot;: &quot;aodocs#documentType&quot;,
+  &quot;id&quot;: &quot;RxT56Tp8z7Yvkjj1VU1&quot;,
+  &quot;libraryId&quot;: &quot;Rrisfh4806YlzF1PZqg&quot;,
+  &quot;fields&quot;: [
+    {
+      &quot;id&quot;: &quot;RxT56WG8FCtarmOAAW&quot;,
+      &quot;readOnly&quot;: false
+    }
+  ],
+  &quot;permissions&quot;: [
+    {
+      &quot;type&quot;: &quot;ROLE&quot;,
+      &quot;role&quot;: &quot;WRITER&quot;,
+      &quot;value&quot;: &quot;DOCUMENT_CREATOR&quot;
+    }
+  ],
+  &quot;sections&quot;: [
+    {
+      &quot;id&quot;: &quot;defaultSectionId&quot;,
+      &quot;fields&quot;: [
+      {
+        &quot;id&quot;: &quot;RxT56WG8FCtarmOAAW&quot;
+      }
+    ]
+    }
+  ],
+  &quot;defaultClass&quot;: false,
+  &quot;name&quot;: &quot;my-new-class-002&quot;,
+  &quot;value&quot;: &quot;RxT56Tp8z7Yvkjj1VU1&quot;
+}
+</code></pre>
+<h2>Paginating resource collection responses</h2>
+<p>For API methods that return a collection of resources, there’s usually the need to be able to paginate the results, as there might be too many of them to fit in a single response. The API methods that support pagination usually have two parameters:</p>
+<ul>
+<li>A <code>limit</code> parameter (also named <code>pageSize</code> or <code>maxResults</code> in some methods) to indicate the maximum number of results to return in a single page</li>
+<li>A <code>pageToken</code> parameter, used to get subsequent result pages</li>
+</ul>
+<p>A successful response on these methods will return a collection of resources, and IF (and only if) there are more results matching the user’s query / criteria, a <code>nextPageToken</code> field.</p>
+<p>To get the next page of results, you have to take this <code>nextPageToken</code> from the response and pass it as the <code>pageToken</code> query parameter in the next request (with the other parameters unchanged) to get to the next page.</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: For performance reasons, we recommend adjusting the number of requested results to the needs of the user. The more results are requested, the larger the latency.</p>
+</blockquote>
+</body></html>

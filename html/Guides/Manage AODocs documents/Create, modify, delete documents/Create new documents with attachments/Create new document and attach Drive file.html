@@ -1,0 +1,131 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Create new document and attach Drive file</title></head><body><h1>Create new document and attach Drive file</h1>
+<p>When you create a TF/SF document, you must attach one and only one attachment (using a Drive file's <code>fileId</code> ). You create a DMS document the same way, but you can do it with any number of attachments (including zero).</p>
+<p>For example, you might have a spreadsheet in Google Drive that you want to manage with AODocs. Wrapping a new AODocs document around your spreadsheet allows you to use all the AODocs document management features and properties like custom properties and workflows.</p>
+<p>In DMS, you can also create a new document with no attachments. An example could be an expense-report document that needs to be delivered before the expenses are ready to be attached. You can create the document first, and then attach the receipts whenever appropriate.</p>
+<p>To get familiar with document creation, try to <a href="https://support.aodocs.com/hc/en-us/articles/115005892403-Create-AODocs-documents">create AODocs documents in the UI</a>.</p>
+<p>To create a new document with AODocs APIs, send a request to the server with an <code>ApiDocument</code> resource, listing:</p>
+<ul>
+<li>mandatory resource fields required by the server (like target library ID)</li>
+<li>optional but useful fields (like document title, class ID, and folder ID)</li>
+<li>any Drive IDs of files to attach — zero or more for DMS libraries; and a mandatory single one for TF/SF</li>
+</ul>
+<h2><strong>Method and API</strong></h2>
+<p>Play with the API Explorer:</p>
+<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put">PUT /document/v1</a></h3>
+<h2>Guidelines</h2>
+<h3>Prerequisites</h3>
+<p>Before you create a new empty document with one attachment, you must know the <code>libraryId</code> of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.</p>
+<p>You also need the <code>fileId</code> of any Drive file that you want to attach to your document. Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">obtain the file ID in the AODocs UI</a>.</p>
+<blockquote>
+<p>⭑   <strong>Note</strong>: In the API Explorer's &quot;Request body&quot; window, <code>fileId</code> is part of the <code>attachments</code> array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under <code>attachmentsToCopy</code> .</p>
+</blockquote>
+<p>Optionally, it's good to know your target class (what type of document this will be), but if you don't specify it, the document will automatically become of the same type as your target library's current default class. Lastly, you should give a title to your new document. If you don't, it'll get called &quot;Untitled”, which can get confusing.</p>
+<p>You might also want to provide the ID of a specific target AODocs folder for your new document to live in. You can do this by specifying the Drive folder ID (<code>folders[].fileId</code> field in the document resource). If you don't know this ID, you can open up your target folder in the UI and retrieve the ID from the URL between the surrounding <code>%2522</code> strings:</p>
+<pre><code class="language-yaml">%2522𝗳𝗼𝗹𝗱𝗲𝗿%2522:%2522𝗔𝗷𝗮𝗣𝘃𝟬𝟮𝟴𝗶_𝗺𝗿𝗢𝘆𝗸𝗜𝟲𝟬𝗞𝗮𝘃𝗪𝗶𝗯𝟮𝗟𝗧𝘇𝗦𝘂𝗬𝗪𝗿𝟴%2522
+</code></pre>
+<p>The preceding is simply a URL-encoded version of this <code>folder:folderId</code> pair:</p>
+<pre><code class="language-json">&quot;folder&quot;:&quot;AjaPv028i_mrOykI60KavWib2LTzSuYWr8&quot;
+</code></pre>
+<blockquote>
+<p>⭑ <strong>Note</strong>: If you need to attach files from a Google account outside the target domain, the following prerequisites have to be met:</p>
+<ul>
+<li>You have to have ownership of each such file.</li>
+<li>You or your domain has to be whitelisted in the target domain.</li>
+<li>You have to have access to the target library.</li>
+</ul>
+<p>If the file is not yet owned by an AODocs storage account, you have to call the AODocs API using an OAuth2 access token that grants the <code>https://www.googleapis.com/auth/drive</code> scope to the user.</p>
+<p>In an out-of-domain case such as this, the file itself gets automatically duplicated and it is this new duplicate that becomes the attachment to your target document, not the original.</p>
+</blockquote>
+<h3>Request</h3>
+<p>Pass the mandatory parameters of <code>attachments[].fileId</code> (for any Drive file to be attached) and <code>libraryId</code> in the request body, not in the query string. Same thing for the optional <code>classId</code>, <code>title</code>, and the <code>folders[].fileId</code> (desired target Drive folder ID).</p>
+<p>Provide the <code>fileId</code> inside one of the two array fields (or both) in the request body:</p>
+<ul>
+<li><code>attachments</code></li>
+<li><code>attachmentsToCopy</code></li>
+</ul>
+<p>If you attach a Drive file using <code>attachments</code>, and then edit that attachment's content, the edits happen in the original Drive file because the attachment is a direct link to that file.</p>
+<blockquote>
+<p>⭑   <strong>Note</strong>: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive. It's still accessible via search and via the &quot;Shared with me&quot; shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).</p>
+</blockquote>
+<p>However, if you attach a Drive file using <code>attachmentsToCopy</code>, that attachment is no longer the original file: it is a copy of it created during the attachment process.</p>
+<p>All these fields correspond to fields in the <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource: the fields of the request resource map directly to the fields of the server resource which gets altered by the <code>PUT</code> operation before being sent back as a response resource.</p>
+<h3>Sample request</h3>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
+</code></pre>
+<pre><code class="language-json">{
+  &quot;attachments&quot;: [
+    {
+      &quot;fileId&quot;: &quot;1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh&quot;
+    }
+  ],
+  &quot;folders&quot;: [
+    {
+      &quot;fileId&quot;: &quot;1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma&quot;
+      &quot;folderAodocsId&quot;: &quot;1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma&quot;
+    }
+  ],
+  &quot;libraryId&quot;: &quot;RnTG8PD8u8ZqTuDVHcv&quot;,
+  &quot;classId&quot;: &quot;RnTf1mx835gaTJLzoFp&quot;,
+  &quot;title&quot;: &quot;my-dms-doc-002&quot;
+}
+</code></pre>
+<blockquote>
+<p>⭑   <strong>Note</strong>: In the preceding sample request, note the <code>attachments</code> part in bold (or <code>attachmentsToCopy</code> if that's what you're using instead). If you're attaching one or more Drive files, include this part, and list your attachments by <code>fileId</code>. If you're not attaching anything, remove this part altogether.</p>
+</blockquote>
+<h3>Response</h3>
+<p>If the request succeeds, the response returns a <code>200 OK</code> status code and a JSON-formatted representation of an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as <code>id</code>, and its <code>classId</code> is what you specified in the request, else of the library's default type.</p>
+<h3>Sample response</h3>
+<blockquote>
+<p>⭑   <strong>Note</strong>: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request. The request identifies the original, the response identifies the copy.</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;kind&quot;: &quot;aodocs#document&quot;,
+  &quot;libraryName&quot;: &quot;my-dms-by-alt-on-test-001&quot;,
+  &quot;className&quot;: &quot;my-dms-by-alt-on-test-001-class-001&quot;,
+  &quot;className_i18n&quot;: &quot;my-dms-by-alt-on-test-001-class-001&quot;,
+  &quot;libraryId&quot;: &quot;RrVcEFb8wtDeNAnlmNN&quot;,
+  &quot;classId&quot;: &quot;RrVcdN280MKJwPyE7sh&quot;,
+  &quot;id&quot;: &quot;RrVsvlY80jV2N7NcCIy&quot;,  // &lt;— documentId
+  &quot;title&quot;: &quot;my-important-document-with-spreadsheet-attachment&quot;,
+  &quot;richText&quot;: &quot;&quot;,
+  ...
+  &quot;attachments&quot;: [
+    {
+      &quot;fileId&quot;: &quot;1wwO-7T8e_doTw3rK3_wqvyh5zEWL5IKDh&quot;, // ⇐ same as in the request, unlike with the ```attachmentsToCopy``` parameter
+      &quot;name&quot;: &quot;my-important-spreadsheet&quot;,
+      &quot;mimeType&quot;: &quot;application/vnd.google-apps.spreadsheet&quot;,
+      &quot;link&quot;: &quot;https://docs.google.com/spreadsheets/d/108JuZK8TqnjYI3YND_GmiIc-tfoZVJ7IJzQrD8lfjNJc/edit?usp=drivesdk&quot;,
+      ...
+    }
+  ],
+  &quot;folders&quot;: [
+    {  // library root folder
+      &quot;kind&quot;: &quot;aodocs#folder&quot;,
+      &quot;libraryId&quot;: &quot;Rs4xtue86axGNklquDP&quot;,
+      &quot;libraryName&quot;: &quot;my-sf-prod-001&quot;,
+      &quot;folderAodocsId&quot;: &quot;0&quot;, // ⇐ &quot;0&quot; means root folder
+      &quot;fileId&quot;: &quot;1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu&quot;, // ⇐ root folder Drive ID
+      &quot;name&quot;: &quot;my-sf-prod-001&quot;,
+      &quot;parentFolderIsRoot&quot;: false,
+      &quot;folderIsRoot&quot;: true,
+      ...
+   },
+    { // actual folder the document is in
+      &quot;kind&quot;: &quot;aodocs#folder&quot;,
+      &quot;libraryId&quot;: &quot;Rs4xtue86axGNklquDP&quot;,
+      &quot;libraryName&quot;: &quot;my-sf-prod-001&quot;,
+      ...
+      &quot;folderAodocsId&quot;: &quot;1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma&quot;,
+      &quot;parentFolderAodocsId&quot;: &quot;0&quot;, // ⇐ we are one level below root
+      &quot;parentFolderDriveId&quot;: &quot;1Q4_rHI8Xzebc7PEOCH9-IjAAmTYvXXBBu&quot;,
+      &quot;fileId&quot;: &quot;1BaNSFx8JYE04gHoH_H1sqPzyJVwr1cqma&quot;, // ⇐ subfolder Drive ID
+      &quot;name&quot;: &quot;test-sf-prod-001-subfolder1&quot;,
+      &quot;parentFolderIsRoot&quot;: true, // ⇐ we are one level below root
+      &quot;folderIsRoot&quot;: false,
+      ...
+   }
+  ],
+&quot;numberOfAttachments&quot;: 1,
+}
+</code></pre>
+</body></html>

@@ -4,9 +4,9 @@
   "dependencies": {
     "commonmark": "^0.29.1",
     "googleapis": "^50.0.0",
-    "sync-directory": "^2.1.2"
+    "js-yaml": "^3.13.1"
   },
   "scripts": {
-    "sync": "node scripts/sync-portal.js"
+    "sync": "node scripts/sync-all.js"
   }
 }

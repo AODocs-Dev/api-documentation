@@ -1,0 +1,263 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Get library info</title></head><body><h1>Get library info</h1>
+<p>AODocs content is contained in libraries. Your libraries should already exist; if they don't, a library administrator needs to <a href="https://support.aodocs.com/hc/en-us/articles/115002366923-Create-a-library-from-scratch">create them first</a>.</p>
+<p>Once your libraries exist, you can list them to get an idea of where to place your content.</p>
+<p>The most useful methods to list and get libraries are the following:</p>
+<ul>
+<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">List libraries</a> (legacy v1)</li>
+<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">List and search libraries</a> (v2beta1)</li>
+<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List libraries plain</a> (alternative to List libraries)</li>
+<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">Get a specific library by ID</a></li>
+</ul>
+<p>What follows are elaborations on these methods.</p>
+<hr />
+<h2>List libraries and find target library ID for your documents (legacy v1)</h2>
+<p>To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library's unique identifier, <code>libraryId</code>.</p>
+<h3>Method and API</h3>
+<p>Play with the API Explorer:</p>
+<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">PUT /library/v1</a></h4>
+<h3>Usage/notes/guidelines</h3>
+<h4>Request</h4>
+<blockquote>
+<p>⚠ <strong>Warning/Alert</strong>: This method requests all metadata for all libraries on the domain. Not recommended without filtering!</p>
+</blockquote>
+<p>This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response. We strongly recommend you set the <code>include</code> query parameter to <code>NONE</code>.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
+</code></pre>
+<p>Alternatively use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
+<h4>Response</h4>
+<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a> resource, listing all libraries accessible to you on the domain. With the recommended parameter <code>include=NONE</code> the response is smaller and far more manageable.</p>
+<p>Take note of the <code>libraryId</code> of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.</p>
+<p>Additional fields to note:</p>
+<ul>
+<li><code>name</code> (of the library)</li>
+<li><code>defaultDocumentType</code> (the library's default class ID)</li>
+<li><code>rootFolderId</code> (the ID of the topmost level of the library's hierarchy)</li>
+<li><code>favorited</code> (whether or not the library is starred as a favorite)</li>
+<li>any other fields of interest</li>
+</ul>
+<h4>Sample response</h4>
+<pre><code class="language-json">{
+  &quot;kind&quot;: &quot;aodocs#libraryList&quot;,
+  &quot;libraries&quot;: [
+    {
+      &quot;kind&quot;: &quot;aodocs#library&quot;,
+      &quot;libraryId&quot;: &quot;RnTG8PD8u8ZqTuDVHcv&quot;,
+      &quot;name&quot;: &quot;my-DMS-lib-001&quot;,
+      &quot;defaultDocumentType&quot;: &quot;RnTbOft844KfZYkfBpV&quot;,
+      &quot;rootFolderId&quot;: &quot;1S7ayht8i78VtuNl-SebgGTu_wliznnR47&quot;,
+      &quot;favorited&quot;: false,
+      ...
+    },
+    {
+      &quot;kind&quot;: &quot;aodocs#library&quot;,
+      &quot;libraryId&quot;: &quot;Rngc1ug8K6WmL3IjZ8&quot;,
+      &quot;name&quot;: &quot;my-sf-lib-005&quot;,
+      &quot;defaultDocumentType&quot;: &quot;Rngc4rL89JCj5xwTtrF&quot;,
+      &quot;rootFolderId&quot;: &quot;1yAMvoT8BFEvI_8GXghiyTEJqevJeW7q9C&quot;,
+      &quot;favorited&quot;: true
+    }
+}
+</code></pre>
+<hr />
+<h2>List and search libraries (v2beta1)</h2>
+<p>This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope. Without them, what comes back in the response is the full list of libraries available to you.</p>
+<h3>Method and API</h3>
+<p>Play with the API Explorer:</p>
+<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">GET /search/v2beta1/search</a></h4>
+<h3>Usage/notes/guidelines</h3>
+<p>The search can be conducted without any parameters, returning all libraries that you are authorized to access, in an undefined order.</p>
+<h4>Request</h4>
+<p>Several useful parameters are available to help narrow the search.</p>
+<h4>Request parameters of note</h4>
+<p><strong><code>query</code></strong></p>
+<p>The <code>query</code> query parameter is what ultimately determines what results come back, filtering them on a text string. You can search for the following:</p>
+<ul>
+<li>a word (like <em>blue</em>)</li>
+<li>several words in any order (<em>document big blue</em>)</li>
+<li>an exact phrase (<em>&quot;big blue document&quot;</em> — two or more words in exact order in double quotes)</li>
+<li>an inexact phrase (<em>~&quot;big blue document&quot;</em> — exact phrase but allowing for common variants of its constituent words, like <em>bigger</em>, <em>blues</em>, and <em>documenting</em>)</li>
+<li>a substring of characters in a word (only at the prefix position, e.g. <em>docu</em>)</li>
+<li>a library ID (equivalent of get library)</li>
+</ul>
+<blockquote>
+<p>⭑  <strong>Note</strong>: The double quotes return only adjacent words in a phrase. For example, if your document is called <em>big blue document</em>, then sending <em>&quot;big blue&quot;</em> or <em>&quot;blue document&quot;</em> (with the double quotes) as a phrase in the <code>query</code> query parameter finds <em>big blue document</em>, but sending <em>&quot;big document&quot;</em> as a phrase does not.</p>
+</blockquote>
+<p><strong><code>userSuperAdminAccess</code></strong> (default: <code>false</code>)</p>
+<p>By default, you receive a response containing no more information than you need. If you are a domain administrator (superadmin), you can change the <code>userSuperAdminAccess</code>'s default value of <code>false</code> to <code>true</code> to elevate your privileges to return libraries accessible to all domain administrators.</p>
+<p><strong><code>minimumCurrentUserRole</code></strong></p>
+<p>Use this flag if you want to have access to libraries you are at least an <code>ADMIN</code> of. For example, if you want to know which libraries you're authorized to import content into, then you don't want to consider libraries you only have <code>READER</code> privileges for (since you can't import at that level).</p>
+<p><strong><code>libtypes</code></strong></p>
+<p>You can specify which of the three types of libraries you get in the response in any combination. Specifying none is the same as specifying all.</p>
+<p><strong><code>storageAccount</code></strong></p>
+<p>You can either request results from all storage accounts available to you, or you can specify one storage account at a time.</p>
+<p><strong><code>labelIds</code></strong></p>
+<p>When you list all libraries in the UI, you can see a list of labels in the left panel ordered alphabetically. With this parameter, you can request libraries by label, including several at a time.</p>
+<p><strong><code>favorite</code></strong></p>
+<p>If set to <code>true</code>, returns just this user's favorite libraries.</p>
+<p><strong><code>orderBy</code></strong></p>
+<p>You can either get your results ordered arbitrarily, or you can use this parameter to sort your results by one and only one of the following:</p>
+<ul>
+<li><code>NAME</code> (ascending)</li>
+<li><code>LAST_ACCESSED</code> (descending)</li>
+<li><code>TASK_COUNT</code> (descending)</li>
+<li><code>FAVORITE_FIRST</code></li>
+</ul>
+<blockquote>
+<p>⭑  <strong>Note</strong>: The <code>orderBy</code> parameter bears a performance penalty and has a limit of 10,000 results. Check the <code>incompleteResults</code> flag in the response.</p>
+</blockquote>
+<p><strong><code>limit</code></strong> (default: <code>20</code>)</p>
+<p>You can choose an arbitrary number of results to display, up to 1000.</p>
+<p><strong><code>requirePreciseResults</code></strong> (default: <code>false</code>)</p>
+<p>If you don't specify this parameter, the result will contain a <code>totalResultCount</code> field that is an estimate of the total number of results matching your query (not only for the current page). The <code>estimatedResultCount</code> field in the response will be set to <code>true</code>.</p>
+<p>This is the default behavior: the query is usually much faster when all it has to do is estimate the total number of results (instead of counting). The downside is that it's just an estimate — within about an order of magnitude — so the higher the values, the more significant the divergence.</p>
+<p>If <code>requirePreciseResults</code> is set to <code>true</code>, then up to 25,000 results, the response's <code>totalResultCount</code> will contain the exact number of results that match your initial request, and beyond that, it'll contain an estimate. The <code>estimatedResultCount</code> will be set to <code>true</code> in either case.</p>
+<p><strong><code>include</code></strong> (default: <code>nothing</code>)</p>
+<p>If you want information in addition to the default <code>nothing</code> setting, change the <code>include</code> parameter to one of the following:</p>
+<ul>
+<li><code>STATISTICS</code> (only for domain administrators)</li>
+<li><code>LABELS</code></li>
+<li><code>IS_FAVORITE</code></li>
+<li><code>LAST_ACCESSED</code></li>
+<li><code>TASK_COUNT</code></li>
+</ul>
+<blockquote>
+<p>⭑  <strong>Note</strong>: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.</p>
+</blockquote>
+<p><strong><code>pageToken</code></strong></p>
+<p>This parameter is used for <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a> purposes. If you need to request the next page of results, populate this parameter with the value of the <code>nextPageToken</code> from the last response (keeping all other parameter values exactly the same).</p>
+<h4>Sample request (no parameters: list all)</h4>
+<pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v2beta1/search
+</code></pre>
+<p>Alternatively use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
+<h4>Sample request (specific search)</h4>
+<pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v2beta1/search?query=001&amp;minimumCurrentUserRole=WRITER&amp;libTypes=TF&amp;favorite=true&amp;orderBy=LAST_ACCESSED&amp;limit=3&amp;requirePreciseResults=true&amp;facets=true&amp;include=LAST_ACCESSED HTTP/1.1
+</code></pre>
+<h4>Response</h4>
+<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList">ApiLibrarySearchResultList</a> resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means &quot;all&quot;).</p>
+<p>Take note of the <code>libraryId</code> of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.</p>
+<p>Additional fields to note:</p>
+<ul>
+<li><code>name</code> (of the library)</li>
+<li><code>defaultDocumentType</code> (the library's default class ID)</li>
+<li><code>rootFolderId</code> (the ID of the topmost level of the library's hierarchy)</li>
+<li><code>favorited</code> (whether or not the library is starred as a favorite)</li>
+<li>any other fields of interest</li>
+</ul>
+<h4>Sample response</h4>
+<pre><code class="language-json">{
+  &quot;kind&quot;: &quot;aodocs#librarySearchResultList&quot;,
+  &quot;libraries&quot;: [
+    {
+      &quot;id&quot;: &quot;R6l0hkc80sxwUgY987R&quot;,
+      &quot;name&quot;: &quot;my TF library 001&quot;,
+      &quot;libraryType&quot;: &quot;TF&quot;,
+      &quot;storageAccount&quot;: &quot;storage-account@test.altirnao.com&quot;,
+      &quot;rootFolderId&quot;: &quot;1Rxi3ir8tGD1ektc6M5NnEP8Lz2NVNen9A&quot;,
+      &quot;folderVisibility&quot;: &quot;PUBLICLY_EDITABLE&quot;,
+      &quot;onlyAdminsCanManageFolders&quot;: false,
+      &quot;currentUserRole&quot;: &quot;ADMIN&quot;,
+      &quot;kind&quot;: &quot;aodocs#librarySearchResult&quot;,
+      &quot;lastAccessed&quot;: null
+    },
+    ...
+  ],
+  &quot;nextPageToken&quot;: &quot;eyJpbk18lbW9yeSI6Z...c0Mn0=&quot;,
+  &quot;totalResultCount&quot;: 51,
+  &quot;estimatedResultCount&quot;: false,
+  &quot;incompleteResults&quot;: false
+  }
+</code></pre>
+<hr />
+<h3>List libraries and find <code>libraryId</code> in UI</h3>
+<p>You can also locate the <code>libraryId</code> of your target library inside the AODocs UI. Go to your homepage &gt; My libraries by clicking on the &quot;My libraries&quot; link in the upper left corner of most pages:</p>
+<p><img src="/img/libraryid-in-ui.png" alt="libraryid-in-ui.png" /></p>
+<p>Open the desired target library, and note the library ID in the URL. It's the long string of numbers and letters after <code>LibraryId_</code> (up to and <em>excluding</em> the next slash):</p>
+<p><code>/LibraryId_<strong>&lt;libraryId&gt;</strong></code></p>
+<h4>Example</h4>
+<p><code>/LibraryId_<strong>RnTG8PD8u8ZqTuDVHcv</strong></code></p>
+<p>Learn more about <a href="https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51">navigating homepages</a> inside your AODocs and specific libraries.</p>
+<hr />
+<h2>List libraries plain (alternative to List libraries)</h2>
+<p>If you only need the library name and ID in the response, then you can use the plain library list (<a href="/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> as an alternative to the full library list (<a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a>. It is usually much faster than the standard library list API method, but returns much less information.</p>
+<h3>Method and API</h3>
+<p>Play with the API Explorer:</p>
+<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">PUT /library/v1/plain</a></h4>
+<h3>Usage/notes/guidelines</h3>
+<h4>Request</h4>
+<p>There are no mandatory or recommended parameters to send.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/library/v1/plain
+</code></pre>
+<h4>Response</h4>
+<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> resource, listing all libraries accessible to you on the domain, but only listing the following for each:</p>
+<ul>
+<li>library name</li>
+<li>library ID</li>
+<li>modification dates</li>
+</ul>
+<p>Take note of the <code>libraryId</code> of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.</p>
+<p>Additional response fields to note:</p>
+<ul>
+<li><code>name</code> (of the library)</li>
+</ul>
+<h4>Sample response</h4>
+<pre><code class="language-json"> {
+      &quot;kind&quot;: &quot;aodocs#plainLibrary&quot;,
+      &quot;libraryId&quot;: &quot;RnTG8PD8u8ZqTuDVHcv&quot;,
+      &quot;name&quot;: &quot;my-DMS-lib-001&quot;,
+      &quot;lastModified&quot;: &quot;1579005945318&quot;,
+      &quot;lastConfigModified&quot;: &quot;1579005945318&quot;
+    },
+    {
+      &quot;kind&quot;: &quot;aodocs#plainLibrary&quot;,
+      &quot;libraryId&quot;: &quot;Rngc1ug8K6WmL3IjZ8&quot;,
+      &quot;name&quot;: &quot;my-sf-lib-005&quot;,
+      &quot;lastModified&quot;: &quot;1579619340936&quot;,
+      &quot;lastConfigModified&quot;: &quot;1579619340936&quot;
+    }
+    ...
+</code></pre>
+<hr />
+<h2>Get a specific library by ID</h2>
+<p>You can retrieve to parse something from its metadata (or to confirm it exists) if you have its <code>libraryId</code>.</p>
+<h3>Method and API</h3>
+<p>Play with the API Explorer:</p>
+<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">GET /library/{libId}</a></h4>
+<h3>Usage/notes/guidelines</h3>
+<h4>Request</h4>
+<p>To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the <code>include</code> parameter to <code>NONE</code>.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
+</code></pre>
+<h4>Response</h4>
+<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary">ApiLibrary</a> resource, listing the library associated with the provided library ID.</p>
+<p>Response fields of note:</p>
+<ul>
+<li><code>libraryId</code></li>
+<li><code>name</code> / homeUrl</li>
+<li><code>rootFolderId</code> (the ID of the topmost level of the library's hierarchy)</li>
+<li><code>defaultDocumentType</code> (the library's default class ID)</li>
+<li><code>favorited</code> (whether or not the library is starred as a favorite)</li>
+<li>any other fields of interest</li>
+</ul>
+<h4>Sample response (include=NONE)</h4>
+<pre><code class="language-json">{
+  &quot;kind&quot;: &quot;aodocs#library&quot;,
+  &quot;libraryId&quot;: &quot;RnTG8PD8u8ZqTuDVHcv&quot;,
+  &quot;name&quot;: &quot;my-DMS-lib-001&quot;,
+  &quot;homeUrl&quot;: &quot;my-dms-lib-001&quot;,
+  &quot;daysBeforeDelete&quot;: 30,
+  &quot;welcomeText&quot;: &quot;&lt;p&gt;Welcome to your new Document Management library: my-DMS-lib-001&lt;/p&gt;&lt;br&gt;&lt;p&gt;To get started...&lt;/p&gt;&quot;,
+  &quot;storageAdmin&quot;: &quot;storage.account@test.aodocs.com&quot;,
+  &quot;pushToMyDrive&quot;: false,
+  &quot;onlyAdminsCanManageFolders&quot;: false,
+  &quot;onlyAdminsCanEditRootFolder&quot;: false,
+  &quot;defaultDocumentType&quot;: &quot;RnTbOft844KfZYkfBpV&quot;,
+  &quot;rootFolderId&quot;: &quot;1S7ayhti78VtuNl-SebgGTu_wliznnR47&quot;,
+  &quot;defaultView&quot;: &quot;RnTbOoS8wQ32JuKPEi1&quot;,
+  &quot;favorited&quot;: true
+  ...
+}
+</code></pre>
+</body></html>

@@ -1,3 +1,0 @@
-# [DRAFT] ApiLibrary
-
-Placeholder

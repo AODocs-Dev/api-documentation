@@ -1,0 +1,65 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Basics of AODocs</title></head><body><h1>Basics of AODocs</h1>
+<h2>Prerequisites</h2>
+<p>To proceed, you need to have an AODocs licence, have access to an AODocs domain, and be familiar with the basics of interacting with AODocs through the <a href="https://aodocs-staging.altirnao.com/">AODocs user interface</a> (UI). Most of the tasks we explain here that a client app can do with the API can also be done by a user in the user interface as explained in the <a href="https://support.aodocs.com/hc/en-us">AODocs Knowledge Base</a>.</p>
+<h2>AODocs and Google Drive</h2>
+<p>AODocs is an enterprise document management system that exists as a layer on top of Google Drive to enable the management of Drive files. <a href="https://support.aodocs.com/hc/en-us/articles/217739043-Switch-between-the-AODocs-interface-and-Google-Drive">Google Drive remains the file storage solution</a>, but AODocs enables additional search, security, control, customizability features  on top of Drive files and folders. It also provides <a href="https://support.aodocs.com/hc/en-us/articles/205749346-What-are-workflows-">advanced workflow capabilities</a>. This is done via the concept of an AODocs document, which is a grouping of metadata that acts as a fine-grained wrapper for Drive files. Furthermore, concepts like <a href="https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms">library, folder, and class</a> play a supporting role to documents within the AODocs ecosystem.</p>
+<h2>AODocs hierarchy and key concepts</h2>
+<p>AODocs documents exist in the following hierarchy:</p>
+<ul>
+<li><strong>domain</strong>
+<ul>
+<li><strong>library</strong> (three available types: <a href="https://support.aodocs.com/hc/en-us/articles/206115120">Team Folder/Secured Folder/DMS</a>)
+<ul>
+<li>folder (mandatory or optional depending on type of library)
+<ul>
+<li>document class/documentType (two names, UI and API, for the same concept)
+<ul>
+<li><strong>document</strong> (of a specific type and library)
+<ul>
+<li>System properties</li>
+<li>Sections (containers for custom properties)
+<ul>
+<li>Custom properties</li>
+</ul>
+</li>
+<li>Rich text / description</li>
+<li><strong>Attachments</strong> (a reference to a Drive file)</li>
+<li>Related documents</li>
+<li>Versions</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>domain</strong> contains <strong>libraries</strong> (of 3 types) that contain <strong>documents</strong> (of different types) that have zero, one, or more <strong>attachments</strong> (references to managed <strong>Drive files</strong>) depending on the library type. Read more about <a href="https://support.aodocs.com/hc/en-us/articles/115005944243">Recommended limits in AODocs</a>.</p>
+<h3>Library types and attachment limits</h3>
+<p>An AODocs <strong>domain</strong> contains libraries of <strong>three types</strong>:</p>
+<ul>
+<li><strong>Team Folders (TF)</strong>: each document must have one and only one attachment</li>
+<li><strong>Secured Folders (SF)</strong>: same as TF — one and only one attachment</li>
+<li><strong>Document Management libraries (DMS)</strong>: a document can have <strong>any number of attachments</strong>: zero, one, or more</li>
+</ul>
+<p><strong>Libraries</strong> contain <strong>documents</strong> of unlimited types called <strong>classes</strong> (or <code>documentType</code> in the API). An AODocs document is not the colloquial sense of the word &quot;document&quot;. Instead, it is a versioned collection of predefined, structured metadata divided into logical groupings like System and Custom properties, along with a rich-text description, a list of related documents, as well as <strong>attachments</strong> (references to managed Drive files).</p>
+<p>The <strong>number of Drive files</strong> you can <strong>attach to a document</strong> in a specific type of library is a <strong>critical concept in AODocs</strong>. In <strong>TF/SF</strong>, each document <em>must</em> have <strong>one and only one attachment</strong>. In <strong>DMS</strong> libraries, each document <em>can</em> have <strong>any number of attachments</strong>: zero, one, or more.</p>
+<h3>Attachment ownership transfer</h3>
+<p>When you attach a Drive file to an AODocs document, you create a reference to the file inside the document. The file remains in Drive, but the ownership of the file transfers from you to the <strong>AODocs storage account</strong>, which in turn shares the file to you with specific permissions. An AODocs storage account is a Google account belonging to your GSuite domain. The company owns the file, but it allows AODocs to manage and organize your Drive files in a predefined way. <strong>A Drive file can be attached to one and only one AODocs document</strong> (trying to attach it to another document will fail).</p>
+<blockquote>
+<p>⭑ <strong>Note</strong>: Each library is associated with a specific storage account, and that storage account can be associated with multiple libraries.</p>
+</blockquote>
+<p>Read more about the storage account in the Knowledge Base: <a href="https://support.aodocs.com/hc/en-us/articles/205648334-What-is-the-AODocs-storage-account-">What is the AODocs storage account?</a></p>
+<h3>Versions</h3>
+<p>Every time a version of a document is created, AODocs saves a version of the document metadata and its attachments that can be restored later as a new version. Meanwhile, attachments themselves are versioned using the built-in file revision capabilities of Drive.</p>
+<h3>Folders</h3>
+<p>Structurally, a <strong>library</strong> is like a folder in the sense that it is the top-level (root) container of various types of <strong>documents</strong>. This is organized into a hierarchy of zero or more &quot;subfolder&quot; containers.</p>
+<p>A folder hierarchy is mandatory in TF/SF: the library mirrors the structure of what's inside your corresponding Drive folder. In DMS, however, folders are optional: the functionality can be turned on or off depending on whether you need to put in place a folder-like hierarchy. You can toggle this in each class's <a href="https://support.aodocs.com/hc/en-us/articles/360030865991">Advanced settings</a>.</p>
+<h3>Default library class</h3>
+<p>A library's whole purpose is to contain documents. In order to do so, it has to declare the types (classes) of documents that can be created within it. One of those types is the <strong>default class</strong>: if you ask for a document to be created in a specific library but don't provide a class, that library's default class gets used as the source class for the new document.</p>
+<h3>Default document title</h3>
+<p>For any newly created document, if you don't specify a <strong>title</strong> then the system assigns to it the default title of &quot;<strong>Untitled</strong>&quot;.</p>
+</body></html>

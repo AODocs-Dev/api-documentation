@@ -1,0 +1,278 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Modify field values of document properties</title></head><body><h1>Modify field values of document properties</h1>
+<p>AODocs documents are composed of metadata, including (but not limited to) system and custom properties defined as part of a specific document type (also known as class).</p>
+<p>System properties are pieces of metadata defined at the document level, found in every document. Most of them are set by the system and are read-only. Some of them can be modified.</p>
+<p>Custom properties are document metadata defined by an administrator during the creation of a class. Once defined, each document that belongs to the class takes on all the properties defined in its class.</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: Properties can be added and deleted after class creation.</p>
+</blockquote>
+<p>Read more about <a href="https://support.aodocs.com/hc/en-us/articles/115000051523#h_76055d8f-c7aa-4eaa-b9d7-68aaea6a170b">managing custom fields in the UI</a>.</p>
+<h2>Limits</h2>
+<p>Documents have a 1MB size limit, so any otherwise unlimited field like <code>richText</code> or custom fields of type <code>TEXT</code> must fit inside this restriction.</p>
+<p>Additionally, the <code>title</code> system field, as well as any other <code>STRING</code> fields have a 1500 byte limit.</p>
+<h2>Setting system and custom fields</h2>
+<p>To set any fields in AODocs, you have to pass the correct JSON-formatted field-value pair as part of the request body along with the desired type of HTTP request: <code>PUT</code> to create a document; and <code>PATCH</code> to modify it.</p>
+<h3>Setting system fields</h3>
+<p>In a document resource, system fields are top-level fields (not nested), and you can address them by name directly in your request.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
+</code></pre>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;my-new-doc-023&quot;,
+    &quot;richText&quot;: &quot;my-new-doc-023-richText&quot;,
+    &quot;creationDate&quot;: &quot;123456789000&quot;,
+    &quot;initialAuthor&quot;: &quot;account1@gmail.com&quot;,
+    &quot;updateAuthor&quot;: &quot;account2@gmail.com&quot;,
+    &quot;modificationDate&quot;: &quot;987654321000&quot;,
+    &quot;setModifiedDate&quot;: true,
+    &quot;libraryId&quot;: &quot;RsjaTyH8w59078Zx7Dk&quot;
+}
+</code></pre>
+<h4>Updatability of system fields</h4>
+<p>In AODocs APIs, you can define system field values for a document when it is either created or updated. Some of these fields can be created or modified only if you set the <code>setModifiedDate</code> boolean flag to <code>true</code>.</p>
+<p>The following table outlines allowances and requirements for each system field (<code>sMD</code> means <code>setModifiedDate</code>):</p>
+<table>
+  <tr>
+   <td rowspan="2" ><strong>Are the following</strong>
+<p>
+<strong>fields modifiable?</strong>
+   </td>
+   <td colspan="2" >At
+<p>
+creation
+   </td>
+   <td colspan="2" >At
+<p>
+modification
+   </td>
+  </tr>
+  <tr>
+   <td>sMD=false
+   </td>
+   <td>sMD=true
+   </td>
+   <td>sMD=false
+   </td>
+   <td>sMD=true
+   </td>
+  </tr>
+  <tr>
+   <td>initialAuthor
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>No
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+   <td>creationDate
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>No
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+   <td>updateAuthor
+   </td>
+   <td>No, current user
+   </td>
+   <td>Yes
+   </td>
+   <td>No, current user
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
+   <td>modificationDate
+   </td>
+   <td>No, current date
+   </td>
+   <td>Yes
+   </td>
+   <td>No, current date
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
+   <td>title
+   </td>
+   <td>Yes¹
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
+   <td>richText
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+</table>
+<p>¹ <code>title</code> is automatically populated as &quot;Untitled&quot; if left unspecified</p>
+<h4>Use case: setModifiedDate flag</h4>
+<p>When you update a document with the API, whether it's creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: <code>modifiedDate</code> and <code>updateAuthor</code>, that will get the current date and current user value regardless of the field values you put in the request.</p>
+<p>This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values. For actions that have the requirement of preserving the <code>modifiedDate</code> and <code>updateAuthor</code> fields as is, explicitly pass their previous values along with your document changes and the <code>setModifiedDate</code> flag  set to <code>true</code>.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
+</code></pre>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;my new AODocs document&quot;,
+    &quot;richText&quot;: &quot;Hello, world!&quot;,
+    &quot;creationDate&quot;: &quot;123456789000&quot;,
+    &quot;initialAuthor&quot;: &quot;mypersonalemail@gmail.com&quot;,
+    &quot;updateAuthor&quot;: &quot;mypersonal@gmail.com&quot;,
+    &quot;setModifiedDate&quot;: true,
+    &quot;modificationDate&quot;: &quot;987654321000&quot;,
+    &quot;libraryId&quot;: &quot;RsjaTyH8w59078Zx7Dk&quot;,
+}
+</code></pre>
+<h4>Expected formats for system fields</h4>
+<table>
+  <tr>
+   <td><strong>TYPE OF SYSTEM FIELD</strong>
+   </td>
+   <td><strong>EXPECTED API FORMAT</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>TEXT (like <code>title</code>)
+   </td>
+   <td>Text with no HTML parsing; you can add line breaks
+   </td>
+  </tr>
+  <tr>
+   <td>RICH TEXT (like <code>richText</code> AKA "Description" in the UI)
+   </td>
+   <td>Text that is rendered as HTML
+   </td>
+  </tr>
+  <tr>
+   <td>DATETIME (like <code>creationDate</code> and <code>modificationDate</code> )
+   </td>
+   <td>Unix timestamp in milliseconds since the beginning of 1 January 1970, as a JSON string (will not accept integers)
+   </td>
+  </tr>
+  <tr>
+   <td>PERSON (like <code>initialAuthor</code> and <code>updateAuthor</code>)
+   </td>
+   <td>Any string value; we recommend valid Google account email addresses to benefit from the workflow features on these fields
+   </td>
+  </tr>
+</table>
+<h3>Setting custom fields</h3>
+<p>In a document resource, custom fields are found inside the <code>fields</code> array.</p>
+<blockquote>
+<p>⚠ <strong>Warning/Alert</strong>: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments">Modify document attachments</a> page.</p>
+</blockquote>
+<p>Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.</p>
+<p>In order to populate custom fields, you must know the <code>fieldId</code> of the particular property of your target class (that each document in that class has). You then use it to tell the server which values of this particular property should be set. To do this, populate <code>fields[].fieldId</code> with your target class's <code>fieldId</code>.</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: Alternatively, you can populate <code>fields[].fieldName</code> with the target class's <code>fieldName</code>. However, this is <strong>not recommended</strong>, as the name of a field can change.</p>
+</blockquote>
+<p>Once the target class is identified, populate <code>fields[].values[]</code> with the values you want.</p>
+<h4>Sample request</h4>
+<pre><code class="language-yaml">    PUT https://aodocs.altirnao.com/api/document/v1
+</code></pre>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;my-new-doc-024&quot;,
+    &quot;libraryId&quot;: &quot;RsjaTyH8w59078Zx7Dk&quot;,
+    &quot;fields&quot;: [
+        {
+            &quot;fieldId&quot;: &quot;RxUjYCe8AAx2YAju5NW&quot;,
+            &quot;values&quot;: [
+                &quot;a@a.com&quot;,
+                &quot;b@b.com&quot;
+            ]
+        }
+    ]
+}
+</code></pre>
+<h4>Expected API formats for custom fields</h4>
+<table>
+  <tr>
+   <td><strong>TYPE OF CUSTOM FIELD</strong>
+   </td>
+   <td><strong>EXPECTED JSON FORMAT</strong>
+   </td>
+   <td><strong>CAN BE MULTIVALUE?</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>STRING
+   </td>
+   <td>A JSON string of alphanumeric and special characters; 400-character limit
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
+   <td>TEXT
+   </td>
+   <td>A JSON string with no HTML parsing; you can add line breaks + no limit
+   </td>
+   <td>Yes
+   </td>
+  </tr>
+  <tr>
+   <td>PERSON
+   </td>
+   <td>A JSON string  representing a user or group email address
+   </td>
+   <td>Yes (only accepts groups when multivalued, as groups are considered “multiple persons”)
+   </td>
+  </tr>
+  <tr>
+   <td>DATETIME
+   </td>
+   <td>Unix timestamp in milliseconds since the beginning of 1 January 1970, as a JSON string (will not accept integers)
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+   <td>INTEGER
+   </td>
+   <td>JSON integer values (0, 1, 2, -1,.. limited to +/- 2,147,483,647)
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+   <td>DECIMAL
+   </td>
+   <td>JSON decimal values (0.1, -5.1, 1.655,..) with maximum 3 decimal digits
+   </td>
+   <td>No
+   </td>
+  </tr>
+  <tr>
+   <td>BOOLEAN
+   </td>
+   <td><code>true</code> or <code>false</code>
+   </td>
+   <td>No
+   </td>
+  </tr>
+</table>
+<hr />
+</body></html>

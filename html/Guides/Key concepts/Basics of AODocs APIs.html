@@ -1,0 +1,165 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Basics of AODocs APIs</title></head><body><h1>Basics of AODocs APIs</h1>
+<p>AODocs APIs are the HTTP endpoints which let you issue direct requests to the resource server to perform many of the manual tasks done in the AODocs UI:</p>
+<ul>
+<li>search for and list resources such as libraries, classes, or documents</li>
+<li>create, modify, and remove (trash or delete) documents, their properties, and their attachments</li>
+<li>configure AODocs folders, roles, versions, and permissions</li>
+</ul>
+<p>Most of the tasks (and more) that can be achieved from the AODocs UI can also be performed using the API.</p>
+<h2>When to use Drive APIs vs. AODocs APIs</h2>
+<p>The purpose of <strong>Drive</strong> APIs is to upload, read, alter, copy, and download <strong>Drive</strong> files and their content — use them to put into place and manage Drive files before and after attaching them to AODocs documents. Only <strong><a href="https://developers.google.com/drive/api/v3/">Drive APIs</a></strong> can be used for this purpose, and the AODocs API does not provide any way to interact with the content of the Drive files directly.</p>
+<blockquote>
+<p>⭑   Note: You can use any available version of Google Drive APIs (v2 or v3).</p>
+</blockquote>
+<p>To <strong>attach Drive files to AODocs documents</strong> in SF and DMS libraries you have to use both <strong>Drive and AODocs</strong> APIs together because they need to work in tandem to connect the two worlds.</p>
+<blockquote>
+<p>⭑   Note: Files created in a TF library's folder will create AODocs documents automatically.</p>
+</blockquote>
+<p>Once attached, you can do most things you need with only AODocs APIs: you will still use Drive APIs to perform any tasks related to the content of the attachments like reading, copying, and downloading Drive files; but you will use <strong>AODocs APIs exclusively</strong> for all tasks related to the <strong>AODocs documents</strong> wrapped around the Drive files, such as managing and configuring AODocs metadata, roles, and workflows.</p>
+<p>Some of the concrete tasks you can perform with the AODocs APIs:</p>
+<ul>
+<li>List libraries</li>
+<li>List classes</li>
+<li>Create a document of a specific class inside a specific library</li>
+<li>Patch a document</li>
+<li>Delete a document</li>
+</ul>
+<p>To <strong>manage folders</strong> and <strong>edit permissions</strong>, you have to use either <strong>Drive or AODocs</strong> APIs, depending on the library type and which storage account owns the resource: Drive APIs for TF; AODocs APIs for DMS and SF.</p>
+<p>To manage and configure <strong>AODocs documents</strong>, you can use only <strong>AODocs APIs</strong>.</p>
+<h2>Interacting with APIs</h2>
+<p>AODocs APIs are designed around <a href="https://cloud.google.com/apis/design/resources">principles of REST</a>: to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request. You then parse the responses that come back. You can do this using the following methods:</p>
+<ul>
+<li>in person, manually, using the interactive <a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">API Explorer</a></li>
+<li>using a third-party service provider like <a href="https://learning.postman.com/docs/postman/launching-postman/introduction/">Postman</a></li>
+<li>programmatically, using code to automate request/response interactions</li>
+</ul>
+<p>The AODocs API shares a lot of similarities in its design with the Google APIs, so if you’re familiar with the various G Suite APIs (Drive, Calendar, GMail) you should be able to understand the AODocs API principles very quickly.</p>
+<p>On a high level, the interaction consists of three stages:</p>
+<ol>
+<li>request to perform an operation on a resource sent to the server</li>
+<li>operation performed server-side</li>
+<li>response sent from the resource server</li>
+</ol>
+<h3>Step 1: Client sends request to the server</h3>
+<h4>API Request structure</h4>
+<p>You send a request containing the following information to the API server:</p>
+<ul>
+<li>URL of the API <strong>endpoint</strong> (mandatory)</li>
+<li><strong>Type of HTTP request</strong> to be performed (mandatory)</li>
+<li>Parameters (not all mandatory, and not all the time)
+<ul>
+<li>Headers
+<ul>
+<li>Authentication and authorization info</li>
+<li>Request content type</li>
+<li>other</li>
+</ul>
+</li>
+<li>Path parameters (before the <code>?</code> in the URL, mandatory)
+<ul>
+<li>target API</li>
+<li>name/ID of <strong>resources</strong> and subresources to operate on</li>
+</ul>
+</li>
+<li>Query parameters (after the <code>?</code> in the URL, usually optional)
+<ul>
+<li><strong>securityCode</strong></li>
+<li>search filters</li>
+<li>other</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JSON request body containing specific <strong>target resource fields</strong> you want populated (sometimes mandatory depending on operation and resource)</li>
+</ul>
+<h4>Base API endpoint URL</h4>
+<p>To access AODocs APIs, you must use the following base URL:</p>
+<pre><code class="language-yaml">https://aodocs.altirnao.com/api/
+</code></pre>
+<blockquote>
+<p>⭑  <strong>Note</strong>: This URL is used to build interactions with AODocs API resources but yields no useful results on its own.</p>
+</blockquote>
+<h4>Types of parameters</h4>
+<p>Different parts of the request naturally lend themselves to carrying certain kinds of parameters, or at least are used that way customarily.</p>
+<p>There are generally three ways you can send parameters inside a request:</p>
+<ul>
+<li>as a <strong>path</strong> parameter (<code>GET /library/v1/<strong>abcd12345</strong>?include=NONE</code>)</li>
+<li>as a <strong>query</strong> parameter (<code>GET /library/v1?<strong>documentId=abcd12345</strong></code>)</li>
+<li>as one of the JSON-formatted resource fields inside the <strong>request body</strong> (<code><strong>{&quot;documentId&quot;: &quot;abcd12345&quot;}</strong></code>)</li>
+<li>inside the header (<code><strong>Authorization: Bearer &lt;token&gt;</strong></code>)</li>
+</ul>
+<p>Specific variable parts of the endpoint URL (like AODocs <code>/documentType/v1/<strong>typeId</strong></code> or <code>/library/v1/<strong>libraryId</strong></code> APIs) are considered <strong>path parameters</strong>. These parameters get provided in the part of the URL after the host name and before the <code>?</code>, and this is where the server expects to find them.</p>
+<p>Search filters, security codes, and other <strong>query parameters</strong> are commonly strung into a key-value list in the part of the URL after the <code>?</code>. The resource server has built-in mechanisms to parse this information.</p>
+<blockquote>
+<p>💡   Tip: The following query parameters exist globally across AODocs APIs:</p>
+<ul>
+<li>domain</li>
+<li>security code (authentication mechanism)</li>
+<li>fields query parameter (to filter results and improve performance)</li>
+</ul>
+</blockquote>
+<h4>API resources</h4>
+<p>REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable <em>resources</em>, or addressable collections of information or metadata.</p>
+<p>A resource type (such as <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a <em>representation</em> of a resource, but is often simply called <em>resource</em>.</p>
+<p>You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like <code>GET</code> or <code>PATCH</code>. Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.</p>
+<p>API resources (like a Document or Library) that you want to create or update <em>must</em> be  sent as part of the request resource, in the <strong>request body.</strong></p>
+<p>They are returned as <strong>the response body</strong> when a request is successful. Usually, the format of an API resource is the same in the request body and the response body.</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: You can get a partial resource back if you filter the response fields using the <code>fields</code> parameter.</p>
+</blockquote>
+<p>Read more about <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/70-Resources%20of%20note/00-Introduction%20to%20resources">AODocs resources</a>.</p>
+<h4>Creating a document</h4>
+<pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+</code></pre>
+<pre><code class="language-json">{
+    &quot;libraryId&quot;:&quot;RnTG8PD8u8ZqTuDVHcv&quot;,
+    &quot;classId&quot;:&quot;RnTf1mx835gaTJLzoFp&quot;,
+    &quot;title&quot;:&quot;My Important AODocs Document&quot;
+}
+</code></pre>
+<h3>Step 2: Server performs operation on the requested resource</h3>
+<p>The resource server hosts and performs operations on a requested resource (such as a library), subresources (such as a library's permissions), or a collection of resources (such as a list of libraries).</p>
+<p>If the resource server accepts your request, it then does the following:</p>
+<ul>
+<li>performs requested operation on target resource (library, etc.) or subresource (permissions, etc.)</li>
+<li>sends back response containing:
+<ul>
+<li>HTTP status code outlining what kind of outcome occurred (success/fail/other)</li>
+<li>the targeted resource (usually; one exception is after <code>DELETE</code>)</li>
+</ul>
+</li>
+</ul>
+<p>For example, the server might apply a <code>GET</code> request to an <code>ApiLibraryList</code> resource/collection and return the resource/collection to the requesting party.</p>
+<h3>Step 3: Server sends a response</h3>
+<p>The server either succeeds in fulfilling the request, or something goes wrong. The latter case is uncommon, but when it does occur, many things can be the culprit.</p>
+<h4>Server succeeded</h4>
+<p>If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually <code>200 OK</code>) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure (&quot;schema&quot;): you can look up the schema for each such resource type in the reference, such as <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>.</p>
+<blockquote>
+<p>⭑   Note: If the requested operation is <code>DELETE</code>, the server sends back <code>204 OK</code> and <code>null</code> instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently. If you delete the document permanently, the <code>documentId</code> stops being recognized from that point on. If you send the document to Trash, the document ID persists.</p>
+</blockquote>
+<h4>Server did not succeed</h4>
+<p>If there was something wrong with the request or with the server's ability to perform the operation, the response comes back as a status code and JSON-formatted error message to help guide your next steps.</p>
+<h2>Error handling and troubleshooting</h2>
+<p>The response provides a standard HTTP status code to indicate success (<strong>2xx</strong>), failure (<strong>4xx</strong>), or some other condition (<strong>5xx</strong>); as well as an error message to guide the next steps.</p>
+<p>Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios">HTTP status codes in AODocs APIs</a> to determine the type of issue and how to resolve it.</p>
+<h2>Pagination</h2>
+<p>Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">Performance considerations</a> page.</p>
+<h2>Beta vs. non-beta versions</h2>
+<p>Any version marked <code>beta</code> indicates that the version of this API method is not final, and might be subject to sudden deprecation and removal from the API, with a better alternative provided as a replacement. However, as long as the method is live, we’ll try to ensure backward compatibility as much as possible.</p>
+<p>APIs not marked as <code>beta</code> are considered “stable”: they have permanence and retain backward compatibility, unless they suffer from low usage.</p>
+<h2>Next steps</h2>
+<p>Here is how you can get started working with AODocs APIs:</p>
+<ul>
+<li>Try following the sequence of methods in the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview">Manage AODocs documents</a> section.</li>
+<li>Use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">interactive API Explorer</a> to build requests and queries for the APIs and to see the responses.</li>
+</ul>
+<!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
+<ul>
+<li>Review and select the appropriate mechanism for <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview">gaining authenticated access to AODocs APIs</a>.</li>
+<li>Check the <a href="/docs/aodocs-staging.altirnao.com/1/overview">AODocs Reference</a> for all the resources available through the APIs.</li>
+<li>Read the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview">Best practices</a> section.</li>
+<li>Have trouble falling asleep?  Read the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/50-Auth%20appendix">Auth appendix</a>, which includes all the most essential soporific auth RFCs.</li>
+</ul>
+</body></html>

@@ -1,3 +1,6 @@
+/**
+ * Require an access token with scope https://www.googleapis.com/auth/service.management.readonly
+ */
 const https = require('https');
 
 const config = {

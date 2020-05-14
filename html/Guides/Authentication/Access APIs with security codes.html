@@ -1,0 +1,61 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Access APIs with security codes</title></head><body><h1>Access APIs with security codes</h1>
+<p>Security codes are the quickest way to authenticate with AODocs APIs. You create the security code in the AODocs Domain administration page, then you pass it along with each request as a <strong>header parameter</strong> to identify yourself.</p>
+<p>Using security codes for authentication is inherently less secure than the OAuth 2.0 mechanism, and they do not allow any access to Google Drive APIs. However, for testing purposes and other simple internal use-cases, security codes are the quickest way to get started with AODocs APIs.</p>
+<h2>Get a security code</h2>
+<p>You can generate a security code with an expiry date by following the <a href="https://support.aodocs.com/hc/en-us/articles/205650054-Manage-security-codes">Manage security codes</a> article in the AODocs Knowledge Base.</p>
+<h3>Select the correct security code type</h3>
+<p>Security codes can be generated for two levels of AODocs authorization:</p>
+<ul>
+<li>User-level (strongly encouraged)</li>
+<li>Domain administrator</li>
+</ul>
+<blockquote>
+<p>⭑  <strong>Note</strong>: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended. Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.</p>
+</blockquote>
+<p>Read more about the <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">principle of least privilege</a>.</p>
+<h3>Use case: Library isolation</h3>
+<p>It is not possible to restrict a security code to access only a specific library (but not other libraries). To get around this limitation, you should restrict access at the user level: that is, create a technical <em>user</em> in GSuite that has access only to the needed libraries and not to restricted ones. Create a user-level security code for this user in order to access the API. The user's access is already determined by this point, and the security code does not have to take care of any authorization nuances.. In effect, what you end up with is a user who has access to just one library.</p>
+<p>This is a good pattern to use if you have an integration that needs access to a specific resource or collection. It also minimizes pressure to reuse security codes that have scope that is broader than necessary.</p>
+<h3>Use case: Domain-wide access</h3>
+<p>In general, we recommend using levels of access that are as low as possible. However, in certain cases, it makes sense to create a security code with <strong>domain-admin levels of access</strong>. For example, you might have an auditing tool that needs to fetch all the audits for all the libraries. Or you might have a dedicated integration between AODocs and an internal CRM, and you want to update some AODocs documents whenever something happens in the CRM. Or any other <strong>carefully designed and secured integration</strong>.</p>
+<p>Additionally, some <strong>support/troubleshooting</strong> scenarios also require domain-admin privileges, but <strong>only with an explicit expiration date</strong>.</p>
+<p>Whatever the exception, make sure that the choice is made deliberately, with thorough consideration of the risks involved.</p>
+<h2>Use the security code</h2>
+<p>When you're playing with the API Explorer, it sends the security code you provide as a <strong><em>query parameter</em></strong>. However, when you start coding to communicate directly with the API, we recommend you send it as a <strong><em>header parameter</em></strong>.</p>
+<h3>Send the security code as a header parameter (recommended)</h3>
+<blockquote>
+<p>⭑   Note: We strongly recommend this method because query parameters get captured by web server logs, whereas headers do not.</p>
+</blockquote>
+<p>Send the security code in the header as follows:</p>
+<pre><code class="language-yaml">Authorization: securityCode [YOUR SECURITY CODE]
+</code></pre>
+<h4>Example request with security code as header parameter</h4>
+<pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/document/v1/ \ HTTP/1.1
+
+Authorization: securityCode [YOUR_SECURITY_CODE] \
+Content-Type: application/json \
+</code></pre>
+<pre><code class="language-json">{
+  &quot;libraryId&quot;: &quot;Rngc1ug8K6WmL3IjZ8&quot;
+}
+</code></pre>
+<p>If you've started working with the API client factory which we provide with the Java API client, <a href="https://github.com/AODocs-Dev/aodocs-api-java-clients/blob/master/aodocs-api-client-factory/src/main/java/com/altirnao/aodocs/api/client/AODocsApiClientFactory.java#L88">you can use this feature out of the box</a>.</p>
+<h3>Not recommended: Sending the security code as a query parameter</h3>
+<blockquote>
+<p>⭑   Note: Unless you are protected by a sandbox (such as the API Explorer), we recommend that you do not send your security code as a query parameter. Query parameters tend to get recorded and become exposed in web server logs, ultimately presenting a security risk.</p>
+</blockquote>
+<p>To send the security code as a query parameter, append the security code to the query as follows:</p>
+<pre><code class="language-yaml">securityCode=[YOUR SECURITY CODE]
+</code></pre>
+<h4>Example request with security code as query parameter</h4>
+<pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/document/v1/Rn5...aBvSQ?securityCode=12345likemyluggage
+</code></pre>
+<h3>Authentication errors with security codes</h3>
+<p>Security code errors occur only when the security code is:</p>
+<ul>
+<li>missing</li>
+<li>incorrect</li>
+<li>expired</li>
+</ul>
+<p>To create, manage, and troubleshoot your security codes, see the aforementioned <a href="https://support.aodocs.com/hc/en-us/articles/205650054-Manage-security-codes">Manage security codes</a> article in the AODocs Knowledge Base.</p>
+</body></html>

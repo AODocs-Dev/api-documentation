@@ -1,1 +1,0 @@
-TODO Reuse 70-Resources of note.md

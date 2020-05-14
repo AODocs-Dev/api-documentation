@@ -1,0 +1,101 @@
+<html lang="en"><head><meta charset="UTF-8"><title>About API resources</title></head><body><h1>About API resources</h1>
+<p>An AODocs object such as a document or a library is a logical grouping of metadata arranged to serve an organizational purpose.</p>
+<p>An AODocs resource is a schematic model of an AODocs object. It's a map of how individual instances of the object are pieced together as fields and array fields of bits of data.</p>
+<p>AODocs adheres loosely to the Resource-oriented API designed <a href="https://cloud.google.com/apis/design/resources">as defined by Google</a>, so you might find similarities in AODocs API resources and resources from the Drive API for example.</p>
+<p>In AODocs APIs, a particular instance of a resource has a JSON-formatted representation , which gets sent back and forth between the server and the client, and the server uses the representation to manipulate the resource itself.</p>
+<p>The fields of a representation include, but are not limited to the following:</p>
+<ul>
+<li>Unique identifiers</li>
+<li>Common global system fields like creation or modification date, name, last modifying user (these concepts are not necessarily named the same way)</li>
+<li>Specific (custom) fields</li>
+<li>References by ID to other resources (library ID in a document for example)</li>
+<li>A listing of any subresources (if applicable)</li>
+</ul>
+<h3>An example resource (library)</h3>
+<pre><code class="language-json">{
+    &quot;kind&quot;: &quot;aodocs#library&quot;,
+    &quot;libraryId&quot;: &quot;PHOv3s48xfbgjJa22iA&quot;,
+    &quot;name&quot;: &quot;Corporate Files&quot;,
+    &quot;name_i18n&quot;: &quot;Corporate Files&quot;,
+    &quot;domainName&quot;: &quot;test.aodocs.com&quot;,
+    &quot;lastModified&quot;: &quot;1556010506520&quot;,
+    &quot;lastConfigModified&quot;: &quot;1556010506520&quot;,
+    &quot;createdAt&quot;: &quot;1435948376818&quot;,
+    &quot;daysBeforeDelete&quot;: 30,
+    &quot;welcomeText&quot;: &quot;&lt;p&gt;Hello world!&lt;/p&gt;&quot;,
+    &quot;storageAdmin&quot;: &quot;aodocs-aodocs@test.altirnao.com&quot;,
+    &quot;documentTypes&quot;: {
+        &quot;kind&quot;: &quot;aodocs#classList&quot;,
+        &quot;items&quot;: [
+            {
+                &quot;kind&quot;: &quot;aodocs#classId&quot;,
+                &quot;name&quot;: &quot;Document&quot;,
+                &quot;name_i18n&quot;: &quot;Document&quot;,
+                &quot;value&quot;: &quot;PHOv3eF9uERXEP6NFb&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+<h2>Non-resources</h2>
+<h3>Subresources</h3>
+<p>In AODocs APIs, a <strong>subresource</strong> is an <strong>attribute</strong> of a resource. It is resource-like only in that it has a schema and can be represented in JSON. However, no methods operate on it directly, and it cannot exist on its own, without its parent resource. <code>ApiPermission</code> and <code>ApiLibraryPermission</code> are good examples of subresources: you can alter them only as part of the resource they belong to.</p>
+<h3>Collections</h3>
+<p>An AODocs <strong>collection</strong> is a <strong>list</strong> of resources or subresources. It is not a resource by itself in the context of AODocs APIs. What makes a collection meaningful is what it lists. A list of documents (<code>ApiDocumentList</code>) is one example of a resource collection. A list of libraries (<code>ApiLibraryList</code>) is another. Meanwhile, <code>ApiLibraryPermissionList</code> is a <strong>collection</strong> of <strong>subresources</strong> (permissions for a specific library).</p>
+<blockquote>
+<p>⭑  <strong>Note</strong>: Requests for collections often return too many results and are best handled using <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a>.</p>
+</blockquote>
+<h2>Collections vs. resources vs. subresources</h2>
+<p>One way to explore what makes a collection different from a resource or a subresource is to use the example of permissions. Permissions are subresources that can be listed both as a collection or as part of a resource. Both the <code>ApiLibraryPermissionsList</code> and the <code>ApiLibrary</code> resource contain an array field of permissions: the former exclusively, the latter as part of its larger construct.</p>
+<p>You can get a library's list of permissions in two ways:</p>
+<ul>
+<li><code>GET</code> an <code>ApiLibraryPermissionsList</code> (collection) for that specific library</li>
+<li><code>GET</code> that specific <code>ApiLibrary</code> (resource) and use the <code>fields</code> field to return only the list of permissions for that specific library</li>
+</ul>
+<p>The result looks the same in both cases:</p>
+<pre><code class="language-json">{
+    &quot;kind&quot;: &quot;aodocs#libraryPermissionList&quot;,
+    &quot;permissions&quot;: [
+    {
+        &quot;kind&quot;: &quot;aodocs#libraryPermission&quot;,
+        &quot;type&quot;: &quot;user&quot;,
+        &quot;role&quot;: &quot;admin&quot;,
+        &quot;value&quot;: &quot;martin@test.altirnao.com&quot;,
+        &quot;withLink&quot;: false,
+        &quot;name&quot;: &quot;Martin&quot;,
+    },
+    {
+        &quot;kind&quot;: &quot;aodocs#libraryPermission&quot;,
+        &quot;type&quot;: &quot;user&quot;,
+        &quot;role&quot;: &quot;admin&quot;,
+        &quot;value&quot;: &quot;aodocs.max@test.altirnao.com&quot;,
+        &quot;withLink&quot;: false,
+        &quot;name&quot;: &quot;AODocs Files&quot;,
+    },
+    {
+        &quot;kind&quot;: &quot;aodocs#libraryPermission&quot;,
+        &quot;type&quot;: &quot;user&quot;,
+        &quot;role&quot;: &quot;admin&quot;,
+        &quot;value&quot;: &quot;bob@altirnao.com&quot;,
+        &quot;withLink&quot;: false,
+        &quot;name&quot;: &quot;Bob&quot;,
+    }
+]
+}
+</code></pre>
+<blockquote>
+<p>⭑  <strong>Note</strong>: By definition, a collection contains at least one <strong>array field</strong>. And, unlike subresources, it is used by at least one method.</p>
+</blockquote>
+<h2><strong>How to interact with resources</strong></h2>
+<p>An AODocs resource lives on the resource server. You interact with the resource by sending requests to the server to operate on it. The server performs the requested operation and sends back the result.</p>
+<p>Most of the time, you include in your request a subset of the resource:</p>
+<ul>
+<li>When creating a resource (with a <code>PUT</code>) or updating it fully (with a <code>POST</code>), you are not required to send the complete resource, as most fields have a default value.</li>
+<li>If you need to update a resource <em>partially</em> (with a <code>PATCH</code> request), send an abridged representation of the resource in question (such as <code>ApiDocument</code>) to the server, specifying just the parts you want altered.</li>
+</ul>
+<p>In all cases, the server parses your abridged <em>request resource</em>, maps your fields to the fields of its <em>resident resource</em>, possibly fills some fields with their default values, and reconciles the request and resident resources using the operation you specify. If successful, the complete resulting resource is sent back to you to consume.</p>
+<h2>Common AODocs resources and collections</h2>
+<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">Resource: ApiDocument</a> (an AODocs document)</p>
+<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">Collection: ApiLibraryList</a> (a list of libraries)</p>
+<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType">Resource: ApiDocumentType</a> (the class/type of an AODocs document)</p>
+</body></html>

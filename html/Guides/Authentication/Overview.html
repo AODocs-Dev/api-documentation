@@ -1,0 +1,32 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Overview</title></head><body><h1>Authentication</h1>
+<p>Every request sent to the AODocs <strong>API</strong> must include some method of authentication to verify the identity of a <strong>Google user with access to AODocs</strong>, and to authorize any activity done on their behalf. This is required regardless of whether the <strong>API requestor</strong> is a person manually interacting with the API portal; or a client app interacting on their behalf.</p>
+<p><img src="/img/api-relationship2.png" alt="api-auth-model" /></p>
+<p>Figure: Auth model</p>
+<h2>Available authentication mechanisms</h2>
+<p>You can gain credentials to be authenticated with AODocs APIs in two ways, depending on your circumstances and needs:</p>
+<ul>
+<li>AODocs security code (quickest for internal testing, but least secure) that is a mechanism specific to the AODocs API</li>
+<li>Bearer tokens (in OAuth 2.0 or JWT format) that are issued by Google and can be used for any Google-compatible API (including the AODocs API)</li>
+</ul>
+<h3>Security code</h3>
+<p>This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Security%20code">access APIs with AODocs security code</a>.</p>
+<h3>Bearer tokens (access or ID tokens)</h3>
+<p>Access or ID tokens sent in the request header are the robust, secure mechanism to authenticate with AODocs APIs and consequently gain access to both AODocs and Google Drive APIs.  Obtaining <strong>access tokens</strong> takes more work with more server calls, but they can also have authorization scopes, like access to Drive or Gmail APIs; meanwhile, <strong>ID tokens</strong> are self-contained and can be verified in place, but they only convey the identity of the user it was issued for.</p>
+<blockquote>
+<p>⭑   Note: Unlike the plug-and-play functionality of the AODocs security code, access tokens require whitelisting GCP client IDs in AODocs.</p>
+</blockquote>
+<p>Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/20-Access%20tokens">access AODocs APIs with access and ID tokens</a>.</p>
+<h2>What to use when</h2>
+<p>There are several distinct use cases for authenticating and authorizing API access with AODocs, each with its own requirements and approaches.</p>
+<p>The <strong>quickest</strong> way to get started is with the <strong>security code</strong> method, but it can be used only on <strong>AODocs APIs</strong>, not Google Drive APIs.</p>
+<p>If you need to interact with the <strong>Google Drive API</strong> as well as the <strong>AODocs API</strong>, you have to use an access token that authorizes access via <a href="https://developers.google.com/drive/api/v2/about-auth">at least one Drive scope</a>.</p>
+<p>The AODocs API only requires the identity scope “<a href="https://www.googleapis.com/auth/userinfo.email">https://www.googleapis.com/auth/userinfo.email</a>” in access tokens.</p>
+<p>Finally, if you need robust and secure access to <strong>AODocs APIs-only</strong> (without being able to access Drive APIs), you have the option of ID tokens.</p>
+<!-- See [additional authentication use cases](https://drive.google.com/a/altirnao.com/open?id=1VN1XZqFUCHNNG7Ya278gFxx4jaIp-6LKAs17JEoedhY). -->
+<h2>General principles</h2>
+<p>Make sure you provide to your users a level of API access that is functional but <strong>least-elevated possible</strong>, raising their level temporarily only when necessary.</p>
+<blockquote>
+<p>⭑   Note: Because of risk-benefit ratios, giving users more permissions than they actually need is rarely recommended. Therefore, for security reasons, we strongly encourage the use of the lowest possible levels of access, in this case user-level.</p>
+</blockquote>
+<p>Read more about the <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">principle of least privilege</a>.</p>
+</body></html>

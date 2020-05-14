@@ -1,0 +1,21 @@
+<html lang="en"><head><meta charset="UTF-8"><title>Delete document</title></head><body><h1>Delete a specific document by ID</h1>
+<p>You can delete a specific document if you have its <code>documentId</code>. You can either delete it permanently, or just send it to Trash. You can retrieve it from the Trash, or leave it there and it will get deleted after some designated amount of time.</p>
+<h2>Method and API</h2>
+<p>Play with the API Explorer:</p>
+<h2><a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">DELETE /document/v1/{documentId}</a></h2>
+<h2>Guidelines</h2>
+<h3>Request</h3>
+<p>Only <code>documentId</code> is mandatory, and it must be an AODocs <code>documentId</code> not a Drive <code>fileId</code>.</p>
+<blockquote>
+<p>⭑ <strong>Note</strong>: To get an AODocs document (including its <code>documentId</code>) by the Drive ID of one of its attachments, use the <code>GET /document/v1/drive/{driveId}</code> method.</p>
+</blockquote>
+<h3>Sample request</h3>
+<pre><code class="language-yaml">DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
+</code></pre>
+<h3>Response</h3>
+<p>Because this is a deletion of a resource, there is no resource to return in the response. The response returns an HTTP code of <code>204 (NO CONTENT)</code>.</p>
+<h3>Sample response</h3>
+<pre><code class="language-yaml">204
+</code></pre>
+<hr />
+</body></html>
