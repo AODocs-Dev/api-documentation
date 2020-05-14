@@ -1,4 +1,4 @@
-# Introduction to resources
+# About API resources
 
 An AODocs object such as a document or a library is a logical grouping of metadata arranged to serve an organizational purpose.
 

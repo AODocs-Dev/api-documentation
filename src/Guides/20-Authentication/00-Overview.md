@@ -1,4 +1,4 @@
-# Overview
+# Authentication
 
 Every request sent to the AODocs **API** must include some method of authentication to verify the identity of a **Google user with access to AODocs**, and to authorize any activity done on their behalf. This is required regardless of whether the **API requestor** is a person manually interacting with the API portal; or a client app interacting on their behalf.
 

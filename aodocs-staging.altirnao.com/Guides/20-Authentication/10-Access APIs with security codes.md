@@ -1,4 +1,4 @@
-# Access APIs with AODocs security code
+# Access APIs with security codes
 
 Security codes are the quickest way to authenticate with AODocs APIs. You create the security code in the AODocs Domain administration page, then you pass it along with each request as a **header parameter** to identify yourself.
 

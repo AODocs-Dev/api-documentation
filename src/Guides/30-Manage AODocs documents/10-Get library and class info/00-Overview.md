@@ -1,4 +1,4 @@
-# Overview
+# Get library and class info
 
 Get all the IDs you need by getting or listing your resources as follows:
 

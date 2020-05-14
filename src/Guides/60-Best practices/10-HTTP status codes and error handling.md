@@ -1,4 +1,4 @@
-# HTTP status codes and error scenarios
+# HTTP status codes and error handling
 
 The HTTP status code that comes back along with the response indicates whether your request **succeeded**, **failed**, or **something else happened**.
 
