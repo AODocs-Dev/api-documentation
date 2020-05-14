@@ -1,6 +1,6 @@
 # Modify document attachments
 
-Using AODocs APIs, you can modify the document resource using the `PATCH` operation. You can modify attachments as well as [system and custom fields](docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties). To modify the list of document attachments (i.e. references to Drive files), use `PATCH` to replace/overwrite the `attachments[]` array field of the target resource.
+Using AODocs APIs, you can modify the document resource using the `PATCH` operation. You can modify attachments as well as [system and custom fields](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties). To modify the list of document attachments (i.e. references to Drive files), use `PATCH` to replace/overwrite the `attachments[]` array field of the target resource.
 
 In general, modifying is perfectly benign. However, things carry extra risk with any parts of the resource arranged in arrays. Using the `attachments` array field in DMS documents, is one example; however, the caution extends to any request containing array fields.
 

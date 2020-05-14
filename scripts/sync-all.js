@@ -54,10 +54,13 @@ function copyToWiki(folderPath, section) {
     finalSection = folderPath.substring(folderPath.lastIndexOf('/') + 1);
   }
   finalSection = finalSection.replace(/^\d{2}-/, '');
-  //TODO prefix all images src's with "https://github.com/AODocs-Dev/api-documentation/blob/master/src"
-  //TODO replace internal link
   fs.mkdirSync(`${finalFolder}`, {recursive: true});
-  fs.copyFileSync(`src/${folderPath}/${section}.md`, `${finalFolder}/${finalSection}.md`);
+  let original = fs.readFileSync(`src/${folderPath}/${section}.md`, {encoding: "utf8"});
+  let replaced = original.replace(/\(\/img\/(.+)\)/g, 
+      '(https://github.com/AODocs-Dev/api-documentation/blob/master/src/img/$1)');
+  replaced = replaced.replace(/\(\/docs\/aodocs-staging.altirnao.com\/1\/c\/Guides\/([^/)]+\/)*([^)]+)\)/g, 
+      '(https://github.com/AODocs-Dev/api-documentation/wiki/$2)');
+  fs.writeFileSync(`${finalFolder}/${finalSection}.md`, replaced.replace(/\/\d{2}-/g, '/'));
 }
 
 function checkLinks(folderPath, section, navigation) {
@@ -98,8 +101,6 @@ function copyToService(folderPath, section, service) {
   let replaced = original.replace(/\(\/docs\/aodocs-staging.altirnao.com\/1\/([^)]+)\)/g, 
       (match, suffix) => `(/docs/${service}/1/${suffix.replace(/\/\d{2}-/g, '/')})`);
   fs.writeFileSync(`${service}/${finalFolder}/${finalSection}.md`, replaced);
-  //TODO replace inner links
-  //TODO replace links to the API explorer (Resources and Reference)
 }
 
 //cleanup
@@ -154,7 +155,6 @@ fs.writeFileSync('wiki/_Sidebar.md',
 
 let finalNav = yaml.safeDump(navigation).replace(/\d{2}-/g, '');
 services.forEach(service => {
-  //TODO change the navigation.yaml to rename nodes
   fs.writeFileSync(`${service}/navigation.yaml`, finalNav);
   fs.mkdirSync(`${service}/img`);
   fs.readdirSync('src/img').forEach(img => fs.copyFileSync(`src/img/${img}`, `${service}/img/${img}`));
