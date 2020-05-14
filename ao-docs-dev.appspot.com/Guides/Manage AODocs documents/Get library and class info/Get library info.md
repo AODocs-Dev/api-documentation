@@ -6,10 +6,10 @@ Once your libraries exist, you can list them to get an idea of where to place yo
 
 The most useful methods to list and get libraries are the following:
 
-*   [List libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put) (legacy v1)
-*   [List and search libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get) (v2beta1)
-*   [List libraries plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) (alternative to List libraries)
-*   [Get a specific library by ID](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+*   [List libraries](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/put) (legacy v1)
+*   [List and search libraries](/docs/ao-docs-dev.appspot.com/1/routes/library/v2beta1/search/get) (v2beta1)
+*   [List libraries plain](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/plain/put) (alternative to List libraries)
+*   [Get a specific library by ID](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/%7BlibId%7D/get)
 
 What follows are elaborations on these methods.
 
@@ -24,7 +24,7 @@ To list target libraries on your domain, select a target library for your AODocs
 
 Play with the API Explorer:
 
-#### [PUT /library/v1](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put)
+#### [PUT /library/v1](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/put)
 
 ### Usage/notes/guidelines
 
@@ -40,12 +40,12 @@ This method has no mandatory parameters, but without setting any filtering it tr
 PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 ```
 
-Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
+Alternatively use the [List plain libraries](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
 
 
 #### Response
 
-The response returns an [ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
+The response returns an [ApiLibraryList](/docs/ao-docs-dev.appspot.com/1/types/ApiLibraryList) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
 
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
@@ -95,7 +95,7 @@ This method allows you to search for target libraries on your domain with string
 
 Play with the API Explorer:
 
-#### [GET /search/v2beta1/search](/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get)
+#### [GET /search/v2beta1/search](/docs/ao-docs-dev.appspot.com/1/routes/library/v2beta1/search/get)
 
 
 ### Usage/notes/guidelines
@@ -182,7 +182,7 @@ If you want information in addition to the default `nothing` setting, change the
 
 **`pageToken`**
 
-This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes. If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
+This parameter is used for [pagination](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/Performance%20considerations) purposes. If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
 
 #### Sample request (no parameters: list all)
 
@@ -190,7 +190,7 @@ This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Gu
 GET https://aodocs.altirnao.com/api/library/v2beta1/search
 ```
 
-Alternatively use the [List plain libraries](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
+Alternatively use the [List plain libraries](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/plain/put) method (see below) to get just the key-value pairs of `name` and `id`.
 
 
 #### Sample request (specific search)
@@ -202,7 +202,7 @@ GET https://aodocs.altirnao.com/api/library/v2beta1/search?query=001&minimumCurr
 
 #### Response
 
-The response returns an [ApiLibrarySearchResultList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList) resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means "all").
+The response returns an [ApiLibrarySearchResultList](/docs/ao-docs-dev.appspot.com/1/types/ApiLibrarySearchResultList) resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means "all").
 
 Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
 
@@ -267,7 +267,7 @@ Learn more about [navigating homepages](https://support.aodocs.com/hc/en-us/arti
 
 ## List libraries plain (alternative to List libraries)
 
-If you only need the library name and ID in the response, then you can use the plain library list ([ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) as an alternative to the full library list ([ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList). It is usually much faster than the standard library list API method, but returns much less information.
+If you only need the library name and ID in the response, then you can use the plain library list ([ApiPlainLibraryList](/docs/ao-docs-dev.appspot.com/1/types/ApiPlainLibraryList) as an alternative to the full library list ([ApiLibraryList](/docs/ao-docs-dev.appspot.com/1/types/ApiLibraryList). It is usually much faster than the standard library list API method, but returns much less information.
 
 
 ### Method and API
@@ -275,7 +275,7 @@ If you only need the library name and ID in the response, then you can use the p
 Play with the API Explorer:
 
 
-#### [PUT /library/v1/plain](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put)
+#### [PUT /library/v1/plain](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/plain/put)
 
 
 ### Usage/notes/guidelines
@@ -296,7 +296,7 @@ PUT https://aodocs.altirnao.com/api/library/v1/plain
 
 #### Response
 
-The response returns an [ApiPlainLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
+The response returns an [ApiPlainLibraryList](/docs/ao-docs-dev.appspot.com/1/types/ApiPlainLibraryList) resource, listing all libraries accessible to you on the domain, but only listing the following for each:
 
 *   library name
 *   library ID
@@ -342,7 +342,7 @@ You can retrieve to parse something from its metadata (or to confirm it exists) 
 Play with the API Explorer:
 
 
-#### [GET /library/{libId}](/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get)
+#### [GET /library/{libId}](/docs/ao-docs-dev.appspot.com/1/routes/library/v1/%7BlibId%7D/get)
 
 
 ### Usage/notes/guidelines
@@ -362,7 +362,7 @@ GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 
 #### Response
 
-The response returns an [ApiLibrary](/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
+The response returns an [ApiLibrary](/docs/ao-docs-dev.appspot.com/1/types/ApiLibrary) resource, listing the library associated with the provided library ID.
 
 Response fields of note:
 

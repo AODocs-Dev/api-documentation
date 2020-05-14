@@ -45,4 +45,4 @@ The protocol that Google Drive API requires to authenticate your app users. If y
 
 ## Next steps
 
-In the _Key concepts_ section you can read more about [AODocs basics](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs), as well as about leveraging [concepts and components of AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) to accomplish your goals.
+In the _Key concepts_ section you can read more about [AODocs basics](/docs/ao-docs-dev.appspot.com/1/c/Guides/Key%20concepts/Basics%20of%20AODocs), as well as about leveraging [concepts and components of AODocs APIs](/docs/ao-docs-dev.appspot.com/1/c/Guides/Key%20concepts/Basics%20of%20AODocs%20APIs) to accomplish your goals.

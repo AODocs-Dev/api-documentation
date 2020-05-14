@@ -25,7 +25,7 @@ There are two cases to consider:
 
 Play with the API Explorer:
 
-### [PATCH /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
+### [PATCH /document/v1/{documentId}](/docs/aodocs.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch)
 
 
 ## Guidelines
@@ -70,7 +70,7 @@ For example, if you have an existing DMS document with one attachment, but want 
 
 Therefore, if you do not need to change anything to do with attachments, do not send the `attachments` array field at all. This ensures that the `attachments` array field in the resource on the server remains unmodified, keeping your attachments as they are.
 
-> 💡 **Tip**: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation which returns the `ApiDocument` resource in full (or partial if you used the `fields` field to [filter the response](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations). This is the same result as sending a `GET` request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.
+> 💡 **Tip**: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous `PATCH` operation which returns the `ApiDocument` resource in full (or partial if you used the `fields` field to [filter the response](/docs/aodocs.altirnao.com/1/c/Guides/Best%20practices/Performance%20considerations). This is the same result as sending a `GET` request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.
 
 > ⭑ **Note**: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the `attachments` array fields are generalizable to other array fields.
 
@@ -131,7 +131,7 @@ PATCH https://aodocs.altirnao.com/api/document/v1/RsjbYc788vqY6WDeUnM
 
 ### Response
 
-The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the `attachments` array field in your request, the response includes the new content.
+The response returns an [ApiDocument](/docs/aodocs.altirnao.com/1/types/ApiDocument) resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the `attachments` array field in your request, the response includes the new content.
 
 
 ### Sample response

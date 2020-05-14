@@ -1,15 +1,10 @@
 # List and search documents
 
 In this section, we explore the following:
-
-* [Get document by ID](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/30-Get%20document%20by%20ID)
-
-* [List documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/40-List%20documents)
-
-* [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
-
-* [Search documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
-
+* Get document by ID
+* List documents in a library
+* Count documents in a library
+* Search documents from a specific class
 
 ---
 
@@ -24,7 +19,7 @@ You can retrieve (the configuration of) a specific document to parse something f
 
 Play with the API Explorer:
 
-### [GET /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+### [GET /document/v1/{documentId}](/docs/aodocs.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
 
 ## Guidelines
 
@@ -50,7 +45,7 @@ GET https://aodocs.altirnao.com/api/document/v1/RnTzVT28x5Sb48h3vSQ?fields=libra
 
 ### Response
 
-The response returns an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ```id```, and its class is what you specified in the request, else of the library's default type.
+The response returns an [ApiDocument](/docs/aodocs.altirnao.com/1/types/ApiDocument) resource, listing the document associated with the provided document ID. The document's ID is ```id```, and its class is what you specified in the request, else of the library's default type.
 
 ### Sample Response
 
@@ -136,7 +131,7 @@ You can count the number of documents associated with a particular library (and 
 
 Play with the API Explorer:
 
-### **[POST /search/v1/libraries/{libraryId}/count](/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/count/post)**
+### **[POST /search/v1/libraries/{libraryId}/count](/docs/aodocs.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/count/post)**
 
 ## **Usage/notes/guidelines**
 
@@ -153,7 +148,7 @@ POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/cou
 
 ### **Response**
 
-The response returns an [ApiDocumentCount](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentCount) resource, giving a count of all documents associated with the specified library (and class if you specified the ```classId```).
+The response returns an [ApiDocumentCount](/docs/aodocs.altirnao.com/1/types/ApiDocumentCount) resource, giving a count of all documents associated with the specified library (and class if you specified the ```classId```).
 
 ### Sample response
 
@@ -178,7 +173,7 @@ You can search for documents associated with a particular library and a particul
 Play with the API Explorer:
 
 
-### [POST /search/v1/libraries/{libraryId}/search](/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/search/post)
+### [POST /search/v1/libraries/{libraryId}/search](/docs/aodocs.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/search/post)
 
 ## Usage/notes/guidelines
 
@@ -205,7 +200,7 @@ POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVWqiT8059P4t8aVYI/sea
 
 ### Response
 
-The response returns an [ApiSearchResult](/docs/aodocs-staging.altirnao.com/1/types/ApiSearchResult) resource, listing all documents that match the specified query.
+The response returns an [ApiSearchResult](/docs/aodocs.altirnao.com/1/types/ApiSearchResult) resource, listing all documents that match the specified query.
 
 
 ### Sample response

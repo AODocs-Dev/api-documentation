@@ -1,15 +1,10 @@
 # List and search documents
 
 In this section, we explore the following:
-
-* [Get document by ID](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/30-Get%20document%20by%20ID)
-
-* [List documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/40-List%20documents)
-
-* [Count documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/45-Count%20documents)
-
-* [Search documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/30-List%20and%20search%20documents/50-Search%20documents)
-
+* Get document by ID
+* List documents in a library
+* Count documents in a library
+* Search documents from a specific class
 
 ---
 

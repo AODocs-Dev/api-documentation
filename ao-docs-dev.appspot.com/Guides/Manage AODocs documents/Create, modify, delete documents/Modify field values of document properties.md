@@ -223,7 +223,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 In a document resource, custom fields are found inside the ```fields``` array.
 
-> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the [Modify document attachments](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments) page.
+> ⚠ **Warning/Alert**: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the [Modify document attachments](/docs/ao-docs-dev.appspot.com/1/c/Guides/Manage%20AODocs%20documents/Create,%20modify,%20delete%20documents/Modify%20document%20attachments) page.
 
 Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.
 

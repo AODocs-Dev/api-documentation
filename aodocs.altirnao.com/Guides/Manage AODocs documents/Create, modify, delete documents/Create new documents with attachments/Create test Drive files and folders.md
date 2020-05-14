@@ -40,6 +40,6 @@ Make note of the **Drive file ID**: it and the **AODocs document ID** are the tw
 
 ## Next steps
 
-Use a Drive file to [create a new AODocs document with an attachment](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file).
+Use a Drive file to [create a new AODocs document with an attachment](/docs/aodocs.altirnao.com/1/c/Guides/Manage%20AODocs%20documents/Create,%20modify,%20delete%20documents/Create%20new%20documents%20with%20attachments/Create%20new%20document%20and%20attach%20Drive%20file).
 
 ---

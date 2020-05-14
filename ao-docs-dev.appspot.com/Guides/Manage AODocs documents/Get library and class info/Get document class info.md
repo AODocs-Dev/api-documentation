@@ -4,8 +4,8 @@ Libraries contain documents of various types. These document types, defined ahea
 
 These methods are useful when working with classes:
 
-*   [List all available AODocs classes in a specific library](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
-*   [Get a specific class](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+*   [List all available AODocs classes in a specific library](/docs/ao-docs-dev.appspot.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+*   [Get a specific class](/docs/ao-docs-dev.appspot.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
 What follows is an elaboration on each of these methods.
 
@@ -21,7 +21,7 @@ You can list available target classes for your documents as follows:
 
 Play with the API Explorer:
 
-### [PUT /documentType/v1/libraries/{libraryId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
+### [PUT /documentType/v1/libraries/{libraryId}](/docs/ao-docs-dev.appspot.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get)
 
 
 ### Guidelines
@@ -50,7 +50,7 @@ To return just the bare minimum of class ID and displayName in the response, you
 
 #### Response
 
-The response returns an [ApiDocumentTypeList](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
+The response returns an [ApiDocumentTypeList](/docs/ao-docs-dev.appspot.com/1/types/ApiDocumentTypeList) resource, listing all document classes available as part of the specified library.
 
 Response fields of note:
 
@@ -128,7 +128,7 @@ You can retrieve (the configuration of) a specific class/documentType to confirm
 
 Play with the API Explorer:
 
-### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
+### [GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}](/docs/ao-docs-dev.appspot.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get)
 
 In the command above:
 
@@ -150,7 +150,7 @@ GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86a
 
 #### Response
 
-The response returns an [ApiDocumentType](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) resource, listing the specified class.
+The response returns an [ApiDocumentType](/docs/ao-docs-dev.appspot.com/1/types/ApiDocumentType) resource, listing the specified class.
 
 Response fields of note:
 

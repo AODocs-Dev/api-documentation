@@ -15,7 +15,7 @@ You can gain credentials to be authenticated with AODocs APIs in two ways, depen
 
 ### Security code
 
-This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to [access APIs with AODocs security code](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Security%20code).
+This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to [access APIs with AODocs security code](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Access%20APIs%20with%20security%20codes).
 
 
 ### Bearer tokens (access or ID tokens)
@@ -24,7 +24,7 @@ Access or ID tokens sent in the request header are the robust, secure mechanism 
 
 > ⭑   Note: Unlike the plug-and-play functionality of the AODocs security code, access tokens require whitelisting GCP client IDs in AODocs.
 
-Read more about how to [access AODocs APIs with access and ID tokens](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/20-Access%20tokens).
+Read more about how to [access AODocs APIs with access and ID tokens](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/20-Access%20APIs%20with%20Bearer%20tokens).
 
 
 ## What to use when

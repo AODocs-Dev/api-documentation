@@ -1,8 +1,9 @@
-let yaml = require('js-yaml');
-let fs = require('fs');
-let commonmark = require('commonmark');
-let reader = new commonmark.Parser();
-let writer = new commonmark.HtmlRenderer();
+const assert = require('assert').strict;
+const yaml = require('js-yaml');
+const fs = require('fs');
+const commonmark = require('commonmark');
+const reader = new commonmark.Parser();
+const writer = new commonmark.HtmlRenderer();
 
 const services = [
   'ao-docs-dev.appspot.com',
@@ -24,9 +25,9 @@ function walkNode(folderPath, navigationNode, onFile) {
   let folderNames = Object.keys(navigationNode.folders || {});
   navigationNode.ordering.forEach(section => {
     if (folderNames.includes(section)) {
-      console.assert(folders.includes(section), `parent section ${section} does not have corresponding folder`);
+      assert(folders.includes(section), `parent section ${section} does not have corresponding folder`);
     } else {
-      console.assert(files.includes(`${section}.md`), `leaf section ${section} does not have corresponding md file`);
+      assert(files.includes(`${section}.md`), `leaf section ${section} does not have corresponding md file`);
       onFile(folderPath, section);
     }
   })
@@ -59,11 +60,44 @@ function copyToWiki(folderPath, section) {
   fs.copyFileSync(`src/${folderPath}/${section}.md`, `${finalFolder}/${finalSection}.md`);
 }
 
+function checkLinks(folderPath, section, navigation) {
+  let original = fs.readFileSync(`src/${folderPath}/${section}.md`, {encoding: "utf8"});
+  original.replace(/\(\/docs\/aodocs-staging.altirnao.com\/1\/([^)]+)\)/g, (match, suffix) => {
+    if (suffix.startsWith('c/Guides/')) {
+      let node = navigation;
+      let elements = suffix.split('/')
+      elements.shift();
+      elements.shift();
+      while (elements.length !== 0) {
+        if (!node) {
+          assert(false, `${section} has an invalid link: ${match}`);
+        }
+        let element = elements[0].replace(/%20/g, ' ');
+        assert(node.ordering.includes(element), `${section} has an invalid link: ${match}`);
+        node = node.folders && node.folders[element];
+        elements.shift();
+      }
+    }
+    return match;
+  })
+}
+
+function checkImages(folderPath, section) {
+  let original = fs.readFileSync(`src/${folderPath}/${section}.md`, {encoding: "utf8"});
+  original.replace(/\(\/img\/(.+)\)/g, (match, image) => {
+    assert(fs.existsSync(`src/img/${image}`), `${section} has an invalid image: ${match}`);
+    return match;
+  });
+}
+
 function copyToService(folderPath, section, service) {
   let finalFolder = folderPath.replace(/\/\d{2}-/g, '/');
   fs.mkdirSync(`${service}/${finalFolder}`, {recursive: true});
   let finalSection = section.replace(/\d{2}-/, '');
-  fs.copyFileSync(`src/${folderPath}/${section}.md`, `${service}/${finalFolder}/${finalSection}.md`);
+  let original = fs.readFileSync(`src/${folderPath}/${section}.md`, {encoding: "utf8"});
+  let replaced = original.replace(/\(\/docs\/aodocs-staging.altirnao.com\/1\/([^)]+)\)/g, 
+      (match, suffix) => `(/docs/${service}/1/${suffix.replace(/\/\d{2}-/g, '/')})`);
+  fs.writeFileSync(`${service}/${finalFolder}/${finalSection}.md`, replaced);
   //TODO replace inner links
   //TODO replace links to the API explorer (Resources and Reference)
 }
@@ -76,11 +110,12 @@ fs.rmdirSync("wiki/Guides", {recursive: true});
 let navigation = yaml.safeLoad(fs.readFileSync('src/navigation.yaml', 'utf8'));
 
 walkNode("Guides", navigation.folders["Guides"], (folderPath, section) => {
-      //TODO validate images
+      checkLinks(folderPath, section, navigation.folders["Guides"]);
+      checkImages(folderPath, section);
       generateHtml(folderPath, section);
       copyToWiki(folderPath, section);
       services.forEach(service => {
-        copyToService(folderPath, section, service);
+        copyToService(folderPath, section, service, navigation.folders["Guides"]);
       });
     }
 );

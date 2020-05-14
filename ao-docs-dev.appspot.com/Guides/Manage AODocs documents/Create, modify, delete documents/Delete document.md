@@ -6,7 +6,7 @@ You can delete a specific document if you have its `documentId`. You can either 
 
 Play with the API Explorer:
 
-## [DELETE /document/v1/{documentId}](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+## [DELETE /document/v1/{documentId}](/docs/ao-docs-dev.appspot.com/1/routes/document/v1/%7BdocumentId%7D/get)
 
 ## Guidelines
 ### Request

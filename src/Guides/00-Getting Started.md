@@ -2,7 +2,7 @@
 
 ## Before you begin
 
-You should have access to an AODocs instance and understand some [AODocs fundamentals](/docs/aodocs-staging.altirnao.com/1/c/Fundamentals/Basics%20of%20AODocs), as well as some basic concepts underlying [AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Basics%20of%20AODocs%20APIs) (and RESTful APIs in general).
+You should have access to an AODocs instance and understand some [AODocs fundamentals](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/10-Basics%20of%20AODocs), as well as some basic concepts underlying [AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/10-Key%20concepts/20-Basics%20of%20AODocs%20APIs) (and RESTful APIs in general).
 
 ## Using the API
 

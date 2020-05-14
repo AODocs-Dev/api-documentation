@@ -120,7 +120,7 @@ They are returned as **the response body** when a request is successful. Usually
 
 > ⭑  **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
-Read more about [AODocs resources](/docs/aodocs-staging.altirnao.com/1/c/Guides/70-Resources%20of%20note/00-Introduction%20to%20resources).
+Read more about [AODocs resources](/docs/aodocs-staging.altirnao.com/1/c/Guides/About%20API%20resources).
 
 #### Creating a document
 
@@ -171,11 +171,11 @@ If there was something wrong with the request or with the server's ability to pe
 
 The response provides a standard HTTP status code to indicate success (**2xx**), failure (**4xx**), or some other condition (**5xx**); as well as an error message to guide the next steps.
 
-Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
+Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/Best%20practices/HTTP%20status%20codes%20and%20error%20handling) to determine the type of issue and how to resolve it.
 
 ## Pagination
 
-Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) page.
+Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/Best%20practices/Performance%20considerations) page.
 
 ## Beta vs. non-beta versions
 
@@ -188,10 +188,9 @@ APIs not marked as `beta` are considered “stable”: they have permanence and 
 
 Here is how you can get started working with AODocs APIs:
 
-*   Try following the sequence of methods in the [Manage AODocs documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
+*   Try following the sequence of methods in the [Manage AODocs documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/Manage%20AODocs%20documents/Overview) section.
 *   Use the [interactive API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
 <!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
-*   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview).
+*   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/Authentication/Overview).
 *   Check the [AODocs Reference](/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs.
-*   Read the [Best practices](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview) section.
-*   Have trouble falling asleep?  Read the [Auth appendix](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/50-Auth%20appendix), which includes all the most essential soporific auth RFCs.
+*   Read the [Best practices](/docs/aodocs-staging.altirnao.com/1/c/Guides/Best%20practices/Overview) section.

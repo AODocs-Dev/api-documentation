@@ -96,6 +96,6 @@ Token errors occur only when the token is:
 *   incorrect
 *   expired
 
-All of these result in status code ```401: Unauthorized``` as listed in [HTTP status codes and error scenarios](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios).
+All of these result in status code ```401: Unauthorized``` as listed in [HTTP status codes and error scenarios](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/HTTP%20status%20codes%20and%20error%20handling).
 
 To create, manage, and troubleshoot your tokens, see the [Google Developers OAuth 2.0 Playground](https://developers.google.com/oauthplayground/).

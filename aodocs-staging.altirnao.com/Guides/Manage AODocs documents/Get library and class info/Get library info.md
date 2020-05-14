@@ -182,7 +182,7 @@ If you want information in addition to the default `nothing` setting, change the
 
 **`pageToken`**
 
-This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) purposes. If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
+This parameter is used for [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/Best%20practices/Performance%20considerations) purposes. If you need to request the next page of results, populate this parameter with the value of the `nextPageToken` from the last response (keeping all other parameter values exactly the same).
 
 #### Sample request (no parameters: list all)
 

@@ -17,11 +17,11 @@ If you follow the sequence in this section, you'll port some Drive files to beco
 The list of steps is as follows:
 
 *   Get library and class info
-    *   [Libraries](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Libraries)
+    *   [Libraries](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info)
         * List all available AODocs libraries (full)
         * List all available AODocs libraries (plain)
         * Get a specific library by ID
-    *   [Classes](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Classes)
+    *   [Classes](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Get%20document%20class%20info)
         * List classes (to find target classes for your documents)
         * Get a specific class by ID
 *   Create, modify, delete documents
@@ -37,4 +37,4 @@ The list of steps is as follows:
     *   versions
     *   relations (should be for a more advanced tutorial) -->
 
-Let's [get started](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/00-Overview)!
+Let's [get started](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info)!

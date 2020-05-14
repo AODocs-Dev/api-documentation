@@ -18,7 +18,7 @@ To create a new document with AODocs APIs, send a request to the server with an 
 
 Play with the API Explorer:
 
-### [PUT /document/v1](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put)
+### [PUT /document/v1](/docs/aodocs.altirnao.com/1/routes/document/v1/put)
 
 ## Guidelines
 
@@ -26,7 +26,7 @@ Play with the API Explorer:
 
 Before you create a new empty document with one attachment, you must know the `libraryId` of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.
 
-You also need the `fileId` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders).
+You also need the `fileId` of any Drive file that you want to attach to your document. Read more about how to [obtain the file ID in the AODocs UI](/docs/aodocs.altirnao.com/1/c/Guides/Manage%20AODocs%20documents/Create,%20modify,%20delete%20documents/Create%20new%20documents%20with%20attachments/Create%20test%20Drive%20files%20and%20folders).
 
 > ⭑   **Note**: In the API Explorer's "Request body" window, `fileId` is part of the `attachments` array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under `attachmentsToCopy` .
 
@@ -69,7 +69,7 @@ If you attach a Drive file using `attachments`, and then edit that attachment's 
 
 However, if you attach a Drive file using `attachmentsToCopy`, that attachment is no longer the original file: it is a copy of it created during the attachment process.
 
-All these fields correspond to fields in the [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource: the fields of the request resource map directly to the fields of the server resource which gets altered by the `PUT` operation before being sent back as a response resource.
+All these fields correspond to fields in the [ApiDocument](/docs/aodocs.altirnao.com/1/types/ApiDocument) resource: the fields of the request resource map directly to the fields of the server resource which gets altered by the `PUT` operation before being sent back as a response resource.
 
 ### Sample request
 
@@ -100,7 +100,7 @@ PUT https://aodocs.altirnao.com/api/document/v1
 
 ### Response
 
-If the request succeeds, the response returns a `200 OK` status code and a JSON-formatted representation of an [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as `id`, and its `classId` is what you specified in the request, else of the library's default type.
+If the request succeeds, the response returns a `200 OK` status code and a JSON-formatted representation of an [ApiDocument](/docs/aodocs.altirnao.com/1/types/ApiDocument) resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as `id`, and its `classId` is what you specified in the request, else of the library's default type.
 
 ### Sample response
 

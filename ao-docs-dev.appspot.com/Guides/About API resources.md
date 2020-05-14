@@ -56,7 +56,7 @@ In AODocs APIs, a **subresource** is an **attribute** of a resource. It is resou
 
 An AODocs **collection** is a **list** of resources or subresources. It is not a resource by itself in the context of AODocs APIs. What makes a collection meaningful is what it lists. A list of documents (```ApiDocumentList```) is one example of a resource collection. A list of libraries (```ApiLibraryList```) is another. Meanwhile, ```ApiLibraryPermissionList``` is a **collection** of **subresources** (permissions for a specific library).
 
-> ⭑  **Note**: Requests for collections often return too many results and are best handled using [pagination](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations).
+> ⭑  **Note**: Requests for collections often return too many results and are best handled using [pagination](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/Performance%20considerations).
 
 ## Collections vs. resources vs. subresources
 
@@ -116,8 +116,8 @@ In all cases, the server parses your abridged _request resource_, maps your fiel
 
 ## Common AODocs resources and collections
 
-[Resource: ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument) (an AODocs document)
+[Resource: ApiDocument](/docs/ao-docs-dev.appspot.com/1/types/ApiDocument) (an AODocs document)
 
-[Collection: ApiLibraryList](/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList) (a list of libraries)
+[Collection: ApiLibraryList](/docs/ao-docs-dev.appspot.com/1/types/ApiLibraryList) (a list of libraries)
 
-[Resource: ApiDocumentType](/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType) (the class/type of an AODocs document)
+[Resource: ApiDocumentType](/docs/ao-docs-dev.appspot.com/1/types/ApiDocumentType) (the class/type of an AODocs document)

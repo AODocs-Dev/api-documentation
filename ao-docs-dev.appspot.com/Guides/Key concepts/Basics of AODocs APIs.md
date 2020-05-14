@@ -40,7 +40,7 @@ To manage and configure **AODocs documents**, you can use only **AODocs APIs**.
 
 AODocs APIs are designed around [principles of REST](https://cloud.google.com/apis/design/resources): to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request. You then parse the responses that come back. You can do this using the following methods:
 
-*   in person, manually, using the interactive [API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get)
+*   in person, manually, using the interactive [API Explorer](/docs/ao-docs-dev.appspot.com/1/routes/document/v1/%7BdocumentId%7D/get)
 *   using a third-party service provider like [Postman](https://learning.postman.com/docs/postman/launching-postman/introduction/)
 *   programmatically, using code to automate request/response interactions
 
@@ -110,7 +110,7 @@ Search filters, security codes, and other **query parameters** are commonly stru
 
 REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable _resources_, or addressable collections of information or metadata.
 
-A resource type (such as [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
+A resource type (such as [ApiDocument](/docs/ao-docs-dev.appspot.com/1/types/ApiDocument)) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a _representation_ of a resource, but is often simply called _resource_.
 
 You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like ```GET``` or ```PATCH```. Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.
 
@@ -120,7 +120,7 @@ They are returned as **the response body** when a request is successful. Usually
 
 > ⭑  **Note**: You can get a partial resource back if you filter the response fields using the ```fields``` parameter.
 
-Read more about [AODocs resources](/docs/aodocs-staging.altirnao.com/1/c/Guides/70-Resources%20of%20note/00-Introduction%20to%20resources).
+Read more about [AODocs resources](/docs/ao-docs-dev.appspot.com/1/c/Guides/About%20API%20resources).
 
 #### Creating a document
 
@@ -158,7 +158,7 @@ The server either succeeds in fulfilling the request, or something goes wrong. T
 
 #### Server succeeded
 
-If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as [ApiDocument](/docs/aodocs-staging.altirnao.com/1/types/ApiDocument).
+If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually ```200 OK```) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure ("schema"): you can look up the schema for each such resource type in the reference, such as [ApiDocument](/docs/ao-docs-dev.appspot.com/1/types/ApiDocument).
 
 
 > ⭑   Note: If the requested operation is ```DELETE```, the server sends back ```204 OK``` and ```null``` instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently. If you delete the document permanently, the ```documentId``` stops being recognized from that point on. If you send the document to Trash, the document ID persists.
@@ -171,11 +171,11 @@ If there was something wrong with the request or with the server's ability to pe
 
 The response provides a standard HTTP status code to indicate success (**2xx**), failure (**4xx**), or some other condition (**5xx**); as well as an error message to guide the next steps.
 
-Read more in [HTTP status codes in AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20scenarios) to determine the type of issue and how to resolve it.
+Read more in [HTTP status codes in AODocs APIs](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/HTTP%20status%20codes%20and%20error%20handling) to determine the type of issue and how to resolve it.
 
 ## Pagination
 
-Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the [Performance considerations](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations) page.
+Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the [Performance considerations](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/Performance%20considerations) page.
 
 ## Beta vs. non-beta versions
 
@@ -188,10 +188,9 @@ APIs not marked as `beta` are considered “stable”: they have permanence and 
 
 Here is how you can get started working with AODocs APIs:
 
-*   Try following the sequence of methods in the [Manage AODocs documents](/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview) section.
-*   Use the [interactive API Explorer](/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
+*   Try following the sequence of methods in the [Manage AODocs documents](/docs/ao-docs-dev.appspot.com/1/c/Guides/Manage%20AODocs%20documents/Overview) section.
+*   Use the [interactive API Explorer](/docs/ao-docs-dev.appspot.com/1/routes/document/v1/%7BdocumentId%7D/get) to build requests and queries for the APIs and to see the responses.
 <!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
-*   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview).
-*   Check the [AODocs Reference](/docs/aodocs-staging.altirnao.com/1/overview) for all the resources available through the APIs.
-*   Read the [Best practices](/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview) section.
-*   Have trouble falling asleep?  Read the [Auth appendix](/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/50-Auth%20appendix), which includes all the most essential soporific auth RFCs.
+*   Review and select the appropriate mechanism for [gaining authenticated access to AODocs APIs](/docs/ao-docs-dev.appspot.com/1/c/Guides/Authentication/Overview).
+*   Check the [AODocs Reference](/docs/ao-docs-dev.appspot.com/1/overview) for all the resources available through the APIs.
+*   Read the [Best practices](/docs/ao-docs-dev.appspot.com/1/c/Guides/Best%20practices/Overview) section.
