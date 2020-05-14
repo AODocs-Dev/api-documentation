@@ -2,6 +2,8 @@
   "name": "api-documentation",
   "version": "1.0.0",
   "dependencies": {
+    "commonmark": "^0.29.1",
+    "googleapis": "^50.0.0",
     "sync-directory": "^2.1.2"
   },
   "scripts": {
