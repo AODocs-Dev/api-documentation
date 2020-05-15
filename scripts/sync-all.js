@@ -43,7 +43,8 @@ function generateHtml(folderPath, section) {
   let finalSection = section.replace(/^\d{2}-/, '');
   body = body.replace(/<img src="\/img\/([^"]+)"/g, (match, image) => {
     let imageAsBase64 = fs.readFileSync(`src/img/${image}`, 'base64');
-    return `<img src="data:image/gif;base64,${imageAsBase64}"`;
+    //16.5 cm is the default available size in a Google Doc
+    return `<img src="data:image/gif;base64,${imageAsBase64}" style="width: 16.5cm"`;
   });
   fs.writeFileSync(`${finalFolder}/${finalSection}.html`,
       `<html lang="en"><head><meta charset="UTF-8"><title>${finalSection}</title></head><body>${body}</body></html>`);
