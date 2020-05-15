@@ -41,7 +41,10 @@ function generateHtml(folderPath, section) {
   let finalFolder = 'html/' + folderPath.replace(/\/\d{2}-/g, '/');
   fs.mkdirSync(`${finalFolder}`, {recursive: true});
   let finalSection = section.replace(/^\d{2}-/, '');
-  //TODO inline images as base64 to allow easy importing
+  body = body.replace(/<img src="\/img\/([^"]+)"/g, (match, image) => {
+    let imageAsBase64 = fs.readFileSync(`src/img/${image}`, 'base64');
+    return `<img src="data:image/gif;base64,${imageAsBase64}"`;
+  });
   fs.writeFileSync(`${finalFolder}/${finalSection}.html`,
       `<html lang="en"><head><meta charset="UTF-8"><title>${finalSection}</title></head><body>${body}</body></html>`);
 }
