@@ -1,10 +1,10 @@
 <html lang="en"><head><meta charset="UTF-8"><title>Overview</title></head><body><h1>Manage AODocs documents</h1>
-<p>We put some of the most useful data-handling API methods together into a loose sequence you can follow in the <a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">API portal</a>. Or you can pick and choose the parts that help you accomplish your immediate goals with AODocs.</p>
+<p>We put some of the most useful data-handling API methods together into a loose sequence you can follow in the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">API portal</a>. Or you can pick and choose the parts that help you accomplish your immediate goals with AODocs.</p>
 <blockquote>
 <p>⭑   <strong>Note</strong>: You can perform most of the tasks in this tutorial either using the API or on your homepage in the AODocs user interface (UI). Use the one that suits your needs, or you can do them both to understand how they map to each other.</p>
 </blockquote>
 <h2>Before you begin</h2>
-<p>If you haven't yet, make sure you familiarize yourself with the <a href="https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms">key concepts of the AODocs universe</a>. Also, if you don't follow this section in sequence, one page is devoted to help you <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">create some test files and folders</a> to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.</p>
+<p>If you haven't yet, make sure you familiarize yourself with the <a href="https://support.aodocs.com/hc/en-us/articles/115005405943-AODocs-basic-terms">key concepts of the AODocs universe</a>. Also, if you don't follow this section in sequence, one page is devoted to help you <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">create some test files and folders</a> to work with in your Google Drive: the files are going to become attachments to the AODocs documents you're about to create.</p>
 <h2>What you'll do</h2>
 <p>If you follow the sequence in this section, you'll port some Drive files to become attached to AODocs <strong>documents</strong> inside some AODocs <strong>libraries</strong>. Once attached, you'll create/add/patch/update/delete <strong>documents</strong>, <strong>attachments</strong>, <strong>properties</strong>, and <strong>metadata</strong>. Whenever appropriate, for each task, you'll get a link to the specific part of the API portal needed to accomplish the task.</p>
 <blockquote>
@@ -14,14 +14,14 @@
 <ul>
 <li>Get library and class info
 <ul>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info">Libraries</a>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info">Libraries</a>
 <ul>
 <li>List all available AODocs libraries (full)</li>
 <li>List all available AODocs libraries (plain)</li>
 <li>Get a specific library by ID</li>
 </ul>
 </li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Get%20document%20class%20info">Classes</a>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/20-Get%20document%20class%20info">Classes</a>
 <ul>
 <li>List classes (to find target classes for your documents)</li>
 <li>Get a specific class by ID</li>
@@ -33,14 +33,14 @@
 <ul>
 <li>Creating new documents with attachments
 <ul>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">Create test Drive folder and some files to work with as attachments</a></li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file">Create a new document and attach a Drive file</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">Create test Drive folder and some files to work with as attachments</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/20-Create%20new%20document%20and%20attach%20Drive%20file">Create a new document and attach a Drive file</a></li>
 </ul>
 </li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties">Modify a document's system and custom properties</a></li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments">Modify a document's attachments</a></li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/35-List,%20search,%20and%20count%20documents">List, search, and count documents</a></li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/40-Delete%20document">Delete document</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties">Modify a document's system and custom properties</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments">Modify a document's attachments</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/35-List,%20search,%20and%20count%20documents">List, search, and count documents</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/40-Delete%20document">Delete document</a></li>
 </ul>
 </li>
 </ul>
@@ -48,5 +48,5 @@
     *   categories
     *   versions
     *   relations (should be for a more advanced tutorial) -->
-<p>Let's <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info">get started</a>!</p>
+<p>Let's <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/10-Get%20library%20and%20class%20info/10-Get%20library%20info">get started</a>!</p>
 </body></html>

@@ -43,7 +43,7 @@
 <h3>Collections</h3>
 <p>An AODocs <strong>collection</strong> is a <strong>list</strong> of resources or subresources. It is not a resource by itself in the context of AODocs APIs. What makes a collection meaningful is what it lists. A list of documents (<code>ApiDocumentList</code>) is one example of a resource collection. A list of libraries (<code>ApiLibraryList</code>) is another. Meanwhile, <code>ApiLibraryPermissionList</code> is a <strong>collection</strong> of <strong>subresources</strong> (permissions for a specific library).</p>
 <blockquote>
-<p>⭑  <strong>Note</strong>: Requests for collections often return too many results and are best handled using <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a>.</p>
+<p>⭑  <strong>Note</strong>: Requests for collections often return too many results and are best handled using <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a>.</p>
 </blockquote>
 <h2>Collections vs. resources vs. subresources</h2>
 <p>One way to explore what makes a collection different from a resource or a subresource is to use the example of permissions. Permissions are subresources that can be listed both as a collection or as part of a resource. Both the <code>ApiLibraryPermissionsList</code> and the <code>ApiLibrary</code> resource contain an array field of permissions: the former exclusively, the latter as part of its larger construct.</p>
@@ -95,7 +95,7 @@
 </ul>
 <p>In all cases, the server parses your abridged <em>request resource</em>, maps your fields to the fields of its <em>resident resource</em>, possibly fills some fields with their default values, and reconciles the request and resident resources using the operation you specify. If successful, the complete resulting resource is sent back to you to consume.</p>
 <h2>Common AODocs resources and collections</h2>
-<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">Resource: ApiDocument</a> (an AODocs document)</p>
-<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">Collection: ApiLibraryList</a> (a list of libraries)</p>
-<p><a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType">Resource: ApiDocumentType</a> (the class/type of an AODocs document)</p>
+<p><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">Resource: ApiDocument</a> (an AODocs document)</p>
+<p><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">Collection: ApiLibraryList</a> (a list of libraries)</p>
+<p><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType">Resource: ApiDocumentType</a> (the class/type of an AODocs document)</p>
 </body></html>

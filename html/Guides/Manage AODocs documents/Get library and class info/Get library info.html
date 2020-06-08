@@ -3,10 +3,10 @@
 <p>Once your libraries exist, you can list them to get an idea of where to place your content.</p>
 <p>The most useful methods to list and get libraries are the following:</p>
 <ul>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">List libraries</a> (legacy v1)</li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">List and search libraries</a> (v2beta1)</li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List libraries plain</a> (alternative to List libraries)</li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">Get a specific library by ID</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">List libraries</a> (legacy v1)</li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">List and search libraries</a> (v2beta1)</li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List libraries plain</a> (alternative to List libraries)</li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">Get a specific library by ID</a></li>
 </ul>
 <p>What follows are elaborations on these methods.</p>
 <hr />
@@ -14,7 +14,7 @@
 <p>To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library's unique identifier, <code>libraryId</code>.</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">PUT /library/v1</a></h4>
+<h4><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/put">PUT /library/v1</a></h4>
 <h3>Usage/notes/guidelines</h3>
 <h4>Request</h4>
 <blockquote>
@@ -24,9 +24,9 @@
 <h4>Sample request</h4>
 <pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
 </code></pre>
-<p>Alternatively use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
+<p>Alternatively use the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a> resource, listing all libraries accessible to you on the domain. With the recommended parameter <code>include=NONE</code> the response is smaller and far more manageable.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a> resource, listing all libraries accessible to you on the domain. With the recommended parameter <code>include=NONE</code> the response is smaller and far more manageable.</p>
 <p>Take note of the <code>libraryId</code> of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.</p>
 <p>Additional fields to note:</p>
 <ul>
@@ -64,7 +64,7 @@
 <p>This method allows you to search for target libraries on your domain with string queries (including quoted phrases) as well as several parameters to help narrow the scope. Without them, what comes back in the response is the full list of libraries available to you.</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">GET /search/v2beta1/search</a></h4>
+<h4><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v2beta1/search/get">GET /search/v2beta1/search</a></h4>
 <h3>Usage/notes/guidelines</h3>
 <p>The search can be conducted without any parameters, returning all libraries that you are authorized to access, in an undefined order.</p>
 <h4>Request</h4>
@@ -125,16 +125,16 @@
 <p>⭑  <strong>Note</strong>: There are some performance costs associated with each of these values, and the more of them are included, the more the performance degrades.</p>
 </blockquote>
 <p><strong><code>pageToken</code></strong></p>
-<p>This parameter is used for <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a> purposes. If you need to request the next page of results, populate this parameter with the value of the <code>nextPageToken</code> from the last response (keeping all other parameter values exactly the same).</p>
+<p>This parameter is used for <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">pagination</a> purposes. If you need to request the next page of results, populate this parameter with the value of the <code>nextPageToken</code> from the last response (keeping all other parameter values exactly the same).</p>
 <h4>Sample request (no parameters: list all)</h4>
 <pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v2beta1/search
 </code></pre>
-<p>Alternatively use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
+<p>Alternatively use the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">List plain libraries</a> method (see below) to get just the key-value pairs of <code>name</code> and <code>id</code>.</p>
 <h4>Sample request (specific search)</h4>
 <pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v2beta1/search?query=001&amp;minimumCurrentUserRole=WRITER&amp;libTypes=TF&amp;favorite=true&amp;orderBy=LAST_ACCESSED&amp;limit=3&amp;requirePreciseResults=true&amp;facets=true&amp;include=LAST_ACCESSED HTTP/1.1
 </code></pre>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList">ApiLibrarySearchResultList</a> resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means &quot;all&quot;).</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrarySearchResultList">ApiLibrarySearchResultList</a> resource, listing all libraries which are accessible to you on the domain and which match the specified query (no query means &quot;all&quot;).</p>
 <p>Take note of the <code>libraryId</code> of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.</p>
 <p>Additional fields to note:</p>
 <ul>
@@ -179,10 +179,10 @@
 <p>Learn more about <a href="https://support.aodocs.com/hc/en-us/articles/208769506-What-is-the-AODocs-homepage-#h_594b6e3a-aebb-4b71-8d8e-a4c8aad7cc51">navigating homepages</a> inside your AODocs and specific libraries.</p>
 <hr />
 <h2>List libraries plain (alternative to List libraries)</h2>
-<p>If you only need the library name and ID in the response, then you can use the plain library list (<a href="/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> as an alternative to the full library list (<a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a>. It is usually much faster than the standard library list API method, but returns much less information.</p>
+<p>If you only need the library name and ID in the response, then you can use the plain library list (<a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> as an alternative to the full library list (<a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibraryList">ApiLibraryList</a>. It is usually much faster than the standard library list API method, but returns much less information.</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">PUT /library/v1/plain</a></h4>
+<h4><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/plain/put">PUT /library/v1/plain</a></h4>
 <h3>Usage/notes/guidelines</h3>
 <h4>Request</h4>
 <p>There are no mandatory or recommended parameters to send.</p>
@@ -190,7 +190,7 @@
 <pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/library/v1/plain
 </code></pre>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> resource, listing all libraries accessible to you on the domain, but only listing the following for each:</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiPlainLibraryList">ApiPlainLibraryList</a> resource, listing all libraries accessible to you on the domain, but only listing the following for each:</p>
 <ul>
 <li>library name</li>
 <li>library ID</li>
@@ -223,7 +223,7 @@
 <p>You can retrieve to parse something from its metadata (or to confirm it exists) if you have its <code>libraryId</code>.</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h4><a href="/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">GET /library/{libId}</a></h4>
+<h4><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/library/v1/%7BlibId%7D/get">GET /library/{libId}</a></h4>
 <h3>Usage/notes/guidelines</h3>
 <h4>Request</h4>
 <p>To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the <code>include</code> parameter to <code>NONE</code>.</p>
@@ -231,7 +231,7 @@
 <pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
 </code></pre>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary">ApiLibrary</a> resource, listing the library associated with the provided library ID.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiLibrary">ApiLibrary</a> resource, listing the library associated with the provided library ID.</p>
 <p>Response fields of note:</p>
 <ul>
 <li><code>libraryId</code></li>

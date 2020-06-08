@@ -41,11 +41,14 @@ function generateHtml(folderPath, section) {
   let finalFolder = 'html/' + folderPath.replace(/\/\d{2}-/g, '/');
   fs.mkdirSync(`${finalFolder}`, {recursive: true});
   let finalSection = section.replace(/^\d{2}-/, '');
+  //inline images
   body = body.replace(/<img src="\/img\/([^"]+)"/g, (match, image) => {
     let imageAsBase64 = fs.readFileSync(`src/img/${image}`, 'base64');
     //16.5 cm is the default available size in a Google Doc
     return `<img src="data:image/gif;base64,${imageAsBase64}" style="width: 16.5cm"`;
   });
+  //replace links with absolute URL to staging
+  body = body.replace(/href="\/docs\//g, 'href="https://api.aodocs-staging.com/docs/');
   fs.writeFileSync(`${finalFolder}/${finalSection}.html`,
       `<html lang="en"><head><meta charset="UTF-8"><title>${finalSection}</title></head><body>${body}</body></html>`);
 }
@@ -62,8 +65,12 @@ function copyToWiki(folderPath, section) {
   let original = fs.readFileSync(`src/${folderPath}/${section}.md`, {encoding: "utf8"});
   let replaced = original.replace(/\(\/img\/(.+)\)/g, 
       '(https://github.com/AODocs-Dev/api-documentation/blob/master/src/img/$1)');
+  //replace Guide pages with internal link
   replaced = replaced.replace(/\(\/docs\/aodocs-staging.altirnao.com\/1\/c\/Guides\/([^/)]+\/)*([^)]+)\)/g, 
       '(https://github.com/AODocs-Dev/api-documentation/wiki/$2)');
+  //replace other links with absolute URL to prod
+  replaced = replaced.replace(/\(\/docs\/aodocs-staging.altirnao.com(\/1\/.+)\)/g,
+      '(https://api.aodocs.com/docs/aodocs.altirnao.com$1)');
   fs.writeFileSync(`${finalFolder}/${finalSection}.md`, replaced.replace(/\/\d{2}-/g, '/'));
 }
 

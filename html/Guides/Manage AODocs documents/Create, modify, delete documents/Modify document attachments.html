@@ -1,5 +1,5 @@
 <html lang="en"><head><meta charset="UTF-8"><title>Modify document attachments</title></head><body><h1>Modify document attachments</h1>
-<p>Using AODocs APIs, you can modify the document resource using the <code>PATCH</code> operation. You can modify attachments as well as <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties">system and custom fields</a>. To modify the list of document attachments (i.e. references to Drive files), use <code>PATCH</code> to replace/overwrite the <code>attachments[]</code> array field of the target resource.</p>
+<p>Using AODocs APIs, you can modify the document resource using the <code>PATCH</code> operation. You can modify attachments as well as <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/20-Modify%20field%20values%20of%20document%20properties">system and custom fields</a>. To modify the list of document attachments (i.e. references to Drive files), use <code>PATCH</code> to replace/overwrite the <code>attachments[]</code> array field of the target resource.</p>
 <p>In general, modifying is perfectly benign. However, things carry extra risk with any parts of the resource arranged in arrays. Using the <code>attachments</code> array field in DMS documents, is one example; however, the caution extends to any request containing array fields.</p>
 <p>There are two cases to consider:</p>
 <ul>
@@ -20,7 +20,7 @@
 </blockquote>
 <h2>Method and API</h2>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch">PATCH /document/v1/{documentId}</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/patch">PATCH /document/v1/{documentId}</a></h3>
 <h2>Guidelines</h2>
 <h3>Prerequisites</h3>
 <p>Because this is an overwrite operation, you have to know which pieces you want to replace with your new changes, including overwriting with nothing (deleting). And you have to be aware of the power of this operation to make changes that are somewhat complicated to undo.</p>
@@ -40,7 +40,7 @@
 <p>For example, if you have an existing DMS document with one attachment, but want to add another attachment to it, you must specify both attachments (the existing <em>and</em> the new), and in the correct order. If you only specify the new attachment, the original attachment will get detached, and your new attachment will get attached in its place, replacing the original. Result: a single attachment (the new one).</p>
 <p>Therefore, if you do not need to change anything to do with attachments, do not send the <code>attachments</code> array field at all. This ensures that the <code>attachments</code> array field in the resource on the server remains unmodified, keeping your attachments as they are.</p>
 <blockquote>
-<p>💡 <strong>Tip</strong>: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous <code>PATCH</code> operation which returns the <code>ApiDocument</code> resource in full (or partial if you used the <code>fields</code> field to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">filter the response</a>. This is the same result as sending a <code>GET</code> request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.</p>
+<p>💡 <strong>Tip</strong>: You can avoid some of the pitfalls of array fields by sampling the contents of the array field from the previous <code>PATCH</code> operation which returns the <code>ApiDocument</code> resource in full (or partial if you used the <code>fields</code> field to <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">filter the response</a>. This is the same result as sending a <code>GET</code> request to get a document. This way you always have an up-to-date listing of what the target resource looks like on the server. Read the array field(s) you need, and feed the fields into your next request.</p>
 </blockquote>
 <blockquote>
 <p>⭑ <strong>Note</strong>: Notwithstanding attachment-restriction differences between DMS documents and TF/SF ones, the preceding guidelines for using the <code>attachments</code> array fields are generalizable to other array fields.</p>
@@ -78,7 +78,7 @@
 }   // not including the attachments array field in the body keeps attachments as they are, unmodified
 </code></pre>
 <h3>Response</h3>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the <code>attachments</code> array field in your request, the response includes the new content.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource, listing the freshly modified document with the overwritten fields and everything else unmodified). If you included the <code>attachments</code> array field in your request, the response includes the new content.</p>
 <h3>Sample response</h3>
 <pre><code class="language-json">{
   &quot;kind&quot;: &quot;aodocs#document&quot;,

@@ -9,13 +9,13 @@
 <li>Bearer tokens (in OAuth 2.0 or JWT format) that are issued by Google and can be used for any Google-compatible API (including the AODocs API)</li>
 </ul>
 <h3>Security code</h3>
-<p>This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Access%20APIs%20with%20security%20codes">access APIs with AODocs security code</a>.</p>
+<p>This is the custom system created by AODocs for the purposes of quick internal testing and similar use-cases behind your firewall. If you don't need access to Google Drive APIs, this is the quickest way to get started. Read more about how to <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/10-Access%20APIs%20with%20security%20codes">access APIs with AODocs security code</a>.</p>
 <h3>Bearer tokens (access or ID tokens)</h3>
 <p>Access or ID tokens sent in the request header are the robust, secure mechanism to authenticate with AODocs APIs and consequently gain access to both AODocs and Google Drive APIs.  Obtaining <strong>access tokens</strong> takes more work with more server calls, but they can also have authorization scopes, like access to Drive or Gmail APIs; meanwhile, <strong>ID tokens</strong> are self-contained and can be verified in place, but they only convey the identity of the user it was issued for.</p>
 <blockquote>
 <p>⭑   Note: Unlike the plug-and-play functionality of the AODocs security code, access tokens require whitelisting GCP client IDs in AODocs.</p>
 </blockquote>
-<p>Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/20-Access%20APIs%20with%20Bearer%20tokens">access AODocs APIs with access and ID tokens</a>.</p>
+<p>Read more about how to <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/20-Access%20APIs%20with%20Bearer%20tokens">access AODocs APIs with access and ID tokens</a>.</p>
 <h2>What to use when</h2>
 <p>There are several distinct use cases for authenticating and authorizing API access with AODocs, each with its own requirements and approaches.</p>
 <p>The <strong>quickest</strong> way to get started is with the <strong>security code</strong> method, but it can be used only on <strong>AODocs APIs</strong>, not Google Drive APIs.</p>

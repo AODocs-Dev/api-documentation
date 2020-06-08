@@ -182,7 +182,7 @@ modification
 <h3>Setting custom fields</h3>
 <p>In a document resource, custom fields are found inside the <code>fields</code> array.</p>
 <blockquote>
-<p>⚠ <strong>Warning/Alert</strong>: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments">Modify document attachments</a> page.</p>
+<p>⚠ <strong>Warning/Alert</strong>: The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/30-Modify%20document%20attachments">Modify document attachments</a> page.</p>
 </blockquote>
 <p>Custom fields are defined in the document's class when it's created; and you or a client app populate their values when creating or modifying a document.</p>
 <p>In order to populate custom fields, you must know the <code>fieldId</code> of the particular property of your target class (that each document in that class has). You then use it to tell the server which values of this particular property should be set. To do this, populate <code>fields[].fieldId</code> with your target class's <code>fieldId</code>.</p>

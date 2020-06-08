@@ -29,7 +29,7 @@
 <h2>Interacting with APIs</h2>
 <p>AODocs APIs are designed around <a href="https://cloud.google.com/apis/design/resources">principles of REST</a>: to interact with them, you ask the server to use HTTP operations to perform read and write actions on a specified resource, as well as by providing certain parameters to configure the request. You then parse the responses that come back. You can do this using the following methods:</p>
 <ul>
-<li>in person, manually, using the interactive <a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">API Explorer</a></li>
+<li>in person, manually, using the interactive <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">API Explorer</a></li>
 <li>using a third-party service provider like <a href="https://learning.postman.com/docs/postman/launching-postman/introduction/">Postman</a></li>
 <li>programmatically, using code to automate request/response interactions</li>
 </ul>
@@ -100,14 +100,14 @@
 </blockquote>
 <h4>API resources</h4>
 <p>REST-oriented APIs such as AODocs model their objects (such as documents, classes, or libraries) as a hierarchy of directly addressable <em>resources</em>, or addressable collections of information or metadata.</p>
-<p>A resource type (such as <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a <em>representation</em> of a resource, but is often simply called <em>resource</em>.</p>
+<p>A resource type (such as <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>) is the schema that outlines how a resource can be represented. A representation of a resource is the (in our case JSON-formatted) instance of the schema above. This JSON-formatted instance is a <em>representation</em> of a resource, but is often simply called <em>resource</em>.</p>
 <p>You send the (usually partial) resource to the server as a request body, along with a request to perform an HTTP-verb operation like <code>GET</code> or <code>PATCH</code>. Once the server performs the requested operation, it sends back the (usually complete) resource to the client as a response body.</p>
 <p>API resources (like a Document or Library) that you want to create or update <em>must</em> be  sent as part of the request resource, in the <strong>request body.</strong></p>
 <p>They are returned as <strong>the response body</strong> when a request is successful. Usually, the format of an API resource is the same in the request body and the response body.</p>
 <blockquote>
 <p>⭑  <strong>Note</strong>: You can get a partial resource back if you filter the response fields using the <code>fields</code> parameter.</p>
 </blockquote>
-<p>Read more about <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/70-About%20API%20resources">AODocs resources</a>.</p>
+<p>Read more about <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/70-About%20API%20resources">AODocs resources</a>.</p>
 <h4>Creating a document</h4>
 <pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
 
@@ -135,7 +135,7 @@ Authorization: Bearer [YOUR_ACCESS_TOKEN]
 <h3>Step 3: Server sends a response</h3>
 <p>The server either succeeds in fulfilling the request, or something goes wrong. The latter case is uncommon, but when it does occur, many things can be the culprit.</p>
 <h4>Server succeeded</h4>
-<p>If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually <code>200 OK</code>) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure (&quot;schema&quot;): you can look up the schema for each such resource type in the reference, such as <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>.</p>
+<p>If the server succeeds in fulfilling the request, it responds with a 200-series status code (usually <code>200 OK</code>) and a response body which is a full or filtered JSON representation of the resource the server operated on. Each resource type returned as part of a successful response has a different structure (&quot;schema&quot;): you can look up the schema for each such resource type in the reference, such as <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a>.</p>
 <blockquote>
 <p>⭑   Note: If the requested operation is <code>DELETE</code>, the server sends back <code>204 OK</code> and <code>null</code> instead of a representation of a resource, regardless if the resource was sent to Trash (retrievable) or deleted permanently. If you delete the document permanently, the <code>documentId</code> stops being recognized from that point on. If you send the document to Trash, the document ID persists.</p>
 </blockquote>
@@ -143,22 +143,22 @@ Authorization: Bearer [YOUR_ACCESS_TOKEN]
 <p>If there was something wrong with the request or with the server's ability to perform the operation, the response comes back as a status code and JSON-formatted error message to help guide your next steps.</p>
 <h2>Error handling and troubleshooting</h2>
 <p>The response provides a standard HTTP status code to indicate success (<strong>2xx</strong>), failure (<strong>4xx</strong>), or some other condition (<strong>5xx</strong>); as well as an error message to guide the next steps.</p>
-<p>Read more in <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20handling">HTTP status codes in AODocs APIs</a> to determine the type of issue and how to resolve it.</p>
+<p>Read more in <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/10-HTTP%20status%20codes%20and%20error%20handling">HTTP status codes in AODocs APIs</a> to determine the type of issue and how to resolve it.</p>
 <h2>Pagination</h2>
-<p>Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">Performance considerations</a> page.</p>
+<p>Pagination comes into play when dealing with resource collections, since the results are often longer than a single page. Read more on the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/20-Performance%20considerations">Performance considerations</a> page.</p>
 <h2>Beta vs. non-beta versions</h2>
 <p>Any version marked <code>beta</code> indicates that the version of this API method is not final, and might be subject to sudden deprecation and removal from the API, with a better alternative provided as a replacement. However, as long as the method is live, we’ll try to ensure backward compatibility as much as possible.</p>
 <p>APIs not marked as <code>beta</code> are considered “stable”: they have permanence and retain backward compatibility, unless they suffer from low usage.</p>
 <h2>Next steps</h2>
 <p>Here is how you can get started working with AODocs APIs:</p>
 <ul>
-<li>Try following the sequence of methods in the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview">Manage AODocs documents</a> section.</li>
-<li>Use the <a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">interactive API Explorer</a> to build requests and queries for the APIs and to see the responses.</li>
+<li>Try following the sequence of methods in the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/00-Overview">Manage AODocs documents</a> section.</li>
+<li>Use the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">interactive API Explorer</a> to build requests and queries for the APIs and to see the responses.</li>
 </ul>
 <!-- *   Learn about [each API and its purpose](https://drive.google.com/a/altirnao.com/open?id=1xhBQOKedhNtVtmaviWvvMPjcddScpkkebH3oyqub85I). -->
 <ul>
-<li>Review and select the appropriate mechanism for <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview">gaining authenticated access to AODocs APIs</a>.</li>
-<li>Check the <a href="/docs/aodocs-staging.altirnao.com/1/overview">AODocs Reference</a> for all the resources available through the APIs.</li>
-<li>Read the <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview">Best practices</a> section.</li>
+<li>Review and select the appropriate mechanism for <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/20-Authentication/00-Overview">gaining authenticated access to AODocs APIs</a>.</li>
+<li>Check the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/overview">AODocs Reference</a> for all the resources available through the APIs.</li>
+<li>Read the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/60-Best%20practices/00-Overview">Best practices</a> section.</li>
 </ul>
 </body></html>

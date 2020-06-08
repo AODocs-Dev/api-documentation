@@ -2,8 +2,8 @@
 <p>Libraries contain documents of various types. These document types, defined ahead of time, are called <a href="https://support.aodocs.com/hc/en-us/articles/205655634">classes</a>. When a library is first created, it automatically gets outfitted with a default document type, or class. Other classes in your target library might already have been created for you.</p>
 <p>These methods are useful when working with classes:</p>
 <ul>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get">List all available AODocs classes in a specific library</a></li>
-<li><a href="/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get">Get a specific class</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get">List all available AODocs classes in a specific library</a></li>
+<li><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get">Get a specific class</a></li>
 </ul>
 <p>What follows is an elaboration on each of these methods.</p>
 <hr />
@@ -11,7 +11,7 @@
 <p>You can list available target classes for your documents as follows:</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get">PUT /documentType/v1/libraries/{libraryId}</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibraryId%7D/get">PUT /documentType/v1/libraries/{libraryId}</a></h3>
 <h3>Guidelines</h3>
 <h4>Request</h4>
 <p>Only <code>libraryId</code> is mandatory.</p>
@@ -22,7 +22,7 @@
 <pre><code class="language-yaml">?fields=items(displayName%2Cid%2Ckind)%2Ckind
 </code></pre>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList">ApiDocumentTypeList</a> resource, listing all document classes available as part of the specified library.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentTypeList">ApiDocumentTypeList</a> resource, listing all document classes available as part of the specified library.</p>
 <p>Response fields of note:</p>
 <ul>
 <li><code>id</code> (of the class)</li>
@@ -78,7 +78,7 @@
 <p>You can retrieve (the configuration of) a specific class/documentType to confirm it exists or to parse something from its metadata if you have its <code>documentTypeId</code> (class ID).</p>
 <h3>Method and API</h3>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get">GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/documentType/v1/libraries/%7BlibId%7D/documentTypes/%7BdocumentTypeId%7D/get">GET /documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}</a></h3>
 <p>In the command above:</p>
 <ul>
 <li><code>documentType</code> is the API</li>
@@ -92,7 +92,7 @@
 <pre><code class="language-yaml">GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86axGNklquDP/documentTypes/Rs4xuIg86e45fvAsn9L
 </code></pre>
 <h4>Response</h4>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType">ApiDocumentType</a> resource, listing the specified class.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentType">ApiDocumentType</a> resource, listing the specified class.</p>
 <p>Response fields of note:</p>
 <ul>
 <li><code>id</code> (of the class)</li>

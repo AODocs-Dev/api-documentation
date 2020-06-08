@@ -11,11 +11,11 @@
 </ul>
 <h2><strong>Method and API</strong></h2>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put">PUT /document/v1</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/put">PUT /document/v1</a></h3>
 <h2>Guidelines</h2>
 <h3>Prerequisites</h3>
 <p>Before you create a new empty document with one attachment, you must know the <code>libraryId</code> of the library you'll be creating the document in. For a single attachment, any library type works: TF, SF, or DMS — but you still have to know the ID of the specific target library.</p>
-<p>You also need the <code>fileId</code> of any Drive file that you want to attach to your document. Read more about how to <a href="/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">obtain the file ID in the AODocs UI</a>.</p>
+<p>You also need the <code>fileId</code> of any Drive file that you want to attach to your document. Read more about how to <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/c/Guides/30-Manage%20AODocs%20documents/20-Create,%20modify,%20delete%20documents/10-Create%20new%20documents%20with%20attachments/10-Create%20test%20Drive%20files%20and%20folders">obtain the file ID in the AODocs UI</a>.</p>
 <blockquote>
 <p>⭑   <strong>Note</strong>: In the API Explorer's &quot;Request body&quot; window, <code>fileId</code> is part of the <code>attachments</code> array field; alternatively, if you need to attach by explicitly making a copy of the original file, it is found under <code>attachmentsToCopy</code> .</p>
 </blockquote>
@@ -48,7 +48,7 @@
 <p>⭑   <strong>Note</strong>: Once attached to a DMS document, the source Drive file no longer has a visible parent folder in Google Drive. It's still accessible via search and via the &quot;Shared with me&quot; shortcut/folder, but it no longer appears inside its original folder hierarchy (if any).</p>
 </blockquote>
 <p>However, if you attach a Drive file using <code>attachmentsToCopy</code>, that attachment is no longer the original file: it is a copy of it created during the attachment process.</p>
-<p>All these fields correspond to fields in the <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource: the fields of the request resource map directly to the fields of the server resource which gets altered by the <code>PUT</code> operation before being sent back as a response resource.</p>
+<p>All these fields correspond to fields in the <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource: the fields of the request resource map directly to the fields of the server resource which gets altered by the <code>PUT</code> operation before being sent back as a response resource.</p>
 <h3>Sample request</h3>
 <pre><code class="language-yaml">PUT https://aodocs.altirnao.com/api/document/v1
 </code></pre>
@@ -73,7 +73,7 @@
 <p>⭑   <strong>Note</strong>: In the preceding sample request, note the <code>attachments</code> part in bold (or <code>attachmentsToCopy</code> if that's what you're using instead). If you're attaching one or more Drive files, include this part, and list your attachments by <code>fileId</code>. If you're not attaching anything, remove this part altogether.</p>
 </blockquote>
 <h3>Response</h3>
-<p>If the request succeeds, the response returns a <code>200 OK</code> status code and a JSON-formatted representation of an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as <code>id</code>, and its <code>classId</code> is what you specified in the request, else of the library's default type.</p>
+<p>If the request succeeds, the response returns a <code>200 OK</code> status code and a JSON-formatted representation of an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource. The JSON object includes metadata describing details and attributes of the newly created document inside the specified library. The document's ID is listed as <code>id</code>, and its <code>classId</code> is what you specified in the request, else of the library's default type.</p>
 <h3>Sample response</h3>
 <blockquote>
 <p>⭑   <strong>Note</strong>: If attaching a Drive file requires making a copy of it instead of directly linking to the original, the file ID in the response ends up being different from the file ID sent in the request. The request identifies the original, the response identifies the copy.</p>

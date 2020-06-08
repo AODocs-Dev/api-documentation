@@ -14,7 +14,7 @@
 </blockquote>
 <h2>Method and API</h2>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">GET /document/v1/{documentId}</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/document/v1/%7BdocumentId%7D/get">GET /document/v1/{documentId}</a></h3>
 <h2>Guidelines</h2>
 <h3>Request</h3>
 <p>Only <code>documentId</code> is mandatory, and it must be an AODocs <code>documentId</code> not a Drive <code>fileId</code>.</p>
@@ -29,7 +29,7 @@
 <p>⭑   <strong>Note</strong>: To get an AODocs document (including its <code>documentId</code>) by the Drive ID of one of its attachments, use the <code>GET /document/v1/drive/{driveId}</code> method.</p>
 </blockquote>
 <h3>Response</h3>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource, listing the document associated with the provided document ID. The document's ID is <code>id</code>, and its class is what you specified in the request, else of the library's default type.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocument">ApiDocument</a> resource, listing the document associated with the provided document ID. The document's ID is <code>id</code>, and its class is what you specified in the request, else of the library's default type.</p>
 <h3>Sample Response</h3>
 <pre><code class="language-json">{
   &quot;kind&quot;: &quot;aodocs#document&quot;,
@@ -91,7 +91,7 @@
 <p>You can count the number of documents associated with a particular library (and optionally class) as follows.</p>
 <h2><strong>Method and API</strong></h2>
 <p>Play with the API Explorer:</p>
-<h3><strong><a href="/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/count/post">POST /search/v1/libraries/{libraryId}/count</a></strong></h3>
+<h3><strong><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/count/post">POST /search/v1/libraries/{libraryId}/count</a></strong></h3>
 <h2><strong>Usage/notes/guidelines</strong></h2>
 <h3><strong>Request</strong></h3>
 <p><code>libraryId</code> is a path parameter. It is the only mandatory parameter. However, using the <code>classId</code> helps narrow the response to documents of a specific class you want.</p>
@@ -99,7 +99,7 @@
 <pre><code class="language-yaml">POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
 </code></pre>
 <h3><strong>Response</strong></h3>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentCount">ApiDocumentCount</a> resource, giving a count of all documents associated with the specified library (and class if you specified the <code>classId</code>).</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiDocumentCount">ApiDocumentCount</a> resource, giving a count of all documents associated with the specified library (and class if you specified the <code>classId</code>).</p>
 <h3>Sample response</h3>
 <pre><code class="language-json">{
   &quot;kind&quot;: &quot;aodocs#documentCount&quot;,
@@ -112,7 +112,7 @@
 <p>You can search for documents associated with a particular library and a particular class as follows.</p>
 <h2>Method and API</h2>
 <p>Play with the API Explorer:</p>
-<h3><a href="/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/search/post">POST /search/v1/libraries/{libraryId}/search</a></h3>
+<h3><a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/routes/search/v1/libraries/%7BlibraryId%7D/search/post">POST /search/v1/libraries/{libraryId}/search</a></h3>
 <h2>Usage/notes/guidelines</h2>
 <h3>Usage/notes/guidelines</h3>
 <p>This method searches documents of a class matching the provided query. It might become very slow or time out when iterating over many pages of results. If the result set contains more than 10,000 documents, it's highly likely the response will get truncated and some results will be missing. You should always check if <code>precision=INCOMPLETE_RESULT</code> in the response.</p>
@@ -128,7 +128,7 @@
 <pre><code class="language-yaml">POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVWqiT8059P4t8aVYI/search?classId=RrVWtjs801GlsyxIDJe&amp;searchQuery=%22blue%20document%22
 </code></pre>
 <h3>Response</h3>
-<p>The response returns an <a href="/docs/aodocs-staging.altirnao.com/1/types/ApiSearchResult">ApiSearchResult</a> resource, listing all documents that match the specified query.</p>
+<p>The response returns an <a href="https://api.aodocs-staging.com/docs/aodocs-staging.altirnao.com/1/types/ApiSearchResult">ApiSearchResult</a> resource, listing all documents that match the specified query.</p>
 <h3>Sample response</h3>
 <pre><code class="language-json">{
     &quot;kind&quot;: &quot;aodocs#documentList&quot;,
