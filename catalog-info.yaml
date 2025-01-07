@@ -9,4 +9,5 @@
         sonarqube.org/project-key: AODocs-Dev_api-documentation
     spec:
       type: service
+      lifecycle: production
       owner: group:default/developers
