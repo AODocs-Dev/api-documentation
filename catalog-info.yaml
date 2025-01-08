@@ -1,0 +1,13 @@
+    apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: api-documentation
+      description: Github repository for api-documentation
+      annotations:
+        google.com/cloudbuild-project-slug: ao-docs-tools
+        github.com/project-slug: AODocs-Dev/api-documentation
+        sonarqube.org/project-key: AODocs-Dev_api-documentation
+    spec:
+      type: service
+      lifecycle: production
+      owner: group:default/developers
