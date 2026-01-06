@@ -1,0 +1,28 @@
+---
+title: "Modify document attachments"
+sidebarTitle: "Overview"
+description: "Using AODocs APIs, you can modify the document resource using the `PATCH` operation. You can modify attachments as well as [system and custom fields](/manage-aodocs-documents/create-modify-delete-documents/modify-field-values-of-document-properties/). To modify the list of document attachments (i.e. references to Drive files), use `PATCH` to replace/overwrite the `attachments[]` array field of the target resource."
+---
+
+In general, modifying is perfectly benign. However, things carry extra risk with any parts of the resource arranged in arrays. Using the `attachments` array field in DMS documents, is one example; however, the caution extends to any request containing array fields.
+
+There are two cases to consider:
+
+- array field not included in request: corresponding target array does not get modified on the server
+- array field included in request (including empty!): completely overwrites target array field with whatever is in the square brackets in the order provided:
+	- object specified in array position *n*: object placed in target array at position *n*
+	- object not specified: object is removed from target array
+
+<Warning>
+**Warning/Alert**:
+
+The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server.
+
+If you include an empty array field in your payload (without specifying any objects), you are saying to the server “I want this complete array field to be(come) empty.” For example, if you use the `attachments` array field with DMS documents, the result is a target DMS document with no attachments.
+
+(The one-attachment restriction in TF/SF prevents this possibility; however this still applies for other types of array field.)
+
+Additionally, if you want any of the current objects to remain in the array field (as you alter it), you have to specify them each time inside the array field in your request, including their current position). For example, if you use the `attachments` array field with DMS documents, then you have to deliberately send the complete list of what you want the array to contain from then on, **in the order you want**.
+
+(Missteps such as accidental detaching or re-ordering of attachments are not possible with TF/SF documents because you only ever modify the one attachment.)
+</Warning>

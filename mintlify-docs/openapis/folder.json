@@ -1,0 +1,2714 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "folder",
+            "description": "Lets you list existing folders, update folders, create new folders, ..."
+        }
+    ],
+    "paths": {
+        "/folder/v1": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.FolderDefinition.update",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderDefinition"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderDefinition"
+            },
+            "patch": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.FolderDefinition.patch",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderDefinition"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderDefinition"
+            }
+        },
+        "/folder/v1/duplicate/{sourceFolderId}/{destinationFolderId}/{folderName}": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.Folder.duplicateFolderStructure",
+                "parameters": [
+                    {
+                        "name": "sourceFolderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destinationFolderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDuplicateFolderStructureResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDuplicateFolderStructureResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/files/{folderId}": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Gets a folder",
+                "operationId": "folder:v1.Folder.get",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolder response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolder"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Creates a folder",
+                "operationId": "folder:v1.Folder.create",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderValueName",
+                        "in": "query",
+                        "description": "Name of the new folder",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "enforceUniqueName",
+                        "in": "query",
+                        "description": "Whether to prevent creating two folders with the same name and same path",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolder response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolder"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Renames a folder",
+                "operationId": "folder:v1.Folder.rename",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderValueName",
+                        "in": "query",
+                        "description": "New name of the folder",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolder response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolder"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Removes folder with id folderId according to deleteMode",
+                "operationId": "folder:v1.Folder.remove",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deleteMode",
+                        "in": "query",
+                        "description": "Defaults to TRASH",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PERMANENT",
+                                "TRASH"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/files/{folderId}/children": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "List folders under folder with id folderId, possible loading only direct children",
+                "operationId": "folder:v1.Folder.list",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "onlyDirectChildren",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "nameFilter",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folderTrees/{rootFolderId}": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Load necessary folders as trees to display selectedFolder in the context of displayRootFolder applying filter from the view",
+                "operationId": "folder:v1.Folder.treeFromDisplayRoot",
+                "parameters": [
+                    {
+                        "name": "rootFolderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "selectedFolderId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folders/{displayRootFolderId}/hierarchy": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Load necessary folders to display selectedFolder in the context of displayRootFolder",
+                "operationId": "folder:v1.Folder.listFromDisplayRoot",
+                "parameters": [
+                    {
+                        "name": "displayRootFolderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "selectedFolder",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folders/{folderId}/applypermissionsrecursively": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Applies the permissions of the provided folder to its content recursively",
+                "operationId": "folder:v1.Folder.applyPermissionsRecursively",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folders/{folderId}/checkfolder": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.Folder.checkFolder",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "onlyCurrentFolder",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "fixPermissions",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folders/{folderId}/extendedPermissions": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Loads folder permissions and related flags in Secured Folder and Document Management libraries",
+                "operationId": "folder:v1.Folder.listPermissions",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "includePermissionInheritanceFlag",
+                        "in": "query",
+                        "description": "Lets you see if a folder permission is inherited or explicit",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderPermissions response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderPermissions"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Updates folder permissions and related flags in Secured Folder and Document Management libraries",
+                "operationId": "folder:v1.Folder.patchPermissions",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderPermissions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderPermissions response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderPermissions"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderPermissions"
+            }
+        },
+        "/folder/v1/folders/{folderId}/move/{parentFolderId}": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Moves folder with id folderId to folder parentId (must be in the same library)",
+                "operationId": "folder:v1.Folder.move",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parentFolderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/folders/{folderId}/permissions": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.Folder.loadFolderDrivePermissions",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderDrivePermissions response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderDrivePermissions"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.Folder.updateFolderDrivePermissions",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderDrivePermissions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderDrivePermissions response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderDrivePermissions"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderDrivePermissions"
+            }
+        },
+        "/folder/v1/folders/{folderId}/untrash": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Restores folder with id folderId from trash into folder targetFolderId.",
+                "operationId": "folder:v1.Folder.untrash",
+                "parameters": [
+                    {
+                        "name": "folderId",
+                        "in": "path",
+                        "description": "The ID of the folder",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "targetFolderId",
+                        "in": "query",
+                        "description": "Restores to root if null",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "operationId": "folder:v1.FolderDefinition.get",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderDefinition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderDefinition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/folders": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(DO NOT USE - use list/listFromDisplayRoot) Loads all folders in a library. WARNING! This method can be very inefficient, prefer listFolders/listFoldersFromDisplayRoot methods.",
+                "operationId": "folder:v1.Folder.listLibraryFolders",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(Deprecated - use create) Creates a folder in library libraryId with parent parentFolderAodocsId",
+                "operationId": "folder:v1.Folder.createFolder",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parentFolderAodocsId",
+                        "in": "query",
+                        "description": "If absent, folder is created under the library root",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderValueName",
+                        "in": "query",
+                        "description": "Name of the new folder",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolder response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolder"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/folders/children": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(DO NOT USE - use list) List folders under folder with id folderAodocsId, possible loading only direct children",
+                "operationId": "folder:v1.Folder.listFolders",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderAodocsId",
+                        "in": "query",
+                        "description": "If absent, lists folders under the library root",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "onlyDirectChildren",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "nameFilter",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/folders/{folderAodocsId}": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(Deprecated - use get) Loads folder with id folderAodocsId in library libraryId",
+                "operationId": "folder:v1.Folder.getFolder",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderAodocsId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiFolder response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiFolder"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(Deprecated - use rename) Renames folder with id folderAodocsId",
+                "operationId": "folder:v1.Folder.renameFolder",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderAodocsId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderValueName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "(Deprecated - use remove) Removes folder with id folderAodocsId in library libraryId according to deleteMode",
+                "operationId": "folder:v1.Folder.removeFolder",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folderAodocsId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deleteMode",
+                        "in": "query",
+                        "description": "Defaults to TRASH",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PERMANENT",
+                                "TRASH"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/foldersAndDocuments": {
+            "get": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Loads trashed folders and documents in folder with id referenceFolderId",
+                "operationId": "folder:v1.Folder.listTrashedChildFoldersAndDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "referenceFolderId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ascendingOrder",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nextPageOffset",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiTrashedDocumentAndFolderList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiTrashedDocumentAndFolderList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/foldersAndDocuments/move": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Moves multiple folders and documents into the parent folder",
+                "operationId": "folder:v1.Folder.moveFoldersAndDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parentFolderId",
+                        "in": "query",
+                        "description": "Id of the destination folder",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderAndDocumentList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderAndDocumentList"
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/foldersAndDocuments/trash": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Removes multiple folders and documents according to deleteMode",
+                "operationId": "folder:v1.Folder.removeFoldersAndDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deleteMode",
+                        "in": "query",
+                        "description": "Defaults to TRASH",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PERMANENT",
+                                "TRASH"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "reason",
+                        "in": "query",
+                        "description": "The reason for deleting the documents",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderAndDocumentList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderAndDocumentList"
+            }
+        },
+        "/folder/v1/libraries/{libraryId}/foldersAndDocuments/untrash": {
+            "post": {
+                "tags": [
+                    "folder"
+                ],
+                "description": "Restores multiple folders and documents from trash into folder targetFolderId.",
+                "operationId": "folder:v1.Folder.untrashFoldersAndDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "targetFolderId",
+                        "in": "query",
+                        "description": "Restores to root if null",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFolderAndDocumentList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFolderAndDocumentList"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiBaseUserProfile": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name of the user"
+                    },
+                    "nonGoogle": {
+                        "type": "boolean",
+                        "description": "This user is not a google user"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the user"
+                    }
+                }
+            },
+            "ApiDeletedDocument": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "className": {
+                        "type": "string"
+                    },
+                    "className_i18n": {
+                        "type": "string"
+                    },
+                    "deleteReason": {
+                        "type": "string"
+                    },
+                    "deletedTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletingUser": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "documentId": {
+                        "type": "string"
+                    },
+                    "folders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDeletedFolder": {
+                "type": "object",
+                "properties": {
+                    "deletedTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deletingUser": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "folderName": {
+                        "type": "string"
+                    },
+                    "folders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDrivePermission": {
+                "type": "object",
+                "properties": {
+                    "additionalRoles": {
+                        "type": "array",
+                        "description": "The additional roles for the permission like COMMENTER",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "allowlisted": {
+                        "type": "boolean",
+                        "description": "Whether the email address is allowlisted (individually or via its domain) in the current domain"
+                    },
+                    "belongsToDomain": {
+                        "type": "boolean",
+                        "description": "Whether the email address is part of the current domain"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the permission or the domain name if type = DOMAIN"
+                    },
+                    "googleEmailAddress": {
+                        "type": "boolean",
+                        "description": "Whether the email address is tied to a Google account"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name for the permission"
+                    },
+                    "permissionId": {
+                        "type": "string",
+                        "description": "The unique ID for the permission in Drive"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The role of the permission: READER, WRITER, OWNER"
+                    },
+                    "thumbnailPhotoUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the permitted user or group"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of permission in Drive: ANYONE, DOMAIN, GROUP, USER"
+                    },
+                    "withLink": {
+                        "type": "boolean",
+                        "description": "Whether the permission imposes to have the link to access (vs. can be searched for)"
+                    }
+                }
+            },
+            "ApiDuplicateFolderStructureResult": {
+                "type": "object",
+                "properties": {
+                    "folder": {
+                        "$ref": "#/components/schemas/ApiFolder"
+                    },
+                    "jobId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiExtendedPermission": {
+                "type": "object",
+                "properties": {
+                    "inherited": {
+                        "type": "boolean",
+                        "description": "Indicates whether the permission is inherited from a parent"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name for the permission: the name of the user or the group, or the display name of the role (read-only)"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "If there is an internationalized name of the permission e.g. in the case of system roles (read-only)"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "READER",
+                            "COMMENTER",
+                            "ATTACHMENT_EDITOR",
+                            "WRITER"
+                        ]
+                    },
+                    "thumbnailPhotoUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the permitted user or group (read-only)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "ANYONE",
+                            "DOMAIN",
+                            "GROUP",
+                            "USER",
+                            "ROLE"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email of the user of group, the id of the role or field, the name of the domain, empty otherwise"
+                    }
+                }
+            },
+            "ApiFolder": {
+                "type": "object",
+                "properties": {
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the folder is editable by the current user (read-only field)"
+                    },
+                    "editableDocuments": {
+                        "type": "boolean",
+                        "description": "Whether the documents in the folder are editable by the current user (read-only field)"
+                    },
+                    "fileId": {
+                        "type": "string",
+                        "description": "The ID of the folder in Drive"
+                    },
+                    "folderAodocsId": {
+                        "type": "string",
+                        "description": "The ID of the folder in AODocs model (0 if root folder)"
+                    },
+                    "folderDefinitionId": {
+                        "type": "string",
+                        "description": "(Deprecated) The ID of the folder configuration"
+                    },
+                    "folderIsRoot": {
+                        "type": "boolean",
+                        "description": "Whether the folder is the root folder (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library"
+                    },
+                    "libraryName": {
+                        "type": "string",
+                        "description": "The name of the library"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the folder"
+                    },
+                    "parentFolderAodocsId": {
+                        "type": "string",
+                        "description": "The ID of the parent folder in AODocs model (0 if root folder)"
+                    },
+                    "parentFolderDriveId": {
+                        "type": "string",
+                        "description": "The ID of the parent folder in Drive"
+                    },
+                    "parentFolderIsRoot": {
+                        "type": "boolean",
+                        "description": "Whether the parent folder is the root folder (read-only field)"
+                    },
+                    "permittedOperations": {
+                        "type": "array",
+                        "description": "The list of permitted operations to the current user (read-only field)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "DELETE",
+                                "RENAME",
+                                "MODIFY_ACL",
+                                "VIEW_ACL",
+                                "MOVE_TO_ANOTHER_FOLDER",
+                                "EXPORT",
+                                "EDIT_PROPERTIES",
+                                "COPY",
+                                "CREATE_COPY_FROM",
+                                "EXPORT_COPY",
+                                "CREATE_NEW_VERSION",
+                                "ATTACHMENT_VERSION_REPLACE",
+                                "ATTACHMENT_VERSION_CREATE",
+                                "ADD_NEW_ATTACHMENT_FROM_DRIVE",
+                                "ATTACH_ENCRYPTED_FILE",
+                                "OPEN_IN_OFFICE",
+                                "PUBLISH",
+                                "UNPUBLISH",
+                                "RESTORE_REVISION",
+                                "REVERT_TO_THIS_REVISION",
+                                "CREATE_RELATED_DOCUMENT",
+                                "DOWNLOAD",
+                                "DOWNLOAD_ATTACHMENT",
+                                "NOTIFY_USERS",
+                                "CHECK_IN",
+                                "CHECK_OUT",
+                                "DISCARD_CHECKOUT",
+                                "FORCE_DISCARD_CHECKOUT",
+                                "EDIT_TAGS",
+                                "PERFORM_HUMAN_WORKFLOW_ACTIONS",
+                                "VIEW_DRAFT",
+                                "SHARE_PUBLICLY",
+                                "VIEW_HISTORY",
+                                "VIEW_VERSIONS",
+                                "ADD_COMMENT",
+                                "SET_TEMPLATE_AS_DEFAULT",
+                                "SET_TEMPLATE_VISIBILITY_SCOPE",
+                                "DELETE_COMMENT",
+                                "KNOW_DRAFT",
+                                "FORCE_PARALLEL_TRANSITION",
+                                "CHANGE_WORKFLOW_STATE_DIRECTLY",
+                                "SEE_HIDDEN_FIELDS",
+                                "VIEW_TRASHED_ITEM",
+                                "UNTRASH",
+                                "PERMANENTLY_DELETE",
+                                "VIEW_DRIVEONLY_ACL",
+                                "MODIFY_DRIVEONLY_ACL",
+                                "NON_GOOGLE_USERS_SUPPORT",
+                                "SUPPORTS_LIVE_EVALUATION",
+                                "ALLOWLIST_NOT_ENFORCED",
+                                "CREATE_SUBFOLDER",
+                                "CREATE_DOCUMENT_IN_THIS_FOLDER",
+                                "IMPORT_FOLDERS_FROM_DRIVE_TO_THIS_FOLDER",
+                                "ADD_NEW_ATTACHMENT_FROM_OSS",
+                                "OPEN_IN_DRIVE",
+                                "COPY_FOLDER_TREE",
+                                "CHECK_FOLDER",
+                                "MOVE_TO_DRIVE",
+                                "COPY_TO_DRIVE",
+                                "MOVE_TO_ANOTHER_LIBRARY",
+                                "MOVE_TO_ANOTHER_CLASS",
+                                "COPY_TO_ANOTHER_CLASS",
+                                "COPY_ATTACHMENT",
+                                "COPY_TO_ANOTHER_LIBRARY",
+                                "EDIT_ATTACHMENT"
+                            ]
+                        }
+                    },
+                    "resourceKey": {
+                        "type": "string",
+                        "description": "A folder that is shared with the link may only be discovered with this resourceKey"
+                    },
+                    "restrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the documents in the folder are marked as restricted to download, copy and print (for the readers)"
+                    },
+                    "subfolders": {
+                        "type": "array",
+                        "description": "The list of subfolders",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    }
+                }
+            },
+            "ApiFolderAndDocumentList": {
+                "type": "object",
+                "properties": {
+                    "documentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "folderIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiFolderDefinition": {
+                "type": "object",
+                "properties": {
+                    "dynamicValues": {
+                        "type": "boolean"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "folderVisibility": {
+                        "type": "string",
+                        "enum": [
+                            "PRIVATE",
+                            "PUBLIC",
+                            "PUBLICLY_EDITABLE"
+                        ]
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "onlyAdminCanEditRootFolder": {
+                        "type": "boolean"
+                    },
+                    "onlyAdminCanManage": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ApiFolderDrivePermissions": {
+                "type": "object",
+                "properties": {
+                    "drivePermissions": {
+                        "type": "array",
+                        "description": "Collection of Drive permissions. See ApiDrivePermission",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDrivePermission"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "restrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the attachments of the documents are explicitly marked as restricted to download, copy and print for readers and commenters"
+                    }
+                }
+            },
+            "ApiFolderList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiFolderPermissions": {
+                "type": "object",
+                "properties": {
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "inheritPermissions": {
+                        "type": "boolean",
+                        "description": "Whether the folder inherits permissions from its parent folder"
+                    },
+                    "inheritedRestrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the attachments of the document are restricted to download, copy and print for readers and commenters because of an ancestor (read-only)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiExtendedPermission"
+                        }
+                    },
+                    "restrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the attachments of the documents are explicitly marked as restricted to download, copy and print for readers and commenters"
+                    }
+                }
+            },
+            "ApiJobId": {
+                "type": "object",
+                "properties": {
+                    "jobId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiTrashedDocumentAndFolderList": {
+                "type": "object",
+                "properties": {
+                    "folders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageOffset": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "trashedDocuments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDeletedDocument"
+                        }
+                    },
+                    "trashedFolders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDeletedFolder"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "deleteMode_query_parameter": {
+                "name": "deleteMode",
+                "in": "query",
+                "description": "Defaults to TRASH",
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "PERMANENT",
+                        "TRASH"
+                    ]
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "folderAodocsId_path_parameter": {
+                "name": "folderAodocsId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "folderId_path_parameter": {
+                "name": "folderId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "folderValueName_query_parameter": {
+                "name": "folderValueName",
+                "in": "query",
+                "description": "Name of the new folder",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "libraryId_path_parameter": {
+                "name": "libraryId",
+                "in": "path",
+                "description": "The ID of the library",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "nameFilter_query_parameter": {
+                "name": "nameFilter",
+                "in": "query",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "onlyDirectChildren_query_parameter": {
+                "name": "onlyDirectChildren",
+                "in": "query",
+                "schema": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "targetFolderId_query_parameter": {
+                "name": "targetFolderId",
+                "in": "query",
+                "description": "Restores to root if null",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ApiFolderAndDocumentList_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiFolderAndDocumentList"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "ApiFolderDefinition_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiFolderDefinition"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "folder",
+    "x-original-swagger-version": "2.0"
+}

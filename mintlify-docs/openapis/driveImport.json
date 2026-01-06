@@ -1,0 +1,802 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "driveImport",
+            "description": "Lets you import files and manage imported files"
+        }
+    ],
+    "paths": {
+        "/driveImport/v1/driveImport/v1/imports/upload": {
+            "post": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Returns a Drive file upload URL with a matching file id.",
+                "operationId": "driveImport:v1.DriveImport.initiateUpload",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library that is used during the import.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class that is used during the import.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiInitiateUploadRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiInitiateUploadResponse response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiInitiateUploadResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiInitiateUploadRequest"
+            }
+        },
+        "/driveImport/v1/imports": {
+            "get": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Lists the high-level status of the import jobs on the domain.",
+                "operationId": "driveImport:v1.DriveImport.getImports",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of import job per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "modifiedAfter",
+                        "in": "query",
+                        "description": "The timestamp (milliseconds) from which an import was last modified (to filter the list).",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'cursor' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiImportList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiImportList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/driveImport/v1/imports/batch/folders/{parentFolderId}": {
+            "put": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Imports several files in a folder managed by AODocs.",
+                "operationId": "driveImport:v1.DriveImport.importFileOrFolders",
+                "parameters": [
+                    {
+                        "name": "parentFolderId",
+                        "in": "path",
+                        "description": "The ID of the folder to import the file(s) in",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fileIds",
+                        "in": "query",
+                        "description": "The list of files (by ID) to import",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class that is used during the import.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "templateDocumentId",
+                        "in": "query",
+                        "description": "The ID of the document template to use at import",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/driveImport/v1/imports/folders/{parentFolderId}/{fileId}": {
+            "put": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Imports a single file in a folder managed by AODocs. It's recommended to use importFileOrFolders instead (to follow-up the job).",
+                "operationId": "driveImport:v1.DriveImport.importFileOrFolder",
+                "parameters": [
+                    {
+                        "name": "parentFolderId",
+                        "in": "path",
+                        "description": "The ID of the folder to import the file(s) in",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fileId",
+                        "in": "path",
+                        "description": "The ID of the file to import",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class that is used during the import.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "templateDocumentId",
+                        "in": "query",
+                        "description": "The ID of the document template to use at import",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/driveImport/v1/imports/{importId}": {
+            "get": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Gets the details of an import job on the domain.",
+                "operationId": "driveImport:v1.DriveImport.getImport",
+                "parameters": [
+                    {
+                        "name": "importId",
+                        "in": "path",
+                        "description": "The ID of an import job",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiImport response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiImport"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/driveImport/v1/imports/{importId}/files": {
+            "get": {
+                "tags": [
+                    "driveImport"
+                ],
+                "description": "Lists the details by file of an import job on the domain.",
+                "operationId": "driveImport:v1.DriveImport.getImportFiles",
+                "parameters": [
+                    {
+                        "name": "importId",
+                        "in": "path",
+                        "description": "The ID of an import job",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of import files per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "modifiedAfter",
+                        "in": "query",
+                        "description": "The timestamp (milliseconds) from which an import was last modified (to filter the list).",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "failedOnly",
+                        "in": "query",
+                        "description": "Whether to filter on the failed import only (Default: false, i.e. all results).",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'cursor' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiImportFileList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiImportFileList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiBaseUserProfile": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name of the user"
+                    },
+                    "nonGoogle": {
+                        "type": "boolean",
+                        "description": "This user is not a google user"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the user"
+                    }
+                }
+            },
+            "ApiImport": {
+                "type": "object",
+                "properties": {
+                    "destinationFolderId": {
+                        "type": "string"
+                    },
+                    "destinationFolderName": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "importer": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedAt": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "libraryName": {
+                        "type": "string"
+                    },
+                    "startedAt": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "toImport": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiImportFile": {
+                "type": "object",
+                "properties": {
+                    "fileId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedAt": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "link": {
+                        "type": "string"
+                    },
+                    "mimeType": {
+                        "type": "string"
+                    },
+                    "numberOfTries": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "owner": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiImportFileList": {
+                "type": "object",
+                "properties": {
+                    "cursor": {
+                        "type": "string"
+                    },
+                    "importFiles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiImportFile"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiImportList": {
+                "type": "object",
+                "properties": {
+                    "cursor": {
+                        "type": "string"
+                    },
+                    "imports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiImport"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiInitiateUploadRequest": {
+                "type": "object",
+                "properties": {
+                    "contentLengthInBytes": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fileId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mimeType": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiInitiateUploadResponse": {
+                "type": "object",
+                "properties": {
+                    "fileId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "uploadUrl": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiJobId": {
+                "type": "object",
+                "properties": {
+                    "jobId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "classId_query_parameter": {
+                "name": "classId",
+                "in": "query",
+                "description": "The ID of the document class that is used during the import.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "cursor_query_parameter": {
+                "name": "cursor",
+                "in": "query",
+                "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'cursor' from the previous response.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "importId_path_parameter": {
+                "name": "importId",
+                "in": "path",
+                "description": "The ID of an import job",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "modifiedAfter_query_parameter": {
+                "name": "modifiedAfter",
+                "in": "query",
+                "description": "The timestamp (milliseconds) from which an import was last modified (to filter the list).",
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "parentFolderId_path_parameter": {
+                "name": "parentFolderId",
+                "in": "path",
+                "description": "The ID of the folder to import the file(s) in",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "templateDocumentId_query_parameter": {
+                "name": "templateDocumentId",
+                "in": "query",
+                "description": "The ID of the document template to use at import",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "driveImport",
+    "x-original-swagger-version": "2.0"
+}

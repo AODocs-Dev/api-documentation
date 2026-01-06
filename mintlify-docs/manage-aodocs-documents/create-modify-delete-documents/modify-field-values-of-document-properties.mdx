@@ -1,0 +1,158 @@
+---
+title: "Modify field values of document properties"
+description: "AODocs documents are composed of metadata, including (but not limited to) system and custom properties defined as part of a specific document type (also known as class)."
+---
+
+System properties are pieces of metadata defined at the document level, found in every document. Most of them are set by the system and are read-only. Some of them can be modified.
+
+Custom properties are document metadata defined by an administrator during the creation of a class. Once defined, each document that belongs to the class takes on all the properties defined in its class.
+
+<Note>
+**Note**: 
+
+Properties can be added and deleted after class creation.
+</Note>
+
+Read more about [managing custom fields in the UI](https://support.aodocs.com/hc/en-us/articles/115000051523#h_76055d8f-c7aa-4eaa-b9d7-68aaea6a170b) .
+
+## Limits
+
+Documents have a 1MB size limit, so any otherwise unlimited field like `richText` or custom fields of type `TEXT` must fit inside this restriction.
+
+Additionally, the `title` system field, as well as any other `STRING` fields have a 1500 byte limit.
+
+## Setting system and custom fields
+
+To set any fields in AODocs, you have to pass the correct JSON-formatted field-value pair as part of the request body along with the desired type of HTTP request: `PUT` to create a document; and `PATCH` to modify it.
+
+### Setting system fields
+
+In a document resource, system fields are top-level fields (not nested), and you can address them by name directly in your request.
+
+#### Sample request
+
+```yaml
+PUT https://aodocs.altirnao.com/api/document/v1
+```
+
+```json
+{
+    "title": "my-new-doc-023",
+    "richText": "my-new-doc-023-richText",
+    "creationDate": "123456789000",
+    "initialAuthor": "account1@gmail.com",
+    "updateAuthor": "account2@gmail.com",
+    "modificationDate": "987654321000",
+    "setModifiedDate": true,
+    "libraryId": "RsjaTyH8w59078Zx7Dk"
+}
+```
+
+#### Updatability of system fields
+
+In AODocs APIs, you can define system field values for a document when it is either created or updated. Some of these fields can be created or modified only if you set the `setModifiedDate` boolean flag to `true`.
+
+The following table outlines allowances and requirements for each system field (`sMD` means `setModifiedDate`):
+
+| **Are the following fields modifiable?** | **At creation (sMD=false)** | **At creation (sMD=true)** | **At modification (sMD=false)** | **At modification (sMD=true)** |
+| :--- | :--- | :--- | :--- | :--- |
+| initialAuthor | Yes | Yes | No | No |
+| creationDate | Yes | Yes | No | No |
+| updateAuthor | No, current user | Yes | No, current user | Yes |
+| modificationDate | No, current date | Yes | No, current date | Yes |
+| title | Yes¹ | Yes | Yes | Yes |
+| richText | Yes | Yes | Yes | Yes |
+
+¹ `title` is automatically populated as “Untitled” if left unspecified
+
+#### Use case: setModifiedDate flag
+
+When you update a document with the API, whether it’s creation or modification, the document gets updated with your changes and there is an implicit update to two system fields: `modifiedDate` and `updateAuthor`, that will get the current date and current user value regardless of the field values you put in the request.
+
+This flag allows write access to these two fields: it exists so that tools like a bulk updater can edit fields or other information in the document without the modification date and the modification author getting set to the latest system values. For actions that have the requirement of preserving the `modifiedDate` and `updateAuthor` fields as is, explicitly pass their previous values along with your document changes and the `setModifiedDate` flag set to `true`.
+
+#### Sample request
+
+```yaml
+PUT https://aodocs.altirnao.com/api/document/v1
+```
+
+```json
+{
+    "title": "my new AODocs document",
+    "richText": "Hello, world!",
+    "creationDate": "123456789000",
+    "initialAuthor": "mypersonalemail@gmail.com",
+    "updateAuthor": "mypersonal@gmail.com",
+    "setModifiedDate": true,
+    "modificationDate": "987654321000",
+    "libraryId": "RsjaTyH8w59078Zx7Dk",
+}
+```
+
+#### Expected formats for system fields
+
+| **TYPE OF SYSTEM FIELD** | **EXPECTED API FORMAT** |
+| :--- | :--- |
+| TEXT (like `title`) | Text with no HTML parsing; you can add line breaks |
+| RICH TEXT (like `richText` AKA "Description" in the UI) | Text that is rendered as HTML |
+| DATETIME (like `creationDate` and `modificationDate` ) | Unix timestamp in milliseconds since the beginning of 1 January 1970, as a JSON string (will not accept integers) |
+| PERSON (like `initialAuthor` and `updateAuthor`) | Any string value; we recommend valid Google account email addresses to benefit from the workflow features on these fields |
+
+### Setting custom fields
+
+In a document resource, custom fields are found inside the `fields` array.
+
+<Warning>
+**Warning/Alert**:
+
+The list of objects you specify in your array field in the order you specify completely replaces whatever currently exists in the corresponding resource array on the server, in the order you provide. Read about it in more detail on the [Modify document attachments](/manage-aodocs-documents/create-modify-delete-documents/modify-document-attachments/) page.
+</Warning>
+
+Custom fields are defined in the document’s class when it’s created; and you or a client app populate their values when creating or modifying a document.
+
+In order to populate custom fields, you must know the `fieldId` of the particular property of your target class (that each document in that class has). You then use it to tell the server which values of this particular property should be set. To do this, populate `fields[].fieldId` with your target class’s `fieldId`.
+
+<Note>
+**Note**: 
+
+Alternatively, you can populate `fields[].fieldName` with the target class’s `fieldName`. However, this is **not recommended**, as the name of a field can change.
+</Note>
+
+Once the target class is identified, populate `fields[].values[]` with the values you want.
+
+#### Sample request
+
+```yaml
+PUT https://aodocs.altirnao.com/api/document/v1
+```
+
+```json
+{
+    "title": "my-new-doc-024",
+    "libraryId": "RsjaTyH8w59078Zx7Dk",
+    "fields": [
+        {
+            "fieldId": "RxUjYCe8AAx2YAju5NW",
+            "values": [
+                "a@a.com",
+                "b@b.com"
+            ]
+        }
+    ]
+}
+```
+
+#### Expected API formats for custom fields
+
+| **TYPE OF CUSTOM FIELD** | **EXPECTED JSON FORMAT** | **CAN BE MULTIVALUE?** |
+| :--- | :--- | :--- |
+| STRING | A JSON string of alphanumeric and special characters; 400-character limit | Yes |
+| TEXT | A JSON string with no HTML parsing; you can add line breaks + no limit | Yes |
+| PERSON | A JSON string representing a user or group email address | Yes (only accepts groups when multivalued, as groups are considered “multiple persons”) |
+| DATETIME | Unix timestamp in milliseconds since the beginning of 1 January 1970, as a JSON string (will not accept integers) | No |
+| INTEGER | JSON integer values (0, 1, 2, -1,.. limited to +/- 2,147,483,647) | No |
+| DECIMAL | JSON decimal values (0.1, -5.1, 1.655,..) with maximum 3 decimal digits | No |
+| BOOLEAN | `true` or `false` | No |
+
+

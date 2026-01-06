@@ -1,0 +1,1991 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "user",
+            "description": "Lets you get information about users and groups (beta version, subject to change)"
+        }
+    ],
+    "paths": {
+        "/user/v1/combinedSuggest": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the users, groups and roles of the library matching a pattern.",
+                "operationId": "user:v1beta1.User.getCombinedSuggestions",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Set additional information to return (each additional item increases the response latency). Available value: EMAIL_QUALIFICATIONS",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSuggestionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSuggestionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/group/{groupEmail}/members": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the users and groups which are members of the given Google group.",
+                "operationId": "user:v1beta1.User.getGroupMembers",
+                "parameters": [
+                    {
+                        "name": "groupEmail",
+                        "in": "path",
+                        "description": "The email address of a group",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "transitive",
+                        "in": "query",
+                        "description": "Whether to fetch users recursively",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiGroupMemberList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiGroupMemberList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/groupSuggest": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the groups either in library role, in a group or in a document's permissions matching a pattern.",
+                "operationId": "user:v1beta1.User.getGroupSuggestions",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inGroup",
+                        "in": "query",
+                        "description": "The Google group to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inRole",
+                        "in": "query",
+                        "description": "The role ID to look into (on the selected library)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inDocument",
+                        "in": "query",
+                        "description": "The document ID in which permissions to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSuggestionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSuggestionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/licenseUserSuggest": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the licensed users matching the query",
+                "operationId": "user:v1beta1.User.getLicensedUserSuggestions",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of items to return",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 10
+                        }
+                    },
+                    {
+                        "name": "nextPageToken",
+                        "in": "query",
+                        "description": "DEPRECATED. Use pageToken instead.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSuggestionPageableList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSuggestionPageableList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/me": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Gets user information for the current user.",
+                "operationId": "user:v1beta1.User.getCurrentUser",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiUser response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Updates user preferences partially (all non-specified field values will remain unchanged) - only works with editable properties.",
+                "operationId": "user:v1beta1.User.patchCurrentUser",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiUserPatch"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiUser response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiUserPatch"
+            }
+        },
+        "/user/v1/storageAccounts": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists storage accounts a user can use to create a library on a domain",
+                "operationId": "user:v1beta1.StorageAccounts.list",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "The email address of a user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAdminList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAdminList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/userAndGroupSuggest": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the users and groups either in library role, in a group or in a document's permissions matching a pattern.",
+                "operationId": "user:v1beta1.User.getUserAndGroupSuggestions",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inGroup",
+                        "in": "query",
+                        "description": "The Google group to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inRole",
+                        "in": "query",
+                        "description": "The role ID to look into (on the selected library)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inDocument",
+                        "in": "query",
+                        "description": "The document ID in which permissions to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Set additional information to return (each additional item increases the response latency). Available value: EMAIL_QUALIFICATIONS",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSuggestionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSuggestionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/userSuggest": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists the users either in library role, in a group or in a document's permissions matching a pattern.",
+                "operationId": "user:v1beta1.User.getUserSuggestions",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inGroup",
+                        "in": "query",
+                        "description": "The Google group to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inRole",
+                        "in": "query",
+                        "description": "The role ID to look into (on the selected library)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "inDocument",
+                        "in": "query",
+                        "description": "The document ID in which permissions to look into",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Set additional information to return (each additional item increases the response latency). Available value: EMAIL_QUALIFICATIONS",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "excludeWhitelistedUsers",
+                        "in": "query",
+                        "description": "Whether we should suggest users only of the domain",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSuggestionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSuggestionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/workflowTasks": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Counts the number of documents that require a workflow transition by the given user, grouped by library, workflow, state (up to 1000 tasks).",
+                "operationId": "user:v1beta1.WorkflowTasks.count",
+                "parameters": [
+                    {
+                        "name": "countLimit",
+                        "in": "query",
+                        "description": "The maximum number of items to count. Defaults to 1000, max 1000.",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1000
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "The email address of a user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiWorkflowTasksCount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiWorkflowTasksCount"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/{userId}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Gets user information for the given user.",
+                "operationId": "user:v1beta1.User.getUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "The email address of a user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiUser response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/{user}/starred/{type}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists starred entities based on its type for the given user.",
+                "operationId": "user:v1beta1.User.listStarred",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "The email address of a user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "Type of object (only 'LIBRARY' for now)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiListStarred response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiListStarred"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1/{user}/starred/{type}/{objectId}": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Stars a entity based on its type and ID for the given user.",
+                "operationId": "user:v1beta1.User.star",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "The email address of a user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "Type of object (only 'LIBRARY' for now)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "objectId",
+                        "in": "path",
+                        "description": "ID of the object (only library ID for now)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Unstars a entity based on its type and ID for the given user.",
+                "operationId": "user:v1beta1.User.unstar",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "The email address of a user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "Type of object (only 'LIBRARY' for now)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "objectId",
+                        "in": "path",
+                        "description": "ID of the object (only library ID for now)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1beta1/emailQualification/{email}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Gets information about an email address (Google user, member of the domain, allowlisted...).",
+                "operationId": "user:v1beta1.User.getEmailQualification",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email address to qualify",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiEmailQualification response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiEmailQualification"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1beta1/me/roles": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists domain role information for the current user of the given domain.",
+                "operationId": "user:v1beta1.Role.getDomainRoles",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiUserRolesData response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiUserRolesData"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/v1beta1/me/roles/{libraryId}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Lists role information for the current user of the given library.",
+                "operationId": "user:v1beta1.Role.getLibraryRoles",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiUserRolesData response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiUserRolesData"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiEmailQualification": {
+                "type": "object",
+                "properties": {
+                    "allowlisted": {
+                        "type": "boolean",
+                        "description": "Whether the email address is allowlisted (individually or via its domain) in the current domain"
+                    },
+                    "belongsToDomain": {
+                        "type": "boolean",
+                        "description": "Whether the email address is part of the current domain"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The current domain"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The given email"
+                    },
+                    "googleEmailAddress": {
+                        "type": "boolean",
+                        "description": "Whether the email address is tied to a Google account"
+                    },
+                    "group": {
+                        "type": "boolean",
+                        "description": "The email address is a group email"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiGroupMember": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "GROUP"
+                        ]
+                    }
+                }
+            },
+            "ApiGroupMemberList": {
+                "type": "object",
+                "properties": {
+                    "groupEmail": {
+                        "type": "string"
+                    },
+                    "groupName": {
+                        "type": "string"
+                    },
+                    "includesAll": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "memberCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiGroupMember"
+                        }
+                    }
+                }
+            },
+            "ApiLibraryCreationType": {
+                "type": "object",
+                "properties": {
+                    "creationType": {
+                        "type": "string",
+                        "enum": [
+                            "TEAM_FOLDER",
+                            "SECURED_FOLDER",
+                            "DOCUMENT_MANAGEMENT",
+                            "DOCUMENT_MANAGEMENT_OBJECT_STORAGE"
+                        ]
+                    }
+                }
+            },
+            "ApiListStarred": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "LIBRARY"
+                        ]
+                    }
+                }
+            },
+            "ApiReferenceCatalogValue": {
+                "type": "object",
+                "properties": {
+                    "createdAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog value was created (read-only field)",
+                        "format": "int64"
+                    },
+                    "deleted": {
+                        "type": "boolean",
+                        "description": "Whether the catalog value should be marked as deleted"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog value"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog value was last modified (read-only field)",
+                        "format": "int64"
+                    },
+                    "leaf": {
+                        "type": "boolean",
+                        "description": "Whether the value has children values (read-only field)"
+                    },
+                    "level": {
+                        "type": "integer",
+                        "description": "The level of the reference catalog value in the hieararchical structure. Level 0 is the first level that has no ancestors (read-only field)",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the reference catalog value"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "The id of the parent of the reference catalog value"
+                    },
+                    "parentIds": {
+                        "type": "array",
+                        "description": "The id's of the ancestors of the reference catalog value (read-only field)",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "Rank of the reference catalog value used for sorting, accepting positive integers only",
+                        "format": "int32"
+                    },
+                    "referenceCatalogId": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog (read-only field)"
+                    }
+                }
+            },
+            "ApiRoleData": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the role"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "privileges": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "The list of privileges coming with the role"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the role (LIBRARY, DOCUMENT, CUSTOM)",
+                        "enum": [
+                            "LIBRARY",
+                            "DOCUMENT",
+                            "PREDEFINED",
+                            "CUSTOM"
+                        ]
+                    }
+                }
+            },
+            "ApiStorageAdmin": {
+                "type": "object",
+                "properties": {
+                    "canCreateLibrary": {
+                        "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiStorageAdminList": {
+                "type": "object",
+                "properties": {
+                    "defaultStorageAdmin": {
+                        "$ref": "#/components/schemas/ApiStorageAdmin"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "storageAdmins": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiStorageAdmin"
+                        }
+                    }
+                }
+            },
+            "ApiSuggestion": {
+                "type": "object",
+                "properties": {
+                    "allowlisted": {
+                        "type": "boolean",
+                        "description": "Whether the email address is allowlisted (individually or via its domain) in the current domain"
+                    },
+                    "belongsToDomain": {
+                        "type": "boolean",
+                        "description": "Whether the email address is part of the current domain"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The current domain"
+                    },
+                    "googleEmailAddress": {
+                        "type": "boolean",
+                        "description": "Whether the email address is tied to a Google account"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "ROLE"
+                        ]
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiSuggestionList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "suggestions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSuggestion"
+                        }
+                    }
+                }
+            },
+            "ApiSuggestionPageableList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    },
+                    "suggestions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSuggestion"
+                        }
+                    }
+                }
+            },
+            "ApiUser": {
+                "type": "object",
+                "properties": {
+                    "aliases": {
+                        "type": "array",
+                        "description": "Email aliases of the user",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "availableDomains": {
+                        "type": "array",
+                        "description": "The user available domains",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "availableStorageServices": {
+                        "type": "array",
+                        "description": "Attachment storage services available for library creation.",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "GOOGLE_DRIVE",
+                                "AODOCS_MANAGED_CLOUD",
+                                "GOOGLE_CLOUD_STORAGE",
+                                "AZURE_BLOB_STORAGE"
+                            ]
+                        }
+                    },
+                    "canAccessDrive": {
+                        "type": "boolean",
+                        "description": "Whether this user can access Drive"
+                    },
+                    "canCreateLibraries": {
+                        "type": "boolean",
+                        "description": "Whether this user can creates libraries within this domain"
+                    },
+                    "canCreateLibrariesOfTypes": {
+                        "type": "array",
+                        "description": "The types of library this user can create",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiLibraryCreationType"
+                        }
+                    },
+                    "defaultDomain": {
+                        "type": "string",
+                        "description": "The user default domain"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The user domain"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The user email"
+                    },
+                    "external": {
+                        "type": "boolean",
+                        "description": "Whether this user is external"
+                    },
+                    "googleEmailAddress": {
+                        "type": "boolean",
+                        "description": "Whether the email address is tied to a Google account"
+                    },
+                    "groupAliases": {
+                        "type": "array",
+                        "description": "Aliases of the groups this user belongs to.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "groups": {
+                        "type": "array",
+                        "description": "The groups this user belongs to.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "impersonable": {
+                        "type": "boolean",
+                        "description": "Whether this user can be impersonated"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "landingLabel": {
+                        "$ref": "#/components/schemas/ApiReferenceCatalogValue"
+                    },
+                    "lastEdit": {
+                        "type": "string",
+                        "description": "The last time the user data has been edited",
+                        "format": "date-time"
+                    },
+                    "lastLogin": {
+                        "type": "string",
+                        "description": "The last time user logged in",
+                        "format": "date-time"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "description": "The preferred locale of the user"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The user name"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "Immutable domain identifier"
+                    },
+                    "permissionIds": {
+                        "type": "array",
+                        "description": "Permission ids this user has",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "standalone": {
+                        "type": "boolean"
+                    },
+                    "superAdmin": {
+                        "type": "boolean",
+                        "description": "Whether this user is a super administrator"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The user thumbnail picture URL"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The preferred timezone of the user"
+                    },
+                    "useDelayedVersion": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ApiUserPatch": {
+                "type": "object",
+                "properties": {
+                    "landingLabel": {
+                        "$ref": "#/components/schemas/ApiReferenceCatalogValue"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "description": "The preferred locale of the user"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The preferred timezone of the user"
+                    }
+                }
+            },
+            "ApiUserRolesData": {
+                "type": "object",
+                "properties": {
+                    "combinedPrivileges": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "The combination of the list of privileges granted across all roles the user is involved in"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "description": "The list of roles (and associated privileges) the user is involved in",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiRoleData"
+                        }
+                    }
+                }
+            },
+            "ApiWorkflowTasksCount": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "countsByLibraries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowTasksCountByLibrary"
+                        }
+                    },
+                    "exact": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiWorkflowTasksCountByLibrary": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "countByWorkflows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowTasksCountByWorkflow"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryType": {
+                        "type": "string",
+                        "enum": [
+                            "DMS",
+                            "SF",
+                            "TF"
+                        ]
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiWorkflowTasksCountByState": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiWorkflowTasksCountByWorkflow": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "countByStates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowTasksCountByState"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "inDocument_query_parameter": {
+                "name": "inDocument",
+                "in": "query",
+                "description": "The document ID in which permissions to look into",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "inGroup_query_parameter": {
+                "name": "inGroup",
+                "in": "query",
+                "description": "The Google group to look into",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "inRole_query_parameter": {
+                "name": "inRole",
+                "in": "query",
+                "description": "The role ID to look into (on the selected library)",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "include_query_parameter": {
+                "name": "include",
+                "in": "query",
+                "description": "Set additional information to return (each additional item increases the response latency). Available value: EMAIL_QUALIFICATIONS",
+                "style": "form",
+                "explode": true,
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "libraryId_query_parameter": {
+                "name": "libraryId",
+                "in": "query",
+                "description": "The ID of the library",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "objectId_path_parameter": {
+                "name": "objectId",
+                "in": "path",
+                "description": "ID of the object (only library ID for now)",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "query_query_parameter": {
+                "name": "query",
+                "in": "query",
+                "description": "The pattern to look for (substring)",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "type_path_parameter": {
+                "name": "type",
+                "in": "path",
+                "description": "Type of object (only 'LIBRARY' for now)",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "user_path_parameter": {
+                "name": "user",
+                "in": "path",
+                "description": "The email address of a user",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "user_query_parameter": {
+                "name": "user",
+                "in": "query",
+                "description": "The email address of a user",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "user",
+    "x-original-swagger-version": "2.0"
+}

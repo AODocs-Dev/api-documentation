@@ -1,0 +1,1164 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "view",
+            "description": "Lets you list existing views, update views, create new views"
+        }
+    ],
+    "paths": {
+        "/view/v1": {
+            "put": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Creates a new view in the library.",
+                "operationId": "view:v1.View.insertView",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiView"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiView response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiView"
+            },
+            "post": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Updates a view configuration (reset not specified fields).",
+                "operationId": "view:v1.View.updateView",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiView"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiView response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiView"
+            },
+            "patch": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Updates a view (keep existing values for not specified fields).",
+                "operationId": "view:v1.View.patchView",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiView"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiView response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiView"
+            }
+        },
+        "/view/v1/libraries/{libraryId}": {
+            "get": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Lists the ID/names of the views available in the library.",
+                "operationId": "view:v1.View.listViews",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiViewWithDisplayCapabilityList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiViewWithDisplayCapabilityList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/view/v1/libraries/{libraryId}/views/{viewId}": {
+            "get": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Gets a view.",
+                "operationId": "view:v1.View.loadView",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "path",
+                        "description": "The ID of the view",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiView response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiView"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "view"
+                ],
+                "description": "Deletes a view.",
+                "operationId": "view:v1.View.deleteView",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "path",
+                        "description": "The ID of the view",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiCustomUIAction": {
+                "type": "object",
+                "properties": {
+                    "displayedOn": {
+                        "$ref": "#/components/schemas/ApiDisplayTarget"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "Must be an icon id from the Material Design Iconic Font set version 2.2.0"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library (read-only field)"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The minimum required role on the library for the entry to be displayed",
+                        "enum": [
+                            "NONE",
+                            "READER",
+                            "COMMENTER",
+                            "ATTACHMENT_EDITOR",
+                            "WRITER",
+                            "ADMIN",
+                            "SUPER_ADMIN"
+                        ]
+                    },
+                    "selection": {
+                        "type": "string",
+                        "description": "The \"type\" of selection that will allow the entry to be displayed",
+                        "enum": [
+                            "ANY",
+                            "EMPTY",
+                            "NOT_EMPTY",
+                            "SINGLE_DOCUMENT",
+                            "SINGLE_FOLDER",
+                            "SINGLE_ATTACHMENT",
+                            "ONLY_DOCUMENTS",
+                            "ONLY_FOLDERS",
+                            "ONLY_WITH_ATTACHMENT",
+                            "HAS_DOCUMENTS",
+                            "HAS_FOLDERS",
+                            "HAS_ATTACHMENTS"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title to be used as tooltip on buttons, or text for menu entries"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The url to use when clicking on the item. It can be a template URL, as a template literal"
+                    },
+                    "windowName": {
+                        "type": "string",
+                        "description": "The window name that the target url should be opened in (second parameter in window.open()). Defaults to \"_blank\""
+                    }
+                }
+            },
+            "ApiDisplayForClass": {
+                "type": "object",
+                "properties": {
+                    "documents": {
+                        "type": "boolean",
+                        "description": "Whether the custom ui action should be displayed in the document editor for documents of this class"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "views": {
+                        "type": "boolean",
+                        "description": "Whether the custom ui action should be displayed in the views of this class"
+                    }
+                }
+            },
+            "ApiDisplayTarget": {
+                "type": "object",
+                "properties": {
+                    "classIds": {
+                        "type": "array",
+                        "description": "List the ids of the classes of the views and document editors that should display the custom ui action (to select all classes use \"ALL\" as id)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDisplayForClass"
+                        }
+                    },
+                    "viewIds": {
+                        "type": "array",
+                        "description": "List the ids of the views that should display the custom ui action (to select all views use \"ALL\" as id)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiId"
+                        }
+                    }
+                }
+            },
+            "ApiFieldWithCapabilities": {
+                "type": "object",
+                "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "description": "The list of capabilities for this field (depending of the type)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "DISPLAY",
+                                "ORDER_BY",
+                                "BROWSE_BY",
+                                "FILTER_ON",
+                                "PRE_FILTER_ON"
+                            ]
+                        }
+                    },
+                    "filterOperators": {
+                        "type": "array",
+                        "description": "The list of operators available for this field (depending of the type)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "EQUAL",
+                                "NOT_EQUAL",
+                                "STRICTLY_GREATER_THAN",
+                                "STRICTLY_LESSER_THAN",
+                                "GREATER_THAN_OR_EQUAL_TO",
+                                "LESSER_THAN_OR_EQUAL_TO",
+                                "BETWEEN",
+                                "EMPTY",
+                                "NOT_EMPTY",
+                                "WITHIN_THE_AREA",
+                                "IN",
+                                "NOT_IN"
+                            ]
+                        }
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden (at class level)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether the field is multi-valued"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only field)"
+                    },
+                    "system": {
+                        "type": "boolean",
+                        "description": "Indicates whether this field is a system field or not (read-only field)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the field (STRING, TEXT, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    }
+                }
+            },
+            "ApiId": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiIdNameValue": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value"
+                    }
+                }
+            },
+            "ApiNameValue": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value"
+                    }
+                }
+            },
+            "ApiSecurityToken": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class when type = FIELD"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class when type = FIELD"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for type in GROUP, ROLE, FIELD"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the name of the role (read-only field)"
+                    },
+                    "displayName_i18n": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the internationalized name of the role (read-only field)"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture (especially for users)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of person (user, group, role, field based, domain i.e. everybody)",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "ROLE",
+                            "FIELD",
+                            "DOMAIN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email address if user or group, the ID of the role, the ID of the class/field (ignored if type = DOMAIN)"
+                    }
+                }
+            },
+            "ApiView": {
+                "type": "object",
+                "properties": {
+                    "availableFields": {
+                        "type": "array",
+                        "description": "The list of fields, their type, in which configuration settings they can be used and the operators available for filters (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFieldWithCapabilities"
+                        }
+                    },
+                    "browseBy": {
+                        "$ref": "#/components/schemas/ApiViewBrowseBy"
+                    },
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the (main) class of the view (read-only after creation)"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the (main) class of the view (read-only after creation)"
+                    },
+                    "customUIActions": {
+                        "type": "array",
+                        "description": "The list of custom ui actions to display in the view for the current user (read-only)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCustomUIAction"
+                        }
+                    },
+                    "defaultView": {
+                        "type": "boolean",
+                        "description": "Whether this is the default view in the library (read-only field - use library.patchLibrary to change the default view)"
+                    },
+                    "displayColumns": {
+                        "type": "array",
+                        "description": "The list of columns to display in the view",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiNameValue"
+                        }
+                    },
+                    "expandFilters": {
+                        "type": "boolean",
+                        "description": "Whether the filters panel should be expanded by default"
+                    },
+                    "filterColumns": {
+                        "type": "array",
+                        "description": "The list of fields to use as filters in the view",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiNameValue"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "description": "The list of filters applied before the view is rendered",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiViewFilter"
+                        }
+                    },
+                    "hideOutdatedCategoryValues": {
+                        "type": "boolean",
+                        "description": "Whether to hide outdated category values in 'browse by' and 'filters' panels"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the view (read-only field)"
+                    },
+                    "includeOtherClasses": {
+                        "type": "boolean",
+                        "description": "Whether to list documents from all the classes in the library"
+                    },
+                    "includeSubfolders": {
+                        "type": "boolean",
+                        "description": "Whether to include documents from subfolders recursively when rendering"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library (read-only after creation)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the view"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the view (read-only field)"
+                    },
+                    "numberOfDocumentsPerPage": {
+                        "type": "integer",
+                        "description": "The number of documents per page to render by default (20, 50 or 100)",
+                        "format": "int32"
+                    },
+                    "openDocumentTargetPage": {
+                        "type": "string",
+                        "description": "The target page to open when clicking on the document title link: open AODocs document page (DOCUMENT, by default) or open the attachment (first, if any) in Drive (ATTACHMENT_IN_DRIVE)",
+                        "enum": [
+                            "DOCUMENT",
+                            "ATTACHMENT_IN_DRIVE"
+                        ]
+                    },
+                    "openDocumentTargetTab": {
+                        "type": "string",
+                        "description": "The target tab to open when clicking on the document title link: open the content in the same tab (CURRENT, by default), open it in a new tab (PER_DOCUMENT) or in a common tab per view (PER_VIEW)",
+                        "enum": [
+                            "CURRENT",
+                            "PER_DOCUMENT",
+                            "PER_VIEW"
+                        ]
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/ApiViewOrder"
+                    },
+                    "publishState": {
+                        "type": "string",
+                        "description": "The filter on the check-out state of the documents: ALL (default value), PUBLISHED (only main versions if checked-out or simple head version if not) or DRAFT_ONLY (draft version if checked-out)",
+                        "enum": [
+                            "ALL",
+                            "PUBLISHED",
+                            "DRAFT_ONLY"
+                        ]
+                    },
+                    "searchInAttachmentsByDefault": {
+                        "type": "boolean",
+                        "description": "Whether to enable the search in attachments by default (relevant for Document Management libraries only)"
+                    },
+                    "showInLibrary": {
+                        "type": "boolean",
+                        "description": "Whether this view should be listed to end-users (default: true, i.e. for everyone)"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The customized URL of the view"
+                    },
+                    "visibility": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    }
+                }
+            },
+            "ApiViewBrowseBy": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Browse by type",
+                        "enum": [
+                            "STATE",
+                            "CLASS",
+                            "FOLDER",
+                            "CATEGORY"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value"
+                    }
+                }
+            },
+            "ApiViewFilter": {
+                "type": "object",
+                "properties": {
+                    "column": {
+                        "$ref": "#/components/schemas/ApiNameValue"
+                    },
+                    "joinType": {
+                        "type": "string",
+                        "description": "The type of join for conditions (AND, OR)",
+                        "enum": [
+                            "AND",
+                            "OR"
+                        ]
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string",
+                        "description": "The operator of the condition (depending on the type of the field: EQUAL, NOT_EQUAL, STRICTLY_GREATER_THAN, STRICTLY_LESSER_THAN, GREATER_THAN_OR_EQUAL_TO, LESSER_THAN_OR_EQUAL_TO, EMPTY, NOT_EMPTY, IN, NOT_IN or WITHIN_THE_AREA)",
+                        "enum": [
+                            "EQUAL",
+                            "NOT_EQUAL",
+                            "STRICTLY_GREATER_THAN",
+                            "STRICTLY_LESSER_THAN",
+                            "GREATER_THAN_OR_EQUAL_TO",
+                            "LESSER_THAN_OR_EQUAL_TO",
+                            "BETWEEN",
+                            "EMPTY",
+                            "NOT_EMPTY",
+                            "WITHIN_THE_AREA",
+                            "IN",
+                            "NOT_IN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value for the condition (except for operator = EMPTY or NOT_EMPTY) - (read-only - deprecated in favour of values)"
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "The values for the condition (except for operator = EMPTY or NOT_EMPTY)",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/ApiIdNameValue"
+                            }
+                        }
+                    }
+                }
+            },
+            "ApiViewOrder": {
+                "type": "object",
+                "properties": {
+                    "descending": {
+                        "type": "boolean",
+                        "description": "Whether to sort in descending (true) or ascending (false) way"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "sortByField": {
+                        "$ref": "#/components/schemas/ApiNameValue"
+                    }
+                }
+            },
+            "ApiViewWithDisplayCapability": {
+                "type": "object",
+                "properties": {
+                    "availableFields": {
+                        "type": "array",
+                        "description": "The list of fields, their type, in which configuration settings they can be used and the operators available for filters (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFieldWithCapabilities"
+                        }
+                    },
+                    "browseBy": {
+                        "$ref": "#/components/schemas/ApiViewBrowseBy"
+                    },
+                    "canDisplay": {
+                        "type": "boolean"
+                    },
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the (main) class of the view (read-only after creation)"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the (main) class of the view (read-only after creation)"
+                    },
+                    "customUIActions": {
+                        "type": "array",
+                        "description": "The list of custom ui actions to display in the view for the current user (read-only)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCustomUIAction"
+                        }
+                    },
+                    "defaultView": {
+                        "type": "boolean",
+                        "description": "Whether this is the default view in the library (read-only field - use library.patchLibrary to change the default view)"
+                    },
+                    "displayColumns": {
+                        "type": "array",
+                        "description": "The list of columns to display in the view",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiNameValue"
+                        }
+                    },
+                    "expandFilters": {
+                        "type": "boolean",
+                        "description": "Whether the filters panel should be expanded by default"
+                    },
+                    "filterColumns": {
+                        "type": "array",
+                        "description": "The list of fields to use as filters in the view",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiNameValue"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "description": "The list of filters applied before the view is rendered",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiViewFilter"
+                        }
+                    },
+                    "hideOutdatedCategoryValues": {
+                        "type": "boolean",
+                        "description": "Whether to hide outdated category values in 'browse by' and 'filters' panels"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the view (read-only field)"
+                    },
+                    "includeOtherClasses": {
+                        "type": "boolean",
+                        "description": "Whether to list documents from all the classes in the library"
+                    },
+                    "includeSubfolders": {
+                        "type": "boolean",
+                        "description": "Whether to include documents from subfolders recursively when rendering"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library (read-only after creation)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the view"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the view (read-only field)"
+                    },
+                    "numberOfDocumentsPerPage": {
+                        "type": "integer",
+                        "description": "The number of documents per page to render by default (20, 50 or 100)",
+                        "format": "int32"
+                    },
+                    "openDocumentTargetPage": {
+                        "type": "string",
+                        "description": "The target page to open when clicking on the document title link: open AODocs document page (DOCUMENT, by default) or open the attachment (first, if any) in Drive (ATTACHMENT_IN_DRIVE)",
+                        "enum": [
+                            "DOCUMENT",
+                            "ATTACHMENT_IN_DRIVE"
+                        ]
+                    },
+                    "openDocumentTargetTab": {
+                        "type": "string",
+                        "description": "The target tab to open when clicking on the document title link: open the content in the same tab (CURRENT, by default), open it in a new tab (PER_DOCUMENT) or in a common tab per view (PER_VIEW)",
+                        "enum": [
+                            "CURRENT",
+                            "PER_DOCUMENT",
+                            "PER_VIEW"
+                        ]
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/ApiViewOrder"
+                    },
+                    "publishState": {
+                        "type": "string",
+                        "description": "The filter on the check-out state of the documents: ALL (default value), PUBLISHED (only main versions if checked-out or simple head version if not) or DRAFT_ONLY (draft version if checked-out)",
+                        "enum": [
+                            "ALL",
+                            "PUBLISHED",
+                            "DRAFT_ONLY"
+                        ]
+                    },
+                    "searchInAttachmentsByDefault": {
+                        "type": "boolean",
+                        "description": "Whether to enable the search in attachments by default (relevant for Document Management libraries only)"
+                    },
+                    "showInLibrary": {
+                        "type": "boolean",
+                        "description": "Whether this view should be listed to end-users (default: true, i.e. for everyone)"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The customized URL of the view"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    }
+                }
+            },
+            "ApiViewWithDisplayCapabilityList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiViewWithDisplayCapability"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "libraryId_path_parameter": {
+                "name": "libraryId",
+                "in": "path",
+                "description": "The ID of the library",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "viewId_path_parameter": {
+                "name": "viewId",
+                "in": "path",
+                "description": "The ID of the view",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ApiView_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiView"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "view",
+    "x-original-swagger-version": "2.0"
+}

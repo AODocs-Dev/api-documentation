@@ -1,0 +1,3987 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "domain",
+            "description": "Lets you manage (list, load, patch, update, add new, delete) domain settings (beta version, subject to change)"
+        }
+    ],
+    "paths": {
+        "/domain/v1/activate": {
+            "put": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Activates the domain on AODocs.",
+                "operationId": "domain:v1beta1.Domain.activateDomain",
+                "parameters": [
+                    {
+                        "name": "activationCode",
+                        "in": "query",
+                        "description": "Code to activate the domain on AODocs",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1/auditLog": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the audit log events relative to specified filters.",
+                "operationId": "domain:v1beta1.AuditLog.getEntries",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Email of the user who triggered the audit log event",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "documentId",
+                        "in": "query",
+                        "description": "The ID of the document",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "description": "Scope of the event (value in 'DOCUMENT', 'FOLDER', 'SECURITY', 'ADMINISTRATION', 'USER' or 'NOTIFICATION')",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DOCUMENT",
+                                "FOLDER",
+                                "WORKFLOW",
+                                "SECURITY",
+                                "ADMINISTRATION",
+                                "USER",
+                                "NOTIFICATION"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "eventType",
+                        "in": "query",
+                        "description": "Type of the event (consult AODocs support for all values possible)",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DOCUMENT_CREATED",
+                                "DOCUMENT_UPDATED",
+                                "DOCUMENT_RENAMED",
+                                "DOCUMENT_ACCESSED",
+                                "DOCUMENT_MOVED",
+                                "DOCUMENT_MOVED_TO_TRASH",
+                                "DOCUMENT_RESTORED",
+                                "DOCUMENT_DELETED",
+                                "DOCUMENT_LOCKED",
+                                "DOCUMENT_UNLOCKED",
+                                "DOCUMENT_LOCK_CONFLICT",
+                                "DOCUMENT_LOCK_DELETED",
+                                "DOCUMENT_QUERY",
+                                "DOCUMENT_LIST_VIEWED",
+                                "DOCUMENT_STATE_CHANGED",
+                                "DOCUMENT_STATE_NOT_CHANGED",
+                                "DOCUMENT_IMPORTED",
+                                "DOCUMENT_COMMENT",
+                                "DOCUMENT_COMMENT_ADDED",
+                                "DOCUMENT_COMMENT_DELETED",
+                                "DOCUMENT_TAG_VERSION",
+                                "DOCUMENT_WEBDAV_DOWNLOAD",
+                                "DOCUMENT_WEBDAV_UPLOAD",
+                                "DOCUMENT_EXPORTED_TO_LIBRARY",
+                                "DOCUMENT_EXPORTED_FROM_LIBRARY",
+                                "ATTACHMENT_ADDED",
+                                "ATTACHMENT_RENAMED",
+                                "ATTACHMENT_EDITED",
+                                "ATTACHMENT_MOVED",
+                                "ATTACHMENT_DELETED",
+                                "ATTACHMENT_RETURNED",
+                                "ATTACHMENT_EXPORTED",
+                                "ATTACHMENT_EXPORTED_TO_LIBRARY",
+                                "ATTACHMENT_EXPORTED_FROM_LIBRARY",
+                                "ATTACHMENT_SHARED_WITH_NOTIFICATION",
+                                "ATTACHMENT_DRIVE_LABEL_UPDATED",
+                                "ATTACHMENT_DRIVE_LABEL_FAILED",
+                                "DRIVE_PERMISSION_UPDATED",
+                                "PARALLEL_VALIDATION_ACTION",
+                                "FOLDER_DELETED",
+                                "FOLDER_CREATED",
+                                "FOLDER_RESTORED",
+                                "FOLDER_UPDATED",
+                                "FOLDER_RENAMED",
+                                "FOLDER_PERMISSIONS_CHANGED",
+                                "FOLDER_PERMISSION_PUSHED_TO_CHILDREN",
+                                "FOLDER_PREVENT_DOWNLOADING_CHANGED",
+                                "FOLDER_MOVED",
+                                "FOLDER_IMPORTED",
+                                "FOLDER_EXPORTED",
+                                "FOLDER_EXPORTED_TO_LIBRARY",
+                                "FOLDER_EXPORTED_FROM_LIBRARY",
+                                "FOLDER_LIST_VIEWED",
+                                "FOLDER_ACCESSED",
+                                "MISSING_FOLDER_DETECTED",
+                                "MISSING_LIBRARY_SYSTEM_FOLDER_DETECTED",
+                                "LIBRARY_SYSTEM_FOLDER_RECOVERED",
+                                "WORKFLOW_HUMAN_ACTION",
+                                "WORKFLOW_PARALLEL_VALIDATION_ACTION",
+                                "USER_LOGGED_IN",
+                                "ACCESS_DENIED",
+                                "DOMAIN_IMPERSONATE",
+                                "USER_IMPERSONATE",
+                                "IMPERSONATION_FAILED",
+                                "LIBRARY_CREATED",
+                                "LIBRARY_COPIED",
+                                "LIBRARY_ROLES_CHANGED",
+                                "LIBRARY_UPDATED",
+                                "LIBRARY_DELETED",
+                                "LIBRARY_ROLE_CREATED",
+                                "LIBRARY_ROLE_UPDATED",
+                                "LIBRARY_ROLE_DELETED",
+                                "LIBRARY_PERMISSIONS_UPDATED",
+                                "ROLE_PERMISSIONS_UPDATED",
+                                "CUSTOM_ROLE_PERMISSIONS_UPDATED",
+                                "CLASS_CREATED",
+                                "CLASS_UPDATED",
+                                "CLASS_DELETED",
+                                "CLASS_CHECKIN_CHECKOUT_MODE_TURNED_OFF",
+                                "VIEWCONFIG_CREATED",
+                                "VIEWCONFIG_UPDATED",
+                                "FOLDER_VISIBILITY_CHANGED",
+                                "FOLDER_PERMISSION_CHANGED",
+                                "CATEGORY_DELETED",
+                                "CATEGORY_VALUES_DELETED",
+                                "CATEGORY_VALUES_CREATED",
+                                "CATEGORY_VALUES_UPDATED",
+                                "CATEGORY_DEFAULT_VALUE_UPDATED",
+                                "CATEGORY_VALUES_UPLOADED",
+                                "CATEGORY_DEFINITION_CREATED",
+                                "CATEGORY_DEFINITION_UPDATED",
+                                "CATEGORY_DEFINITION_DELETED",
+                                "DOCUMENT_TEMPLATE_CREATED",
+                                "DOCUMENT_TEMPLATE_UPDATED",
+                                "DOCUMENT_TEMPLATE_DELETED",
+                                "VIEW_CREATED",
+                                "VIEW_UPDATED",
+                                "VIEW_DELETED",
+                                "VIEW_CLONED",
+                                "RELATION_CREATED",
+                                "RELATION_UPDATED",
+                                "RELATION_DELETED",
+                                "SHARE_NOT_PERMITTED",
+                                "STATE_UPDATED",
+                                "STATE_DELETED",
+                                "WORKFLOW_CREATED",
+                                "WORKFLOW_DELETED",
+                                "WORKFLOW_CHANGED",
+                                "WORKFLOW_EMAIL_CREATED",
+                                "WORKFLOW_EMAIL_UPDATED",
+                                "WORKFLOW_EMAIL_DELETED",
+                                "SUPER_ADMIN_ADDED",
+                                "SUPER_ADMIN_DELETED",
+                                "DOMAIN_UPDATED",
+                                "DOMAIN_USERS_REFRESHED",
+                                "DIRECTORY_TENANT_ID_ADDED",
+                                "DIRECTORY_TENANT_ID_REMOVED",
+                                "DIRECTORY_TENANT_ID_UPDATED",
+                                "CUSTOM_SCRIPT_CREATED",
+                                "CUSTOM_SCRIPT_UPDATED",
+                                "CUSTOM_SCRIPT_DELETED",
+                                "CUSTOM_UI_ACTION_CREATED",
+                                "CUSTOM_UI_ACTION_UPDATED",
+                                "CUSTOM_UI_ACTION_DELETED",
+                                "DOMAIN_ROLE_CREATED",
+                                "DOMAIN_ROLE_UPDATED",
+                                "DOMAIN_ROLE_DELETED",
+                                "USER_LOGIN",
+                                "USER_EDIT",
+                                "CREATE_VERSION",
+                                "REVERT_VERSION",
+                                "EDIT_VERSION",
+                                "VIEW_VERSION",
+                                "UPDATE_PREVIOUS_VERSION",
+                                "DELETE_VERSION",
+                                "ADD_SECURITYCODE",
+                                "MODIFY_SECURITYCODE",
+                                "DELETE_SECURITYCODE",
+                                "AUTODELETE_SECURITYCODE",
+                                "EXTERNAL_USER_ADDED",
+                                "EXTERNAL_USER_REMOVED",
+                                "EXTERNAL_DOMAIN_ADDED",
+                                "EXTERNAL_DOMAIN_REMOVED",
+                                "CHECK_OUT_DOCUMENT",
+                                "CHECK_IN_DOCUMENT",
+                                "DISCARD_DOCUMENT_CHECK_OUT",
+                                "DRIVE_ATTACHMENT_MALWARE_DETECTED",
+                                "RELATION_LINK_ADDED",
+                                "RELATION_LINK_REMOVED",
+                                "LICENSED_USER_ADDED",
+                                "LICENSED_USER_PRIMARY_EMAIL_CHANGED",
+                                "LICENSED_USER_REMOVED",
+                                "LICENSED_USER_REMOVAL_RESTORED",
+                                "LICENSES_UPDATED",
+                                "USER_LICENSE_NOT_ALLOCATED",
+                                "STORAGE_ACCOUNT_ADDED",
+                                "STORAGE_ACCOUNT_REMOVED",
+                                "SHARING_NOTIFICATION",
+                                "WORKFLOW_NOTIFICATION",
+                                "WORKFLOW_REMINDER",
+                                "SCRIPT_NOTIFICATION",
+                                "SYSTEM_NOTIFICATION",
+                                "SENT_NOTIFICATION",
+                                "DOCUMENT_NOTIFICATION",
+                                "SKIPPED_NOTIFICATION",
+                                "CUSTOM_CONFIGURATION_CHANGED",
+                                "WORKFLOW_STATE_CUSTOM_ACTION_ADDED",
+                                "WORKFLOW_STATE_CUSTOM_ACTION_UPDATED",
+                                "WORKFLOW_STATE_CUSTOM_ACTION_REMOVED",
+                                "LIBRARY_LOCKED",
+                                "LIBRARY_UNLOCKED"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "minDate",
+                        "in": "query",
+                        "description": "From which date to list the audit log events: a timestamp value is expected (milliseconds since January 1, 1970, 00:00:00 GMT)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "maxDate",
+                        "in": "query",
+                        "description": "Until which date to list the audit log events: a timestamp value is expected (milliseconds since January 1, 1970, 00:00:00 GMT)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum number of events per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiAuditLogList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiAuditLogList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1/check/{applicationId}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Checks the status of the domain.",
+                "operationId": "domain:v1beta1.Domain.checkDomainStatus",
+                "parameters": [
+                    {
+                        "name": "applicationId",
+                        "in": "path",
+                        "description": "ID of the application",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "asUser",
+                        "in": "query",
+                        "description": "Email address of the user to check the status with",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "storageAdmin",
+                        "in": "query",
+                        "description": "Email address of the storage account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "standalone",
+                        "in": "query",
+                        "description": "Whether the application is installed as standalone or not",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainStatus response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1/register/{applicationId}/{storageAdmin}": {
+            "put": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Registers the domain on AODocs.",
+                "operationId": "domain:v1beta1.Domain.registerDomain",
+                "parameters": [
+                    {
+                        "name": "applicationId",
+                        "in": "path",
+                        "description": "ID of the application",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "storageAdmin",
+                        "in": "path",
+                        "description": "Email address of the storage account",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "standalone",
+                        "in": "query",
+                        "description": "Whether the application is installed as standalone or not",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1/storageadmins": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the storage accounts of the domain.",
+                "operationId": "domain:v1beta1.Domain.listStorageAdmins",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAdminList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAdminList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets information about the domain.",
+                "operationId": "domain:v1beta1.Domain.get",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomain response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomain"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates domain configurations.",
+                "operationId": "domain:v1beta1.Domain.patch",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiDomain"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomain response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomain"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiDomain"
+            }
+        },
+        "/domain/v1beta1/billingStatus": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets billing status of the domain.",
+                "operationId": "domain:v1beta1.BillingStatus.get",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiBillingStatus response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiBillingStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates billing status of the domain.",
+                "operationId": "domain:v1beta1.BillingStatus.patch",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiBillingStatus"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiBillingStatus response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiBillingStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiBillingStatus"
+            }
+        },
+        "/domain/v1beta1/configuration": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets all custom domain configuration flags defined at domain level.",
+                "operationId": "domain:v1beta1.Configuration.get",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiConfiguration response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiConfiguration"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates values of domain level custom configuration flags. Unspecified flags previously defined at domain level will be deleted!",
+                "operationId": "domain:v1beta1.Configuration.update",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiConfiguration"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiConfiguration response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiConfiguration"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiConfiguration"
+            }
+        },
+        "/domain/v1beta1/configuration/{flagName}": {
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Sets value for the specified custom configuration flag at domain level.",
+                "operationId": "domain:v1beta1.Configuration.set",
+                "parameters": [
+                    {
+                        "name": "flagName",
+                        "in": "path",
+                        "description": "The name of the configuration flag",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiConfigurationFlagValue"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiConfigurationFlagValue"
+            },
+            "delete": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes the specified custom configuration flag at domain level.",
+                "operationId": "domain:v1beta1.Configuration.unset",
+                "parameters": [
+                    {
+                        "name": "flagName",
+                        "in": "path",
+                        "description": "The name of the configuration flag",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/configurationFlags": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets the custom domain configurations with fallback on default value.",
+                "operationId": "domain:v1beta1.Configuration.getWithDefaultValue",
+                "parameters": [
+                    {
+                        "name": "flags",
+                        "in": "query",
+                        "description": "The names of the configuration flags",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiConfigurationFlags response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiConfigurationFlags"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/expiredLicenseUsers": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the users of the domain, whose license expired. (DEPRECATED : Use licensedUsers with status=EXPIRED instead).",
+                "operationId": "domain:v1beta1.LicensedUsers.listExpiredLicenses",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of licensed users per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "The attribute ('email', 'name', 'lastLogin', 'lastActivity' or 'revokeCooldownDate') used to sort the expired licensed users and the order ('asc' or 'desc'), e.g. 'lastActivity desc'. Default order is: 'revokeCooldownDate asc'.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nextPageToken",
+                        "in": "query",
+                        "description": "DEPRECATED. Use pageToken instead.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicensedUserList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicensedUserList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/image": {
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Method to call before uploading an image to AODocs. The images are visible to the users who can access the library and if present the document.",
+                "operationId": "domain:v1beta1.Image.initiateUpload",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "query",
+                        "description": "The ID of the library into which the image will be uploaded",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "documentId",
+                        "in": "query",
+                        "description": "The ID of a document to filter which users can see the image: only users who can see this document will be able to see the image",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "The name of the file to be uploaded",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiImageUploadParameters response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiImageUploadParameters"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/licensedUsers": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the licensed users of the domain.",
+                "operationId": "domain:v1beta1.LicensedUsers.list",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "The status of licenses to search for. (Possible values: ACTIVE, EXPIRED, OVER_DOMAIN_LIMIT. Default: ACTIVE)",
+                        "schema": {
+                            "type": "string",
+                            "default": "ACTIVE",
+                            "enum": [
+                                "ACTIVE",
+                                "EXPIRED",
+                                "OVER_DOMAIN_LIMIT"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The pattern to look for (substring)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of licensed users per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "The attribute ('email', 'name', 'lastLogin' or 'lastActivity') used to sort the licensed users and the order ('asc' or 'desc'), e.g. 'lastActivity desc'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nextPageToken",
+                        "in": "query",
+                        "description": "DEPRECATED. Use pageToken instead.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicensedUserList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicensedUserList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/licensedUsers/batchAllocate": {
+            "put": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Pre-allocates licenses to user",
+                "operationId": "domain:v1beta1.LicensedUsers.batchAllocate",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiEmailList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicenseAllocationResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicenseAllocationResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiEmailList"
+            }
+        },
+        "/domain/v1beta1/licensedUsers/batchDelete": {
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes licensed user(s) from the domain.",
+                "operationId": "domain:v1beta1.LicensedUsers.batchDelete",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiEmailList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicenseRevocationResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicenseRevocationResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiEmailList"
+            }
+        },
+        "/domain/v1beta1/licensedUsers/{userId}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets a licensed user of the domain by email.",
+                "operationId": "domain:v1beta1.LicensedUsers.get",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "The email of the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicensedUser response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicensedUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Pre-allocates licenses to user",
+                "operationId": "domain:v1beta1.LicensedUsers.allocate",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "The email of the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiLicensedUser response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiLicensedUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes licensed user(s) from the domain.",
+                "operationId": "domain:v1beta1.LicensedUsers.delete",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "The email of the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/roles": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the domain roles.",
+                "operationId": "domain:v1beta1.Roles.list",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainRoleList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainRoleList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Creates a new domain role.",
+                "operationId": "domain:v1beta1.Roles.create",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiDomainRole"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainRole response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainRole"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiDomainRole"
+            }
+        },
+        "/domain/v1beta1/roles/{roleId}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets a domain role.",
+                "operationId": "domain:v1beta1.Roles.get",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "The ID of the role",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainRole response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainRole"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes a domain role.",
+                "operationId": "domain:v1beta1.Roles.delete",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "The ID of the role",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates a domain role (keep existing values for not specified fields).",
+                "operationId": "domain:v1beta1.Roles.patch",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "The ID of the role",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiDomainRole"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainRole response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainRole"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiDomainRole"
+            }
+        },
+        "/domain/v1beta1/securityCodes": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists the security codes of the domain.",
+                "operationId": "domain:v1beta1.SecurityCodes.list",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiSecurityCodeList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSecurityCodeList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Creates a security code on the domain.",
+                "operationId": "domain:v1beta1.SecurityCodes.create",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiSecurityCode"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiSecurityCode response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSecurityCode"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiSecurityCode"
+            }
+        },
+        "/domain/v1beta1/securityCodes/{securityCode}": {
+            "delete": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes a security code from the domain.",
+                "operationId": "domain:v1beta1.SecurityCodes.delete",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "path",
+                        "description": "The security code to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates a security code on the domain.",
+                "operationId": "domain:v1beta1.SecurityCodes.patch",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "path",
+                        "description": "The security code to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiSecurityCode"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiSecurityCode response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSecurityCode"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiSecurityCode"
+            }
+        },
+        "/domain/v1beta1/standardActions": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets the list of available standard actions for the current domain (Coming soon! This method isn't yet available. It will be made available in a future release).",
+                "operationId": "domain:v1beta1.StandardActions.listAllInCurrentDomain",
+                "responses": {
+                    "200": {
+                        "description": "A ApiStandardActionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStandardActionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/statistics/{type}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists statistics for a specified entity (domain, storage account or library). The pagination only works for the library statistics.",
+                "operationId": "domain:v1beta1.Statistics.list",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "The type of the specified entity ('DOMAIN', 'STORAGE_ACCOUNT' or 'LIBRARY')",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DOMAIN",
+                                "STORAGE_ACCOUNT",
+                                "LIBRARY"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of entities per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "nextPageToken",
+                        "in": "query",
+                        "description": "DEPRECATED. Use pageToken instead.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStatisticsList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStatisticsList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/statistics/{type}/{id}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets statistics for a specified entity (domain, storage account or library).",
+                "operationId": "domain:v1beta1.Statistics.get",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "The type of the specified entity ('DOMAIN', 'STORAGE_ACCOUNT' or 'LIBRARY')",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DOMAIN",
+                                "STORAGE_ACCOUNT",
+                                "LIBRARY"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the specified entity",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStatistics response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStatistics"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/domain/v1beta1/storageAccounts": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Lists storage accounts.",
+                "operationId": "domain:v1beta1.StorageAccount.list",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAccountList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAccountList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Creates a storage account for the domain.",
+                "operationId": "domain:v1beta1.StorageAccount.create",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiStorageAccount"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAccount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAccount"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiStorageAccount"
+            }
+        },
+        "/domain/v1beta1/storageAccounts/{storageAccount}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Gets the storage account by email.",
+                "operationId": "domain:v1beta1.StorageAccount.get",
+                "parameters": [
+                    {
+                        "name": "storageAccount",
+                        "in": "path",
+                        "description": "The email of the storage account",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAccount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAccount"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Deletes a storage account from the domain.",
+                "operationId": "domain:v1beta1.StorageAccount.delete",
+                "parameters": [
+                    {
+                        "name": "storageAccount",
+                        "in": "path",
+                        "description": "The email of the storage account",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "domain"
+                ],
+                "description": "Updates a storage account on the domain.",
+                "operationId": "domain:v1beta1.StorageAccount.patch",
+                "parameters": [
+                    {
+                        "name": "storageAccount",
+                        "in": "path",
+                        "description": "The email of the storage account",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiStorageAccount"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiStorageAccount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiStorageAccount"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiStorageAccount"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiAdminEntry": {
+                "type": "object",
+                "properties": {
+                    "addedBy": {
+                        "type": "string",
+                        "description": "The user who added the item (read-only field)"
+                    },
+                    "addedTime": {
+                        "type": "string",
+                        "description": "The date/time at which the item was added (read-only field)",
+                        "format": "date-time"
+                    },
+                    "group": {
+                        "$ref": "#/components/schemas/ApiGroup"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email"
+                    }
+                }
+            },
+            "ApiAuditLog": {
+                "type": "object",
+                "properties": {
+                    "details": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "diff": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiPropertyChange"
+                        }
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "eventScope": {
+                        "type": "string",
+                        "enum": [
+                            "DOCUMENT",
+                            "FOLDER",
+                            "WORKFLOW",
+                            "SECURITY",
+                            "ADMINISTRATION",
+                            "USER",
+                            "NOTIFICATION"
+                        ]
+                    },
+                    "eventType": {
+                        "type": "string",
+                        "enum": [
+                            "DOCUMENT_CREATED",
+                            "DOCUMENT_UPDATED",
+                            "DOCUMENT_RENAMED",
+                            "DOCUMENT_ACCESSED",
+                            "DOCUMENT_MOVED",
+                            "DOCUMENT_MOVED_TO_TRASH",
+                            "DOCUMENT_RESTORED",
+                            "DOCUMENT_DELETED",
+                            "DOCUMENT_LOCKED",
+                            "DOCUMENT_UNLOCKED",
+                            "DOCUMENT_LOCK_CONFLICT",
+                            "DOCUMENT_LOCK_DELETED",
+                            "DOCUMENT_QUERY",
+                            "DOCUMENT_LIST_VIEWED",
+                            "DOCUMENT_STATE_CHANGED",
+                            "DOCUMENT_STATE_NOT_CHANGED",
+                            "DOCUMENT_IMPORTED",
+                            "DOCUMENT_COMMENT",
+                            "DOCUMENT_COMMENT_ADDED",
+                            "DOCUMENT_COMMENT_DELETED",
+                            "DOCUMENT_TAG_VERSION",
+                            "DOCUMENT_WEBDAV_DOWNLOAD",
+                            "DOCUMENT_WEBDAV_UPLOAD",
+                            "DOCUMENT_EXPORTED_TO_LIBRARY",
+                            "DOCUMENT_EXPORTED_FROM_LIBRARY",
+                            "ATTACHMENT_ADDED",
+                            "ATTACHMENT_RENAMED",
+                            "ATTACHMENT_EDITED",
+                            "ATTACHMENT_MOVED",
+                            "ATTACHMENT_DELETED",
+                            "ATTACHMENT_RETURNED",
+                            "ATTACHMENT_EXPORTED",
+                            "ATTACHMENT_EXPORTED_TO_LIBRARY",
+                            "ATTACHMENT_EXPORTED_FROM_LIBRARY",
+                            "ATTACHMENT_SHARED_WITH_NOTIFICATION",
+                            "ATTACHMENT_DRIVE_LABEL_UPDATED",
+                            "ATTACHMENT_DRIVE_LABEL_FAILED",
+                            "DRIVE_PERMISSION_UPDATED",
+                            "PARALLEL_VALIDATION_ACTION",
+                            "FOLDER_DELETED",
+                            "FOLDER_CREATED",
+                            "FOLDER_RESTORED",
+                            "FOLDER_UPDATED",
+                            "FOLDER_RENAMED",
+                            "FOLDER_PERMISSIONS_CHANGED",
+                            "FOLDER_PERMISSION_PUSHED_TO_CHILDREN",
+                            "FOLDER_PREVENT_DOWNLOADING_CHANGED",
+                            "FOLDER_MOVED",
+                            "FOLDER_IMPORTED",
+                            "FOLDER_EXPORTED",
+                            "FOLDER_EXPORTED_TO_LIBRARY",
+                            "FOLDER_EXPORTED_FROM_LIBRARY",
+                            "FOLDER_LIST_VIEWED",
+                            "FOLDER_ACCESSED",
+                            "MISSING_FOLDER_DETECTED",
+                            "MISSING_LIBRARY_SYSTEM_FOLDER_DETECTED",
+                            "LIBRARY_SYSTEM_FOLDER_RECOVERED",
+                            "WORKFLOW_HUMAN_ACTION",
+                            "WORKFLOW_PARALLEL_VALIDATION_ACTION",
+                            "USER_LOGGED_IN",
+                            "ACCESS_DENIED",
+                            "DOMAIN_IMPERSONATE",
+                            "USER_IMPERSONATE",
+                            "IMPERSONATION_FAILED",
+                            "LIBRARY_CREATED",
+                            "LIBRARY_COPIED",
+                            "LIBRARY_ROLES_CHANGED",
+                            "LIBRARY_UPDATED",
+                            "LIBRARY_DELETED",
+                            "LIBRARY_ROLE_CREATED",
+                            "LIBRARY_ROLE_UPDATED",
+                            "LIBRARY_ROLE_DELETED",
+                            "LIBRARY_PERMISSIONS_UPDATED",
+                            "ROLE_PERMISSIONS_UPDATED",
+                            "CUSTOM_ROLE_PERMISSIONS_UPDATED",
+                            "CLASS_CREATED",
+                            "CLASS_UPDATED",
+                            "CLASS_DELETED",
+                            "CLASS_CHECKIN_CHECKOUT_MODE_TURNED_OFF",
+                            "VIEWCONFIG_CREATED",
+                            "VIEWCONFIG_UPDATED",
+                            "FOLDER_VISIBILITY_CHANGED",
+                            "FOLDER_PERMISSION_CHANGED",
+                            "CATEGORY_DELETED",
+                            "CATEGORY_VALUES_DELETED",
+                            "CATEGORY_VALUES_CREATED",
+                            "CATEGORY_VALUES_UPDATED",
+                            "CATEGORY_DEFAULT_VALUE_UPDATED",
+                            "CATEGORY_VALUES_UPLOADED",
+                            "CATEGORY_DEFINITION_CREATED",
+                            "CATEGORY_DEFINITION_UPDATED",
+                            "CATEGORY_DEFINITION_DELETED",
+                            "DOCUMENT_TEMPLATE_CREATED",
+                            "DOCUMENT_TEMPLATE_UPDATED",
+                            "DOCUMENT_TEMPLATE_DELETED",
+                            "VIEW_CREATED",
+                            "VIEW_UPDATED",
+                            "VIEW_DELETED",
+                            "VIEW_CLONED",
+                            "RELATION_CREATED",
+                            "RELATION_UPDATED",
+                            "RELATION_DELETED",
+                            "SHARE_NOT_PERMITTED",
+                            "STATE_UPDATED",
+                            "STATE_DELETED",
+                            "WORKFLOW_CREATED",
+                            "WORKFLOW_DELETED",
+                            "WORKFLOW_CHANGED",
+                            "WORKFLOW_EMAIL_CREATED",
+                            "WORKFLOW_EMAIL_UPDATED",
+                            "WORKFLOW_EMAIL_DELETED",
+                            "SUPER_ADMIN_ADDED",
+                            "SUPER_ADMIN_DELETED",
+                            "DOMAIN_UPDATED",
+                            "DOMAIN_USERS_REFRESHED",
+                            "DIRECTORY_TENANT_ID_ADDED",
+                            "DIRECTORY_TENANT_ID_REMOVED",
+                            "DIRECTORY_TENANT_ID_UPDATED",
+                            "CUSTOM_SCRIPT_CREATED",
+                            "CUSTOM_SCRIPT_UPDATED",
+                            "CUSTOM_SCRIPT_DELETED",
+                            "CUSTOM_UI_ACTION_CREATED",
+                            "CUSTOM_UI_ACTION_UPDATED",
+                            "CUSTOM_UI_ACTION_DELETED",
+                            "DOMAIN_ROLE_CREATED",
+                            "DOMAIN_ROLE_UPDATED",
+                            "DOMAIN_ROLE_DELETED",
+                            "USER_LOGIN",
+                            "USER_EDIT",
+                            "CREATE_VERSION",
+                            "REVERT_VERSION",
+                            "EDIT_VERSION",
+                            "VIEW_VERSION",
+                            "UPDATE_PREVIOUS_VERSION",
+                            "DELETE_VERSION",
+                            "ADD_SECURITYCODE",
+                            "MODIFY_SECURITYCODE",
+                            "DELETE_SECURITYCODE",
+                            "AUTODELETE_SECURITYCODE",
+                            "EXTERNAL_USER_ADDED",
+                            "EXTERNAL_USER_REMOVED",
+                            "EXTERNAL_DOMAIN_ADDED",
+                            "EXTERNAL_DOMAIN_REMOVED",
+                            "CHECK_OUT_DOCUMENT",
+                            "CHECK_IN_DOCUMENT",
+                            "DISCARD_DOCUMENT_CHECK_OUT",
+                            "DRIVE_ATTACHMENT_MALWARE_DETECTED",
+                            "RELATION_LINK_ADDED",
+                            "RELATION_LINK_REMOVED",
+                            "LICENSED_USER_ADDED",
+                            "LICENSED_USER_PRIMARY_EMAIL_CHANGED",
+                            "LICENSED_USER_REMOVED",
+                            "LICENSED_USER_REMOVAL_RESTORED",
+                            "LICENSES_UPDATED",
+                            "USER_LICENSE_NOT_ALLOCATED",
+                            "STORAGE_ACCOUNT_ADDED",
+                            "STORAGE_ACCOUNT_REMOVED",
+                            "SHARING_NOTIFICATION",
+                            "WORKFLOW_NOTIFICATION",
+                            "WORKFLOW_REMINDER",
+                            "SCRIPT_NOTIFICATION",
+                            "SYSTEM_NOTIFICATION",
+                            "SENT_NOTIFICATION",
+                            "DOCUMENT_NOTIFICATION",
+                            "SKIPPED_NOTIFICATION",
+                            "CUSTOM_CONFIGURATION_CHANGED",
+                            "WORKFLOW_STATE_CUSTOM_ACTION_ADDED",
+                            "WORKFLOW_STATE_CUSTOM_ACTION_UPDATED",
+                            "WORKFLOW_STATE_CUSTOM_ACTION_REMOVED",
+                            "LIBRARY_LOCKED",
+                            "LIBRARY_UNLOCKED"
+                        ]
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "requestId": {
+                        "type": "string"
+                    },
+                    "systemAction": {
+                        "type": "boolean"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "user": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiAuditLogList": {
+                "type": "object",
+                "properties": {
+                    "auditLogList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAuditLog"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "type": "string"
+                    },
+                    "pageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiBaseUserProfile": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name of the user"
+                    },
+                    "nonGoogle": {
+                        "type": "boolean",
+                        "description": "This user is not a google user"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the user"
+                    }
+                }
+            },
+            "ApiBillingStatus": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "maxSeats": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "portalUrl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiConfiguration": {
+                "type": "object",
+                "properties": {
+                    "configurations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The map of custom configurations to apply at this level (consult AODocs team for more information)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiConfigurationFlagValue": {
+                "required": [
+                    "configurationFlagValue"
+                ],
+                "type": "object",
+                "properties": {
+                    "configurationFlagValue": {
+                        "type": "string",
+                        "description": "The value of a custom configuration flag"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiConfigurationFlags": {
+                "type": "object",
+                "properties": {
+                    "configurationsFlags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The map of custom configurations values for requested flags"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDomain": {
+                "type": "object",
+                "properties": {
+                    "accessRestrictionMode": {
+                        "type": "string",
+                        "description": "The access restriction mode for the domain.",
+                        "enum": [
+                            "OPEN",
+                            "LICENSED_ONLY"
+                        ]
+                    },
+                    "billingType": {
+                        "type": "string",
+                        "description": "The billing mode: TRIAL, STANDARD, CUSTOM (read-only field)",
+                        "enum": [
+                            "TRIAL",
+                            "STANDARD",
+                            "CUSTOM"
+                        ]
+                    },
+                    "documentationUrl": {
+                        "type": "string",
+                        "description": "The URL for documentation links"
+                    },
+                    "domainAdmin": {
+                        "type": "string",
+                        "description": "The email of the G Suite super administrator account"
+                    },
+                    "domainOwner": {
+                        "type": "string",
+                        "description": "Used for Microsoft domains"
+                    },
+                    "domainType": {
+                        "type": "string",
+                        "description": "The type of the domain, e.g., GOOGLE_WORKSPACE, MICROSOFT, etc.",
+                        "enum": [
+                            "GOOGLE_WORKSPACE",
+                            "MICROSOFT"
+                        ]
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryCreators": {
+                        "type": "array",
+                        "description": "The list of users who can create libraries in the domain, if libraryCreatorsSource = SPECIFIC_USERS",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAdminEntry"
+                        }
+                    },
+                    "libraryCreatorsSource": {
+                        "type": "string",
+                        "description": "The mode for library creators audience: ANYONE (anyone of the domain or whitelisted), ONLY_SUPERADMINS (only G Suite super administrators), SPECIFIC_USERS (explicit list in 'libraryCreators' field)",
+                        "enum": [
+                            "ANYONE",
+                            "ONLY_SUPERADMINS",
+                            "SPECIFIC_USERS"
+                        ]
+                    },
+                    "limitLibraryAdminAccess": {
+                        "type": "boolean",
+                        "description": "Whether administrators of libraries should have a limited access to the library administration page (only applicable for Team Folder and Secured Folder libraries though)"
+                    },
+                    "maxSeats": {
+                        "type": "integer",
+                        "description": "The maximum number of licensed users (0 means unlimited) (read-only field)",
+                        "format": "int32"
+                    },
+                    "notify": {
+                        "type": "boolean",
+                        "description": "Whether to notify the AODocs super administrators when pool of available licenses gets low"
+                    },
+                    "standalone": {
+                        "type": "boolean"
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "The technical identifier for the subscription to AODocs (read-only field)"
+                    },
+                    "superAdmins": {
+                        "type": "array",
+                        "description": "The list of users who are AODocs super administrators if superAdminsSource = AODOCS",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAdminEntry"
+                        }
+                    },
+                    "superAdminsSource": {
+                        "type": "string",
+                        "description": "The mode for super administrators audience: GOOGLE_APPS (implicitely G Suite super admins) or AODOCS (explicit list in 'superAdmins' field)",
+                        "enum": [
+                            "GOOGLE_APPS",
+                            "AODOCS"
+                        ]
+                    },
+                    "supportUrl": {
+                        "type": "string",
+                        "description": "The URL to redirect support request to"
+                    },
+                    "useDelayedVersion": {
+                        "type": "boolean"
+                    },
+                    "whitelistedDomains": {
+                        "type": "array",
+                        "description": "The list of whitelisted G Suite domains, i.e. users from those domain may access content in your libraries",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiExternalDomain"
+                        }
+                    },
+                    "whitelistedEmails": {
+                        "type": "array",
+                        "description": "The list of whitelisted Google accounts (gmail, single G Suite account or Google groups of your domain) who may access content in your libraries",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAdminEntry"
+                        }
+                    }
+                }
+            },
+            "ApiDomainRole": {
+                "type": "object",
+                "properties": {
+                    "aclEntries": {
+                        "type": "array",
+                        "description": "The list of user/group/field members of the role",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSecurityTokenWithAddedInfos"
+                        }
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the role"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the role (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the role"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the role (read-only field)"
+                    },
+                    "privileges": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "The list of privileges belonging to predefined role types (read-only field)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of role in the library: LIBRARY (administrators, contributors, readers), DOCUMENT (document creator, version creator), CUSTOM for any role created manually (including predefined roles) (read-only field)",
+                        "enum": [
+                            "LIBRARY",
+                            "DOCUMENT",
+                            "PREDEFINED",
+                            "CUSTOM"
+                        ]
+                    }
+                }
+            },
+            "ApiDomainRoleList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDomainRole"
+                        }
+                    }
+                }
+            },
+            "ApiDomainStatus": {
+                "type": "object",
+                "properties": {
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "alreadyRegisteredWith": {
+                        "type": "string"
+                    },
+                    "authorized": {
+                        "type": "boolean"
+                    },
+                    "defaultStorageAdmin": {
+                        "type": "string"
+                    },
+                    "domainAdmin": {
+                        "type": "string"
+                    },
+                    "domainOwner": {
+                        "type": "string"
+                    },
+                    "domainType": {
+                        "type": "string",
+                        "enum": [
+                            "GOOGLE_WORKSPACE",
+                            "MICROSOFT"
+                        ]
+                    },
+                    "installed": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "registered": {
+                        "type": "boolean"
+                    },
+                    "standalone": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "UNLICENSED",
+                            "EXPIRED",
+                            "DELINQUENT",
+                            "UNKNOWN",
+                            "MAINTENANCE",
+                            "ERROR"
+                        ]
+                    },
+                    "trialExpires": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "useDelayedVersion": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ApiEmailList": {
+                "type": "object",
+                "properties": {
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiExternalDomain": {
+                "type": "object",
+                "properties": {
+                    "addedBy": {
+                        "type": "string",
+                        "description": "The user who added the domain to the whitelist (read-only field)"
+                    },
+                    "addedTime": {
+                        "type": "string",
+                        "description": "The date/time at which the domain was added to the whitelist (read-only field)",
+                        "format": "date-time"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The domain name"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nonGoogle": {
+                        "type": "boolean",
+                        "description": "This domain is not G Suite or Cloud Identity domain"
+                    }
+                }
+            },
+            "ApiGroup": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the group"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the group"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name of the group"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the group"
+                    }
+                }
+            },
+            "ApiImageUploadParameters": {
+                "type": "object",
+                "properties": {
+                    "expiration": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "imageUrl": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "uploadUrl": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiLicenseActionResultItem": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "FAILED",
+                            "SUCCESS"
+                        ]
+                    }
+                }
+            },
+            "ApiLicenseAllocationResult": {
+                "type": "object",
+                "properties": {
+                    "details": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiLicenseActionResultItem"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiLicenseRevocationResult": {
+                "type": "object",
+                "properties": {
+                    "details": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiLicenseActionResultItem"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiLicensedUser": {
+                "type": "object",
+                "properties": {
+                    "archived": {
+                        "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastActivity": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastEdit": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastLogin": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastView": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "orgUnitPath": {
+                        "type": "string"
+                    },
+                    "overDomainLimit": {
+                        "type": "boolean"
+                    },
+                    "revokeCooldownDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "suspended": {
+                        "type": "boolean"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiLicensedUserList": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "licensedUserList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiLicensedUser"
+                        }
+                    },
+                    "maxSeats": {
+                        "type": "integer",
+                        "description": "The maximum number of licensed users (0 means unlimited)",
+                        "format": "int32"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiPropertyChange": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "newValue": {
+                        "type": "string"
+                    },
+                    "originalValue": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiSecurityCode": {
+                "type": "object",
+                "properties": {
+                    "asUser": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "expiration": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifier": {
+                        "$ref": "#/components/schemas/ApiBaseUserProfile"
+                    },
+                    "lastUsedTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ApiSecurityCodeList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "securityCodeList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSecurityCode"
+                        }
+                    }
+                }
+            },
+            "ApiSecurityTokenWithAddedInfos": {
+                "type": "object",
+                "properties": {
+                    "addedBy": {
+                        "type": "string",
+                        "description": "The user email by whom the token has been added (read only)"
+                    },
+                    "addedTime": {
+                        "type": "string",
+                        "description": "The date of when the token was added (read only)",
+                        "format": "date-time"
+                    },
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class when type = FIELD"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class when type = FIELD"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for type in GROUP, ROLE, FIELD"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the name of the role (read-only field)"
+                    },
+                    "displayName_i18n": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the internationalized name of the role (read-only field)"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture (especially for users)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of person (user, group, role, field based, domain i.e. everybody)",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "ROLE",
+                            "FIELD",
+                            "DOMAIN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email address if user or group, the ID of the role, the ID of the class/field (ignored if type = DOMAIN)"
+                    }
+                }
+            },
+            "ApiStandardAction": {
+                "type": "object",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Whether the standard action has been activated in the library"
+                    },
+                    "async": {
+                        "type": "boolean",
+                        "description": "Whether the action will be executed as an asynchronous task (read-only field)"
+                    },
+                    "documentationUrl": {
+                        "type": "string",
+                        "description": "The URL to an external technical documentation"
+                    },
+                    "executionContext": {
+                        "type": "string",
+                        "description": "The permission context in which the action will be executed (Possible values: RUN_AS_SYSTEM, RUN_AS_USER) (read-only field)",
+                        "enum": [
+                            "RUN_AS_USER",
+                            "RUN_AS_SYSTEM"
+                        ]
+                    },
+                    "fullDescription": {
+                        "type": "string",
+                        "description": "A more comprehensive (rich-text) description of the purpose and behaviour of the standard action"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the standard action (read-only field)"
+                    },
+                    "pictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the logo for the standard action (expected size is 240x103, with transparent background)"
+                    },
+                    "shortDescription": {
+                        "type": "string",
+                        "description": "A terse description of the purpose of the standard action"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the provided action (Possible values: RELATION_FILTER, RELATION_RENDER, UPDATE, VIEWER, WORKFLOW_TRANSITION) (read-only field)",
+                        "enum": [
+                            "RELATION_FILTER",
+                            "RELATION_RENDER",
+                            "UPDATE",
+                            "VIEWER",
+                            "WORKFLOW_TRANSITION",
+                            "REMINDER_CONDITION"
+                        ]
+                    }
+                }
+            },
+            "ApiStandardActionList": {
+                "type": "object",
+                "properties": {
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiStandardAction"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiStatistics": {
+                "type": "object",
+                "properties": {
+                    "attachmentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "classesCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "customScriptsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "documentsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "estimatedSubscriptionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "foldersCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "librariesCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "librariesCountPerType": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    "licensedUsersCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "metadatasCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "publiclyShared": {
+                        "type": "string"
+                    },
+                    "quotaUsageInDrive": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quotaUsageInDrivePerStorageAccount": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    "relationsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "usersCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "versionsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "viewsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "workflowStatesCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "workflowsCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiStatisticsList": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    },
+                    "statisticsList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiStatistics"
+                        }
+                    }
+                }
+            },
+            "ApiStorageAccount": {
+                "type": "object",
+                "properties": {
+                    "addedBy": {
+                        "type": "string"
+                    },
+                    "addedTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "hasLibrary": {
+                        "type": "boolean"
+                    },
+                    "isDefault": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "newLibraryAllowed": {
+                        "type": "boolean"
+                    },
+                    "newLibraryAllowedFor": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiStorageAccountList": {
+                "type": "object",
+                "properties": {
+                    "defaultStorageAccount": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "storageAccounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiStorageAccount"
+                        }
+                    }
+                }
+            },
+            "ApiStorageAdmin": {
+                "type": "object",
+                "properties": {
+                    "canCreateLibrary": {
+                        "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiStorageAdminList": {
+                "type": "object",
+                "properties": {
+                    "defaultStorageAdmin": {
+                        "$ref": "#/components/schemas/ApiStorageAdmin"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "storageAdmins": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiStorageAdmin"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "applicationId_path_parameter": {
+                "name": "applicationId",
+                "in": "path",
+                "description": "ID of the application",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "flagName_path_parameter": {
+                "name": "flagName",
+                "in": "path",
+                "description": "The name of the configuration flag",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "limit_query_parameter": {
+                "name": "limit",
+                "in": "query",
+                "description": "The maximum number of licensed users per page. (Default: 50)",
+                "schema": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 50
+                }
+            },
+            "nextPageToken_query_parameter": {
+                "name": "nextPageToken",
+                "in": "query",
+                "description": "DEPRECATED. Use pageToken instead.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "pageToken_query_parameter": {
+                "name": "pageToken",
+                "in": "query",
+                "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "roleId_path_parameter": {
+                "name": "roleId",
+                "in": "path",
+                "description": "The ID of the role",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "standalone_query_parameter": {
+                "name": "standalone",
+                "in": "query",
+                "description": "Whether the application is installed as standalone or not",
+                "schema": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "storageAccount_path_parameter": {
+                "name": "storageAccount",
+                "in": "path",
+                "description": "The email of the storage account",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "type_path_parameter": {
+                "name": "type",
+                "in": "path",
+                "description": "The type of the specified entity ('DOMAIN', 'STORAGE_ACCOUNT' or 'LIBRARY')",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "DOMAIN",
+                        "STORAGE_ACCOUNT",
+                        "LIBRARY"
+                    ]
+                }
+            },
+            "userId_path_parameter": {
+                "name": "userId",
+                "in": "path",
+                "description": "The email of the user",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ApiDomainRole_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiDomainRole"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "ApiEmailList_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiEmailList"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "ApiSecurityCode_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiSecurityCode"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "ApiStorageAccount_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiStorageAccount"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "domain",
+    "x-original-swagger-version": "2.0"
+}

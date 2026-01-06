@@ -1,0 +1,657 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "job",
+            "description": "Lets you access information about jobs and cancel them."
+        }
+    ],
+    "paths": {
+        "/job/v1/events/{jobId}": {
+            "get": {
+                "tags": [
+                    "job"
+                ],
+                "description": "Lists the events associated to a job",
+                "operationId": "job:v1.Job.listEvents",
+                "parameters": [
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The ID of the job",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "onlyErrors",
+                        "in": "query",
+                        "description": "Whether to return only job events in error. All events are returned by default.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "maxResults",
+                        "in": "query",
+                        "description": "Maximum number of events returned (default: 100)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobEventList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobEventList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/job/v1/libraries/{libraryId}": {
+            "get": {
+                "tags": [
+                    "job"
+                ],
+                "description": "Lists jobs in the library matching some filter and sort criteria",
+                "operationId": "job:v1.Job.listJobs",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum number of items to return",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "The job status to filter on",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "IN_PROGRESS",
+                                "COMPLETED",
+                                "FAILED",
+                                "CANCELLED"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type of job to filter on",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "UNKNOWN",
+                                "IMPORT_FOLDER",
+                                "DELETE_FOLDER",
+                                "RESTORE_FOLDER",
+                                "PERMANENTLY_DELETE_FOLDER",
+                                "MOVE_FOLDER",
+                                "FOLDER_CACHE_UPDATE",
+                                "DELETE_DOCUMENTS_AND_FOLDERS",
+                                "PERMANENTLY_DELETE_DOCUMENTS_AND_FOLDERS",
+                                "TRASH_DOCUMENTS",
+                                "COPY_FILE",
+                                "COPY_FILE_RESUMABLE",
+                                "CREATE_FOLDER_MAINTENANCE",
+                                "REVERT_VERSION",
+                                "RESTORE_VERSION",
+                                "MOVE_DOCUMENTS_AND_FOLDERS",
+                                "DELETE_VERSIONEDDOCUMENT",
+                                "CREATE_DOCUMENTS",
+                                "CHECK_OUT_DOCUMENT",
+                                "CHECK_IN_DOCUMENT",
+                                "IMPORT_PREPROCESS",
+                                "IMPORT",
+                                "REVERT",
+                                "DUPLICATE_FOLDER_STRUCTURE",
+                                "EXPORT_FOLDER",
+                                "EXPORT_FILE",
+                                "PUSH_TO_DRIVE",
+                                "APPLY_PERMISSIONS_TO_ALL_CHILDREN",
+                                "DRIVE_SCAN",
+                                "FIX_PERMISSION_PROPAGATION",
+                                "LIBRARY_COPY_CONTENT",
+                                "EXPORT_TO_LIBRARY",
+                                "LIBRARY_DELETE",
+                                "REPLACE_FOLDER",
+                                "BACKUP",
+                                "MARK_STORED_EMAIL_DELIVERED",
+                                "CONCURRENCY_TEST",
+                                "CLEAN_CATEGORY",
+                                "VALIDATE_DOCUMENTS",
+                                "CREATE_DOCUMENT_ASYNC",
+                                "CREATE_DOCUMENT_FROM_INBOUND_EMAIL",
+                                "UPDATE_GROUP_MEMBERSHIP_CACHE",
+                                "SET_PERMISSION_ID_FOR_USERS",
+                                "PATCH_DOCUMENT_ASYNC",
+                                "UPDATE_ATTACHMENT",
+                                "UPDATE_STORAGE_ACCOUNT_QUOTA_USAGE",
+                                "COPY_DOCUMENT_WITH_VERSIONS",
+                                "REFRESH_INDEX_STAT",
+                                "VERIFY_SUBDOMAIN_EXISTENCE",
+                                "CREATE_DOCUMENT_WITH_VERSIONS_ASYNC_V1",
+                                "REMOVE_EXPLICIT_PERMISSIONS_FROM_TF",
+                                "CHANGE_LIBRARY_TYPE",
+                                "LIBRARY_OWNERSHIP_CHANGE",
+                                "LIBRARY_PERMISSION_EXTRACTION",
+                                "SEND_NOTIFICATION_REMINDERS",
+                                "CHECK_ANYONE_INCONSISTENCIES",
+                                "PURGE_DOMAIN",
+                                "BLACKLIST_USERS",
+                                "PROPAGATE_OUTDATED_CATEGORY_VALUE_PROPERTY",
+                                "CACHE_DRIVE_SEARCH",
+                                "VALIDATE_DOCUMENT_WORKFLOW_TRANSITION"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "The email of the user who request the job to filter on",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "The order of the jobs with the following syntax 'sortCriterion sortDirection' (possible values: [started|lastActivity] [asc|desc])",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/job/v1/{jobId}": {
+            "get": {
+                "tags": [
+                    "job"
+                ],
+                "description": "Gets job details",
+                "operationId": "job:v1.Job.getJob",
+                "parameters": [
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The ID of the job",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJob response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJob"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/job/v1/{jobId}/cancel": {
+            "post": {
+                "tags": [
+                    "job"
+                ],
+                "description": "Cancels a job (only for library administrators)",
+                "operationId": "job:v1.Job.cancel",
+                "parameters": [
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The ID of the job",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiJob response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJob"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiJob": {
+                "type": "object",
+                "properties": {
+                    "completed": {
+                        "type": "boolean"
+                    },
+                    "failedTasks": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "jobId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastActivityAt": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "remainingTasks": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "requestor": {
+                        "type": "string"
+                    },
+                    "startedAt": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "IN_PROGRESS",
+                            "COMPLETED",
+                            "FAILED",
+                            "CANCELLED"
+                        ]
+                    },
+                    "succeededTasks": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "taskRetries": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "UNKNOWN",
+                            "IMPORT_FOLDER",
+                            "DELETE_FOLDER",
+                            "RESTORE_FOLDER",
+                            "PERMANENTLY_DELETE_FOLDER",
+                            "MOVE_FOLDER",
+                            "FOLDER_CACHE_UPDATE",
+                            "DELETE_DOCUMENTS_AND_FOLDERS",
+                            "PERMANENTLY_DELETE_DOCUMENTS_AND_FOLDERS",
+                            "TRASH_DOCUMENTS",
+                            "COPY_FILE",
+                            "COPY_FILE_RESUMABLE",
+                            "CREATE_FOLDER_MAINTENANCE",
+                            "REVERT_VERSION",
+                            "RESTORE_VERSION",
+                            "MOVE_DOCUMENTS_AND_FOLDERS",
+                            "DELETE_VERSIONEDDOCUMENT",
+                            "CREATE_DOCUMENTS",
+                            "CHECK_OUT_DOCUMENT",
+                            "CHECK_IN_DOCUMENT",
+                            "IMPORT_PREPROCESS",
+                            "IMPORT",
+                            "REVERT",
+                            "DUPLICATE_FOLDER_STRUCTURE",
+                            "EXPORT_FOLDER",
+                            "EXPORT_FILE",
+                            "PUSH_TO_DRIVE",
+                            "APPLY_PERMISSIONS_TO_ALL_CHILDREN",
+                            "DRIVE_SCAN",
+                            "FIX_PERMISSION_PROPAGATION",
+                            "LIBRARY_COPY_CONTENT",
+                            "EXPORT_TO_LIBRARY",
+                            "LIBRARY_DELETE",
+                            "REPLACE_FOLDER",
+                            "BACKUP",
+                            "MARK_STORED_EMAIL_DELIVERED",
+                            "CONCURRENCY_TEST",
+                            "CLEAN_CATEGORY",
+                            "VALIDATE_DOCUMENTS",
+                            "CREATE_DOCUMENT_ASYNC",
+                            "CREATE_DOCUMENT_FROM_INBOUND_EMAIL",
+                            "UPDATE_GROUP_MEMBERSHIP_CACHE",
+                            "SET_PERMISSION_ID_FOR_USERS",
+                            "PATCH_DOCUMENT_ASYNC",
+                            "UPDATE_ATTACHMENT",
+                            "UPDATE_STORAGE_ACCOUNT_QUOTA_USAGE",
+                            "COPY_DOCUMENT_WITH_VERSIONS",
+                            "REFRESH_INDEX_STAT",
+                            "VERIFY_SUBDOMAIN_EXISTENCE",
+                            "CREATE_DOCUMENT_WITH_VERSIONS_ASYNC_V1",
+                            "REMOVE_EXPLICIT_PERMISSIONS_FROM_TF",
+                            "CHANGE_LIBRARY_TYPE",
+                            "LIBRARY_OWNERSHIP_CHANGE",
+                            "LIBRARY_PERMISSION_EXTRACTION",
+                            "SEND_NOTIFICATION_REMINDERS",
+                            "CHECK_ANYONE_INCONSISTENCIES",
+                            "PURGE_DOMAIN",
+                            "BLACKLIST_USERS",
+                            "PROPAGATE_OUTDATED_CATEGORY_VALUE_PROPERTY",
+                            "CACHE_DRIVE_SEARCH",
+                            "VALIDATE_DOCUMENT_WORKFLOW_TRANSITION"
+                        ]
+                    }
+                }
+            },
+            "ApiJobEvent": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "enum": [
+                            "INFO",
+                            "WARN",
+                            "ERROR"
+                        ]
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ApiJobEventList": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiJobEvent"
+                        }
+                    },
+                    "job": {
+                        "$ref": "#/components/schemas/ApiJob"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiJobList": {
+                "type": "object",
+                "properties": {
+                    "jobList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiJob"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "jobId_path_parameter": {
+                "name": "jobId",
+                "in": "path",
+                "description": "The ID of the job",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "pageToken_query_parameter": {
+                "name": "pageToken",
+                "in": "query",
+                "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "job",
+    "x-original-swagger-version": "2.0"
+}

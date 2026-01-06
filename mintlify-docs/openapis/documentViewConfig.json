@@ -1,0 +1,591 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "documentViewConfig",
+            "description": "Lets you configure how documents are presented and edited"
+        }
+    ],
+    "paths": {
+        "/documentViewConfig/v1/library/{libraryId}/documentType/{documentTypeId}": {
+            "get": {
+                "tags": [
+                    "documentViewConfig"
+                ],
+                "description": "Gets the document view configuration related to a document class.",
+                "operationId": "documentViewConfig:v1.DocumentViewConfig.getClassLevelConfiguration",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "documentTypeId",
+                        "in": "path",
+                        "description": "The ID of the document class",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiTypeLevelViewConfiguration response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiTypeLevelViewConfiguration"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "documentViewConfig"
+                ],
+                "description": "Sets the document view configuration of a document class (orientation, sections displayed...).",
+                "operationId": "documentViewConfig:v1.DocumentViewConfig.updateClassLevelConfiguration",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "documentTypeId",
+                        "in": "path",
+                        "description": "The ID of the document class",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiTypeLevelViewConfiguration"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiTypeLevelViewConfiguration"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiBaseField": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only field)"
+                    },
+                    "system": {
+                        "type": "boolean",
+                        "description": "Indicates whether this field is a system field or not (read-only field)"
+                    }
+                }
+            },
+            "ApiCustomAction": {
+                "type": "object",
+                "properties": {
+                    "event": {
+                        "type": "string",
+                        "description": "The type of event (in workflow transitions: ON_STATE_ENTER_BEFORE_TRANSITION, ON_ENTER_STATE_AFTER_TRANSITION, ON_LEAVE_STATE_BEFORE_TRANSITION or ON_STATE_LEAVE_AFTER_TRANSITION, in relations: ON_RELATION_FILTER or ON_RELATION_RENDER, in classes: ON_DOCUMENT_UPDATE or ON_DOCUMENT_DISPLAY)",
+                        "enum": [
+                            "ON_STATE_ENTER_BEFORE_TRANSITION",
+                            "ON_STATE_ENTER_AFTER_TRANSITION",
+                            "ON_STATE_LEAVE_BEFORE_TRANSITION",
+                            "ON_STATE_LEAVE_AFTER_TRANSITION",
+                            "ON_RELATION_FILTER",
+                            "ON_RELATION_RENDER",
+                            "ON_DOCUMENT_DISPLAY",
+                            "ON_DOCUMENT_UPDATE"
+                        ]
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the action (read-only)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the action"
+                    },
+                    "params": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The map key/value of the parameters"
+                    },
+                    "scriptId": {
+                        "type": "string",
+                        "description": "The ID of the custom script"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "The name of the custom script (read-only field)"
+                    }
+                }
+            },
+            "ApiFieldWithCapabilities": {
+                "type": "object",
+                "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "description": "The list of capabilities for this field (depending of the type)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "DISPLAY",
+                                "ORDER_BY",
+                                "BROWSE_BY",
+                                "FILTER_ON",
+                                "PRE_FILTER_ON"
+                            ]
+                        }
+                    },
+                    "filterOperators": {
+                        "type": "array",
+                        "description": "The list of operators available for this field (depending of the type)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "EQUAL",
+                                "NOT_EQUAL",
+                                "STRICTLY_GREATER_THAN",
+                                "STRICTLY_LESSER_THAN",
+                                "GREATER_THAN_OR_EQUAL_TO",
+                                "LESSER_THAN_OR_EQUAL_TO",
+                                "BETWEEN",
+                                "EMPTY",
+                                "NOT_EMPTY",
+                                "WITHIN_THE_AREA",
+                                "IN",
+                                "NOT_IN"
+                            ]
+                        }
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden (at class level)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether the field is multi-valued"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only field)"
+                    },
+                    "system": {
+                        "type": "boolean",
+                        "description": "Indicates whether this field is a system field or not (read-only field)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the field (STRING, TEXT, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    }
+                }
+            },
+            "ApiRelationDefinition": {
+                "type": "object",
+                "properties": {
+                    "createdTime": {
+                        "type": "string",
+                        "description": "The time at which the relation definition was created (read-only field)",
+                        "format": "date-time"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the relation definition"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the relation definition (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedTime": {
+                        "type": "string",
+                        "description": "The time at which the relation definition was last modified (read-only field)",
+                        "format": "date-time"
+                    },
+                    "left": {
+                        "$ref": "#/components/schemas/ApiRelationSide"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the relation definition"
+                    },
+                    "renderAction": {
+                        "$ref": "#/components/schemas/ApiCustomAction"
+                    },
+                    "right": {
+                        "$ref": "#/components/schemas/ApiRelationSide"
+                    },
+                    "selfRelated": {
+                        "type": "boolean",
+                        "description": "Whether this is a self relation (only one side)"
+                    }
+                }
+            },
+            "ApiRelationOrderBy": {
+                "type": "object",
+                "properties": {
+                    "descending": {
+                        "type": "boolean",
+                        "description": "Whether to order in a descending way (default: false, i.e. ascending)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only field)"
+                    },
+                    "system": {
+                        "type": "boolean",
+                        "description": "Indicates whether this field is a system field or not (read-only field)"
+                    }
+                }
+            },
+            "ApiRelationSide": {
+                "type": "object",
+                "properties": {
+                    "availableFields": {
+                        "type": "array",
+                        "description": "The list of fields, their type and in which configuration settings they can be used (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFieldWithCapabilities"
+                        }
+                    },
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class in the library (read-only field after creation)"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class (read-only field)"
+                    },
+                    "className_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the class (read-only field)"
+                    },
+                    "displayBefore": {
+                        "type": "string",
+                        "description": "Set to display the relation at a different position in the document page",
+                        "enum": [
+                            "INFO",
+                            "WORKFLOW",
+                            "PROPERTIES",
+                            "ATTACHMENTS",
+                            "RELATIONS",
+                            "DESCRIPTION"
+                        ]
+                    },
+                    "displayFields": {
+                        "type": "array",
+                        "description": "The list of fields to display for related documents of this side",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiBaseField"
+                        }
+                    },
+                    "filterAction": {
+                        "$ref": "#/components/schemas/ApiCustomAction"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library (read-only field after creation)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the side of the relation"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the side of the relation (read-only field)"
+                    },
+                    "orderBy": {
+                        "$ref": "#/components/schemas/ApiRelationOrderBy"
+                    }
+                }
+            },
+            "ApiTypeLevelViewConfiguration": {
+                "type": "object",
+                "properties": {
+                    "availableRelations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiRelationDefinition"
+                        }
+                    },
+                    "defaultTabToDisplay": {
+                        "type": "string",
+                        "enum": [
+                            "PROPERTIES",
+                            "FIRST_ATTACHMENT"
+                        ]
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "orientation": {
+                        "type": "string",
+                        "enum": [
+                            "PORTRAIT",
+                            "LANDSCAPE"
+                        ]
+                    },
+                    "previousVersionVisibleSections": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "INFO",
+                                "WORKFLOW",
+                                "PROPERTIES",
+                                "ATTACHMENTS",
+                                "RELATIONS",
+                                "DESCRIPTION"
+                            ]
+                        }
+                    },
+                    "visibleRelations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "visibleSections": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "INFO",
+                                "WORKFLOW",
+                                "PROPERTIES",
+                                "ATTACHMENTS",
+                                "RELATIONS",
+                                "DESCRIPTION"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "documentTypeId_path_parameter": {
+                "name": "documentTypeId",
+                "in": "path",
+                "description": "The ID of the document class",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "libraryId_path_parameter": {
+                "name": "libraryId",
+                "in": "path",
+                "description": "The ID of the library",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "documentViewConfig",
+    "x-original-swagger-version": "2.0"
+}

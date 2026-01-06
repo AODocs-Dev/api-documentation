@@ -1,0 +1,3468 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "search",
+            "description": "Lets you search and count documents"
+        }
+    ],
+    "paths": {
+        "/search/v1/document": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Searches documents in the whole domain matching the provided query.",
+                "operationId": "search:v1.Search.searchDocumentsCrossLibrary",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "The text searched to filter documents",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchQueryTarget",
+                        "in": "query",
+                        "description": "The scope of the search: 'PROPERTIES_ONLY' to search only in the document metadata, 'ATTACHMENTS_ONLY' to search only in the attachment contents.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PROPERTIES_ONLY",
+                                "ATTACHMENTS_ONLY",
+                                "PROPERTIES_AND_ATTACHMENTS"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiCrossLibrarySearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiCrossLibrarySearchResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCrossLibrarySearchResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiCrossLibrarySearchRequest"
+            }
+        },
+        "/search/v1/domain": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Searches documents in the domain with attachments matching the search query. The document metadata will not be searched using this method.",
+                "operationId": "search:v1.Search.searchDocumentsInDomain",
+                "parameters": [
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "The text searched to filter documents",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "minimumDocumentNumber",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiDomainSearchNextPageToken"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDomainSearchResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDomainSearchResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiDomainSearchNextPageToken"
+            }
+        },
+        "/search/v1/libraries/{libraryId}/count": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Counts documents of a document class. Only accessible to library administrators.",
+                "operationId": "search:v1.Search.countDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deleteOption",
+                        "in": "query",
+                        "description": "The scope of documents to find: 'DELETED' to get only deleted documents, 'NOT_DELETED' (default value) to get only non-deleted documents or 'ALL' to get all documents",
+                        "schema": {
+                            "type": "string",
+                            "default": "NOT_DELETED",
+                            "enum": [
+                                "DELETED",
+                                "NOT_DELETED",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFilterRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentCount response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentCount"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFilterRequest"
+            }
+        },
+        "/search/v1/libraries/{libraryId}/list": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Lists all documents of a document class. Only accessible to library administrators.",
+                "operationId": "search:v1.Search.listDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "deleteOption",
+                        "in": "query",
+                        "description": "The scope of documents to find: 'DELETED' to get only deleted documents, 'NOT_DELETED' (default value) to get only non-deleted documents or 'ALL' to get all documents",
+                        "schema": {
+                            "type": "string",
+                            "default": "NOT_DELETED",
+                            "enum": [
+                                "DELETED",
+                                "NOT_DELETED",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "publishState",
+                        "in": "query",
+                        "description": "The type of documents to find: 'DRAFT_ONLY' to get draft versions only (if access to it), 'PUBLISHED' to get main versions only (if access to it), 'ALL' for both (the draft version if access to it else the main version). The last mode is the default one.",
+                        "schema": {
+                            "type": "string",
+                            "default": "ALL",
+                            "enum": [
+                                "PUBLISHED",
+                                "DRAFT_ONLY",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFilterRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFilterRequest"
+            }
+        },
+        "/search/v1/libraries/{libraryId}/search": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Searches documents of a class matching the provided query. Might become very slow or timeout when iterating over many results pages. If the result set contains more than 10k documents, it's highly likely some results will be missing. You should always check if precision=INCOMPLETE_RESULT in the response.",
+                "operationId": "search:v1.Search.searchDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "The text searched to filter documents",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "publishState",
+                        "in": "query",
+                        "description": "The type of documents to find: 'DRAFT_ONLY' to get draft versions only (if access to it), 'PUBLISHED' to get main versions only (if access to it), 'ALL' for both (the draft version if access to it else the main version). The last mode is the default one.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PUBLISHED",
+                                "DRAFT_ONLY",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset from which we should get the documents. (Default: 0, i.e. from the first one)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "searchInAttachments",
+                        "in": "query",
+                        "description": "Whether to search the text in the attachments too (true by default)",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiSearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiSearchResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSearchResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiSearchRequest"
+            }
+        },
+        "/search/v1/libraries/{libraryId}/search/drive": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Starts to cache search results asynchronously in a job. Returns the jobId.",
+                "operationId": "search:v1.Search.searchDocumentsExhaustively",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "query",
+                        "description": "The ID of the view",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "The text searched to filter documents",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "publishState",
+                        "in": "query",
+                        "description": "The type of documents to find: 'DRAFT_ONLY' to get draft versions only (if access to it), 'PUBLISHED' to get main versions only (if access to it), 'ALL' for both (the draft version if access to it else the main version). The last mode is the default one.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PUBLISHED",
+                                "DRAFT_ONLY",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of filters to apply to the search. ",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiFilterRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiJobId response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiJobId"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiFilterRequest"
+            }
+        },
+        "/search/v1/libraries/{libraryId}/views/{viewId}": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Searches documents in a view matching the provided query. Might become very slow or timeout when iterating over many results pages. If the result set contains more than 10k documents, it's highly likely some results will be missing. You should always check if precision=INCOMPLETE_RESULT in the response.",
+                "operationId": "search:v1.Search.searchDocumentsByView",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "path",
+                        "description": "The ID of the view",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset from which we should get the documents. (Default: 0, i.e. from the first one)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "searchQuery",
+                        "in": "query",
+                        "description": "The text searched to filter documents",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchInAttachments",
+                        "in": "query",
+                        "description": "Whether to search the text in the attachments too (true by default)",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiSearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiSearchResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSearchResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiSearchRequest"
+            }
+        },
+        "/search/v2alpha/libraries/{libraryId}/search": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "description": "Searches documents in a view or a class matching the provided query. If the result set contains more than 10k documents, it's highly likely some results will be missing. You should always check if precision=INCOMPLETE_RESULT in the response.",
+                "operationId": "search:v2alpha.Search.searchDocuments",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "viewId",
+                        "in": "query",
+                        "description": "The ID of the view",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "classId",
+                        "in": "query",
+                        "description": "The ID of the document class",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of documents per page. (Default: 20)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "in": "query",
+                        "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiSearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiSearchResult response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiSearchResult"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiSearchRequest"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiAclEntry": {
+                "type": "object",
+                "properties": {
+                    "allow": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "for": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiAttachment": {
+                "type": "object",
+                "properties": {
+                    "autodeskUrn": {
+                        "$ref": "#/components/schemas/ApiAutodeskUrn"
+                    },
+                    "fileId": {
+                        "type": "string",
+                        "description": "The ID the file in Drive"
+                    },
+                    "iconLink": {
+                        "type": "string",
+                        "description": "The URL of the icon of the file"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "link": {
+                        "type": "string",
+                        "description": "The URL to the file in Drive (read-only)"
+                    },
+                    "mimeType": {
+                        "type": "string",
+                        "description": "The MIME type of the file"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name (title) of the file"
+                    },
+                    "permissionsOnDrive": {
+                        "type": "array",
+                        "description": "The list of permissions set in Drive for the file",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDrivePermission"
+                        }
+                    },
+                    "publishedLink": {
+                        "type": "string",
+                        "description": "The URL of the file when published"
+                    },
+                    "resourceKey": {
+                        "type": "string",
+                        "description": "A file that is shared with the link may only be discovered with this resourceKey"
+                    },
+                    "revisionId": {
+                        "type": "string",
+                        "description": "The ID of the revision of the file in Drive"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The size (in octet) of the file",
+                        "format": "int64"
+                    },
+                    "storageLocation": {
+                        "type": "string",
+                        "description": "The storage location of the file. Possible values are 'DRIVE' and 'OSS' (read-only)",
+                        "enum": [
+                            "DRIVE",
+                            "OSS"
+                        ]
+                    }
+                }
+            },
+            "ApiAttachmentMetadata": {
+                "type": "object",
+                "properties": {
+                    "drive": {
+                        "$ref": "#/components/schemas/ApiDriveAttachmentMetadata"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID the file as used on the storage type"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mimeType": {
+                        "type": "string",
+                        "description": "The MIME type of the file"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name (title) of the file"
+                    },
+                    "oss": {
+                        "$ref": "#/components/schemas/ApiOssAttachmentMetadata"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The size (in octet) of the file",
+                        "format": "int64"
+                    },
+                    "storageType": {
+                        "type": "string",
+                        "description": "Where is the file stored? Either DRIVE (Google Drive), or OSS (AODocs Object Storage System)",
+                        "enum": [
+                            "OSS",
+                            "DRIVE"
+                        ]
+                    }
+                }
+            },
+            "ApiAutodeskUrn": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "READY",
+                            "IN_PROGRESS",
+                            "FAILED"
+                        ]
+                    },
+                    "urn": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiBaseUserProfile": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name of the user"
+                    },
+                    "nonGoogle": {
+                        "type": "boolean",
+                        "description": "This user is not a google user"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the user"
+                    }
+                }
+            },
+            "ApiCalculatedSettingsInfo": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "boolean",
+                        "description": "Indicates whether the evaluation of the setting terminated on error (read-only)"
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "description": "If the evaluation terminated on error, indicates the error message (read-only)"
+                    }
+                }
+            },
+            "ApiCategory": {
+                "type": "object",
+                "properties": {
+                    "calculatedSettingsInfo": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiCalculatedSettingsInfo"
+                        },
+                        "description": "Information about the result of evaluation of calculated settings (read-only)"
+                    },
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "categoryDefinition": {
+                        "$ref": "#/components/schemas/ApiCategoryDefinition"
+                    },
+                    "definitionId": {
+                        "type": "string",
+                        "description": "(Deprecated) The ID of the category"
+                    },
+                    "definitionName": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the field (read-only)"
+                    },
+                    "description_i18n": {
+                        "type": "string",
+                        "description": "The internationalized description of the field (read-only)"
+                    },
+                    "dynamicValues": {
+                        "type": "boolean"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "fieldId": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "fieldName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only)"
+                    },
+                    "folder": {
+                        "type": "boolean"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the user user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "levelNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether there can be multiple values"
+                    },
+                    "placeholderText": {
+                        "type": "string",
+                        "description": "The help text to display in the field input (read-only)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "The rank at which the field is displayed in the document page (read-only)",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The field type (STRING, DATE, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    },
+                    "validation": {
+                        "$ref": "#/components/schemas/ApiFieldValidation"
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "The list of category values",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/ApiCategoryValue"
+                            }
+                        }
+                    }
+                }
+            },
+            "ApiCategoryDefinition": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the category"
+                    },
+                    "dynamicValues": {
+                        "type": "boolean",
+                        "description": "Whether the category authorizes dynamic values"
+                    },
+                    "folder": {
+                        "type": "boolean",
+                        "description": "Whether the category is the Folder category (read-only)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the category"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "levelNames": {
+                        "type": "array",
+                        "description": "The name of the levels in the category",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "levelNames_i18n": {
+                        "type": "array",
+                        "description": "The internationalized name of the levels in the category (read-only field)",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the category"
+                    },
+                    "tags": {
+                        "type": "boolean",
+                        "description": "Whether the category is the Tags category (read-only)"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The ID of the category (backward compatibility for category.category.listCategoryDefinitions)"
+                    }
+                }
+            },
+            "ApiCategoryValue": {
+                "type": "object",
+                "properties": {
+                    "ancestors": {
+                        "type": "array",
+                        "description": "Ancestor category values from direct parent to root - only present with loadCategoryValue",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCategoryValue"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the category value"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "leaf": {
+                        "type": "boolean",
+                        "description": "Whether the category value is leaf"
+                    },
+                    "leafInNotOutdatedTree": {
+                        "type": "boolean",
+                        "description": "Whether the category value is leaf without not outdated child"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the category value"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the category value (read-only field)"
+                    },
+                    "outdated": {
+                        "type": "boolean",
+                        "description": "Whether the category value is marked as outdated"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "The ID of the parent category value (read-only field)"
+                    },
+                    "shortName": {
+                        "type": "string",
+                        "description": "The short name of the category value"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "(Deprecated) The ID of the category value"
+                    }
+                }
+            },
+            "ApiCrossLibrarySearchRequest": {
+                "type": "object",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFilterItem"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSortItem"
+                        }
+                    }
+                }
+            },
+            "ApiCrossLibrarySearchResult": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "exactCount": {
+                        "type": "boolean"
+                    },
+                    "hits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSearchDocument"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiCustomRelatedDocumentTitle": {
+                "type": "object",
+                "properties": {
+                    "customHtmlTitle": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocument": {
+                "type": "object",
+                "properties": {
+                    "acl": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAclEntry"
+                        }
+                    },
+                    "attachmentFields": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiField"
+                        }
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "description": "The list of attachments",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAttachment"
+                        }
+                    },
+                    "attachmentsToCopy": {
+                        "type": "array",
+                        "description": "The list of attachments to copy (for create/patch)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAttachment"
+                        }
+                    },
+                    "categories": {
+                        "type": "array",
+                        "description": "The list of category fields (only the values are editable)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCategory"
+                        }
+                    },
+                    "checkOutBy": {
+                        "type": "string",
+                        "description": "The email of the user who checked-out the document (read-only field)"
+                    },
+                    "checkoutDate": {
+                        "type": "string",
+                        "description": "The time at which the document was checked-out (read-only field)"
+                    },
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class of the document (read-only field)"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class of the document (read-only field)"
+                    },
+                    "className_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the class of the document (read-only field)"
+                    },
+                    "coordinate": {
+                        "type": "string",
+                        "description": "The coordinate of the sequence for the document (<librarySequenceId>.<documentClassSequenceId>.<documentSequenceId>[.<versionSequenceId>]) (read-only field)"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "description": "The time at which the document was created (read-only field)"
+                    },
+                    "deleteAuthor": {
+                        "type": "string",
+                        "description": "The email of the user who deleted the document (read-only field)"
+                    },
+                    "deleted": {
+                        "type": "boolean",
+                        "description": "Whether the document is deleted (read-only field)"
+                    },
+                    "deletedReason": {
+                        "type": "string",
+                        "description": "The reason for deleting the document (read-only field)"
+                    },
+                    "deletionDate": {
+                        "type": "string",
+                        "description": "The time at which the document was deleted (read-only field)"
+                    },
+                    "domainName": {
+                        "type": "string",
+                        "description": "The name of the domain (read-only field)"
+                    },
+                    "driveOnlyPermissions": {
+                        "type": "array",
+                        "description": "The list of additional permissions configured in Secured Folder libraries",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDrivePermission"
+                        }
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the current user can edit the document (read-only field)"
+                    },
+                    "evaluationError": {
+                        "type": "boolean",
+                        "description": "Whether there is an evaluation error on at least one field of the document (read-only field)"
+                    },
+                    "fields": {
+                        "type": "array",
+                        "description": "The list of native fields (values and metadata are editable)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiField"
+                        }
+                    },
+                    "folders": {
+                        "type": "array",
+                        "description": "The location of the document (folder path as list of folders)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    },
+                    "forbiddenOperations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/ApiForbidReason"
+                            }
+                        },
+                        "description": "The map of the forbidden operations to the current user and the reasons why they are forbidden (read-only field)"
+                    },
+                    "fullSizeOfAttachments": {
+                        "type": "integer",
+                        "description": "The summed size (in octet) of the attachments (read-only field)",
+                        "format": "int64"
+                    },
+                    "iconLink": {
+                        "type": "string",
+                        "description": "The link to the icon relative to the attachment (read-only field)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the document (read-only field)"
+                    },
+                    "incomplete": {
+                        "type": "boolean",
+                        "description": "Whether there are missing mandatory fields on the document (read-only field)"
+                    },
+                    "initialAuthor": {
+                        "type": "string",
+                        "description": "The email of the user who created the document (read-only field)"
+                    },
+                    "invalidValues": {
+                        "type": "boolean",
+                        "description": "Whether there are invalid values for fields of the document (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library (read-only field)"
+                    },
+                    "libraryName": {
+                        "type": "string",
+                        "description": "The name of the library (read-only field)"
+                    },
+                    "modificationDate": {
+                        "type": "string",
+                        "description": "The time at which the document was last modified (read-only field after document creation)"
+                    },
+                    "newPermissions": {
+                        "type": "array",
+                        "description": "The new permissions to apply",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDrivePermission"
+                        }
+                    },
+                    "nextVersionName": {
+                        "type": "string",
+                        "description": "The next version name (read-only field)"
+                    },
+                    "numberOfAttachments": {
+                        "type": "integer",
+                        "description": "The number of attachments in the document (read-only field)",
+                        "format": "int32"
+                    },
+                    "onlyAdminCanChangeAcl": {
+                        "type": "boolean",
+                        "description": "Whether only administrators can modify the permissions of the document"
+                    },
+                    "onlyAdminCanDelete": {
+                        "type": "boolean",
+                        "description": "Whether only administrators can be delete the document"
+                    },
+                    "originalVersionId": {
+                        "type": "string",
+                        "description": "Id of the original version if this version was created by restoring a previous version, otherwise null"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "description": "The list of permissions relative to the document",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiPermission"
+                        }
+                    },
+                    "permittedOperations": {
+                        "type": "array",
+                        "description": "The list of permitted operations to the current user (read-only field)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "DELETE",
+                                "RENAME",
+                                "MODIFY_ACL",
+                                "VIEW_ACL",
+                                "MOVE_TO_ANOTHER_FOLDER",
+                                "EXPORT",
+                                "EDIT_PROPERTIES",
+                                "COPY",
+                                "CREATE_COPY_FROM",
+                                "EXPORT_COPY",
+                                "CREATE_NEW_VERSION",
+                                "ATTACHMENT_VERSION_REPLACE",
+                                "ATTACHMENT_VERSION_CREATE",
+                                "ADD_NEW_ATTACHMENT_FROM_DRIVE",
+                                "ATTACH_ENCRYPTED_FILE",
+                                "OPEN_IN_OFFICE",
+                                "PUBLISH",
+                                "UNPUBLISH",
+                                "RESTORE_REVISION",
+                                "REVERT_TO_THIS_REVISION",
+                                "CREATE_RELATED_DOCUMENT",
+                                "DOWNLOAD",
+                                "DOWNLOAD_ATTACHMENT",
+                                "NOTIFY_USERS",
+                                "CHECK_IN",
+                                "CHECK_OUT",
+                                "DISCARD_CHECKOUT",
+                                "FORCE_DISCARD_CHECKOUT",
+                                "EDIT_TAGS",
+                                "PERFORM_HUMAN_WORKFLOW_ACTIONS",
+                                "VIEW_DRAFT",
+                                "SHARE_PUBLICLY",
+                                "VIEW_HISTORY",
+                                "VIEW_VERSIONS",
+                                "ADD_COMMENT",
+                                "SET_TEMPLATE_AS_DEFAULT",
+                                "SET_TEMPLATE_VISIBILITY_SCOPE",
+                                "DELETE_COMMENT",
+                                "KNOW_DRAFT",
+                                "FORCE_PARALLEL_TRANSITION",
+                                "CHANGE_WORKFLOW_STATE_DIRECTLY",
+                                "SEE_HIDDEN_FIELDS",
+                                "VIEW_TRASHED_ITEM",
+                                "UNTRASH",
+                                "PERMANENTLY_DELETE",
+                                "VIEW_DRIVEONLY_ACL",
+                                "MODIFY_DRIVEONLY_ACL",
+                                "NON_GOOGLE_USERS_SUPPORT",
+                                "SUPPORTS_LIVE_EVALUATION",
+                                "ALLOWLIST_NOT_ENFORCED",
+                                "CREATE_SUBFOLDER",
+                                "CREATE_DOCUMENT_IN_THIS_FOLDER",
+                                "IMPORT_FOLDERS_FROM_DRIVE_TO_THIS_FOLDER",
+                                "ADD_NEW_ATTACHMENT_FROM_OSS",
+                                "OPEN_IN_DRIVE",
+                                "COPY_FOLDER_TREE",
+                                "CHECK_FOLDER",
+                                "MOVE_TO_DRIVE",
+                                "COPY_TO_DRIVE",
+                                "MOVE_TO_ANOTHER_LIBRARY",
+                                "MOVE_TO_ANOTHER_CLASS",
+                                "COPY_TO_ANOTHER_CLASS",
+                                "COPY_ATTACHMENT",
+                                "COPY_TO_ANOTHER_LIBRARY",
+                                "EDIT_ATTACHMENT"
+                            ]
+                        }
+                    },
+                    "publishedLink": {
+                        "type": "string",
+                        "description": "The link of the publication for mono-attachment documents"
+                    },
+                    "publishedMode": {
+                        "type": "string",
+                        "description": "The publication mode (NONE, DOMAIN, EVERYONE) for mono-attachment documents",
+                        "enum": [
+                            "NONE",
+                            "DOMAIN",
+                            "EVERYONE"
+                        ]
+                    },
+                    "referenceCatalogs": {
+                        "type": "array",
+                        "description": "The list of reference catalog fields (only the values are editable)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalogField"
+                        }
+                    },
+                    "relatedDocuments": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiRelationSides"
+                        },
+                        "description": "The map of related documents per relation"
+                    },
+                    "restrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the flag controlling whether reader users can download, copy or print the document is enabled."
+                    },
+                    "richText": {
+                        "type": "string",
+                        "description": "The description of the document"
+                    },
+                    "sections": {
+                        "type": "array",
+                        "description": "The sections in which fields are organized (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFieldSection"
+                        }
+                    },
+                    "sequenceId": {
+                        "type": "integer",
+                        "description": "The sequence ID of the document (read-only field)",
+                        "format": "int64"
+                    },
+                    "setModifiedDate": {
+                        "type": "boolean",
+                        "description": "Whether to set the date of last modification"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The name of the workflow state (read-only field)"
+                    },
+                    "stateChangeAuthors": {
+                        "type": "array",
+                        "description": "The person(s) who were involved in the last workflow state change (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSecurityToken"
+                        }
+                    },
+                    "stateChangeDate": {
+                        "type": "string",
+                        "description": "The date at which the document last changed of workflow state (read-only field)",
+                        "format": "date-time"
+                    },
+                    "stateId": {
+                        "type": "string",
+                        "description": "The ID of the workflow state"
+                    },
+                    "state_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the workflow state (read-only field)"
+                    },
+                    "systemFields": {
+                        "type": "array",
+                        "description": "The list of system fields (only the values are editable)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSystemField"
+                        }
+                    },
+                    "tableFields": {
+                        "type": "array",
+                        "description": "The list of table fields (only the values are editable)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiTableField"
+                        }
+                    },
+                    "templateDocumentId": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the document"
+                    },
+                    "updateAuthor": {
+                        "type": "string",
+                        "description": "The email of the user who last modified the document (read-only field)"
+                    },
+                    "userCanChangeAcl": {
+                        "type": "boolean",
+                        "description": "Whether the current user can modify the permissions (read-only field)"
+                    },
+                    "userCanChangeProperties": {
+                        "type": "boolean",
+                        "description": "Whether the current user can modify the properties (read-only field)"
+                    },
+                    "userCanDelete": {
+                        "type": "boolean",
+                        "description": "Whether the current user can delete the document (read-only field)"
+                    },
+                    "userMapping": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiBaseUserProfile"
+                        },
+                        "description": "The mapping between user email and user profile (read-only field)"
+                    },
+                    "versionCreated": {
+                        "type": "string",
+                        "description": "The time at which the version was created (read-only field)",
+                        "format": "date-time"
+                    },
+                    "versionCreator": {
+                        "type": "string",
+                        "description": "The email of the user who created the version (read-only field)"
+                    },
+                    "versionDescription": {
+                        "type": "string",
+                        "description": "The description of the current version of the document"
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "The ID of the version (read-only field)"
+                    },
+                    "versionLabel": {
+                        "type": "string",
+                        "description": "(Deprecated) The description of the version (replaced by versionDescription)"
+                    },
+                    "versionName": {
+                        "type": "string",
+                        "description": "The name of the current version of the document"
+                    },
+                    "versionNumber": {
+                        "type": "string",
+                        "description": "(Deprecated) The number of the version (replaced by versionName)"
+                    },
+                    "viewConfiguration": {
+                        "$ref": "#/components/schemas/ApiDocumentViewConfiguration"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the workflow related to the class of the document (read-only field)"
+                    }
+                }
+            },
+            "ApiDocumentCount": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocumentList": {
+                "type": "object",
+                "properties": {
+                    "documentList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocument"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "pageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocumentViewConfiguration": {
+                "type": "object",
+                "properties": {
+                    "defaultTabToDisplay": {
+                        "type": "string",
+                        "description": "The tab to display when open the document",
+                        "enum": [
+                            "PROPERTIES",
+                            "FIRST_ATTACHMENT"
+                        ]
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "orientation": {
+                        "type": "string",
+                        "description": "The orientation to display the document (PORTRAIT or LANDSCAPE)",
+                        "enum": [
+                            "PORTRAIT",
+                            "LANDSCAPE"
+                        ]
+                    },
+                    "visibleRelations": {
+                        "type": "array",
+                        "description": "The list of ordered relations to display in the Relations section",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "visibleSections": {
+                        "type": "array",
+                        "description": "The list of ordered sections to display",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "INFO",
+                                "WORKFLOW",
+                                "PROPERTIES",
+                                "ATTACHMENTS",
+                                "RELATIONS",
+                                "DESCRIPTION"
+                            ]
+                        }
+                    }
+                }
+            },
+            "ApiDomainSearchNextPageToken": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "pageTokenMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ApiDomainSearchResult": {
+                "type": "object",
+                "properties": {
+                    "documents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocument"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "$ref": "#/components/schemas/ApiDomainSearchNextPageToken"
+                    }
+                }
+            },
+            "ApiDriveAttachmentMetadata": {
+                "type": "object",
+                "properties": {
+                    "iconLink": {
+                        "type": "string",
+                        "description": "The URL of the icon of the file"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "link": {
+                        "type": "string",
+                        "description": "The URL to the file in Drive"
+                    },
+                    "permissionsOnDrive": {
+                        "type": "array",
+                        "description": "The list of permissions set in Drive for the file",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDrivePermission"
+                        }
+                    },
+                    "publishedLink": {
+                        "type": "string",
+                        "description": "The URL of the file when published"
+                    },
+                    "resourceKey": {
+                        "type": "string",
+                        "description": "A file that is shared with the link may only be discovered with this resourceKey"
+                    },
+                    "revisionId": {
+                        "type": "string",
+                        "description": "The ID of the revision of the file in Drive"
+                    }
+                }
+            },
+            "ApiDrivePermission": {
+                "type": "object",
+                "properties": {
+                    "additionalRoles": {
+                        "type": "array",
+                        "description": "The additional roles for the permission like COMMENTER",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "allowlisted": {
+                        "type": "boolean",
+                        "description": "Whether the email address is allowlisted (individually or via its domain) in the current domain"
+                    },
+                    "belongsToDomain": {
+                        "type": "boolean",
+                        "description": "Whether the email address is part of the current domain"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the permission or the domain name if type = DOMAIN"
+                    },
+                    "googleEmailAddress": {
+                        "type": "boolean",
+                        "description": "Whether the email address is tied to a Google account"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The displayed name for the permission"
+                    },
+                    "permissionId": {
+                        "type": "string",
+                        "description": "The unique ID for the permission in Drive"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The role of the permission: READER, WRITER, OWNER"
+                    },
+                    "thumbnailPhotoUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture of the permitted user or group"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of permission in Drive: ANYONE, DOMAIN, GROUP, USER"
+                    },
+                    "withLink": {
+                        "type": "boolean",
+                        "description": "Whether the permission imposes to have the link to access (vs. can be searched for)"
+                    }
+                }
+            },
+            "ApiField": {
+                "type": "object",
+                "properties": {
+                    "calculatedSettingsInfo": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiCalculatedSettingsInfo"
+                        },
+                        "description": "Information about the result of evaluation of calculated settings (read-only)"
+                    },
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the field (read-only)"
+                    },
+                    "description_i18n": {
+                        "type": "string",
+                        "description": "The internationalized description of the field (read-only)"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "fieldId": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "fieldName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only)"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the user user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/ApiFieldMetadata"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether there can be multiple values"
+                    },
+                    "placeholderText": {
+                        "type": "string",
+                        "description": "The help text to display in the field input (read-only)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "The rank at which the field is displayed in the document page (read-only)",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The field type (STRING, DATE, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    },
+                    "validation": {
+                        "$ref": "#/components/schemas/ApiFieldValidation"
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "The list of values for the field",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ApiFieldDefinition": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the field (read-only field)"
+                    }
+                }
+            },
+            "ApiFieldMetadata": {
+                "type": "object",
+                "properties": {
+                    "attachments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiAttachmentMetadata"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiFieldSection": {
+                "type": "object",
+                "properties": {
+                    "columnCount": {
+                        "type": "integer",
+                        "description": "The number of columns to display fields for this section.",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the section"
+                    },
+                    "fields": {
+                        "type": "array",
+                        "description": "The list of fields in the section",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFieldDefinition"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the section (read-only field)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the section"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the section (read-only field)"
+                    }
+                }
+            },
+            "ApiFieldValidation": {
+                "type": "object",
+                "properties": {
+                    "audience": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "description": "The error message if the value inputted is not valid"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lowerLimit": {
+                        "type": "number",
+                        "description": "The lower limit of the range for numerical fields",
+                        "format": "double"
+                    },
+                    "lowerLimitInclusive": {
+                        "type": "boolean",
+                        "description": "Whether to include the lower limit value in the range"
+                    },
+                    "mandatoryLeaf": {
+                        "type": "boolean",
+                        "description": "Whether the leaf selection is required for Category or Reference Catalog fields"
+                    },
+                    "regex": {
+                        "type": "string",
+                        "description": "The regular expression for String fields"
+                    },
+                    "upperLimit": {
+                        "type": "number",
+                        "description": "The upper limit of the range for numerical fields",
+                        "format": "double"
+                    },
+                    "upperLimitInclusive": {
+                        "type": "boolean",
+                        "description": "Whether to include the upper limit value in the range"
+                    }
+                }
+            },
+            "ApiFieldValuesInfo": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "boolean",
+                        "description": "If the field has no value, indicates whether this is due to an evaluation error (read-only)"
+                    }
+                }
+            },
+            "ApiFilterItem": {
+                "type": "object",
+                "properties": {
+                    "column": {
+                        "type": "string"
+                    },
+                    "joinType": {
+                        "type": "string",
+                        "enum": [
+                            "AND",
+                            "OR"
+                        ]
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string",
+                        "enum": [
+                            "EQUAL",
+                            "NOT_EQUAL",
+                            "STRICTLY_GREATER_THAN",
+                            "STRICTLY_LESSER_THAN",
+                            "GREATER_THAN_OR_EQUAL_TO",
+                            "LESSER_THAN_OR_EQUAL_TO",
+                            "BETWEEN",
+                            "EMPTY",
+                            "NOT_EMPTY",
+                            "WITHIN_THE_AREA",
+                            "IN",
+                            "NOT_IN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiFilterRequest": {
+                "type": "object",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFilterItem"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiFolder": {
+                "type": "object",
+                "properties": {
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the folder is editable by the current user (read-only field)"
+                    },
+                    "editableDocuments": {
+                        "type": "boolean",
+                        "description": "Whether the documents in the folder are editable by the current user (read-only field)"
+                    },
+                    "fileId": {
+                        "type": "string",
+                        "description": "The ID of the folder in Drive"
+                    },
+                    "folderAodocsId": {
+                        "type": "string",
+                        "description": "The ID of the folder in AODocs model (0 if root folder)"
+                    },
+                    "folderDefinitionId": {
+                        "type": "string",
+                        "description": "(Deprecated) The ID of the folder configuration"
+                    },
+                    "folderIsRoot": {
+                        "type": "boolean",
+                        "description": "Whether the folder is the root folder (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library"
+                    },
+                    "libraryName": {
+                        "type": "string",
+                        "description": "The name of the library"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the folder"
+                    },
+                    "parentFolderAodocsId": {
+                        "type": "string",
+                        "description": "The ID of the parent folder in AODocs model (0 if root folder)"
+                    },
+                    "parentFolderDriveId": {
+                        "type": "string",
+                        "description": "The ID of the parent folder in Drive"
+                    },
+                    "parentFolderIsRoot": {
+                        "type": "boolean",
+                        "description": "Whether the parent folder is the root folder (read-only field)"
+                    },
+                    "permittedOperations": {
+                        "type": "array",
+                        "description": "The list of permitted operations to the current user (read-only field)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "DELETE",
+                                "RENAME",
+                                "MODIFY_ACL",
+                                "VIEW_ACL",
+                                "MOVE_TO_ANOTHER_FOLDER",
+                                "EXPORT",
+                                "EDIT_PROPERTIES",
+                                "COPY",
+                                "CREATE_COPY_FROM",
+                                "EXPORT_COPY",
+                                "CREATE_NEW_VERSION",
+                                "ATTACHMENT_VERSION_REPLACE",
+                                "ATTACHMENT_VERSION_CREATE",
+                                "ADD_NEW_ATTACHMENT_FROM_DRIVE",
+                                "ATTACH_ENCRYPTED_FILE",
+                                "OPEN_IN_OFFICE",
+                                "PUBLISH",
+                                "UNPUBLISH",
+                                "RESTORE_REVISION",
+                                "REVERT_TO_THIS_REVISION",
+                                "CREATE_RELATED_DOCUMENT",
+                                "DOWNLOAD",
+                                "DOWNLOAD_ATTACHMENT",
+                                "NOTIFY_USERS",
+                                "CHECK_IN",
+                                "CHECK_OUT",
+                                "DISCARD_CHECKOUT",
+                                "FORCE_DISCARD_CHECKOUT",
+                                "EDIT_TAGS",
+                                "PERFORM_HUMAN_WORKFLOW_ACTIONS",
+                                "VIEW_DRAFT",
+                                "SHARE_PUBLICLY",
+                                "VIEW_HISTORY",
+                                "VIEW_VERSIONS",
+                                "ADD_COMMENT",
+                                "SET_TEMPLATE_AS_DEFAULT",
+                                "SET_TEMPLATE_VISIBILITY_SCOPE",
+                                "DELETE_COMMENT",
+                                "KNOW_DRAFT",
+                                "FORCE_PARALLEL_TRANSITION",
+                                "CHANGE_WORKFLOW_STATE_DIRECTLY",
+                                "SEE_HIDDEN_FIELDS",
+                                "VIEW_TRASHED_ITEM",
+                                "UNTRASH",
+                                "PERMANENTLY_DELETE",
+                                "VIEW_DRIVEONLY_ACL",
+                                "MODIFY_DRIVEONLY_ACL",
+                                "NON_GOOGLE_USERS_SUPPORT",
+                                "SUPPORTS_LIVE_EVALUATION",
+                                "ALLOWLIST_NOT_ENFORCED",
+                                "CREATE_SUBFOLDER",
+                                "CREATE_DOCUMENT_IN_THIS_FOLDER",
+                                "IMPORT_FOLDERS_FROM_DRIVE_TO_THIS_FOLDER",
+                                "ADD_NEW_ATTACHMENT_FROM_OSS",
+                                "OPEN_IN_DRIVE",
+                                "COPY_FOLDER_TREE",
+                                "CHECK_FOLDER",
+                                "MOVE_TO_DRIVE",
+                                "COPY_TO_DRIVE",
+                                "MOVE_TO_ANOTHER_LIBRARY",
+                                "MOVE_TO_ANOTHER_CLASS",
+                                "COPY_TO_ANOTHER_CLASS",
+                                "COPY_ATTACHMENT",
+                                "COPY_TO_ANOTHER_LIBRARY",
+                                "EDIT_ATTACHMENT"
+                            ]
+                        }
+                    },
+                    "resourceKey": {
+                        "type": "string",
+                        "description": "A folder that is shared with the link may only be discovered with this resourceKey"
+                    },
+                    "restrictedDownload": {
+                        "type": "boolean",
+                        "description": "Whether the documents in the folder are marked as restricted to download, copy and print (for the readers)"
+                    },
+                    "subfolders": {
+                        "type": "array",
+                        "description": "The list of subfolders",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiFolder"
+                        }
+                    }
+                }
+            },
+            "ApiForbidReason": {
+                "type": "object",
+                "properties": {
+                    "localizedMessage": {
+                        "type": "string"
+                    },
+                    "reason": {
+                        "type": "string",
+                        "enum": [
+                            "MANDATORY_CHECKOUT",
+                            "PROTECTED_BY_CHECKOUT",
+                            "MISSING_MANDATORY_FIELD",
+                            "INCORRECT_FIELD_VALUES",
+                            "CHECKED_OUT_IN_NORMAL_STATE",
+                            "CONTAINS_ATTACHMENT",
+                            "HAS_FOLDER",
+                            "IS_DEFAULT_TEMPLATE",
+                            "IS_HIDDEN",
+                            "DOCUMENT_IS_DELETED",
+                            "PERMISSION_NEEDED",
+                            "CSE_ENCRYPTED_ATTACHMENT",
+                            "THIRD_PARTY_SHORTCUT",
+                            "DRIVEONLY_PERMISSIONS_NOT_SUPPORTED"
+                        ]
+                    }
+                }
+            },
+            "ApiJobId": {
+                "type": "object",
+                "properties": {
+                    "jobId": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiOssAttachmentMetadata": {
+                "type": "object",
+                "properties": {
+                    "downloadLink": {
+                        "type": "string",
+                        "description": "The URL to download the OSS file"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiPermission": {
+                "type": "object",
+                "properties": {
+                    "fieldNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "inherited": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "right": {
+                        "type": "string",
+                        "enum": [
+                            "NONE",
+                            "READER",
+                            "COMMENTER",
+                            "ATTACHMENT_EDITOR",
+                            "WRITER",
+                            "ADMIN",
+                            "SUPER_ADMIN"
+                        ]
+                    },
+                    "roleNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "thumbnailPhotoUrl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "DOMAIN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiPersonValue": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "personName": {
+                        "type": "string"
+                    },
+                    "thumbnailPictureLink": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiReferenceCatalog": {
+                "type": "object",
+                "properties": {
+                    "createdAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog was created (read-only field)",
+                        "format": "int64"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "levelNames": {
+                        "type": "array",
+                        "description": "Ordered name of levels of the reference catalog",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "modifiedAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog was last modified (read-only field)",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the reference catalog"
+                    },
+                    "numberOfValues": {
+                        "type": "integer",
+                        "description": "The number of values in the reference catalog (read-only field)",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiReferenceCatalogField": {
+                "type": "object",
+                "properties": {
+                    "calculatedSettingsInfo": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiCalculatedSettingsInfo"
+                        },
+                        "description": "Information about the result of evaluation of calculated settings (read-only)"
+                    },
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the field (read-only)"
+                    },
+                    "description_i18n": {
+                        "type": "string",
+                        "description": "The internationalized description of the field (read-only)"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "fieldId": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "fieldName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only)"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the user user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether there can be multiple values"
+                    },
+                    "placeholderText": {
+                        "type": "string",
+                        "description": "The help text to display in the field input (read-only)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "The rank at which the field is displayed in the document page (read-only)",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "referenceCatalog": {
+                        "$ref": "#/components/schemas/ApiReferenceCatalog"
+                    },
+                    "referenceCatalogId": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The field type (STRING, DATE, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    },
+                    "validation": {
+                        "$ref": "#/components/schemas/ApiFieldValidation"
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "The list of reference catalog values",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalogFieldValue"
+                        }
+                    }
+                }
+            },
+            "ApiReferenceCatalogFieldValue": {
+                "type": "object",
+                "properties": {
+                    "deleted": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "leaf": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name"
+                    },
+                    "parents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalogFieldValue"
+                        }
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value"
+                    }
+                }
+            },
+            "ApiRelationSides": {
+                "type": "object",
+                "properties": {
+                    "customFromTitles": {
+                        "type": "array",
+                        "description": "The corresponding custom title (if relation renderer enabled) for the related documents on FROM side (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCustomRelatedDocumentTitle"
+                        }
+                    },
+                    "customToTitles": {
+                        "type": "array",
+                        "description": "The corresponding custom title (if relation renderer enabled) for the related documents on TO side (read-only field)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCustomRelatedDocumentTitle"
+                        }
+                    },
+                    "from": {
+                        "type": "array",
+                        "description": "The list of related documents on FROM side",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocument"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "relationId": {
+                        "type": "string",
+                        "description": "The ID of the relation"
+                    },
+                    "to": {
+                        "type": "array",
+                        "description": "The list of related documents on TO side",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocument"
+                        }
+                    }
+                }
+            },
+            "ApiSearchDocument": {
+                "type": "object",
+                "properties": {
+                    "className": {
+                        "type": "string"
+                    },
+                    "documentId": {
+                        "type": "string"
+                    },
+                    "folderId": {
+                        "type": "string"
+                    },
+                    "folderIsRootFolderOfLibrary": {
+                        "type": "boolean"
+                    },
+                    "folderName": {
+                        "type": "string"
+                    },
+                    "iconLink": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastUpdateTimestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastUpdater": {
+                        "$ref": "#/components/schemas/ApiPersonValue"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "libraryName": {
+                        "type": "string"
+                    },
+                    "stateName": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiSearchFilter": {
+                "type": "object",
+                "properties": {
+                    "allOf": {
+                        "type": "array",
+                        "description": "Must match ALL of these filters (mutually exclusive with anyOf and property/operator/(values)).",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSearchFilter"
+                        }
+                    },
+                    "anyOf": {
+                        "type": "array",
+                        "description": "Must match ANY of these filters (mutually exclusive with allOf and property/operator/(values)).",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSearchFilter"
+                        }
+                    },
+                    "operator": {
+                        "type": "string",
+                        "description": "Operator to be applied on the given property (mutually exclusive with anyOf and allOf).",
+                        "enum": [
+                            "EQUAL",
+                            "NOT_EQUAL",
+                            "STRICTLY_GREATER_THAN",
+                            "STRICTLY_LESSER_THAN",
+                            "GREATER_THAN_OR_EQUAL_TO",
+                            "LESSER_THAN_OR_EQUAL_TO",
+                            "BETWEEN",
+                            "EMPTY",
+                            "NOT_EMPTY",
+                            "WITHIN_THE_AREA",
+                            "IN",
+                            "NOT_IN"
+                        ]
+                    },
+                    "property": {
+                        "type": "string",
+                        "description": "Property on which to apply the operator (mutually exclusive with anyOf and allOf)."
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "Values associated to the operator (mutually exclusive with anyOf and allOf, the expected number of values depends on the operator).",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ApiSearchRequest": {
+                "type": "object",
+                "properties": {
+                    "disableSorting": {
+                        "type": "boolean",
+                        "description": "Enforce the fact that results won't be sorted because by default results are sorted by last modification date"
+                    },
+                    "filter": {
+                        "$ref": "#/components/schemas/ApiSearchFilter"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "description": "Order the results of the search",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSort"
+                        }
+                    }
+                }
+            },
+            "ApiSearchResult": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "documents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocument"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    },
+                    "precision": {
+                        "type": "string",
+                        "enum": [
+                            "ACCURATE",
+                            "ESTIMATED_RESULT_NUMBER",
+                            "INCOMPLETE_RESULT"
+                        ]
+                    }
+                }
+            },
+            "ApiSecurityToken": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class when type = FIELD"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class when type = FIELD"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for type in GROUP, ROLE, FIELD"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the name of the role (read-only field)"
+                    },
+                    "displayName_i18n": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the internationalized name of the role (read-only field)"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture (especially for users)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of person (user, group, role, field based, domain i.e. everybody)",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "ROLE",
+                            "FIELD",
+                            "DOMAIN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email address if user or group, the ID of the role, the ID of the class/field (ignored if type = DOMAIN)"
+                    }
+                }
+            },
+            "ApiSort": {
+                "type": "object",
+                "properties": {
+                    "descending": {
+                        "type": "boolean"
+                    },
+                    "property": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiSortItem": {
+                "type": "object",
+                "properties": {
+                    "ascending": {
+                        "type": "boolean"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "enum": [
+                            "ASCENDING",
+                            "DESCENDING"
+                        ]
+                    },
+                    "fieldName": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "RELEVANCE",
+                            "SYSTEM_FIELD",
+                            "CUSTOM_FIELD"
+                        ]
+                    }
+                }
+            },
+            "ApiSystemField": {
+                "type": "object",
+                "properties": {
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The internationalized name of the field"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the current user"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the system field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the field"
+                    }
+                }
+            },
+            "ApiTableColumn": {
+                "type": "object",
+                "properties": {
+                    "calculatedSettingsInfo": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiCalculatedSettingsInfo"
+                        },
+                        "description": "Information about the result of evaluation of calculated settings (read-only)"
+                    },
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "categoryDefinition": {
+                        "$ref": "#/components/schemas/ApiCategoryDefinition"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the field (read-only)"
+                    },
+                    "description_i18n": {
+                        "type": "string",
+                        "description": "The internationalized description of the field (read-only)"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "fieldId": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "fieldName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only)"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the user user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether there can be multiple values"
+                    },
+                    "placeholderText": {
+                        "type": "string",
+                        "description": "The help text to display in the field input (read-only)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "The rank at which the field is displayed in the document page (read-only)",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "referenceCatalogDefinition": {
+                        "$ref": "#/components/schemas/ApiReferenceCatalog"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The field type (STRING, DATE, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    },
+                    "validation": {
+                        "$ref": "#/components/schemas/ApiFieldValidation"
+                    }
+                }
+            },
+            "ApiTableField": {
+                "type": "object",
+                "properties": {
+                    "calculatedSettingsInfo": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/ApiCalculatedSettingsInfo"
+                        },
+                        "description": "Information about the result of evaluation of calculated settings (read-only)"
+                    },
+                    "calculatedValueInfo": {
+                        "$ref": "#/components/schemas/ApiFieldValuesInfo"
+                    },
+                    "columns": {
+                        "type": "array",
+                        "description": "The columns definition of the table (read-only)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiTableColumn"
+                        }
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the field (read-only)"
+                    },
+                    "description_i18n": {
+                        "type": "string",
+                        "description": "The internationalized description of the field (read-only)"
+                    },
+                    "editable": {
+                        "type": "boolean",
+                        "description": "Whether the field is editable by the current user"
+                    },
+                    "fieldId": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "fieldName": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "fieldName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only)"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the field is hidden to the user user"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean",
+                        "description": "Whether the field is mandatory"
+                    },
+                    "multiple": {
+                        "type": "boolean",
+                        "description": "Whether there can be multiple values"
+                    },
+                    "placeholderText": {
+                        "type": "string",
+                        "description": "The help text to display in the field input (read-only)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "The rank at which the field is displayed in the document page (read-only)",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "description": "Whether the field is currently read-only"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The field type (STRING, DATE, ..., CATEGORY, REFERENCE_CATALOG)",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "FILESIZE",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG",
+                            "MIMETYPEGROUP",
+                            "CLASS",
+                            "FOLDER",
+                            "STATE",
+                            "OSS_ATTACHMENT",
+                            "DRIVE_ATTACHMENT",
+                            "TABLE"
+                        ]
+                    },
+                    "validation": {
+                        "$ref": "#/components/schemas/ApiFieldValidation"
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "The values (organized as rows) contained in the table",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiTableRow"
+                        }
+                    }
+                }
+            },
+            "ApiTableRow": {
+                "type": "object",
+                "properties": {
+                    "categories": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ApiCategoryValue"
+                                }
+                            }
+                        },
+                        "description": "Cells of type category"
+                    },
+                    "fields": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "Cells of static type"
+                    },
+                    "referenceCatalogs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/ApiReferenceCatalogFieldValue"
+                            }
+                        },
+                        "description": "Cells of type reference catalog"
+                    },
+                    "rowId": {
+                        "type": "string",
+                        "description": "Unique id of the current row"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "classId_query_parameter": {
+                "name": "classId",
+                "in": "query",
+                "description": "The ID of the document class",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "deleteOption_query_parameter": {
+                "name": "deleteOption",
+                "in": "query",
+                "description": "The scope of documents to find: 'DELETED' to get only deleted documents, 'NOT_DELETED' (default value) to get only non-deleted documents or 'ALL' to get all documents",
+                "schema": {
+                    "type": "string",
+                    "default": "NOT_DELETED",
+                    "enum": [
+                        "DELETED",
+                        "NOT_DELETED",
+                        "ALL"
+                    ]
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "libraryId_path_parameter": {
+                "name": "libraryId",
+                "in": "path",
+                "description": "The ID of the library",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "limit_query_parameter": {
+                "name": "limit",
+                "in": "query",
+                "description": "The maximum number of documents per page. (Default: 20)",
+                "schema": {
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 20
+                }
+            },
+            "offset_query_parameter": {
+                "name": "offset",
+                "in": "query",
+                "description": "The offset from which we should get the documents. (Default: 0, i.e. from the first one)",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "pageToken_query_parameter": {
+                "name": "pageToken",
+                "in": "query",
+                "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "publishState_query_parameter": {
+                "name": "publishState",
+                "in": "query",
+                "description": "The type of documents to find: 'DRAFT_ONLY' to get draft versions only (if access to it), 'PUBLISHED' to get main versions only (if access to it), 'ALL' for both (the draft version if access to it else the main version). The last mode is the default one.",
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "PUBLISHED",
+                        "DRAFT_ONLY",
+                        "ALL"
+                    ]
+                }
+            },
+            "searchInAttachments_query_parameter": {
+                "name": "searchInAttachments",
+                "in": "query",
+                "description": "Whether to search the text in the attachments too (true by default)",
+                "schema": {
+                    "type": "boolean",
+                    "default": true
+                }
+            },
+            "searchQuery_query_parameter": {
+                "name": "searchQuery",
+                "in": "query",
+                "description": "The text searched to filter documents",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "timezone_query_parameter": {
+                "name": "timezone",
+                "in": "query",
+                "description": "The timezone to use for datetime field searches (default: UTC). Format: 'Europe/Paris' or '+01:00'",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "viewId_query_parameter": {
+                "name": "viewId",
+                "in": "query",
+                "description": "The ID of the view",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ApiFilterRequest_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiFilterRequest"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "ApiSearchRequest_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiSearchRequest"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "search",
+    "x-original-swagger-version": "2.0"
+}

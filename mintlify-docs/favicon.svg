@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" viewBox="0 0 41.16 62.62">
+    <defs>
+        <style>
+            .cls-1{fill:#f5c600;}.cls-1,.cls-2,.cls-3{fill-rule:evenodd;stroke-width:0px;}.cls-2{fill:#0da0ff;}.cls-3{fill:#ff2153;}</style>
+    </defs>
+    <g id="Layer_1-2">
+        <path id="Bottom" class="cls-3"
+            d="M9.95,31.81L0,41.76l20.86,20.86,19.9-19.9h-19.87s-3.65-3.64-10.94-10.91Z"></path>
+        <path id="Middle" class="cls-1" d="M22.54,41.19h18.6l-9.3-9.3-9.3,9.3Z"></path>
+        <path id="Top" class="cls-2" d="M.54,20.27l20.35,20.35,20.27-20.27L20.81,0,.54,20.27Z"></path>
+    </g>
+</svg>

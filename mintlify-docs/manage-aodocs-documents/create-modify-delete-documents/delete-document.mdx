@@ -1,0 +1,44 @@
+---
+title: "Delete a specific document by ID"
+description: "You can delete a specific document if you have its documentId. You can either delete it permanently, or just send it to Trash. You can retrieve it from the Trash, or leave it there and it will get deleted after some designated amount of time."
+api: DELETE https://aodocs.altirnao.com/api/document/v1/{documentId}
+contentType: application/json
+---
+
+## Method and API
+
+Play with the API Explorer:
+
+<Card title="DELETE /document/v1/\{documentId\}" icon="trash" horizontal href="/api-reference/documentid" />
+
+## Guidelines
+
+### Request
+
+Only `documentId` is mandatory, and it must be an AODocs `documentId` not a Drive `fileId`.
+
+
+<Note>
+**Note:**
+
+To get an AODocs document (including its `documentId`) by the Drive ID of one of its attachments, use the `GET /document/v1/drive/{driveId}` method.
+</Note>
+
+### Sample request
+
+```yaml Sample request
+DELETE https://aodocs.altirnao.com/api/document/v1/RssP0ol81I2JjwfFgxk?deleteMode=TRASH
+```
+
+## Responses
+
+<Accordion title="204">
+Because this is a deletion of a resource, there is no resource to return in the response. The response returns an HTTP code of
+204 `(No Content)`
+</Accordion>
+
+<ResponseExample>
+```yaml 204
+204
+```
+</ResponseExample>

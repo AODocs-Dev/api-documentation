@@ -1,0 +1,1359 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "document",
+            "description": "Manage documents (beta version, subject to change)"
+        }
+    ],
+    "paths": {
+        "/document/v2beta1/documents/{documentId}/states": {
+            "get": {
+                "tags": [
+                    "document"
+                ],
+                "description": "Lists the possible states for the document by the current user.",
+                "operationId": "document:v2beta1.Documents.listStates",
+                "parameters": [
+                    {
+                        "name": "documentId",
+                        "in": "path",
+                        "description": "The ID of the document",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentStateList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentStateList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/document/v2beta1/documents/{documentId}/transitions": {
+            "get": {
+                "tags": [
+                    "document"
+                ],
+                "description": "Lists transitions for the document where the current user is involved.",
+                "operationId": "document:v2beta1.Documents.listTransitions",
+                "parameters": [
+                    {
+                        "name": "documentId",
+                        "in": "path",
+                        "description": "The ID of the document",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentTransitionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentTransitionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/document/v2beta1/documents/{documentId}/transitions/history": {
+            "get": {
+                "tags": [
+                    "document"
+                ],
+                "description": "Lists the history of transitions for the document.",
+                "operationId": "document:v2beta1.Documents.getTransitionHistory",
+                "parameters": [
+                    {
+                        "name": "documentId",
+                        "in": "path",
+                        "description": "The ID of the document",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum number of transition history items per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentTransitionHistory response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentTransitionHistory"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/document/v2beta1/documents/{documentId}/transitions/{transitionId}": {
+            "get": {
+                "tags": [
+                    "document"
+                ],
+                "description": "Gets transition for the document where the current user is involved.",
+                "operationId": "document:v2beta1.Documents.getTransition",
+                "parameters": [
+                    {
+                        "name": "documentId",
+                        "in": "path",
+                        "description": "The ID of the document",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "transitionId",
+                        "in": "path",
+                        "description": "The ID of the transition",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiDocumentTransition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiDocumentTransition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiCheckOutSettings": {
+                "type": "object",
+                "properties": {
+                    "addValidatorToPermissions": {
+                        "type": "boolean",
+                        "description": "Whether to add the workflow validator to the draft's permissions"
+                    },
+                    "applyPreviousVersionPermissions": {
+                        "type": "boolean",
+                        "description": "Whether to apply the main version's permissions"
+                    },
+                    "draftActionPrefix": {
+                        "type": "string",
+                        "description": "The prefix to apply to the draft version's title"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "description": "The list of permissions to apply to the draft version",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiPermissionV2"
+                        }
+                    }
+                }
+            },
+            "ApiCustomAction": {
+                "type": "object",
+                "properties": {
+                    "event": {
+                        "type": "string",
+                        "description": "The type of event (in workflow transitions: ON_STATE_ENTER_BEFORE_TRANSITION, ON_ENTER_STATE_AFTER_TRANSITION, ON_LEAVE_STATE_BEFORE_TRANSITION or ON_STATE_LEAVE_AFTER_TRANSITION, in relations: ON_RELATION_FILTER or ON_RELATION_RENDER, in classes: ON_DOCUMENT_UPDATE or ON_DOCUMENT_DISPLAY)",
+                        "enum": [
+                            "ON_STATE_ENTER_BEFORE_TRANSITION",
+                            "ON_STATE_ENTER_AFTER_TRANSITION",
+                            "ON_STATE_LEAVE_BEFORE_TRANSITION",
+                            "ON_STATE_LEAVE_AFTER_TRANSITION",
+                            "ON_RELATION_FILTER",
+                            "ON_RELATION_RENDER",
+                            "ON_DOCUMENT_DISPLAY",
+                            "ON_DOCUMENT_UPDATE"
+                        ]
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the action (read-only)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the action"
+                    },
+                    "params": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The map key/value of the parameters"
+                    },
+                    "scriptId": {
+                        "type": "string",
+                        "description": "The ID of the custom script"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "The name of the custom script (read-only field)"
+                    }
+                }
+            },
+            "ApiCustomScriptBinding": {
+                "type": "object",
+                "properties": {
+                    "params": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The map key/value of the parameters"
+                    },
+                    "scriptId": {
+                        "type": "string",
+                        "description": "The ID of the custom script"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "The name of the custom script (read-only field)"
+                    }
+                }
+            },
+            "ApiDocumentField": {
+                "type": "object",
+                "properties": {
+                    "canEdit": {
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "description_i18n": {
+                        "type": "string"
+                    },
+                    "hidden": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the field"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "mandatory": {
+                        "type": "boolean"
+                    },
+                    "multiple": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the field"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the field (read-only field)"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    },
+                    "system": {
+                        "type": "boolean",
+                        "description": "Indicates whether this field is a system field or not (read-only field)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "STRING",
+                            "TEXT",
+                            "DATE",
+                            "TIME",
+                            "DATETIME",
+                            "INTEGER",
+                            "DECIMAL",
+                            "BOOLEAN",
+                            "PERSON",
+                            "CATEGORY",
+                            "GEOPOINT",
+                            "URL",
+                            "REFERENCE_CATALOG"
+                        ]
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ApiDocumentStateList": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "className": {
+                        "type": "string"
+                    },
+                    "domainName": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "libraryName": {
+                        "type": "string"
+                    },
+                    "states": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowState"
+                        }
+                    },
+                    "workflowId": {
+                        "type": "string"
+                    },
+                    "workflowName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocumentTransition": {
+                "type": "object",
+                "properties": {
+                    "createNewDocumentVersion": {
+                        "type": "boolean",
+                        "description": "Whether to create a new version of the documents via this transition (redundant with transitionType = VERSION)"
+                    },
+                    "createdTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow transition was created",
+                        "format": "date-time"
+                    },
+                    "discardCheckedOutDocument": {
+                        "type": "boolean",
+                        "description": "Whether to discard draft documents via this transition (redundant with transitionType = DISCARD)"
+                    },
+                    "elapsedTime": {
+                        "$ref": "#/components/schemas/ApiElapsedTime"
+                    },
+                    "fieldsUsedAsValidators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocumentField"
+                        }
+                    },
+                    "fixedTime": {
+                        "type": "string",
+                        "description": "The date from which the transition should be triggered (if automatic transition based on static date/time)",
+                        "format": "date-time"
+                    },
+                    "humanAction": {
+                        "$ref": "#/components/schemas/ApiHumanAction"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the workflow transition"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow transition was last modified",
+                        "format": "date-time"
+                    },
+                    "propertyData": {
+                        "$ref": "#/components/schemas/ApiPropertyData"
+                    },
+                    "propertyTime": {
+                        "type": "string",
+                        "description": "The ID of the date (or date/time) property from whose value the transition should be triggered (if automatic transition based on property value)"
+                    },
+                    "relativeTime": {
+                        "$ref": "#/components/schemas/ApiRelativeTime"
+                    },
+                    "targetStateId": {
+                        "type": "string",
+                        "description": "The ID of the target state of the transition"
+                    },
+                    "targetStateName": {
+                        "type": "string",
+                        "description": "The name of the target state of the transition"
+                    },
+                    "targetStateName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the target state of the transition"
+                    },
+                    "transitionType": {
+                        "type": "string",
+                        "description": "The type of the transition",
+                        "enum": [
+                            "NORMAL",
+                            "CHECK_IN",
+                            "CHECK_OUT",
+                            "VERSION",
+                            "DISCARD"
+                        ]
+                    },
+                    "validators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocumentValidator"
+                        }
+                    }
+                }
+            },
+            "ApiDocumentTransitionHistory": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "className": {
+                        "type": "string"
+                    },
+                    "domainName": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "libraryName": {
+                        "type": "string"
+                    },
+                    "pageToken": {
+                        "type": "string"
+                    },
+                    "transitions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocumentTransitionHistoryItem"
+                        }
+                    },
+                    "workflowId": {
+                        "type": "string"
+                    },
+                    "workflowName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocumentTransitionHistoryItem": {
+                "type": "object",
+                "properties": {
+                    "appliedActionName_i18n": {
+                        "type": "string"
+                    },
+                    "createdTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "currentValidators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiValidator"
+                        }
+                    },
+                    "fromStateId": {
+                        "type": "string"
+                    },
+                    "fromStateName_i18n": {
+                        "type": "string"
+                    },
+                    "humanActionAudience": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "pendingValidators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiUser"
+                        }
+                    },
+                    "toStateId": {
+                        "type": "string"
+                    },
+                    "toStateName_i18n": {
+                        "type": "string"
+                    },
+                    "transitionId": {
+                        "type": "string"
+                    },
+                    "trigger": {
+                        "type": "string",
+                        "description": "The state change trigger. Possible values: SIMPLE_VALIDATION, PARALLEL_VALIDATION, TIME_TRIGGER, DATA_TRIGGER, DIRECT_CHANGE",
+                        "enum": [
+                            "SIMPLE_VALIDATION",
+                            "PARALLEL_VALIDATION",
+                            "TIME_TRIGGER",
+                            "DATA_TRIGGER",
+                            "DIRECT_CHANGE"
+                        ]
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/ApiUser"
+                    }
+                }
+            },
+            "ApiDocumentTransitionList": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "className": {
+                        "type": "string"
+                    },
+                    "domainName": {
+                        "type": "string"
+                    },
+                    "forcedTransitions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocumentTransition"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
+                    },
+                    "libraryName": {
+                        "type": "string"
+                    },
+                    "transitions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiDocumentTransition"
+                        }
+                    },
+                    "workflowId": {
+                        "type": "string"
+                    },
+                    "workflowName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiDocumentValidator": {
+                "type": "object",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "User validation comment"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Date at which the validation occurred",
+                        "format": "date-time"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/ApiUser"
+                    },
+                    "validated": {
+                        "type": "boolean",
+                        "description": "Whether the user has already processed the transition for the document"
+                    }
+                }
+            },
+            "ApiElapsedTime": {
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "type": "integer",
+                        "description": "The amount of units to wait until the transition is triggered",
+                        "format": "int32"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "The unit for the elapsed time to wait (minute, hour, day, month)",
+                        "enum": [
+                            "MINUTE",
+                            "HOUR",
+                            "DAY",
+                            "MONTH"
+                        ]
+                    }
+                }
+            },
+            "ApiHumanAction": {
+                "type": "object",
+                "properties": {
+                    "actionId": {
+                        "type": "string",
+                        "description": "The ID of the human workflow action"
+                    },
+                    "appliedName": {
+                        "type": "string",
+                        "description": "The applied name of the workflow action"
+                    },
+                    "appliedName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized applied name of the workflow action"
+                    },
+                    "commentPlaceholderText": {
+                        "type": "string",
+                        "description": "The comment placeholder text (maximum of 80 characters)"
+                    },
+                    "commentPlaceholderText_i18n": {
+                        "type": "string",
+                        "description": "The internationalized comment placeholder text (read-only field)"
+                    },
+                    "mandatoryComment": {
+                        "type": "boolean",
+                        "description": "Whether a comment is mandatory when triggering the workflow action"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the workflow action"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized workflow action"
+                    },
+                    "performer": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    },
+                    "reminders": {
+                        "type": "array",
+                        "description": "The list of reminders for the transition",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowTransitionReminder"
+                        }
+                    },
+                    "validateByAll": {
+                        "type": "boolean",
+                        "description": "Whether the transition is a parallel transition"
+                    }
+                }
+            },
+            "ApiIdName": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name"
+                    }
+                }
+            },
+            "ApiPermissionV2": {
+                "type": "object",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "The displayed name if type = USER, GROUP or ROLE"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The level of the permission (READER, COMMENTER, WRITER or ATTACHMENT_EDITOR)",
+                        "enum": [
+                            "READER",
+                            "COMMENTER",
+                            "ATTACHMENT_EDITOR",
+                            "WRITER"
+                        ]
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture (for users)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of permitted audience (ANYONE, DOMAIN, GROUP, USER or ROLE)",
+                        "enum": [
+                            "ANYONE",
+                            "DOMAIN",
+                            "GROUP",
+                            "USER",
+                            "ROLE"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email address if type = USER or GROUP, the ID of the role if type = ROLE"
+                    },
+                    "withLink": {
+                        "type": "boolean",
+                        "description": "Whether the audience will have access with the link"
+                    }
+                }
+            },
+            "ApiPropertyData": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "type": "string",
+                        "description": "The operator of the condition",
+                        "enum": [
+                            "EQUAL_TO",
+                            "NOT_EQUAL_TO",
+                            "GREATER_THAN",
+                            "STRICTLY_GREATER_THAN",
+                            "LESS_THAN",
+                            "STRICTLY_LESS_THAN",
+                            "EMPTY",
+                            "NOT_EMPTY",
+                            "CONTAINS",
+                            "IN"
+                        ]
+                    },
+                    "personValue": {
+                        "$ref": "#/components/schemas/ApiSecurityToken"
+                    },
+                    "propertyId": {
+                        "type": "string",
+                        "description": "The ID of the property for the condition"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value for the condition (if operator is neither EMPTY or NOT_EMPTY)"
+                    }
+                }
+            },
+            "ApiRelativeTime": {
+                "type": "object",
+                "properties": {
+                    "after": {
+                        "type": "boolean",
+                        "description": "Whether the transition should be triggered from the property value plus the offset (vs. from the property value minus the offset)"
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "description": "The amount of units to wait before/after the property value to trigger the transition",
+                        "format": "int32"
+                    },
+                    "propertyId": {
+                        "type": "string",
+                        "description": "The ID of the property"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "The unit for the offset (minute, hour, day, month)",
+                        "enum": [
+                            "MINUTE",
+                            "HOUR",
+                            "DAY",
+                            "MONTH"
+                        ]
+                    }
+                }
+            },
+            "ApiSecurityToken": {
+                "type": "object",
+                "properties": {
+                    "classId": {
+                        "type": "string",
+                        "description": "The ID of the class when type = FIELD"
+                    },
+                    "className": {
+                        "type": "string",
+                        "description": "The name of the class when type = FIELD"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for type in GROUP, ROLE, FIELD"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the name of the role (read-only field)"
+                    },
+                    "displayName_i18n": {
+                        "type": "string",
+                        "description": "The display name of the user or group, the internationalized name of the role (read-only field)"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string",
+                        "description": "The URL of the thumbnail picture (especially for users)"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of person (user, group, role, field based, domain i.e. everybody)",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "ROLE",
+                            "FIELD",
+                            "DOMAIN"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The email address if user or group, the ID of the role, the ID of the class/field (ignored if type = DOMAIN)"
+                    }
+                }
+            },
+            "ApiUser": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "thumbnailPictureUrl": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiValidator": {
+                "type": "object",
+                "properties": {
+                    "comment": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/ApiUser"
+                    }
+                }
+            },
+            "ApiWorkflowCustomEmail": {
+                "type": "object",
+                "properties": {
+                    "bodyTemplate": {
+                        "type": "string",
+                        "description": "The content of the email"
+                    },
+                    "layout": {
+                        "type": "string",
+                        "description": "The layout mode (NO_LAYOUT or DEFAULT_LAYOUT)",
+                        "enum": [
+                            "NO_LAYOUT",
+                            "DEFAULT_LAYOUT"
+                        ]
+                    },
+                    "senderTemplate": {
+                        "type": "string",
+                        "description": "The displayed sender of the email"
+                    },
+                    "subjectTemplate": {
+                        "type": "string",
+                        "description": "The subject of the email"
+                    }
+                }
+            },
+            "ApiWorkflowEmail": {
+                "type": "object",
+                "properties": {
+                    "customEmail": {
+                        "$ref": "#/components/schemas/ApiWorkflowCustomEmail"
+                    },
+                    "templateEmail": {
+                        "$ref": "#/components/schemas/ApiWorkflowTemplateEmail"
+                    }
+                }
+            },
+            "ApiWorkflowNotification": {
+                "type": "object",
+                "properties": {
+                    "actionEmail": {
+                        "$ref": "#/components/schemas/ApiWorkflowEmail"
+                    },
+                    "notificationEmail": {
+                        "$ref": "#/components/schemas/ApiWorkflowEmail"
+                    },
+                    "notifyHumanActionPerformer": {
+                        "type": "boolean",
+                        "description": "Whether to notify the workflow validators"
+                    },
+                    "recipients": {
+                        "type": "array",
+                        "description": "The list of person to notify",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiSecurityToken"
+                        }
+                    }
+                }
+            },
+            "ApiWorkflowState": {
+                "type": "object",
+                "properties": {
+                    "applyActionToDocuments": {
+                        "type": "string",
+                        "description": "(Deprecated) The action to apply when entering the workflow state",
+                        "enum": [
+                            "DO_NOTHING",
+                            "NEW_VERSION",
+                            "CHECK_IN",
+                            "DISCARD",
+                            "CHECK_OUT"
+                        ]
+                    },
+                    "checkOutSettings": {
+                        "$ref": "#/components/schemas/ApiCheckOutSettings"
+                    },
+                    "classReadOnlyDocumentsNotCheckedOut": {
+                        "type": "string",
+                        "description": "The mode that defined whether documents are read-only if not checked-out at the document class level",
+                        "enum": [
+                            "DISABLED",
+                            "OPTIONAL",
+                            "MANDATORY"
+                        ]
+                    },
+                    "createdTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow state was created",
+                        "format": "date-time"
+                    },
+                    "customActions": {
+                        "type": "array",
+                        "description": "The list of custom actions to apply on the workflow state",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCustomAction"
+                        }
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the workflow state"
+                    },
+                    "displayFlags": {
+                        "type": "array",
+                        "description": "The flags to control display of the workflow state in the application (HIDDEN_FROM_? where ? = WORKFLOW_TASKS, BROWSEBY or VIEW_FILTERS)",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "HIDDEN_FROM_WORKFLOW_TASKS",
+                                "HIDDEN_FROM_BROWSEBY",
+                                "HIDDEN_FROM_VIEW_FILTERS"
+                            ]
+                        }
+                    },
+                    "draftDocuments": {
+                        "type": "boolean",
+                        "description": "Whether the workflow state is a draft state"
+                    },
+                    "hiddenFields": {
+                        "type": "array",
+                        "description": "The list of fields to be hidden in the workflow state (id is read/write, name is readonly)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiIdName"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the workflow state"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow state was last modified",
+                        "format": "date-time"
+                    },
+                    "mandatoryFields": {
+                        "type": "array",
+                        "description": "The list of fields to be mandatory in the workflow state (id is read/write, name is readonly)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiIdName"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the workflow state"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the workflow state"
+                    },
+                    "notifications": {
+                        "$ref": "#/components/schemas/ApiWorkflowNotification"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "description": "The list of permissions when inheriting them from the workflow state",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiPermissionV2"
+                        }
+                    },
+                    "readOnlyDocumentsNotCheckedOut": {
+                        "type": "boolean",
+                        "description": "The mode to control whether the documents are read-only if not checked-out"
+                    },
+                    "readOnlyFields": {
+                        "type": "array",
+                        "description": "The list of fields to be read-only in the workflow state (id is read/write, name is readonly)",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiIdName"
+                        }
+                    },
+                    "resetDocumentPermissions": {
+                        "type": "boolean",
+                        "description": "Whether to reset explicit permissions when entering the workflow state"
+                    },
+                    "transitions": {
+                        "type": "array",
+                        "description": "The list of workflow transitions from this workflow state",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiWorkflowTransition"
+                        }
+                    }
+                }
+            },
+            "ApiWorkflowTemplateEmail": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the workflow email template"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the workflow email template"
+                    }
+                }
+            },
+            "ApiWorkflowTransition": {
+                "type": "object",
+                "properties": {
+                    "createNewDocumentVersion": {
+                        "type": "boolean",
+                        "description": "Whether to create a new version of the documents via this transition (redundant with transitionType = VERSION)"
+                    },
+                    "createdTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow transition was created",
+                        "format": "date-time"
+                    },
+                    "discardCheckedOutDocument": {
+                        "type": "boolean",
+                        "description": "Whether to discard draft documents via this transition (redundant with transitionType = DISCARD)"
+                    },
+                    "elapsedTime": {
+                        "$ref": "#/components/schemas/ApiElapsedTime"
+                    },
+                    "fixedTime": {
+                        "type": "string",
+                        "description": "The date from which the transition should be triggered (if automatic transition based on static date/time)",
+                        "format": "date-time"
+                    },
+                    "humanAction": {
+                        "$ref": "#/components/schemas/ApiHumanAction"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the workflow transition"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedTime": {
+                        "type": "string",
+                        "description": "The time at which the workflow transition was last modified",
+                        "format": "date-time"
+                    },
+                    "propertyData": {
+                        "$ref": "#/components/schemas/ApiPropertyData"
+                    },
+                    "propertyTime": {
+                        "type": "string",
+                        "description": "The ID of the date (or date/time) property from whose value the transition should be triggered (if automatic transition based on property value)"
+                    },
+                    "relativeTime": {
+                        "$ref": "#/components/schemas/ApiRelativeTime"
+                    },
+                    "targetStateId": {
+                        "type": "string",
+                        "description": "The ID of the target state of the transition"
+                    },
+                    "targetStateName": {
+                        "type": "string",
+                        "description": "The name of the target state of the transition"
+                    },
+                    "targetStateName_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the target state of the transition"
+                    },
+                    "transitionType": {
+                        "type": "string",
+                        "description": "The type of the transition",
+                        "enum": [
+                            "NORMAL",
+                            "CHECK_IN",
+                            "CHECK_OUT",
+                            "VERSION",
+                            "DISCARD"
+                        ]
+                    }
+                }
+            },
+            "ApiWorkflowTransitionReminder": {
+                "type": "object",
+                "properties": {
+                    "audience": {
+                        "type": "string",
+                        "description": "The mode of audience to remind: PENDING (everyone in the audience of the transition except those who validated it - if parallel transition), EXCLUSIVE (for simple transitions: only the users who haven't validated the parallel transition if any on the state, for parallel transition it's similar to PENDING)",
+                        "enum": [
+                            "PENDING",
+                            "EXCLUSIVE"
+                        ]
+                    },
+                    "condition": {
+                        "$ref": "#/components/schemas/ApiCustomScriptBinding"
+                    },
+                    "emailTemplateId": {
+                        "type": "string",
+                        "description": "The ID of a workflow template email (type = ACTION_REMINDER) to format reminder email"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the reminder (read-only field)"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the reminder"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "documentId_path_parameter": {
+                "name": "documentId",
+                "in": "path",
+                "description": "The ID of the document",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "document",
+    "x-original-swagger-version": "2.0"
+}
