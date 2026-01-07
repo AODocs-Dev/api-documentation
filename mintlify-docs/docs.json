@@ -3,9 +3,9 @@
   "theme": "aspen",
   "name": "AO Docs Documentation",
   "colors": {
-    "primary": "#d60032",
-    "light": "#d60032",
-    "dark": "#006cb2"
+    "primary": "#006CB2",
+    "light": "#4CA5E7",
+    "dark": "#006CB2"
   },
   "fonts": {
     "heading": {
