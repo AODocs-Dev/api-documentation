@@ -1,0 +1,62 @@
+---
+title: "Search documents of a class"
+description: "You can search for documents associated with a particular library and a particular class as follows."
+api: POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/search
+contentType: application/json
+---
+
+## Method and API
+
+Play with the API Explorer:
+
+<Card title="POST /search/v1/libraries/\{libraryId\}/search" icon="search" horizontal href="/api-reference/search" />
+
+## Usage/notes/guidelines
+
+This method searches documents of a class matching the provided query. It might become very slow or time out when iterating over many pages of results. If the result set contains more than 10,000 documents, it's highly likely the response will get truncated and some results will be missing. You should always check if `precision=INCOMPLETE_RESULT` in the response.
+
+<Note>
+**Note:**
+
+By default, the method includes attachments in the search. You can exclude searching in attachments by setting the `searchInAttachments` parameter to `false`.
+</Note>
+
+### Request
+
+`libraryId` is a path parameter and `classId` is a query parameter. These are the only mandatory arguments. However, the `searchQuery` query parameter is what ultimately determines what results come back, filtering them on a text string.
+
+<Note>
+**Note:**
+
+If you want to search for a specific phrase as a singular whole, put double quotes around the phrase being passed as a `searchQuery` query parameter. For example, if your document is called "big blue document", then sending "big blue" or "blue document" (with the double quotes) as the `searchQuery` query parameter finds it, but "big document" does not.
+</Note>
+
+<RequestExample>
+```yaml Sample request
+POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVWqiT8059P4t8aVYI/search?classId=RrVWtjs801GlsyxIDJe&searchQuery=%22blue%20document%22
+```
+</RequestExample>
+## Response
+
+The response returns an [ApiDocumentList](/api-reference/documentid) resource, listing all documents associated with the specified library and class.
+
+<ResponseExample>
+```json
+{
+    "kind": "aodocs#documentList",
+    "documentList": [
+    {
+        "kind": "aodocs#document",
+        "libraryName": "my-DMS-lib-001",
+        "className": "my-dms-class-002",
+        "libraryId": "RrVWqiT8059P4t8aVYI",
+        "classId": "RrVWtjs801GlsyxIDJe",
+        "id": "RnTzVT28x5Sb48h3vSQ",  <— documentId
+        "title": "big blue document",
+        ...
+    }
+    ...
+    ]
+}
+```
+</ResponseExample>

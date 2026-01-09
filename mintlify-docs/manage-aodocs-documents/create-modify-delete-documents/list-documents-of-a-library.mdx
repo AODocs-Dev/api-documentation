@@ -1,0 +1,64 @@
+---
+title: "List documents of a library"
+api: POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/list
+contentType: application/json
+description: "You can list documents associated with a particular library as follows."
+---
+
+
+<Note>
+**Note:**
+
+This is available only to library administrators.
+</Note>
+
+
+## Method and API
+
+Play with the API Explorer:
+
+<Card title="POST /search/v1/libraries/\{libraryId\}/list" icon="list" horizontal href="/api-reference/search" />
+
+## Usage/notes/guidelines
+
+
+### Request
+
+`libraryId` is a path parameter. It is the only mandatory parameter.
+
+<RequestExample>
+```yaml Sample request
+POST https://aodocs.altirnao.com/api/search/v1/libraries/Rs511XR8xAxGXu7nZYj/list
+```
+</RequestExample>
+
+## Responses
+
+The response returns an [ApiDocumentList](/api-reference/documentid) resource, listing all documents associated with the specified library
+
+
+<ResponseExample>
+```json Sample Response
+{
+    "kind": "aodocs#documentList",
+    "documentList": [
+    {
+        "kind": "aodocs#document",
+        "libraryName": "my-DMS-lib-001",
+        "className": "my-dms-class-002",
+        "libraryId": "RnTG8PDu8ZqTuDVHcv",
+        "classId": "RnTf1mx35gaTJLzoFp",
+        "id": "RnTzVT28x5Sb48h3vSQ",  <— documentId
+        "title": "my-dms-doc-002",
+        "richText": "",
+        ...
+    }
+    ...
+    {
+        "kind": "aodocs#document",
+        ...
+    }
+    ]
+}
+```
+</ResponseExample>

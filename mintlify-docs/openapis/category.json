@@ -1,0 +1,1177 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "category",
+            "description": "Lets you manage (list, load, patch, update, add new, delete) categories and category values"
+        }
+    ],
+    "paths": {
+        "/category/v1": {
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Creates a category in the library.",
+                "operationId": "category:v1.Category.insertCategoryDefinition",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiCategoryDefinition"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryDefinition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryDefinition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiCategoryDefinition"
+            },
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Updates a category in the library (reset not specified fields).",
+                "operationId": "category:v1.Category.updateCategoryDefinition",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiCategoryDefinition"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryDefinition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryDefinition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiCategoryDefinition"
+            },
+            "patch": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Updates a category in the library (keep existing values for not specified fields).",
+                "operationId": "category:v1.Category.patchCategoryDefinition",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiCategoryDefinition"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryDefinition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryDefinition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiCategoryDefinition"
+            }
+        },
+        "/category/v1/libraries/{libraryId}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Lists the categories available in a library.",
+                "operationId": "category:v1.Category.listCategoryDefinitions",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum number of items to return",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryDefinitionList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryDefinitionList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/category/v1/libraries/{libraryId}/categories/{categoryId}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Gets the definition of a category in a library.",
+                "operationId": "category:v1.Category.loadCategoryDefinition",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryDefinition response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryDefinition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Deletes a category from the library.",
+                "operationId": "category:v1.Category.deleteCategoryDefinition",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/category/v1/libraries/{libraryId}/categories/{categoryId}/allvalueshierarchy": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Lists all the values recursively of a category in a library.",
+                "operationId": "category:v1.Category.listHierarchyCategoryValues",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryValueList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryValueList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/category/v1/libraries/{libraryId}/categories/{categoryId}/values": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Lists the children category values of a parent category value of a category in a library.",
+                "operationId": "category:v1.Category.listChildCategoryValues",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parentCategoryValueId",
+                        "in": "query",
+                        "description": "The ID of a parent category value (leave empty for root level)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryValueList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryValueList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Creates a category value of a category in a library.",
+                "operationId": "category:v1.Category.insertChildCategoryValue",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parentCategoryValueId",
+                        "in": "query",
+                        "description": "The ID of a parent category value (leave empty for root level)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryValueName",
+                        "in": "query",
+                        "description": "The name of a category value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryShortName",
+                        "in": "query",
+                        "description": "The short name of a category value",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "outdated",
+                        "in": "query",
+                        "description": "Whether the category value is outdated",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryValue response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryValue"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Updates a category value of a category in a library.",
+                "operationId": "category:v1.Category.patchCategoryValue",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiCategoryValue"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiCategoryValue"
+            }
+        },
+        "/category/v1/libraries/{libraryId}/categories/{categoryId}/values/{categoryValueId}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Gets the category value of a category in a library.",
+                "operationId": "category:v1.Category.loadCategoryValue",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryValueId",
+                        "in": "path",
+                        "description": "The ID of a category value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiCategoryValue response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiCategoryValue"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Deletes a category value of a category in a library.",
+                "operationId": "category:v1.Category.deleteCategoryValue",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryValueId",
+                        "in": "path",
+                        "description": "The ID of a category value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/category/v1/libraries/{libraryId}/categories/{categoryId}:removeEmptySublevels": {
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Deletes all empty sublevels of a category.",
+                "operationId": "category:v1.Category.removeEmptyLevels",
+                "parameters": [
+                    {
+                        "name": "libraryId",
+                        "in": "path",
+                        "description": "The ID of the library",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "The ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiCategoryDefinition": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the category"
+                    },
+                    "dynamicValues": {
+                        "type": "boolean",
+                        "description": "Whether the category authorizes dynamic values"
+                    },
+                    "folder": {
+                        "type": "boolean",
+                        "description": "Whether the category is the Folder category (read-only)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the category"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "levelNames": {
+                        "type": "array",
+                        "description": "The name of the levels in the category",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "levelNames_i18n": {
+                        "type": "array",
+                        "description": "The internationalized name of the levels in the category (read-only field)",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "libraryId": {
+                        "type": "string",
+                        "description": "The ID of the library"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the category"
+                    },
+                    "tags": {
+                        "type": "boolean",
+                        "description": "Whether the category is the Tags category (read-only)"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The ID of the category (backward compatibility for category.category.listCategoryDefinitions)"
+                    }
+                }
+            },
+            "ApiCategoryDefinitionList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCategoryDefinition"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiCategoryValue": {
+                "type": "object",
+                "properties": {
+                    "ancestors": {
+                        "type": "array",
+                        "description": "Ancestor category values from direct parent to root - only present with loadCategoryValue",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCategoryValue"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the category value"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "leaf": {
+                        "type": "boolean",
+                        "description": "Whether the category value is leaf"
+                    },
+                    "leafInNotOutdatedTree": {
+                        "type": "boolean",
+                        "description": "Whether the category value is leaf without not outdated child"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the category value"
+                    },
+                    "name_i18n": {
+                        "type": "string",
+                        "description": "The internationalized name of the category value (read-only field)"
+                    },
+                    "outdated": {
+                        "type": "boolean",
+                        "description": "Whether the category value is marked as outdated"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "The ID of the parent category value (read-only field)"
+                    },
+                    "shortName": {
+                        "type": "string",
+                        "description": "The short name of the category value"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "(Deprecated) The ID of the category value"
+                    }
+                }
+            },
+            "ApiCategoryValueList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiCategoryValue"
+                        }
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "categoryId_path_parameter": {
+                "name": "categoryId",
+                "in": "path",
+                "description": "The ID of the category",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "categoryValueId_path_parameter": {
+                "name": "categoryValueId",
+                "in": "path",
+                "description": "The ID of a category value",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "libraryId_path_parameter": {
+                "name": "libraryId",
+                "in": "path",
+                "description": "The ID of the library",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "parentCategoryValueId_query_parameter": {
+                "name": "parentCategoryValueId",
+                "in": "query",
+                "description": "The ID of a parent category value (leave empty for root level)",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ApiCategoryDefinition_body_parameter": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ApiCategoryDefinition"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "category",
+    "x-original-swagger-version": "2.0"
+}

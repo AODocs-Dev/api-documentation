@@ -1,0 +1,44 @@
+---
+title: "Count documents of a library"
+api: POST https://aodocs.altirnao.com/api/search/v1/libraries/{libraryId}/count
+contentType: application/json
+description: "You can count the number of documents associated with a particular library (and optionally class) as follows."
+---
+
+<Note>
+**Note:**
+
+This is available only to library administrators.
+</Note>
+
+## **Method and API**
+
+Play with the API Explorer:
+
+<Card title="POST /search/v1/libraries/\{libraryId\}/count" icon="list" horizontal href="/api-reference/search" />
+
+## **Usage/notes/guidelines**
+
+
+### **Request**
+
+`libraryId` is a path parameter. It is the only mandatory parameter. However, using the `classId` helps narrow the response to documents of a specific class you want.
+
+<RequestExample>
+```yaml Sample request
+POST https://aodocs.altirnao.com/api/search/v1/libraries/RrVcEFb8wtDeNAnlmNN/count?classId=RrVcdN280MKJwPyE7sh
+```
+</RequestExample>
+
+## Response
+
+The response returns an [ApiDocumentCount](/api-reference/search) resource, giving a count of all documents associated with the specified library (and class if you specified the `classId`).
+
+<ResponseExample>
+```json Sample Response
+{
+  "kind": "aodocs#documentCount",
+  "count": 12
+}
+```
+</ResponseExample>

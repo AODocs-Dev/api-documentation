@@ -1,0 +1,56 @@
+---
+title: "Get a specific class by ID"
+description: "You can retrieve (the configuration of) a specific class/documentType to confirm it exists or to parse something from its metadata if you have its `documentTypeId` (class ID)."
+api: GET https://aodocs.altirnao.com/api/documentType/v1/libraries/{libId}/documentTypes/{documentTypeId}
+contentType: application/json
+---
+
+
+## Method and API
+
+Play with the API Explorer:
+
+## [GET /documentType/v1/libraries/\{libId\}/documentTypes/\{documentTypeId\}](/api-reference/document-type)
+
+In the command above:
+
+- `documentType` is the API
+- `v1` is the API version
+- `libraries` is the top-level resource
+- `documentTypes` or class is the nested resource
+
+## Guidelines
+
+
+### Request
+
+Pass the mandatory class ID (`documentTypeId`) and the library ID (`libId`) of the library the class resides in — both as ***path* parameters** (not in the query string).
+
+
+<RequestExample>
+```yaml Sample request
+GET https://aodocs.altirnao.com/api/_ah/api/documentType/v1/libraries/Rs4xtue86axGNklquDP/documentTypes/Rs4xuIg86e45fvAsn9L
+```
+</RequestExample>
+## Response
+
+The response returns an [ApiDocumentType](/api-reference/document-type) resource, listing the specified class.
+
+**Response fields of note:**
+
+- `id` (of the class)
+- `displayName` (of the class)
+- `libraryId` (of the library you searched)
+- `defaultClass` (whether or not this is the library's default class)
+
+<ResponseExample>
+```json Sample response
+{
+  "kind": "aodocs#documentType",
+  "id": "RnTbOft44KfZYkfBpV",
+  "displayName": "my-dms-class-001-not-default",
+  "libraryId": "RnTG8PDu8ZqTuDVHcv",
+  "defaultClass": true
+}
+```
+</ResponseExample>

@@ -1,0 +1,294 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "aspen",
+  "name": "AO Docs Documentation",
+  "colors": {
+    "primary": "#006CB2",
+    "light": "#4CA5E7",
+    "dark": "#006CB2"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Roboto"
+    },
+    "body": {
+      "family": "Roboto"
+    }
+  },
+  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "dark"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Home",
+        "icon": "home",
+        "pages": ["index"]
+      },
+      {
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": " ",
+            "pages": ["getting-started"]
+          },
+          {
+            "group": "Key concepts",
+            "icon": "book",
+            "pages": [
+              "key-concepts",
+              "key-concepts/basics-of-aodocs",
+              "key-concepts/basics-of-aodocs-apis"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "icon": "key",
+            "pages": [
+              "authentication",
+              "authentication/access-apis-with-security-codes",
+              "authentication/access-apis-with-bearer-tokens",
+              "authentication/sample-use-cases",
+              "authentication/auth-appendix"
+            ]
+          },
+          {
+            "group": "Manage AODocs documents",
+            "icon": "file",
+            "pages": [
+              "manage-aodocs-documents",
+              {
+                "group": "Get library and class info",
+                "pages": [
+                  "manage-aodocs-documents/get-library-and-class-info",
+                  {
+                    "group": "Get library info",
+                    "pages": [
+                      "manage-aodocs-documents/get-library-and-class-info/get-library-info",
+                      "manage-aodocs-documents/get-library-and-class-info/list-libraries-and-find-target-library-id-for-your-documents",
+                      "manage-aodocs-documents/get-library-and-class-info/list-and-search-libraries",
+                      "manage-aodocs-documents/get-library-and-class-info/list-libraries-plain",
+                      "manage-aodocs-documents/get-library-and-class-info/get-a-specific-library-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Get document class info",
+                    "pages": [
+                      "manage-aodocs-documents/get-library-and-class-info/get-document-class-info",
+                      "manage-aodocs-documents/get-library-and-class-info/list-classes",
+                      "manage-aodocs-documents/get-library-and-class-info/get-a-specific-class-by-id"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Create, modify, delete documents",
+                "pages": [
+                  "manage-aodocs-documents/create-modify-delete-documents",
+                  {
+                    "group": "Creating new AODocs documents",
+                    "pages": [
+                      "manage-aodocs-documents/create-modify-delete-documents/create-new-documents-with-attachments",
+                      "manage-aodocs-documents/create-modify-delete-documents/create-new-documents-with-attachments/create-test-drive-files-and-folders",
+                      {
+                        "group": "Create new document and attach Drive file",
+                        "pages": [
+                        "manage-aodocs-documents/create-modify-delete-documents/create-new-documents-with-attachments/create-new-document-and-attach-drive-file",
+                        "manage-aodocs-documents/create-modify-delete-documents/create-new-documents-with-attachments/create-new-document"
+
+                        ]
+                      }
+                    ]
+                  },
+                  "manage-aodocs-documents/create-modify-delete-documents/modify-field-values-of-document-properties",
+
+                  {
+                    "group": "Modify document attachments",
+                    "pages": [
+                      "manage-aodocs-documents/create-modify-delete-documents/modify-document-attachments",
+                      "manage-aodocs-documents/create-modify-delete-documents/modify-document-attachment"
+                    ]
+                  },
+
+                  {
+                    "group": "List and search documents",
+                    "pages": [
+                      "manage-aodocs-documents/create-modify-delete-documents/list-search-and-count-documents",
+                      "manage-aodocs-documents/create-modify-delete-documents/get-specific-document-by-id",
+                      "manage-aodocs-documents/create-modify-delete-documents/list-documents-of-a-library",
+                      "manage-aodocs-documents/create-modify-delete-documents/count-documents-of-a-library",
+                      "manage-aodocs-documents/create-modify-delete-documents/search-documents-of-a-class"
+                    ]
+                  },
+                  "manage-aodocs-documents/create-modify-delete-documents/delete-document"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Best Practices",
+            "icon": "check",
+            "pages": [
+              "best-practices",
+              "best-practices/http-status-codes-and-error-handling",
+              "best-practices/performance-considerations"
+            ]
+          },
+          {
+            "group": " ",
+            "pages": ["about-api-resources"]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "code-simple",
+        "pages": [
+          "api-reference/introduction",
+          {
+            "group": "Category",
+            "openapi": "openapis/category.json",
+            "pages": ["api-reference/category"]
+          },
+          {
+            "group": "Document ID",
+            "openapi": "openapis/documentid.json",
+            "pages": ["api-reference/documentid"]
+          },
+          {
+            "group": "Document",
+            "openapi": "openapis/document.json",
+            "pages": ["api-reference/document"]
+          },
+          {
+            "group": "Document Type",
+            "openapi": "openapis/documentType.json",
+            "pages": ["api-reference/document-type"]
+          },
+          {
+            "group": "Document View Config",
+            "openapi": "openapis/documentViewConfig.json",
+            "pages": ["api-reference/document-view-config"]
+          },
+          {
+            "group": "Domain",
+            "openapi": "openapis/domain.json",
+            "pages": ["api-reference/domain"]
+          },
+          {
+            "group": "Drive ID",
+            "openapi": "openapis/driveId.json",
+            "pages": ["api-reference/driveid"]
+          },
+          {
+            "group": "Drive Import",
+            "openapi": "openapis/driveImport.json",
+            "pages": ["api-reference/driveImport"]
+          },
+          {
+            "group": "Folder",
+            "openapi": "openapis/folder.json",
+            "pages": ["api-reference/folder"]
+          },
+          {
+            "group": "Job",
+            "openapi": "openapis/job.json",
+            "pages": ["api-reference/job"]
+          },
+          {
+            "group": "Library",
+            "openapi": "openapis/library.json",
+            "pages": ["api-reference/library"]
+          },
+          {
+            "group": "Reference Catalog",
+            "openapi": "openapis/referenceCatalog.json",
+            "pages": ["api-reference/reference-catalog"]
+          },
+          {
+            "group": "Relation",
+            "openapi": "openapis/relation.json",
+            "pages": ["api-reference/relation"]
+          },
+          {
+            "group": "Search",
+            "openapi": "openapis/search.json",
+            "pages": ["api-reference/search"]
+          },
+          {
+            "group": "User",
+            "openapi": "openapis/user.json",
+            "pages": ["api-reference/user"]
+          },
+          {
+            "group": "View",
+            "openapi": "openapis/view.json",
+            "pages": ["api-reference/view"]
+          },
+          {
+            "group": "Workflow",
+            "openapi": "openapis/workflow.json",
+            "pages": ["api-reference/workflow"]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "About",
+          "href": "https://www.aodocs.com/company/",
+          "icon": "users"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://www.aodocs.com/blog/",
+          "icon": "newspaper"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.aodocs.com/?__hstc=7523757.3689b6b59ff0c12fcac6aa9719dd6032.1586143551842.1586316583659.1586321455157.16&__hssc=7523757.35.1586321455157&__hsfp=209583371",
+          "icon": "signal"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://www.aodocs.com"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Contact us",
+        "href": "https://www.aodocs.com/contact/"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Log in",
+      "href": "https://aodocs.altirnao.com/aodocsUi/select-region.html"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "youtube": "https://www.youtube.com/channel/UC4BSPzADc9QXoh29SAsn3Cg",
+      "linkedin": "https://www.linkedin.com/company/altirnao"
+    }
+  }
+}

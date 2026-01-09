@@ -1,0 +1,75 @@
+---
+title: "List libraries and find target library ID for your documents (legacy v1)"
+description: "To list target libraries on your domain, select a target library for your AODocs documents to be a part of, and note the target library’s unique identifier, `libraryId`."
+api: PUT https://aodocs.altirnao.com/api/library/v1
+contentType: application/json
+---
+
+
+
+## Method and API
+
+Play with the API Explorer:
+
+### [PUT /library/v1](/api-reference/library)
+
+
+### Request
+
+<Warning>
+**Warning/Alert**:
+
+This method requests all metadata for all libraries on the domain. Not recommended without filtering!
+</Warning>
+
+This method has no mandatory parameters, but without setting any filtering it tries to return all metadata for all libraries, which is often overwhelming to the server and might not produce any response. We strongly recommend you set the `include` query parameter to `NONE`.
+
+### Sample request
+
+<RequestExample>
+```yaml Sample request
+PUT https://aodocs.altirnao.com/api/library/v1?include=NONE
+```
+</RequestExample>
+
+Alternatively use the [List plain libraries](/api-reference/library) method (see below) to get just the key-value pairs of `name` and `id`.
+
+## Responses
+
+The response returns an [ApiLibraryList](/api-reference/library) resource, listing all libraries accessible to you on the domain. With the recommended parameter `include=NONE` the response is smaller and far more manageable.
+
+Take note of the `libraryId` of your target library. The library ID is one of the most commonly used identifiers in the AODocs APIs.
+
+**Additional fields to note:**
+
+- `name` (of the library)
+- `defaultDocumentType` (the library's default class ID)
+- `rootFolderId` (the ID of the topmost level of the library's hierarchy)
+- `favorited` (whether or not the library is starred as a favorite)
+- any other fields of interest
+
+<ResponseExample>
+```json Sample response
+{
+  "kind": "aodocs#libraryList",
+  "libraries": [
+    {
+      "kind": "aodocs#library",
+      "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+      "name": "my-DMS-lib-001",
+      "defaultDocumentType": "RnTbOft844KfZYkfBpV",
+      "rootFolderId": "1S7ayht8i78VtuNl-SebgGTu_wliznnR47",
+      "favorited": false,
+      ...
+    },
+    {
+      "kind": "aodocs#library",
+      "libraryId": "Rngc1ug8K6WmL3IjZ8",
+      "name": "my-sf-lib-005",
+      "defaultDocumentType": "Rngc4rL89JCj5xwTtrF",
+      "rootFolderId": "1yAMvoT8BFEvI_8GXghiyTEJqevJeW7q9C",
+      "favorited": true
+    }
+}
+```
+</ResponseExample>

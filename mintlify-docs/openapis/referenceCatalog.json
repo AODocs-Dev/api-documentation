@@ -1,0 +1,930 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AODocs REST API",
+        "description": "The AODocs REST API exposes most of the features of AODocs. It can be used to implement custom applications, third-party integration, bulk tools, or just to experiment with AODocs.",
+        "version": "68.1.0"
+    },
+    "servers": [
+        {
+            "url": "https://aodocs.altirnao.com/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "referenceCatalog",
+            "description": "Lets you manage reference catalogs"
+        }
+    ],
+    "paths": {
+        "/referenceCatalog/v1": {
+            "get": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Lists the reference catalogs available in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.getReferenceCatalogs",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalogList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalogList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Creates a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.createReferenceCatalog",
+                "parameters": [
+                    {
+                        "name": "referenceCatalogName",
+                        "in": "query",
+                        "description": "The name of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalog response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalog"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Updates a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.updateReferenceCatalog",
+                "parameters": [
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiReferenceCatalog"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalog response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalog"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiReferenceCatalog"
+            }
+        },
+        "/referenceCatalog/v1/{catalogId}": {
+            "get": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Gets a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.getReferenceCatalog",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalog response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalog"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Deletes a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.deleteReferenceCatalog",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/referenceCatalog/v1/{catalogId}/items": {
+            "get": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Lists the values of a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.getReferenceCatalogValues",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nextPageToken",
+                        "in": "query",
+                        "description": "DEPRECATED. Use pageToken instead.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageToken",
+                        "in": "query",
+                        "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "description": "parent",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expandDepth",
+                        "in": "query",
+                        "description": "expandDepth",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of reference catalog values per page. (Default: 50)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "The field on which to order the reference catalog values ('NAME' (default) in order A-Z then a-z).",
+                        "schema": {
+                            "type": "string",
+                            "default": "NAME",
+                            "enum": [
+                                "ID",
+                                "NAME",
+                                "CREATION_DATE",
+                                "RANK"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dontIncludeDeleted",
+                        "in": "query",
+                        "description": "Whether to include deleted reference catalog values",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalogValuePageableList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalogValuePageableList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Creates, updates or marked 'deleted' a list of values of a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.saveReferenceCatalogValues",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApiReferenceCatalogValueList"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalogValueList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalogValueList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ],
+                "x-codegen-request-body-name": "ApiReferenceCatalogValueList"
+            }
+        },
+        "/referenceCatalog/v1/{catalogId}/items/{referenceCatalogValueId}": {
+            "get": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Gets a value of a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.getReferenceCatalogValue",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "referenceCatalogValueId",
+                        "in": "path",
+                        "description": "The ID of a reference catalog value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalogValue response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalogValue"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Permanently deletes a value of a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.permanentlyDeleteReferenceCatalogValue",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "referenceCatalogValueId",
+                        "in": "path",
+                        "description": "The ID of a reference catalog value",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "A successful response",
+                        "content": {}
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/referenceCatalog/v1/{catalogId}/suggest": {
+            "get": {
+                "tags": [
+                    "referenceCatalog"
+                ],
+                "description": "Lists suggested matching values of a reference catalog in the domain.",
+                "operationId": "referenceCatalog:v1.ReferenceCatalog.getReferenceCatalogValueSuggestions",
+                "parameters": [
+                    {
+                        "name": "catalogId",
+                        "in": "path",
+                        "description": "The ID of the reference catalog",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "prefix",
+                        "in": "query",
+                        "description": "The prefix to look for reference catalog values",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The number of reference catalog values matching the prefix to return. (Default: 15)",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 15
+                        }
+                    },
+                    {
+                        "name": "parent",
+                        "in": "query",
+                        "description": "The id of the direct parent of the reference catalog values to look for",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "securityCode",
+                        "in": "query",
+                        "description": "The security code",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "The G Suite domain",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A ApiReferenceCatalogValueList response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiReferenceCatalogValueList"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "google_id_token-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    },
+                    {
+                        "google_id_token_legacy-b97bae5e": [
+                            "https://www.googleapis.com/auth/userinfo.email"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiReferenceCatalog": {
+                "type": "object",
+                "properties": {
+                    "createdAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog was created (read-only field)",
+                        "format": "int64"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog (read-only field)"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "levelNames": {
+                        "type": "array",
+                        "description": "Ordered name of levels of the reference catalog",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "modifiedAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog was last modified (read-only field)",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the reference catalog"
+                    },
+                    "numberOfValues": {
+                        "type": "integer",
+                        "description": "The number of values in the reference catalog (read-only field)",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ApiReferenceCatalogList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "referenceCatalogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalog"
+                        }
+                    }
+                }
+            },
+            "ApiReferenceCatalogValue": {
+                "type": "object",
+                "properties": {
+                    "createdAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog value was created (read-only field)",
+                        "format": "int64"
+                    },
+                    "deleted": {
+                        "type": "boolean",
+                        "description": "Whether the catalog value should be marked as deleted"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog value"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "lastModifiedAt": {
+                        "type": "integer",
+                        "description": "The timestamp (in ms) at which the catalog value was last modified (read-only field)",
+                        "format": "int64"
+                    },
+                    "leaf": {
+                        "type": "boolean",
+                        "description": "Whether the value has children values (read-only field)"
+                    },
+                    "level": {
+                        "type": "integer",
+                        "description": "The level of the reference catalog value in the hieararchical structure. Level 0 is the first level that has no ancestors (read-only field)",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the reference catalog value"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "The id of the parent of the reference catalog value"
+                    },
+                    "parentIds": {
+                        "type": "array",
+                        "description": "The id's of the ancestors of the reference catalog value (read-only field)",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "description": "Rank of the reference catalog value used for sorting, accepting positive integers only",
+                        "format": "int32"
+                    },
+                    "referenceCatalogId": {
+                        "type": "string",
+                        "description": "The ID of the reference catalog (read-only field)"
+                    }
+                }
+            },
+            "ApiReferenceCatalogValueList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "referenceCatalogValues": {
+                        "type": "array",
+                        "description": "The list of reference catalog values",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalogValue"
+                        }
+                    }
+                }
+            },
+            "ApiReferenceCatalogValuePageableList": {
+                "type": "object",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "nextPageToken": {
+                        "type": "string"
+                    },
+                    "referenceCatalogValues": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApiReferenceCatalogValue"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "catalogId_path_parameter": {
+                "name": "catalogId",
+                "in": "path",
+                "description": "The ID of the reference catalog",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "domain_query_parameter": {
+                "name": "domain",
+                "in": "query",
+                "description": "The G Suite domain",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "referenceCatalogValueId_path_parameter": {
+                "name": "referenceCatalogValueId",
+                "in": "path",
+                "description": "The ID of a reference catalog value",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "securityCode_query_parameter": {
+                "name": "securityCode",
+                "in": "query",
+                "description": "The security code",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "google_id_token-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "https://accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            },
+            "google_id_token_legacy-b97bae5e": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+                        "scopes": {
+                            "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+                        }
+                    }
+                },
+                "x-google-issuer": "accounts.google.com",
+                "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs",
+                "x-google-audiences": "993707107224-pldsqo168qc45lrn2dmmnk8ahd0vuo5n.apps.googleusercontent.com"
+            }
+        }
+    },
+    "x-google-api-name": "referenceCatalog",
+    "x-original-swagger-version": "2.0"
+}

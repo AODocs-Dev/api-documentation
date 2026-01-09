@@ -1,0 +1,61 @@
+---
+title: "Get a specific library by ID"
+description: "You can retrieve to parse something from its metadata (or to confirm it exists) if you have its `libraryId`."
+api: GET https://aodocs.altirnao.com/api/library/{libId}
+contentType: application/json
+---
+
+## Method and API
+
+Play with the API Explorer:
+
+### [GET /library/\{libId\}](/api-reference/library)
+
+## Usage/notes/guidelines
+
+
+### Request
+
+To get your desired library back in the response you have to provide the library ID. This is the only mandatory field. If you want the response to come back with only a core set of metadata for your library, set the `include` parameter to `NONE`.
+
+<RequestExample>
+```yaml Sample request
+GET https://aodocs.altirnao.com/api/library/v1/RrVcEFb8wtDeNAnlmNN
+```
+</RequestExample>
+
+## Responses
+
+The response returns an [ApiLibrary](/api-reference/library) resource, listing the library associated with the provided library ID.
+
+
+**Response fields of Info:**
+
+- `libraryId`
+- `name` / homeUrl
+- `rootFolderId` (the ID of the topmost level of the library's hierarchy)
+- `defaultDocumentType` (the library's default class ID)
+- `favorited` (whether or not the library is starred as a favorite)
+- any other fields of interest
+
+<ResponseExample>
+```json Sample response (include=NONE)
+{
+  "kind": "aodocs#library",
+  "libraryId": "RnTG8PD8u8ZqTuDVHcv",
+  "name": "my-DMS-lib-001",
+  "homeUrl": "my-dms-lib-001",
+  "daysBeforeDelete": 30,
+  "welcomeText": "<p>Welcome to your new Document Management library: my-DMS-lib-001</p><br><p>To get started...</p>",
+  "storageAdmin": "storage.account@test.aodocs.com",
+  "pushToMyDrive": false,
+  "onlyAdminsCanManageFolders": false,
+  "onlyAdminsCanEditRootFolder": false,
+  "defaultDocumentType": "RnTbOft844KfZYkfBpV",
+  "rootFolderId": "1S7ayhti78VtuNl-SebgGTu_wliznnR47",
+  "defaultView": "RnTbOoS8wQ32JuKPEi1",
+  "favorited": true
+  ...
+}
+```
+</ResponseExample>

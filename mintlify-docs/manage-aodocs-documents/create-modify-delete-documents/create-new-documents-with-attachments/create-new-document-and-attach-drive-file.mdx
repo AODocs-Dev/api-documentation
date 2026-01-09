@@ -1,0 +1,17 @@
+---
+title: "Create new document and attach Drive file"
+sidebarTitle: "Overview"
+description: "When you create a TF/SF document, you must attach one and only one attachment (using a Drive file’s fileId ). You create a DMS document the same way, but you can do it with any number of attachments (including zero)."
+---
+
+For example, you might have a spreadsheet in Google Drive that you want to manage with AODocs. Wrapping a new AODocs document around your spreadsheet allows you to use all the AODocs document management features and properties like custom properties and workflows.
+
+In DMS, you can also create a new document with no attachments. An example could be an expense-report document that needs to be delivered before the expenses are ready to be attached. You can create the document first, and then attach the receipts whenever appropriate.
+
+To get familiar with document creation, try to [create AODocs documents in the UI](https://support.aodocs.com/hc/en-us/articles/115005892403-Create-AODocs-documents) .
+
+To create a new document with AODocs APIs, send a request to the server with an `ApiDocument` resource, listing:
+
+- mandatory resource fields required by the server (like target library ID)
+- optional but useful fields (like document title, class ID, and folder ID)
+- any Drive IDs of files to attach — zero or more for DMS libraries; and a mandatory single one for TF/SF
